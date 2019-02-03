@@ -1,0 +1,32 @@
+<!-- Latest Posts -->
+<section class="latest-posts" style="background-color: #F2F2F2;">
+  <div class="container">
+    <header>
+      <h2 style="text-align:center;">Latest from the blog</h2>
+      <br>
+    </header>
+    <div class="row">
+      {% for post in site.posts limit:3 %}
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="{{post.url}}">
+            {% responsive_image_block %}
+            path: "{{ post.cover_image }}"
+            style: "min-height:200px;"
+            {% endresponsive_image_block %}
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">{{post.date | date_to_long_string }}</div>
+            <div class="category"><a href="#">{{post.category}}</a></div>
+          </div><a href="{{post.url}}" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>{{post.title}}</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">{{post.description | strip_html | truncatewords:30 }}</p>
+        </div></a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

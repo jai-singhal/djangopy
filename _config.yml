@@ -1,0 +1,76 @@
+production: false
+## JEKYLL_ENV=production bundle exec jekyll build
+
+title: DjangoPy
+email: admin@djangopy.org
+description: DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.
+url: "https://djangopy.org" # the base hostname & protocol for your site
+absolute_url: "https://djangopy.org"
+#permalink
+permalink: /:categories/:slug
+
+# The release of Jekyll Now that you're using
+version: v1.2.0
+
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  rougify style github-gist : "css/github-gist.css"
+
+
+#pagination
+paginate: 5
+paginate_path: "/blog/page:num/"
+
+encoding: utf-8
+
+plugins:
+  # - jekyll-read-time
+  - jekyll-responsive-image
+  - jekyll-sitemap
+  - jekyll-feed 
+  - jekyll-paginate
+  - rmagick
+  - jekyll-srcset
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-timeago
+  - jekyll-gist
+
+
+# toc:
+#   min_level: 2 # default: 1
+#   max_level: 5 # default: 6
+
+responsive_image:
+  # [Required]
+  # Path to the image template.
+  template: _includes/responsive-image.html
+
+  default_quality: 90
+
+  sizes:
+    - width: 480
+      quality: 80
+    - width: 800
+    - width: 1400
+      quality: 90
+
+  auto_rotate: false
+
+  strip: false
+
+  base_path: assets
+
+  output_path_format: assets/resized/%{width}/%{basename}
+
+  save_to_source: false
+
+  cache: true
+
+  extra_images:
+    - assets/foo/bar.png
+    - assets/bgs/*.png
+    - assets/avatars/*.{jpeg,jpg}

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- COMMON TAGS -->
+	<title>Introduction to Django | DjangoPy</title>
+	<!-- Search Engine -->
+	<meta property="description" content="Django is a high-level Python Web Framework which is absolutely free and open source. Django encourages rapid development, clean and pragmatic design, it also emphasis on the principle of don't repeat yourself, and reusability of code.">
+	<meta property="image" content="https://djangopy.org/static/images/footer_logo.png">
+	<!-- Schema.org for Google -->
+
+	<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+	<meta property="og:title" content="Introduction to Django | DjangoPy">
+	<meta property="og:description" content="Django is a high-level Python Web Framework which is absolutely free and open source. Django encourages rapid development, clean and pragmatic design, it also emphasis on the principle of don't repeat yourself, and reusability of code.">
+	<meta property="og:image" content="https://djangopy.org/img/introduction-to-django/code-pc-sublime-img.jpg">
+
+	<meta property="og:url" content="https://djangopy.org/learn/introduction-to-django/">
+	<meta property="og:site_name" content="DjangoPy">
+	<meta property="og:locale" content="en_US">
+	<meta property="fb:admins" content="https://www.facebook.com/djangopy.org">
+	<meta property="og:type" content="article">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary">
+	<meta property="twitter:title" content="Introduction to Django | DjangoPy">
+	<meta property="twitter:description" content="Django is a high-level Python Web Framework which is absolutely free and open source. Django encourages rapid development, clean and pragmatic design, it also emphasis on the principle of don't repeat yourself, and reusability of code.">
+	<meta property="twitter:site" content="@DjangoPy_Admin">
+	<meta property="twitter:creator" content="@DjangoPy_Admin">
+	<meta property="twitter:image:src" content="https://djangopy.org/img/introduction-to-django/code-pc-sublime-img.jpg">
+	<!-- Twitter - Article -->
+
+	<!-- Open Graph - Article -->
+	<meta property="article:section" content="learn">
+	<meta property="article:published_time" content="2017-05-08 20:34:07 +0530">
+	<meta properry="article:author" content="https://www.facebook.com/djangopy.org">
+	<meta property="article:modified_time" content="2017-05-08 20:34:07 +0530">
+	
+	<meta property="article:tag" content="history"/>
+	
+	<meta property="article:tag" content="django"/>
+	
+	<meta property="article:tag" content="history-of-django"/>
+	
+	<meta property="article:tag" content="top-ten-site-made-in-django"/>
+	
+	<meta property="article:tag" content="what-is-django"/>
+	
+	<meta property="article:tag" content="why-django"/>
+	
+	<meta property="article:tag" content="introduction-to-django"/>
+	
+	<meta property="article:tag" content="learn-django"/>
+	
+
+	<meta property="revisit-after" content="2 days" />
+	<meta property="distribution" content="web" />
+	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/"/>
+	<meta name="description" content="Django is a high-level Python Web Framework which is absolutely free and open source. Django encourages rapid development, clean and pragmatic design, it also emphasis on the principle of don't repeat yourself, and reusability of code."/>
+
+	<link rel="canonical" href="http://localhost:4000/learn/introduction-to-django/">
+	<link rel="alternate" type="application/rss+xml" title="DjangoPy" href="http://localhost:4000/feed.xml">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- Font Awesome CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel = "stylesheet" href="/css/github.css">
+	<!-- Fancybox-->
+<link rel="stylesheet" type="text/css" href="/css/fonts/fonts.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
+	<!-- theme stylesheet-->
+	<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
+	<!-- Custom stylesheet - for your changes-->
+	<link rel="stylesheet" href="/css/custom.css">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="/img/favicon1.ico">
+	<!-- Javascript files-->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+	<script src="/js/front.js"></script>
+	<script type="text/javascript" src = "/js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+	<script src="/js/post.js"></script>
+
+
+
+</head>
+
+  <body>
+    <header class="header">
+  <!-- Main Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-toggleable-lg">
+    <div class="search-area">
+      <div class="search-area-inner d-flex justify-content-center">
+        <div class="close-btn"><i class="fa fa-2x fa-times"></i></div>
+        <div class="row d-flex justify-content-center" style="margin-top:15%;">
+          <div class="col-md-8">
+            <form action="#" id = "search_form">
+              <div class="form-group">
+                <input type="search" name="search" id="search" placeholder="What are you looking for?" autocomplete="off">
+                <button type="submit" class="submit"><i class="fa fa-search"></i></button>
+              </div>
+              <div id = "search_results">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Navbar Brand -->
+      <div class="navbar-header d-flex align-items-center justify-content-between">
+        <!-- Navbar Brand --><a href="/" class="navbar-brand"><img src = "/img/djangopy_logo8.png" id = "logo"></a>
+        <!-- Toggle Button-->
+        <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
+      </div>
+      <!-- Navbar Menu -->
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="/" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item"><a href="/about" class="nav-link ">About</a>
+          </li>
+          <li class="nav-item"><a href="/" class="nav-link ">Posts</a>
+          </li>
+          <li class="nav-item"><a href="/contact" class="nav-link ">Contact</a>
+          </li>
+        </ul>
+        <div class="navbar-text"><a href="#" class="search-btn" id = "search_button"><i class="fa fa-search"></i></a></div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <br>
+<div class="post">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-9">
+                <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/introduction-to-django/code-pc-sublime-img.jpg" 
+    title="" 
+    srcset="/assets/resized/480/code-pc-sublime-img.jpg 480w,/assets/resized/800/code-pc-sublime-img.jpg 800w,/img/introduction-to-django/code-pc-sublime-img.jpg 940w"
+/>
+                <br><br>
+                <h1 class="post-title" style="margin-top:15px;">Introduction to Django</h1>
+                <h6 class="post-spans">Posted: 08 May 2017 | Post By: Jai Singhal | <span
+                        id="ga-page-view" ga-page-url=/learn/introduction-to-django/></span> <i class="fa fa-eye"></i> | <i class="fa fa-clock"></i>
+                    5 min read | <a style="text-decoration: none;" href="/learn/introduction-to-django/.html#disqus_thread"
+                        data-disqus-identifier="/learn/introduction-to-django/"><i class="fa fa-comment"></i></a> </h6>
+                <br>
+                <hr /><br>
+                <div class="post-content"> <p>Django (/ˈdʒæŋɡoʊ/ jang-goh) is a high-level Python Web Framework which is absolutely free and open source. Django encourages rapid development, clean and pragmatic design, it also emphasis on the principle of don’t repeat yourself, and reusability of code.</p>
+
+<p>Making your own website is an ambitious goal nowadays and one should choose a framework which is more robust, less time-consuming, secure website and Django serves the programmer to produce robust, secure and bug-free code quickly.</p>
+
+<p>What is Django?
+Django is extremely powerful, popular and fully featured server side web framework which is written on top of the Python Language. Django follows Model-Template-View(MVT) architectural pattern. Django is maintained by Django Software Foundation(DSF) which is independent foundation established as a 501(c)(3) non-profit.</p>
+
+<p>For making a website fully functional you need to make both Backend(server side) and Frontend(client side) strong. In Backend(server side), we concern of manipulating the data. Back end is the scripts and database interaction that actually process the data. As Django is server side framework, we here focus on serving the data manipulation to the Frontend. Now we know that Django is built with Python, which is most intelligible and easy to learn Programming Language, both Django and Python hide the enormous number of power and functionality within it that will make the same application in less time and effort as compared to other languages. On the other side, the front end is what the user directly interacts with the user. So front-end in web development generally means the actual HTML, CSS, Javascript, etc.</p>
+
+<p>Why Django?
+Python comes with other great libraries for numerous fields such as Machine Learning, Web Scrapping, Data Mining etc, that can use with your Django Project. You can use Django as an interface to show up your work in a cool way. The Top 5 reason that you should choose Django as your server side web framework.</p>
+
+<h5 id="1-ridiculously-fast">1. Ridiculously fast.</h5>
+
+<p>Django was designed to help developers take applications from concept to completion as quickly as possible.</p>
+
+<h5 id="2-fully-loaded">2. Fully loaded.</h5>
+
+<p>Django includes dozens of extras you can use to handle common Web development tasks. Django takes care of user authentication, content administration, site maps, RSS feeds, and many more tasks — right out of the box.</p>
+
+<h5 id="3-reassuringly-secure">3. Reassuringly secure.</h5>
+
+<p>Django takes security seriously and helps developers avoid many common security mistakes, such as SQL injection, cross-site scripting, cross-site request forgery (CSRF) and clickjacking. Its user authentication system provides a secure way to manage user accounts and passwords.</p>
+
+<h5 id="4-exceedingly-scalable">4. Exceedingly scalable.</h5>
+
+<p>Some of the busiest sites on the planet use Django’s ability to quickly and flexibly scale to meet the heaviest traffic demands.</p>
+
+<h5 id="5-incredibly-versatile">5. Incredibly versatile.</h5>
+
+<p>Companies, organizations, and governments have used Django to build all sorts of things — from content management systems to social networks to scientific computing platforms.</p>
+
+<p>Source: Django Documentation</p>
+
+<h3 id="history-of-django">History of Django</h3>
+<p>Django was born in the fall of 2003, when the web programmers at the Lawrence Journal-World newspaper, Adrian Holovaty and Simon Willison, began using Python to build applications. It was released publicly under a BSD License in July 2005. From the day after release, there is a rapid development of the framework being done by the community of Django. The framework was named after guitarist Django Reinhardt.</p>
+
+<p>Requirement of Programming knowledge
+As discussed above, To develop the Django-powered site, you have to write python code, so you should need some basic knowledge of Python Language. The knowledge about variables, data structures(list, tuple, dictionaries), if-else, for-while loops, functions, class, exception handling etc. Also, basic knowledge of some of the python modules/packages such as os(operating system), re(regular expression), etc will be helpful. The basic knowledge of web development is you may except, very helpful.</p>
+
+<p>Also as far as the database is concerned, you should have some basic touch up knowledge about Database management concept such as about tables, primary key, foreign key, fields etc. Though it is not prior, but it will increase the grasp over the things actually work in Django.</p>
+
+<p>Top Ten sites made with Django
+There are almost 150k (increasing rapidly) total websites running. The number of Django-powered sites is increasing day by day. The top 10 sites which you are familiar with are listed below</p>
+
+<h5 id="1-disqus">1. Disqus</h5>
+<p>Probably the best website to motivate that Django is cool and awesome. Disqus is world’s most popular blog comment hosting service. It is easy to setup and integrates to any of the websites and mostly used in content management system(CMS) like WordPress, Drupal, Joomla, Django CMS etc. You can see the live example which is used by our website.</p>
+
+<h5 id="2-pinterest">2. Pinterest</h5>
+<p>This is another most popular website you might be familiar of. Pinterest is a world’s catalog of ideas where you can pin your ideas, cool articles and much more.</p>
+
+<h5 id="3-giphy">3. Giphy</h5>
+<p>The trend of GIF(Graphics Interchange Format) in social networking starts from this Giphy. The world’s most popular search engine for shared animated GIF files.</p>
+
+<h5 id="4-instagram">4. Instagram</h5>
+<p>The world most popular internet based photo share application is made with Django isn’t sound awesome. The most beloved and attracting thing for the today’s young people for sharing their stories with their photos and videos.</p>
+
+<h5 id="5-nasa-science">5. NASA Science</h5>
+<p>After so much social sites and visual content. It may be not much as popular as above sites, but gets huge amounts of hits per day. Even NASA thinks Django is a great platform to build a website.</p>
+
+<h5 id="6-bitbucket">6. BitBucket</h5>
+<p>This is just another site which is a web-based hosting service just like Github. Though Github is built with Ruby on Rails, but it is not alone web based GIT service. Bitbucket has traditionally tailored itself towards helping professional developers with private proprietary code. BitBuket is another remarkable site made with Django.</p>
+
+<h5 id="7-the-washington-times">7. The Washington Times</h5>
+<p>The most popular and influential online newspaper in the World. It is American daily online newspaper that is read by millions of people at a time is made with Django. A website with a huge amount traffic and data handling performed by Django.</p>
+
+<h5 id="8-the-onion">8. The Onion</h5>
+<p>The Onion is an American digital media company and news satire organization that publishes articles on the international, national, and local news.The Django-powered site with over 7 million monthly page views and with a global rank under 5k. Isn’t great?</p>
+
+<h5 id="9-mozilla-support">9. Mozilla Support</h5>
+<p>One of the best Open source web browser in the market. The open source community rely on the power the support website of Mozilla on Django.</p>
+
+<h5 id="10-hackerearth">10. HackerEarth</h5>
+<p>HackerEarth is startup technology company of India. The proudly Django site dedicated for Programmers/Developers who solves the programming or algorithmic problem to enhance their programming skills, and get hired from the companies. HackerEartch conducts various types of Hackathons, company hiring challenges. Many developers from India solves the problem and submit their code. The thousands of codes and huge traffic at a time that has to be scalable and Django plays an excellent job.</p>
+
+ </div>
+                <div class="overlay-dark">
+                    <div class="close-btn">
+                        <i class="fa fa-2x fa-times"></i>
+                    </div>
+                </div>
+                <img class="img-overlay">
+                <br><br>
+                <ul class="socialIcons">
+                    <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/learn/introduction-to-django/&picture=https://djangopy.orgimg/introduction-to-django/code-pc-sublime-img.jpg&name=Introduction to Django&caption=%20&description=Django is a high-level Python Web Framework which is absolutely free and open source. Django encourages rapid development, clean and pragmatic design, it also emphasis on the principle of don't repeat yourself, and reusability of code.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
+                            class="Icon socialAccount--facebook" target="_blank"></a></li>
+                    <li><a href="http://twitter.com/intent/tweet?text=Introduction to Django - DjangoPy https://djangopy.org/learn/introduction-to-django/"
+                            class="Icon socialAccount--twitter" target="_blank"></a></li>
+                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org" class="Icon socialAccount--google"
+                            target="_blank"></a></li>
+                    <li><a href="mailto:djangopyz@gmail.com?&subject=DjangoPy | Learn, Code, Implement&body=Introduction to Django%0A https://djangopy.org/learn/introduction-to-django/"
+                            target="_self" class="Icon socialAccount--mail" target="_blank"></a></li>
+                </ul>
+                <br>
+                <hr><br>
+                
+                <br>
+                <hr><br>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Latest Posts -->
+<section class="latest-posts" style="background-color: #F2F2F2;">
+  <div class="container">
+    <header>
+      <h2 style="text-align:center;">Latest from the blog</h2>
+      <br>
+    </header>
+    <div class="row">
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/how-to/handle-asynchronous-tasks-with-celery-and-django">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/handle-asynchronous-tasks-with-celery-and-django/cover.png" 
+    title="" 
+    srcset="/assets/resized/480/cover.png 480w,/assets/resized/800/cover.png 800w,/img/handle-asynchronous-tasks-with-celery-and-django/cover.png 1360w"
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">16 February 2018</div>
+            <div class="category"><a href="#">how-to</a></div>
+          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Handle Asynchronous Tasks using celery and Django</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg" 
+    title="" 
+    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg 1240w"
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">03 October 2017</div>
+            <div class="category"><a href="#">learn</a></div>
+          </div><a href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Set-up Authentication System in Django in just 10 minutes</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps....</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/package-of-week/categories-with-django-mptt/">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/categories-with-django-mptt/cover.jpg" 
+    title="" 
+    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/categories-with-django-mptt/cover.jpg 1240w"
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">30 July 2017</div>
+            <div class="category"><a href="#">package-of-the-week</a></div>
+          </div><a href="/package-of-week/categories-with-django-mptt/" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Categories with django-mptt</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post, we'll learn how to implement categories in Django efficiently by storing hierarchical data in place of making many database queries since database queries are costly in terms...</p>
+        </div></a>
+      </div>
+      
+    </div>
+  </div>
+</section>
+      </div>
+    </div>
+    <center>
+  <section class="section--subscribe">
+    <div class="container">
+      <h3 class="u-alignCenter">Stay in touch</h3>
+      <p>
+        Sign up for our newsletter to get latest updates, news and tutorials on Django. We hate spam as much you do!
+      </p>
+      <div class="row h-100 justify-content-center align-items-center">
+        <div class="newsletterForm-wrapper">
+          <div id="mc_embed_signup">
+            <form action="https://djangopy.us15.list-manage.com/subscribe/post?u=d360054cce6cf1e173862fa58&amp;id=4b711b168e"
+              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank"
+              novalidate>
+              <div id="mc_embed_signup_scroll">
+                <div class="mc-field-group">
+                  <input type="email" value="" name="EMAIL" class="textInput textInput--large" id="mce-EMAIL"
+                    placeholder="Your email address" style="width:100% !important;">
+                </div>
+                <div id="mce-responses" class="clear">
+                  <div class="response" id="mce-error-response" style="display:none; color: red;"></div>
+                  <div class="response" id="mce-success-response" style="display:none; color: green;"></div>
+                </div>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;"><input type="text" name="b_d360054cce6cf1e173862fa58_4b711b168e"
+                    tabindex="-1" value=""></div>
+                <div class="clear u-alignCenter"><input type="submit" value="Get new blog posts by email" name="subscribe"
+                    id="mc-embedded-subscribe" class="button-x button--primary"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </section>
+
+</center>
+
+<footer class="section--footer">
+  <div class="container container--content">
+    <ul class="socialAccountList row h-100 justify-content-center align-items-center">
+      <li><a href="http://www.github.com/djangopy-org" class="socialAccount socialAccount--github" target="_blank"></a></li>
+      <li><a href="http://facebook.com/djangopy-org" class="socialAccount socialAccount--facebook" target="_blank"></a></li>
+      <li><a href="http://twitter.com/DjangoPy_Admin" class="socialAccount socialAccount--twitter" target="_blank"></a></li>
+      <li><a href="https://www.reddit.com/user/Djangopy-org/" class="socialAccount socialAccount--reddit" target="_blank"></a></li>
+      <li><a href="mailto:djangopyz@gmail.com?&amp;subject=DjangoPy | Learn, Code, Implement&amp;body=How to Implement Categories in Django%0A https://djangopy.org/how-to/how-to-implement-categories-in-django/"
+          target="_self" class="socialAccount socialAccount--mail" target="_blank"></a></li>
+    </ul>
+    <div>
+      Hand-crafted with 
+<img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDUyMi40NjggNTIyLjQ2OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTIyLjQ2OCA1MjIuNDY5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTMyNS43NjIsNzAuNTEzbC0xNy43MDYtNC44NTRjLTIuMjc5LTAuNzYtNC41MjQtMC41MjEtNi43MDcsMC43MTVjLTIuMTksMS4yMzctMy42NjksMy4wOTQtNC40MjksNS41NjhMMTkwLjQyNiw0NDAuNTMgICAgYy0wLjc2LDIuNDc1LTAuNTIyLDQuODA5LDAuNzE1LDYuOTk1YzEuMjM3LDIuMTksMy4wOSwzLjY2NSw1LjU2OCw0LjQyNWwxNy43MDEsNC44NTZjMi4yODQsMC43NjYsNC41MjEsMC41MjYsNi43MS0wLjcxMiAgICBjMi4xOS0xLjI0MywzLjY2Ni0zLjA5NCw0LjQyNS01LjU2NEwzMzIuMDQyLDgxLjkzNmMwLjc1OS0yLjQ3NCwwLjUyMy00LjgwOC0wLjcxNi02Ljk5OSAgICBDMzMwLjA4OCw3Mi43NDcsMzI4LjIzNyw3MS4yNzIsMzI1Ljc2Miw3MC41MTN6IiBmaWxsPSIjMDAwMDAwIi8+CgkJPHBhdGggZD0iTTE2Ni4xNjcsMTQyLjQ2NWMwLTIuNDc0LTAuOTUzLTQuNjY1LTIuODU2LTYuNTY3bC0xNC4yNzctMTQuMjc2Yy0xLjkwMy0xLjkwMy00LjA5My0yLjg1Ny02LjU2Ny0yLjg1NyAgICBzLTQuNjY1LDAuOTU1LTYuNTY3LDIuODU3TDIuODU2LDI1NC42NjZDMC45NSwyNTYuNTY5LDAsMjU4Ljc1OSwwLDI2MS4yMzNjMCwyLjQ3NCwwLjk1Myw0LjY2NCwyLjg1Niw2LjU2NmwxMzMuMDQzLDEzMy4wNDQgICAgYzEuOTAyLDEuOTA2LDQuMDg5LDIuODU0LDYuNTY3LDIuODU0czQuNjY1LTAuOTUxLDYuNTY3LTIuODU0bDE0LjI3Ny0xNC4yNjhjMS45MDMtMS45MDIsMi44NTYtNC4wOTMsMi44NTYtNi41NyAgICBjMC0yLjQ3MS0wLjk1My00LjY2MS0yLjg1Ni02LjU2M0w1MS4xMDcsMjYxLjIzM2wxMTIuMjA0LTExMi4yMDFDMTY1LjIxNywxNDcuMTMsMTY2LjE2NywxNDQuOTM5LDE2Ni4xNjcsMTQyLjQ2NXoiIGZpbGw9IiMwMDAwMDAiLz4KCQk8cGF0aCBkPSJNNTE5LjYxNCwyNTQuNjYzTDM4Ni41NjcsMTIxLjYxOWMtMS45MDItMS45MDItNC4wOTMtMi44NTctNi41NjMtMi44NTdjLTIuNDc4LDAtNC42NjEsMC45NTUtNi41NywyLjg1N2wtMTQuMjcxLDE0LjI3NSAgICBjLTEuOTAyLDEuOTAzLTIuODUxLDQuMDktMi44NTEsNi41NjdzMC45NDgsNC42NjUsMi44NTEsNi41NjdsMTEyLjIwNiwxMTIuMjA0TDM1OS4xNjMsMzczLjQ0MiAgICBjLTEuOTAyLDEuOTAyLTIuODUxLDQuMDkzLTIuODUxLDYuNTYzYzAsMi40NzgsMC45NDgsNC42NjgsMi44NTEsNi41N2wxNC4yNzEsMTQuMjY4YzEuOTA5LDEuOTA2LDQuMDkzLDIuODU0LDYuNTcsMi44NTQgICAgYzIuNDcxLDAsNC42NjEtMC45NTEsNi41NjMtMi44NTRMNTE5LjYxNCwyNjcuOGMxLjkwMy0xLjkwMiwyLjg1NC00LjA5NiwyLjg1NC02LjU3ICAgIEM1MjIuNDY4LDI1OC43NTUsNTIxLjUxNywyNTYuNTY1LDUxOS42MTQsMjU0LjY2M3oiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+       + 
+       <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDUxMCA1MTAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMCA1MTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8ZyBpZD0iZmF2b3JpdGUiPgoJCTxwYXRoIGQ9Ik0yNTUsNDg5LjZsLTM1LjctMzUuN0M4Ni43LDMzNi42LDAsMjU3LjU1LDAsMTYwLjY1QzAsODEuNiw2MS4yLDIwLjQsMTQwLjI1LDIwLjRjNDMuMzUsMCw4Ni43LDIwLjQsMTE0Ljc1LDUzLjU1ICAgIEMyODMuMDUsNDAuOCwzMjYuNCwyMC40LDM2OS43NSwyMC40QzQ0OC44LDIwLjQsNTEwLDgxLjYsNTEwLDE2MC42NWMwLDk2LjktODYuNywxNzUuOTUtMjE5LjMsMjkzLjI1TDI1NSw0ODkuNnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+       +
+      <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNTAyLDIwNi41aC04MnYtMjEuMTY3YzAtNS41MjMtNC40NzgtMTAtMTAtMTBIMTk0Yy01LjUyMiwwLTEwLDQuNDc3LTEwLDEwYzAsNS41MjMsNC40NzgsMTAsMTAsMTBoMjA2djc2LjY2NiAgICBjMCw2Ny4zNDgtMzUuOTU3LDEyOS45NDItOTQuMDE4LDE2NEgxMTQuMDE4QzU1Ljk1Nyw0MDEuOTQyLDIwLDMzOS4zNDcsMjAsMjcydi03Ni42NjZoNjdjNS41MjIsMCwxMC00LjQ3NywxMC0xMCAgICBjMC01LjUyMy00LjQ3OC0xMC0xMC0xMEgxMGMtNS41MjIsMC0xMCw0LjQ3Ny0xMCwxMFYyNzJjMCwzNy44LDEwLjE2LDc0Ljg2NCwyOS4zODIsMTA3LjE4MyAgICBDNDIuMzQ1LDQwMC45OCw1OS4xNjUsNDIwLjIyOCw3OC44NjIsNDM2SDEwYy01LjUyMiwwLTEwLDQuNDc3LTEwLDEwYzAsMzYuMzkzLDI5LjYwNyw2Niw2Niw2NmgzMTJjMzYuMzkzLDAsNjYtMjkuNjA3LDY2LTY2ICAgIGMwLTUuNTIzLTQuNDc4LTEwLTEwLTEwaC05Mi44NjJjMTguMTI5LTE0LjUxNiwzMy44MTItMzEuOTgzLDQ2LjMwMi01MS42NjdoMjguMjI3QzQ2OC43ODUsMzg0LjMzMyw1MTIsMzQxLjExOCw1MTIsMjg4di03MS41ICAgIEM1MTIsMjEwLjk3Nyw1MDcuNTIzLDIwNi41LDUwMiwyMDYuNXogTTQyMi45MDUsNDU2Yy00LjU3OCwyMC41NzItMjIuOTc0LDM2LTQ0LjkwNSwzNkg2NmMtMjEuOTMxLDAtNDAuMzI2LTE1LjQyOC00NC45MDUtMzYgICAgaDkwLjI0NGgxOTcuMzIySDQyMi45MDV6IE00MjAsMjcydi01LjVoMzJWMjg4YzAsMjAuMDM0LTE2LjI5OSwzNi4zMzMtMzYuMzMzLDM2LjMzM2gtMi4yNzFDNDE3Ljc2MSwzMDcuMzI3LDQyMCwyODkuNzQ1LDQyMCwyNzIgICAgeiBNNDkyLDI4OGMwLDQyLjA5LTM0LjI0Myw3Ni4zMzMtNzYuMzMzLDc2LjMzM2gtMTcuMDJjMy4xOTMtNi41MjEsNi4wNDUtMTMuMTk3LDguNTM3LTIwaDguNDgzICAgIEM0NDYuNzMsMzQ0LjMzMyw0NzIsMzE5LjA2Miw0NzIsMjg4di0zMS41YzAtNS41MjMtNC40NzgtMTAtMTAtMTBoLTQydi0yMGg3MlYyODh6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjE5LjU0OSw1NS4zNDNsLTUuMjAzLTYuNTMzYy03LjYzOC05LjU4OC03LjY0OS0yMi45OTEtMC4wMjctMzIuNTkzYzMuNDM0LTQuMzI2LDIuNzEtMTAuNjE2LTEuNjE2LTE0LjA0OSAgICBjLTQuMzI3LTMuNDM1LTEwLjYxNi0yLjcxLTE0LjA1LDEuNjE2Yy0xMy40NDIsMTYuOTM2LTEzLjQyMiw0MC41NzUsMC4wNDksNTcuNDg3bDUuMjAzLDYuNTMzICAgIGM5Ljk4MSwxMi41Myw5Ljk5NiwzMC4wNDUsMC4wMzYsNDIuNTk0bC01LjMzMiw2LjcxOGMtMy40MzQsNC4zMjYtMi43MSwxMC42MTYsMS42MTYsMTQuMDQ5YzEuODM5LDEuNDU5LDQuMDMyLDIuMTY4LDYuMjEsMi4xNjggICAgYzIuOTQ2LDAsNS44NjUtMS4yOTYsNy44NC0zLjc4NGw1LjMzMi02LjcxOEMyMzUuMzg3LDEwMi45NDksMjM1LjM2NCw3NS4xOTcsMjE5LjU0OSw1NS4zNDN6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjc0Ljk3OCw3Ny44MjdsLTUuMjAzLTYuNTMyYy03LjYzOC05LjU4OS03LjY0OS0yMi45OTItMC4wMjctMzIuNTk0YzMuNDM0LTQuMzI2LDIuNzEtMTAuNjE2LTEuNjE2LTE0LjA0OSAgICBjLTQuMzI3LTMuNDM1LTEwLjYxNi0yLjcxLTE0LjA1LDEuNjE2Yy0xMy40NDIsMTYuOTM2LTEzLjQyMiw0MC41NzUsMC4wNDksNTcuNDg4bDUuMjAzLDYuNTMzICAgIGM5Ljk4LDEyLjUzMSw5Ljk5NSwzMC4wNDcsMC4wMzUsNDIuNTk1bC01LjMzMSw2LjcxN2MtMy40MzQsNC4zMjYtMi43MSwxMC42MTYsMS42MTYsMTQuMDQ5YzEuODM5LDEuNDU5LDQuMDMyLDIuMTY3LDYuMjEsMi4xNjcgICAgYzIuOTQ2LDAsNS44NjYtMS4yOTcsNy44NC0zLjc4NGw1LjMzLTYuNzE3QzI5MC44MTUsMTI1LjQzNSwyOTAuNzkyLDk3LjY4MywyNzQuOTc4LDc3LjgyN3oiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0xNjQuMTIsNzcuODI4bC01LjIwMy02LjUzMmMtNy42MzgtOS41ODgtNy42NDktMjIuOTkyLTAuMDI4LTMyLjU5NGMzLjQzNC00LjMyNiwyLjcxLTEwLjYxNi0xLjYxNi0xNC4wNSAgICBjLTQuMzI3LTMuNDM0LTEwLjYxNi0yLjcwOC0xNC4wNSwxLjYxNmMtMTMuNDQxLDE2LjkzNi0xMy40MjEsNDAuNTc2LDAuMDUsNTcuNDg4bDUuMjAzLDYuNTMzICAgIGM5Ljk4LDEyLjUzMSw5Ljk5NSwzMC4wNDcsMC4wMzYsNDIuNTk0bC01LjMzMiw2LjcxN2MtMy40MzQsNC4zMjYtMi43MTEsMTAuNjE2LDEuNjE1LDE0LjA1YzEuODM5LDEuNDU5LDQuMDMxLDIuMTY4LDYuMjEsMi4xNjggICAgYzIuOTQ2LDAsNS44NjUtMS4yOTYsNy44MzktMy43ODNsNS4zMzMtNi43MThDMTc5Ljk1NywxMjUuNDM2LDE3OS45MzQsOTcuNjg0LDE2NC4xMiw3Ny44Mjh6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMTUwLjI4LDE3OC4yNmMtMS44Ni0xLjg2LTQuNDQtMi45My03LjA3LTIuOTNzLTUuMjEsMS4wNy03LjA3LDIuOTNjLTEuODU5LDEuODctMi45Myw0LjQ0LTIuOTMsNy4wNyAgICBzMS4wNyw1LjIxLDIuOTMsNy4wOGMxLjg2LDEuODYsNC40NCwyLjkyLDcuMDcsMi45MnM1LjIxLTEuMDYsNy4wNy0yLjkyYzEuODY5LTEuODcsMi45My00LjQ0LDIuOTMtNy4wOCAgICBDMTUzLjIxLDE4Mi43LDE1Mi4xNDksMTgwLjEyLDE1MC4yOCwxNzguMjZ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMzYyLDI2MmMtNS41MjIsMC0xMCw0LjQ3Ny0xMCwxMGMwLDM3LjExOS0xNS4wNTYsNzMuNTk4LTQxLjMwOCwxMDAuMDgzYy0zLjg4OCwzLjkyMi0zLjg1OSwxMC4yNTQsMC4wNjMsMTQuMTQyICAgIGMxLjk1LDEuOTMzLDQuNDk1LDIuODk4LDcuMDQsMi44OThjMi41NzQtMC4wMDEsNS4xNDgtMC45ODksNy4xMDMtMi45NjJDMzU0LjgzMiwzNTUuOTYxLDM3MiwzMTQuMzUxLDM3MiwyNzIgICAgQzM3MiwyNjYuNDc3LDM2Ny41MjIsMjYyLDM2MiwyNjJ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjkzLjg4NSwzOTkuMjI1Yy0yLjcxNC00LjgxMS04LjgxMy02LjUxLTEzLjYyMy0zLjc5N2wtMC4yMjgsMC4xMjljLTQuODExLDIuNzE0LTYuNTEsOC44MTMtMy43OTcsMTMuNjIzICAgIGMxLjgzOCwzLjI1OCw1LjIyNyw1LjA4OSw4LjcxOSw1LjA4OWMxLjY2NCwwLDMuMzUyLTAuNDE3LDQuOTA0LTEuMjkybDAuMjI4LTAuMTI5ICAgIEMyOTQuODk5LDQxMC4xMzQsMjk2LjU5OCw0MDQuMDM1LDI5My44ODUsMzk5LjIyNXoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+    </div>
+    <div>
+      © 2018 All Rights Reserved
+    </div>
+    <center><a href="/terms-of-services" target="_self">Term of Service</a> | <a href="/privacy-policy" target="_self">Privacy
+        Policy</a> | <a href="/disclaimer" target="_self">Disclaimer </a> | <a href="/sitemap.xml" target="_self">Sitemap</a></center>
+  </div>
+</footer>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<script type='text/javascript'>
+  (function ($) {
+    window.fnames = new Array();
+    window.ftypes = new Array();
+    fnames[0] = 'EMAIL';
+    ftypes[0] = 'email';
+    fnames[1] = 'FNAME';
+    ftypes[1] = 'text';
+    fnames[2] = 'LNAME';
+    ftypes[2] = 'text';
+  }(jQuery));
+  var $mcj = jQuery.noConflict(true);
+</script>
+  </body>
+
+</html>
+
+

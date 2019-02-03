@@ -1,0 +1,45 @@
+<header class="header">
+  <!-- Main Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-toggleable-lg">
+    <div class="search-area">
+      <div class="search-area-inner d-flex justify-content-center">
+        <div class="close-btn"><i class="fa fa-2x fa-times"></i></div>
+        <div class="row d-flex justify-content-center" style="margin-top:15%;">
+          <div class="col-md-8">
+            <form action="#" id = "search_form">
+              <div class="form-group">
+                <input type="search" name="search" id="search" placeholder="What are you looking for?" autocomplete="off">
+                <button type="submit" class="submit"><i class="fa fa-search"></i></button>
+              </div>
+              <div id = "search_results">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Navbar Brand -->
+      <div class="navbar-header d-flex align-items-center justify-content-between">
+        <!-- Navbar Brand --><a href="/" class="navbar-brand"><img src = "{{ '/img/djangopy_logo8.png' }}" id = "logo"></a>
+        <!-- Toggle Button-->
+        <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
+      </div>
+      <!-- Navbar Menu -->
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="/" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item"><a href="/about" class="nav-link ">About</a>
+          </li>
+          <li class="nav-item"><a href="/" class="nav-link ">Posts</a>
+          </li>
+          <li class="nav-item"><a href="/contact" class="nav-link ">Contact</a>
+          </li>
+        </ul>
+        <div class="navbar-text"><a href="#" class="search-btn" id = "search_button"><i class="fa fa-search"></i></a></div>
+      </div>
+    </div>
+  </nav>
+</header>
+

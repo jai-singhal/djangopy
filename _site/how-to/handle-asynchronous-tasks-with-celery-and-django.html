@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- COMMON TAGS -->
+	<title>Handle Asynchronous Tasks using celery and Django | DjangoPy</title>
+	<!-- Search Engine -->
+	<meta property="description" content="In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.">
+	<meta property="image" content="https://djangopy.org/static/images/footer_logo.png">
+	<!-- Schema.org for Google -->
+
+	<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+	<meta property="og:title" content="Handle Asynchronous Tasks using celery and Django | DjangoPy">
+	<meta property="og:description" content="In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.">
+	<meta property="og:image" content="https://djangopy.org/img/handle-asynchronous-tasks-with-celery-and-django/cover.png">
+
+	<meta property="og:url" content="https://djangopy.org/how-to/handle-asynchronous-tasks-with-celery-and-django">
+	<meta property="og:site_name" content="DjangoPy">
+	<meta property="og:locale" content="en_US">
+	<meta property="fb:admins" content="https://www.facebook.com/djangopy.org">
+	<meta property="og:type" content="article">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary">
+	<meta property="twitter:title" content="Handle Asynchronous Tasks using celery and Django | DjangoPy">
+	<meta property="twitter:description" content="In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.">
+	<meta property="twitter:site" content="@DjangoPy_Admin">
+	<meta property="twitter:creator" content="@DjangoPy_Admin">
+	<meta property="twitter:image:src" content="https://djangopy.org/img/handle-asynchronous-tasks-with-celery-and-django/cover.png">
+	<!-- Twitter - Article -->
+
+	<!-- Open Graph - Article -->
+	<meta property="article:section" content="how-to">
+	<meta property="article:published_time" content="2018-02-16 20:34:07 +0530">
+	<meta properry="article:author" content="https://www.facebook.com/djangopy.org">
+	<meta property="article:modified_time" content="2018-02-16 20:34:07 +0530">
+	
+	<meta property="article:tag" content="handle-asynchronous-tasks-with-celery-and-django"/>
+	
+	<meta property="article:tag" content="celery"/>
+	
+	<meta property="article:tag" content="django"/>
+	
+	<meta property="article:tag" content="redis"/>
+	
+	<meta property="article:tag" content="djangopy"/>
+	
+	<meta property="article:tag" content="scheduling"/>
+	
+	<meta property="article:tag" content="django-celery"/>
+	
+	<meta property="article:tag" content="asynchronous"/>
+	
+	<meta property="article:tag" content="jai-singhal"/>
+	
+	<meta property="article:tag" content="how-to"/>
+	
+	<meta property="article:tag" content="periodic-tasks"/>
+	
+	<meta property="article:tag" content="supervisord"/>
+	
+	<meta property="article:tag" content="supervisor"/>
+	
+
+	<meta property="revisit-after" content="2 days" />
+	<meta property="distribution" content="web" />
+	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/"/>
+	<meta name="description" content="In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery."/>
+
+	<link rel="canonical" href="http://localhost:4000/how-to/handle-asynchronous-tasks-with-celery-and-django">
+	<link rel="alternate" type="application/rss+xml" title="DjangoPy" href="http://localhost:4000/feed.xml">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- Font Awesome CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel = "stylesheet" href="/css/github.css">
+	<!-- Fancybox-->
+<link rel="stylesheet" type="text/css" href="/css/fonts/fonts.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
+	<!-- theme stylesheet-->
+	<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
+	<!-- Custom stylesheet - for your changes-->
+	<link rel="stylesheet" href="/css/custom.css">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="/img/favicon1.ico">
+	<!-- Javascript files-->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+	<script src="/js/front.js"></script>
+	<script type="text/javascript" src = "/js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+	<script src="/js/post.js"></script>
+
+
+
+</head>
+
+  <body>
+    <header class="header">
+  <!-- Main Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-toggleable-lg">
+    <div class="search-area">
+      <div class="search-area-inner d-flex justify-content-center">
+        <div class="close-btn"><i class="fa fa-2x fa-times"></i></div>
+        <div class="row d-flex justify-content-center" style="margin-top:15%;">
+          <div class="col-md-8">
+            <form action="#" id = "search_form">
+              <div class="form-group">
+                <input type="search" name="search" id="search" placeholder="What are you looking for?" autocomplete="off">
+                <button type="submit" class="submit"><i class="fa fa-search"></i></button>
+              </div>
+              <div id = "search_results">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Navbar Brand -->
+      <div class="navbar-header d-flex align-items-center justify-content-between">
+        <!-- Navbar Brand --><a href="/" class="navbar-brand"><img src = "/img/djangopy_logo8.png" id = "logo"></a>
+        <!-- Toggle Button-->
+        <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
+      </div>
+      <!-- Navbar Menu -->
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="/" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item"><a href="/about" class="nav-link ">About</a>
+          </li>
+          <li class="nav-item"><a href="/" class="nav-link ">Posts</a>
+          </li>
+          <li class="nav-item"><a href="/contact" class="nav-link ">Contact</a>
+          </li>
+        </ul>
+        <div class="navbar-text"><a href="#" class="search-btn" id = "search_button"><i class="fa fa-search"></i></a></div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <br>
+<div class="post">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-9">
+                <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/handle-asynchronous-tasks-with-celery-and-django/cover.png" 
+    title="" 
+    srcset="/assets/resized/480/cover.png 480w,/assets/resized/800/cover.png 800w,/img/handle-asynchronous-tasks-with-celery-and-django/cover.png 1360w"
+/>
+                <br><br>
+                <h1 class="post-title" style="margin-top:15px;">Handle Asynchronous Tasks using celery and Django</h1>
+                <h6 class="post-spans">Posted: 16 February 2018 | Post By: Jai Singhal | <span
+                        id="ga-page-view" ga-page-url=/how-to/handle-asynchronous-tasks-with-celery-and-django></span> <i class="fa fa-eye"></i> | <i class="fa fa-clock"></i>
+                    10 min read | <a style="text-decoration: none;" href="/how-to/handle-asynchronous-tasks-with-celery-and-django.html#disqus_thread"
+                        data-disqus-identifier="/how-to/handle-asynchronous-tasks-with-celery-and-django"><i class="fa fa-comment"></i></a> </h6>
+                <br>
+                <hr /><br>
+                <div class="post-content"> <h2 id="introduction">Introduction</h2>
+<p>We offen need something that schedule some tasks and run the some tasks periodically or handling the long tasks asynchronously, these all things can achieved by using Celery in Django Project.</p>
+
+<h5 id="what-is-celery">What is Celery?</h5>
+<p>Celery is a task queue with focus on the real-time processing, which also supports task scheduling. Celety is fast, simple, highly available and flexible.</p>
+
+<p>Celery need a message transport to send and recieve message which can done by Redis or RabbitMQ.</p>
+
+<hr />
+
+<p><br /></p>
+<h2 id="getting-started">Getting Started</h2>
+
+<p>Let’s start installing the Celery package in your virtualenv.</p>
+
+<h5 id="install-celery">Install Celery</h5>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>pip <span class="nb">install </span>celery</code></pre></figure>
+
+<h5 id="install-redis">Install Redis</h5>
+
+<p>We will be using Message broker as Redis, So let’s install</p>
+
+<h6 id="linuxmac-users">Linux/Mac users</h6>
+<p>You can download the latest version from <a href="https://redis.io/download">here</a></p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>wget http://download.redis.io/releases/redis-4.0.8.tar.gz
+<span class="nv">$ </span><span class="nb">tar </span>xzf redis-4.0.8.tar.gz
+<span class="nv">$ </span><span class="nb">cd </span>redis-4.0.8
+<span class="nv">$ </span>make</code></pre></figure>
+
+<h6 id="windows-users">Windows users</h6>
+<p>For windows user, you can get executable file of redis from <a href="https://github.com/rgl/redis/downloads">here</a></p>
+
+<p><br /></p>
+
+<p>After installing, try if it is correctly installed or not.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>redis-cli ping</code></pre></figure>
+
+<p>It should respond with</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">pong</code></pre></figure>
+
+<p>Also install python package of the redis</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>pip <span class="nb">install </span>redis</code></pre></figure>
+
+<hr />
+
+<p><br /></p>
+<h2 id="first-step-with-django">First Step with Django</h2>
+
+<p>Now that you have successfully installed the packages, now lets get’s hand on Django Project</p>
+
+<h4 id="settingspy">settings.py</h4>
+<p>Add some of the setting configuration in your <strong>settings.py</strong></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">CELERY_BROKER_URL</span> <span class="o">=</span> <span class="s">'redis://localhost:6379'</span>
+<span class="n">CELERY_RESULT_BACKEND</span> <span class="o">=</span> <span class="s">'redis://localhost:6379'</span>
+<span class="n">CELERY_ACCEPT_CONTENT</span> <span class="o">=</span> <span class="p">[</span><span class="s">'application/json'</span><span class="p">]</span>
+<span class="n">CELERY_TASK_SERIALIZER</span> <span class="o">=</span> <span class="s">'json'</span>
+<span class="n">CELERY_RESULT_SERIALIZER</span> <span class="o">=</span> <span class="s">'json'</span>
+<span class="n">CELERY_TIMEZONE</span> <span class="o">=</span> <span class="s">"YOUR_TIMEZONE"</span></code></pre></figure>
+
+<p>Make sure you have changed your <strong>timezone</strong> from <strong>YOUR_TIMEZONE</strong>. You can get your timezone from <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">here</a></p>
+
+<p>Create an <strong>celery.py</strong> file in your main Django project directory</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">- src/
+  - manage.py
+  - celery_project/
+    - __init__.py
+    - settings.py
+    - urls.py
+    - celery.py</code></pre></figure>
+
+<p><br /></p>
+<h4 id="celery_projectcelerypy">celery_project/celery.py</h4>
+
+<p>Add the following code in the celery.py module. This module is used to define the celery instance.</p>
+
+<p>Make sure you have changed your project name (&lt;your project name&gt;) with your django project name</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">unicode_literals</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+
+<span class="c"># set the default Django settings module for the 'celery' program.</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">'DJANGO_SETTINGS_MODULE'</span><span class="p">,</span> <span class="s">'&lt;your project name&gt;.settings'</span><span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s">'&lt;your project name&gt;'</span><span class="p">)</span>
+
+<span class="c"># Using a string here means the worker doesn't have to serialize</span>
+<span class="c"># the configuration object to child processes.</span>
+<span class="c"># - namespace='CELERY' means all celery-related configuration keys</span>
+<span class="c">#   should have a `CELERY_` prefix.</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config_from_object</span><span class="p">(</span><span class="s">'django.conf:settings'</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s">'CELERY'</span><span class="p">)</span>
+
+<span class="c"># Load task modules from all registered Django app configs.</span>
+<span class="n">app</span><span class="o">.</span><span class="n">autodiscover_tasks</span><span class="p">()</span>
+
+<span class="nd">@app.task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">debug_task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Request: {0!r}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">))</span></code></pre></figure>
+
+<p><br /></p>
+
+<h4 id="celery_project__init__py">celery_project/__init__.py</h4>
+<p>Then we need to import the app defined the <strong>celery.py</strong> to <strong>__init__.py</strong> of your main project directory. By doing this, we can ensure that app is loaded when Django project starts</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="c"># This will make sure the app is always imported when</span>
+<span class="c"># Django starts so that shared_task will use this app.</span>
+<span class="kn">from</span> <span class="nn">.celery</span> <span class="kn">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">celery_app</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">'celery_app'</span><span class="p">]</span></code></pre></figure>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="creating-tasks">Creating Tasks</h2>
+<p>Now let’s create some task</p>
+
+<p>Create a new file in your any app registered in the <strong>INSTALLED_APPS</strong></p>
+
+<h5 id="my_apptaskspy">my_app/tasks.py</h5>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">shared_task</span>
+
+<span class="nd">@shared_task</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"print_msg_with_name"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">print_message</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"Celery is working!! {} have implemented it correctly."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+<span class="nd">@shared_task</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"add_2_numbers"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"Add function has been called!! with params {}, {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span></code></pre></figure>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="starting-worker-process">Starting Worker Process</h2>
+
+<p>Open a <strong>NEW</strong> <strong>terminal</strong> and run the following command to run the worker instance of celery, and also change the directory to where your main project directory is, i,e, the directory where <strong>manage.py</strong> file is placed, and also make sure you have  <strong>activated</strong> your <strong>virtualenv</strong>(if created).</p>
+
+<p>Change the project name with your project name</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>celery <span class="nt">-A</span> &lt;your project name&gt; worker <span class="nt">-l</span> info</code></pre></figure>
+
+<p>You will get this type of output</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nt">--------------</span> celery@root v4.1.0 <span class="o">(</span>latentcall<span class="o">)</span>
+<span class="nt">----</span> <span class="k">****</span> <span class="nt">-----</span> 
+<span class="nt">---</span> <span class="k">*</span> <span class="k">***</span>  <span class="k">*</span> <span class="nt">--</span> Linux-4.13.0-32-generic-x86_64-with-Ubuntu-17.10-artful 2018-02-17 08:09:37
+<span class="nt">--</span> <span class="k">*</span> - <span class="k">****</span> <span class="nt">---</span> 
+- <span class="k">**</span> <span class="nt">----------</span> <span class="o">[</span>config]
+- <span class="k">**</span> <span class="nt">----------</span> .&gt; app:         celery_project:0x7f9039886400
+- <span class="k">**</span> <span class="nt">----------</span> .&gt; transport:   redis://localhost:6379//
+- <span class="k">**</span> <span class="nt">----------</span> .&gt; results:     redis://localhost:6379/
+- <span class="k">***</span> <span class="nt">---</span> <span class="k">*</span> <span class="nt">---</span> .&gt; concurrency: 4 <span class="o">(</span>prefork<span class="o">)</span>
+<span class="nt">--</span> <span class="k">*******</span> <span class="nt">----</span> .&gt; task events: OFF <span class="o">(</span><span class="nb">enable</span> <span class="nt">-E</span> to monitor tasks <span class="k">in </span>this worker<span class="o">)</span>
+<span class="nt">---</span> <span class="k">*****</span> <span class="nt">-----</span> 
+ <span class="nt">--------------</span> <span class="o">[</span>queues]
+                .&gt; celery           <span class="nv">exchange</span><span class="o">=</span>celery<span class="o">(</span>direct<span class="o">)</span> <span class="nv">key</span><span class="o">=</span>celery
+                
+
+<span class="o">[</span>tasks]
+  <span class="nb">.</span> add_2_numbers
+  <span class="nb">.</span> celery_project.celery.debug_task
+  <span class="nb">.</span> print_msg_with_name
+
+<span class="o">[</span>2018-02-17 08:09:37,877: INFO/MainProcess] Connected to redis://localhost:6379//
+<span class="o">[</span>2018-02-17 08:09:37,987: INFO/MainProcess] mingle: searching <span class="k">for </span>neighbors
+<span class="o">[</span>2018-02-17 08:09:39,084: INFO/MainProcess] mingle: all alone
+<span class="o">[</span>2018-02-17 08:09:39,121: WARNING/MainProcess] /home/jai/Desktop/demo/lib/python3.6/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting <span class="k">in </span>production environments!
+  warnings.warn<span class="o">(</span><span class="s1">'Using settings.DEBUG leads to a memory leak, never '</span>
+<span class="o">[</span>2018-02-17 08:09:39,121: INFO/MainProcess] celery@root ready.</code></pre></figure>
+
+<p><br />
+<strong>NOTE</strong>: Check for <strong>[tasks]</strong> above, it should contain name of the task which you have created in the module <strong>tasks.py</strong>.!!</p>
+
+<p>For more info and logs, you also run the worker instance in a <strong>DEBUG MODE</strong></p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">celery <span class="nt">-A</span> &lt;your project name&gt; worker <span class="nt">-l</span> info  <span class="nt">--loglevel</span><span class="o">=</span>DEBUG</code></pre></figure>
+
+<p><strong>NOTE</strong>: DO NOT CLOSE THIS TERMINAL, IT SHOULD REMAIN OPEN!!</p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="testing-the-task">Testing the Task</h2>
+<p>Now let’s run the tasks from django shell
+Open up your Django shell</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python3 manage.py shell</code></pre></figure>
+
+<p>And run the function with <strong>delay</strong>.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">&gt;&gt;&gt;</span> from my_app.tasks import print_message, add
+<span class="o">&gt;&gt;&gt;</span> print_message.delay<span class="o">(</span><span class="s2">"Jai Singhal"</span><span class="o">)</span>
+&lt;AsyncResult: fe4f9787-9ee4-46da-856c-453d36556760&gt;
+<span class="o">&gt;&gt;&gt;</span> add.delay<span class="o">(</span>10, 20<span class="o">)</span>
+&lt;AsyncResult: ca5d2c50-87bc-4e87-92ad-99d6d9704c30&gt;</code></pre></figure>
+
+<p><br /></p>
+
+<p>When you check your second terminal where your celery worker instance is running, you will get this type of output, showing your tasks have been recieved and also they have successfully completed</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>2018-02-17 08:12:14,375: INFO/MainProcess] Received task: my_app.tasks.print_message[fe4f9787-9ee4-46da-856c-453d36556760]  
+<span class="o">[</span>2018-02-17 08:12:14,377: WARNING/ForkPoolWorker-4] Celery is working!! Jai Singhal have implemented it correctly.
+<span class="o">[</span>2018-02-17 08:12:14,382: INFO/ForkPoolWorker-4] Task my_app.tasks.print_message[fe4f9787-9ee4-46da-856c-453d36556760] succeeded <span class="k">in </span>0.004476275000342866s: None
+<span class="o">[</span>2018-02-17 08:12:28,344: INFO/MainProcess] Received task: my_app.tasks.add[ca5d2c50-87bc-4e87-92ad-99d6d9704c30]  
+<span class="o">[</span>2018-02-17 08:12:28,349: WARNING/ForkPoolWorker-3] Add <span class="k">function </span>has been called!! with params 10, 20
+<span class="o">[</span>2018-02-17 08:12:28,358: INFO/ForkPoolWorker-3] Task my_app.tasks.add[ca5d2c50-87bc-4e87-92ad-99d6d9704c30] succeeded <span class="k">in </span>0.010077004999857309s: 30</code></pre></figure>
+
+<hr />
+<p><br /></p>
+
+<h2 id="periodic-tasks">Periodic Tasks</h2>
+
+<p>We often need to periodically run our tasks in our django project, here celery fulfills our need with <strong>celery beat</strong> which is nothing but a scheduler, which kicks its target at a regular interval and it can defined both implictly and explictly.</p>
+
+<p>Please do ensure that single scheduler is running for a schedule at a time, otherwise you’d end up with duplicate tasks</p>
+
+<p>Set the timezone in the settings.py according to your time zone, which we have done that earlier in this tutorial.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">timezone <span class="o">=</span> <span class="s1">'Europe/London'</span></code></pre></figure>
+
+<p>Now we can create periodic tasks by two ways, either by manually adding a code of scheduler in <strong>celery.py</strong>  or by installing a package <strong>django-celery-beat</strong> which can allows us to create schedulers in the Django Admin</p>
+
+<h3 id="1-writing-scheduler-manually">1. Writing scheduler manually</h3>
+
+<p>Add the following schedule configuration in your <strong>celery.py</strong> file</p>
+
+<h6 id="celery_projectcelerypy-1">celery_project/celery.py</h6>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">beat_schedule</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'add-every-2-seconds'</span><span class="p">:</span> <span class="p">{</span>  <span class="c">#name of the scheduler</span>
+        <span class="s">'task'</span><span class="p">:</span> <span class="s">'add_2_numbers'</span><span class="p">,</span>  <span class="c"># task name which we have created in tasks.py</span>
+        <span class="s">'schedule'</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>   <span class="c"># set the period of running</span>
+        <span class="s">'args'</span><span class="p">:</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>  <span class="c"># set the args</span>
+    <span class="p">},</span>
+    <span class="s">'print-name-every-5-seconds'</span><span class="p">:</span> <span class="p">{</span>  <span class="c">#name of the scheduler</span>
+        <span class="s">'task'</span><span class="p">:</span> <span class="s">'print_msg_with_name'</span><span class="p">,</span>  <span class="c"># task name which we have created in tasks.py</span>
+        <span class="s">'schedule'</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>  <span class="c"># set the period of running</span>
+         <span class="s">'args'</span><span class="p">:</span> <span class="p">(</span><span class="s">"DjangoPY"</span><span class="p">,</span> <span class="p">)</span>  <span class="c"># set the args</span>
+    <span class="p">},</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Open the <strong>NEW</strong> terminal and run the following command</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>celery <span class="nt">-A</span> &lt;project name&gt; beat <span class="nt">-l</span> info</code></pre></figure>
+
+<p>Make sure you are running worker process in a seperate terminal</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">celery <span class="nt">-A</span> &lt;your project name&gt; worker <span class="nt">-l</span> info </code></pre></figure>
+
+<p>You will get the output in the terminal where you have started celery beat process</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">celery beat v4.1.0 <span class="o">(</span>latentcall<span class="o">)</span> is starting.
+__    -    ... __   -        _
+LocalTime -&gt; 2018-02-17 09:56:30
+Configuration -&gt;
+    <span class="nb">.</span> broker -&gt; redis://localhost:6379//
+    <span class="nb">.</span> loader -&gt; celery.loaders.app.AppLoader
+    <span class="nb">.</span> scheduler -&gt; celery.beat.PersistentScheduler
+    <span class="nb">.</span> db -&gt; celerybeat-schedule
+    <span class="nb">.</span> logfile -&gt; <span class="o">[</span>stderr]@%INFO
+    <span class="nb">.</span> maxinterval -&gt; 5.00 minutes <span class="o">(</span>300s<span class="o">)</span>
+<span class="o">[</span>2018-02-17 09:56:30,268: INFO/MainProcess] beat: Starting...
+
+<span class="o">[</span>2018-02-17 09:56:36,365: INFO/MainProcess] Scheduler: Sending due task add-every-2-seconds <span class="o">(</span>add_2_numbers<span class="o">)</span>
+<span class="o">[</span>2018-02-17 09:56:38,365: INFO/MainProcess] Scheduler: Sending due task add-every-2-seconds <span class="o">(</span>add_2_numbers<span class="o">)</span>
+<span class="o">[</span>2018-02-17 09:56:39,367: INFO/MainProcess] Scheduler: Sending due task print-name-every-5-seconds <span class="o">(</span>print_msg_with_name<span class="o">)</span>
+<span class="o">[</span>2018-02-17 09:56:40,365: INFO/MainProcess] Scheduler: Sending due task add-every-2-seconds <span class="o">(</span>add_2_numbers<span class="o">)</span>
+<span class="o">[</span>2018-02-17 09:56:42,365: INFO/MainProcess] Scheduler: Sending due task add-every-2-seconds <span class="o">(</span>add_2_numbers<span class="o">)</span>
+...</code></pre></figure>
+
+<p><br /></p>
+
+<p>And now if you look at the <strong>worker</strong> process terminal, you will find tasks are running periodically!!</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>2018-02-17 09:56:36,371: WARNING/ForkPoolWorker-1] Add <span class="k">function </span>has been called!! with params 16, 16
+<span class="o">[</span>2018-02-17 09:56:36,464: INFO/ForkPoolWorker-1] Task add_2_numbers[7e9f9ff5-4b01-42d3-b301-99a3b078484b] succeeded <span class="k">in </span>0.09404212199842732s: 32
+<span class="o">[</span>2018-02-17 09:56:38,368: INFO/MainProcess] Received task: add_2_numbers[097e8b56-7090-4561-9686-77d7aae6e2d6]  
+<span class="o">[</span>2018-02-17 09:56:38,369: WARNING/ForkPoolWorker-2] Add <span class="k">function </span>has been called!! with params 16, 16
+<span class="o">[</span>2018-02-17 09:56:38,453: INFO/ForkPoolWorker-2] Task add_2_numbers[097e8b56-7090-4561-9686-77d7aae6e2d6] succeeded <span class="k">in </span>0.08399435899991659s: 32
+<span class="o">[</span>2018-02-17 09:56:39,371: INFO/MainProcess] Received task: print_msg_with_name[2b56d4a2-a358-4186-b849-66342d7635dc]  
+<span class="o">[</span>2018-02-17 09:56:39,372: WARNING/ForkPoolWorker-1] Celery is working!! DjangoPY have implemented it correctly.
+<span class="o">[</span>2018-02-17 09:56:39,456: INFO/ForkPoolWorker-1] Task print_msg_with_name[2b56d4a2-a358-4186-b849-66342d7635dc] succeeded <span class="k">in </span>0.08378831899972283s: None</code></pre></figure>
+
+<h3 id="2-using-django-celery-beat">2. Using django-celery-beat</h3>
+
+<p>Let’s now do the above same thing with <strong>django-celery-beat</strong></p>
+
+<h6 id="1-install-django-celery-beat">1. Install django-celery-beat</h6>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>pip <span class="nb">install </span>django-celery-beat</code></pre></figure>
+
+<h6 id="2-add-into-installed-apps">2. Add into Installed apps</h6>
+<p>Add the django_celery_beat module to INSTALLED_APPS in your Django project’ settings.py:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s">'django_celery_beat'</span><span class="p">,</span>
+<span class="p">]</span></code></pre></figure>
+
+<h6 id="3-run-the-django-migrations">3. Run the django migrations</h6>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py migrate</code></pre></figure>
+
+<p><br />
+<strong>Note:</strong> The database scheduler won’t reset when timezone related settings change, so you must do this manually:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py shell
+<span class="o">&gt;&gt;&gt;</span> from django_celery_beat.models import PeriodicTask
+<span class="o">&gt;&gt;&gt;</span> PeriodicTask.objects.update<span class="o">(</span><span class="nv">last_run_at</span><span class="o">=</span>None<span class="o">)</span></code></pre></figure>
+
+<p>Now go to your Django Admin and create a <strong>Periodic Task</strong> as follows</p>
+
+<p>Choose any name, and select the task which you have created, and also create a Crontab according to your need.
+Please refer the guide or some of the examples of Crontab from <a href="http://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html#crontab-schedules">here. </a></p>
+
+<p><img class="img-fluid lazy" alt="" src="/img/handle-asynchronous-tasks-with-celery-and-django/img1.png" title="" srcset="/assets/resized/480/img1.png 480w,/assets/resized/800/img1.png 800w,/img/handle-asynchronous-tasks-with-celery-and-django/img1.png 1366w" /></p>
+
+<p><br />
+Run the celery beat process in new terminal with <strong>–scheduler</strong></p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>celery <span class="nt">-A</span> &lt;project name&gt; beat <span class="nt">-l</span> info <span class="nt">--scheduler</span> django_celery_beat.schedulers:DatabaseScheduler</code></pre></figure>
+
+<p>Make sure you have running worker process in a seperate terminal with django server and celery beat process</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">celery <span class="nt">-A</span> &lt;your project name&gt; worker <span class="nt">-l</span> info </code></pre></figure>
+
+<p>Check the output logs in both of the terminals and check the logs in the respective terminals.</p>
+
+<hr />
+<p><br /></p>
+
+<h2 id="running-on-production">Running on Production</h2>
+
+<p>Now that celery is perfectly running locally, last thing we need to take care of the production. A question arises here that how we can run these process terminals together for all the time in our Production server, becuase we need to run both the process(beat and worker) to keep the celery working.</p>
+
+<p>So here Supervisor comes in handy that helps to run both of the instances seperately.</p>
+
+<p>Supervisor is a client/server system that allows its users to control and keeps it running the process in any unix-like Operating System. So we can use this, for runing celery processes.</p>
+
+<p><a href="http://supervisord.org/">Here</a> is the documentation for the Supervisor.</p>
+
+<hr />
+<p><br /></p>
+<h2 id="resources">Resources</h2>
+<ul>
+  <li><a href="http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html">http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html</a></li>
+  <li><a href="http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html">http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html</a></li>
+  <li><a href="http://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html">http://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html</a></li>
+  <li><a href="http://supervisord.org">http://supervisord.org</a></li>
+</ul>
+
+ </div>
+                <div class="overlay-dark">
+                    <div class="close-btn">
+                        <i class="fa fa-2x fa-times"></i>
+                    </div>
+                </div>
+                <img class="img-overlay">
+                <br><br>
+                <ul class="socialIcons">
+                    <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/how-to/handle-asynchronous-tasks-with-celery-and-django&picture=https://djangopy.orgimg/handle-asynchronous-tasks-with-celery-and-django/cover.png&name=Handle Asynchronous Tasks using celery and Django&caption=%20&description=In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
+                            class="Icon socialAccount--facebook" target="_blank"></a></li>
+                    <li><a href="http://twitter.com/intent/tweet?text=Handle Asynchronous Tasks using celery and Django - DjangoPy https://djangopy.org/how-to/handle-asynchronous-tasks-with-celery-and-django"
+                            class="Icon socialAccount--twitter" target="_blank"></a></li>
+                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org" class="Icon socialAccount--google"
+                            target="_blank"></a></li>
+                    <li><a href="mailto:djangopyz@gmail.com?&subject=DjangoPy | Learn, Code, Implement&body=Handle Asynchronous Tasks using celery and Django%0A https://djangopy.org/how-to/handle-asynchronous-tasks-with-celery-and-django"
+                            target="_self" class="Icon socialAccount--mail" target="_blank"></a></li>
+                </ul>
+                <br>
+                <hr><br>
+                
+                <br>
+                <hr><br>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Latest Posts -->
+<section class="latest-posts" style="background-color: #F2F2F2;">
+  <div class="container">
+    <header>
+      <h2 style="text-align:center;">Latest from the blog</h2>
+      <br>
+    </header>
+    <div class="row">
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/how-to/handle-asynchronous-tasks-with-celery-and-django">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/handle-asynchronous-tasks-with-celery-and-django/cover.png" 
+    title="" 
+    srcset="/assets/resized/480/cover.png 480w,/assets/resized/800/cover.png 800w,/img/handle-asynchronous-tasks-with-celery-and-django/cover.png 1360w"
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">16 February 2018</div>
+            <div class="category"><a href="#">how-to</a></div>
+          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Handle Asynchronous Tasks using celery and Django</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg" 
+    title="" 
+    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg 1240w"
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">03 October 2017</div>
+            <div class="category"><a href="#">learn</a></div>
+          </div><a href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Set-up Authentication System in Django in just 10 minutes</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps....</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/package-of-week/categories-with-django-mptt/">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/categories-with-django-mptt/cover.jpg" 
+    title="" 
+    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/categories-with-django-mptt/cover.jpg 1240w"
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">30 July 2017</div>
+            <div class="category"><a href="#">package-of-the-week</a></div>
+          </div><a href="/package-of-week/categories-with-django-mptt/" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Categories with django-mptt</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post, we'll learn how to implement categories in Django efficiently by storing hierarchical data in place of making many database queries since database queries are costly in terms...</p>
+        </div></a>
+      </div>
+      
+    </div>
+  </div>
+</section>
+      </div>
+    </div>
+    <center>
+  <section class="section--subscribe">
+    <div class="container">
+      <h3 class="u-alignCenter">Stay in touch</h3>
+      <p>
+        Sign up for our newsletter to get latest updates, news and tutorials on Django. We hate spam as much you do!
+      </p>
+      <div class="row h-100 justify-content-center align-items-center">
+        <div class="newsletterForm-wrapper">
+          <div id="mc_embed_signup">
+            <form action="https://djangopy.us15.list-manage.com/subscribe/post?u=d360054cce6cf1e173862fa58&amp;id=4b711b168e"
+              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank"
+              novalidate>
+              <div id="mc_embed_signup_scroll">
+                <div class="mc-field-group">
+                  <input type="email" value="" name="EMAIL" class="textInput textInput--large" id="mce-EMAIL"
+                    placeholder="Your email address" style="width:100% !important;">
+                </div>
+                <div id="mce-responses" class="clear">
+                  <div class="response" id="mce-error-response" style="display:none; color: red;"></div>
+                  <div class="response" id="mce-success-response" style="display:none; color: green;"></div>
+                </div>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;"><input type="text" name="b_d360054cce6cf1e173862fa58_4b711b168e"
+                    tabindex="-1" value=""></div>
+                <div class="clear u-alignCenter"><input type="submit" value="Get new blog posts by email" name="subscribe"
+                    id="mc-embedded-subscribe" class="button-x button--primary"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </section>
+
+</center>
+
+<footer class="section--footer">
+  <div class="container container--content">
+    <ul class="socialAccountList row h-100 justify-content-center align-items-center">
+      <li><a href="http://www.github.com/djangopy-org" class="socialAccount socialAccount--github" target="_blank"></a></li>
+      <li><a href="http://facebook.com/djangopy-org" class="socialAccount socialAccount--facebook" target="_blank"></a></li>
+      <li><a href="http://twitter.com/DjangoPy_Admin" class="socialAccount socialAccount--twitter" target="_blank"></a></li>
+      <li><a href="https://www.reddit.com/user/Djangopy-org/" class="socialAccount socialAccount--reddit" target="_blank"></a></li>
+      <li><a href="mailto:djangopyz@gmail.com?&amp;subject=DjangoPy | Learn, Code, Implement&amp;body=How to Implement Categories in Django%0A https://djangopy.org/how-to/how-to-implement-categories-in-django/"
+          target="_self" class="socialAccount socialAccount--mail" target="_blank"></a></li>
+    </ul>
+    <div>
+      Hand-crafted with 
+<img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDUyMi40NjggNTIyLjQ2OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTIyLjQ2OCA1MjIuNDY5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTMyNS43NjIsNzAuNTEzbC0xNy43MDYtNC44NTRjLTIuMjc5LTAuNzYtNC41MjQtMC41MjEtNi43MDcsMC43MTVjLTIuMTksMS4yMzctMy42NjksMy4wOTQtNC40MjksNS41NjhMMTkwLjQyNiw0NDAuNTMgICAgYy0wLjc2LDIuNDc1LTAuNTIyLDQuODA5LDAuNzE1LDYuOTk1YzEuMjM3LDIuMTksMy4wOSwzLjY2NSw1LjU2OCw0LjQyNWwxNy43MDEsNC44NTZjMi4yODQsMC43NjYsNC41MjEsMC41MjYsNi43MS0wLjcxMiAgICBjMi4xOS0xLjI0MywzLjY2Ni0zLjA5NCw0LjQyNS01LjU2NEwzMzIuMDQyLDgxLjkzNmMwLjc1OS0yLjQ3NCwwLjUyMy00LjgwOC0wLjcxNi02Ljk5OSAgICBDMzMwLjA4OCw3Mi43NDcsMzI4LjIzNyw3MS4yNzIsMzI1Ljc2Miw3MC41MTN6IiBmaWxsPSIjMDAwMDAwIi8+CgkJPHBhdGggZD0iTTE2Ni4xNjcsMTQyLjQ2NWMwLTIuNDc0LTAuOTUzLTQuNjY1LTIuODU2LTYuNTY3bC0xNC4yNzctMTQuMjc2Yy0xLjkwMy0xLjkwMy00LjA5My0yLjg1Ny02LjU2Ny0yLjg1NyAgICBzLTQuNjY1LDAuOTU1LTYuNTY3LDIuODU3TDIuODU2LDI1NC42NjZDMC45NSwyNTYuNTY5LDAsMjU4Ljc1OSwwLDI2MS4yMzNjMCwyLjQ3NCwwLjk1Myw0LjY2NCwyLjg1Niw2LjU2NmwxMzMuMDQzLDEzMy4wNDQgICAgYzEuOTAyLDEuOTA2LDQuMDg5LDIuODU0LDYuNTY3LDIuODU0czQuNjY1LTAuOTUxLDYuNTY3LTIuODU0bDE0LjI3Ny0xNC4yNjhjMS45MDMtMS45MDIsMi44NTYtNC4wOTMsMi44NTYtNi41NyAgICBjMC0yLjQ3MS0wLjk1My00LjY2MS0yLjg1Ni02LjU2M0w1MS4xMDcsMjYxLjIzM2wxMTIuMjA0LTExMi4yMDFDMTY1LjIxNywxNDcuMTMsMTY2LjE2NywxNDQuOTM5LDE2Ni4xNjcsMTQyLjQ2NXoiIGZpbGw9IiMwMDAwMDAiLz4KCQk8cGF0aCBkPSJNNTE5LjYxNCwyNTQuNjYzTDM4Ni41NjcsMTIxLjYxOWMtMS45MDItMS45MDItNC4wOTMtMi44NTctNi41NjMtMi44NTdjLTIuNDc4LDAtNC42NjEsMC45NTUtNi41NywyLjg1N2wtMTQuMjcxLDE0LjI3NSAgICBjLTEuOTAyLDEuOTAzLTIuODUxLDQuMDktMi44NTEsNi41NjdzMC45NDgsNC42NjUsMi44NTEsNi41NjdsMTEyLjIwNiwxMTIuMjA0TDM1OS4xNjMsMzczLjQ0MiAgICBjLTEuOTAyLDEuOTAyLTIuODUxLDQuMDkzLTIuODUxLDYuNTYzYzAsMi40NzgsMC45NDgsNC42NjgsMi44NTEsNi41N2wxNC4yNzEsMTQuMjY4YzEuOTA5LDEuOTA2LDQuMDkzLDIuODU0LDYuNTcsMi44NTQgICAgYzIuNDcxLDAsNC42NjEtMC45NTEsNi41NjMtMi44NTRMNTE5LjYxNCwyNjcuOGMxLjkwMy0xLjkwMiwyLjg1NC00LjA5NiwyLjg1NC02LjU3ICAgIEM1MjIuNDY4LDI1OC43NTUsNTIxLjUxNywyNTYuNTY1LDUxOS42MTQsMjU0LjY2M3oiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+       + 
+       <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDUxMCA1MTAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMCA1MTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8ZyBpZD0iZmF2b3JpdGUiPgoJCTxwYXRoIGQ9Ik0yNTUsNDg5LjZsLTM1LjctMzUuN0M4Ni43LDMzNi42LDAsMjU3LjU1LDAsMTYwLjY1QzAsODEuNiw2MS4yLDIwLjQsMTQwLjI1LDIwLjRjNDMuMzUsMCw4Ni43LDIwLjQsMTE0Ljc1LDUzLjU1ICAgIEMyODMuMDUsNDAuOCwzMjYuNCwyMC40LDM2OS43NSwyMC40QzQ0OC44LDIwLjQsNTEwLDgxLjYsNTEwLDE2MC42NWMwLDk2LjktODYuNywxNzUuOTUtMjE5LjMsMjkzLjI1TDI1NSw0ODkuNnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+       +
+      <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNTAyLDIwNi41aC04MnYtMjEuMTY3YzAtNS41MjMtNC40NzgtMTAtMTAtMTBIMTk0Yy01LjUyMiwwLTEwLDQuNDc3LTEwLDEwYzAsNS41MjMsNC40NzgsMTAsMTAsMTBoMjA2djc2LjY2NiAgICBjMCw2Ny4zNDgtMzUuOTU3LDEyOS45NDItOTQuMDE4LDE2NEgxMTQuMDE4QzU1Ljk1Nyw0MDEuOTQyLDIwLDMzOS4zNDcsMjAsMjcydi03Ni42NjZoNjdjNS41MjIsMCwxMC00LjQ3NywxMC0xMCAgICBjMC01LjUyMy00LjQ3OC0xMC0xMC0xMEgxMGMtNS41MjIsMC0xMCw0LjQ3Ny0xMCwxMFYyNzJjMCwzNy44LDEwLjE2LDc0Ljg2NCwyOS4zODIsMTA3LjE4MyAgICBDNDIuMzQ1LDQwMC45OCw1OS4xNjUsNDIwLjIyOCw3OC44NjIsNDM2SDEwYy01LjUyMiwwLTEwLDQuNDc3LTEwLDEwYzAsMzYuMzkzLDI5LjYwNyw2Niw2Niw2NmgzMTJjMzYuMzkzLDAsNjYtMjkuNjA3LDY2LTY2ICAgIGMwLTUuNTIzLTQuNDc4LTEwLTEwLTEwaC05Mi44NjJjMTguMTI5LTE0LjUxNiwzMy44MTItMzEuOTgzLDQ2LjMwMi01MS42NjdoMjguMjI3QzQ2OC43ODUsMzg0LjMzMyw1MTIsMzQxLjExOCw1MTIsMjg4di03MS41ICAgIEM1MTIsMjEwLjk3Nyw1MDcuNTIzLDIwNi41LDUwMiwyMDYuNXogTTQyMi45MDUsNDU2Yy00LjU3OCwyMC41NzItMjIuOTc0LDM2LTQ0LjkwNSwzNkg2NmMtMjEuOTMxLDAtNDAuMzI2LTE1LjQyOC00NC45MDUtMzYgICAgaDkwLjI0NGgxOTcuMzIySDQyMi45MDV6IE00MjAsMjcydi01LjVoMzJWMjg4YzAsMjAuMDM0LTE2LjI5OSwzNi4zMzMtMzYuMzMzLDM2LjMzM2gtMi4yNzFDNDE3Ljc2MSwzMDcuMzI3LDQyMCwyODkuNzQ1LDQyMCwyNzIgICAgeiBNNDkyLDI4OGMwLDQyLjA5LTM0LjI0Myw3Ni4zMzMtNzYuMzMzLDc2LjMzM2gtMTcuMDJjMy4xOTMtNi41MjEsNi4wNDUtMTMuMTk3LDguNTM3LTIwaDguNDgzICAgIEM0NDYuNzMsMzQ0LjMzMyw0NzIsMzE5LjA2Miw0NzIsMjg4di0zMS41YzAtNS41MjMtNC40NzgtMTAtMTAtMTBoLTQydi0yMGg3MlYyODh6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjE5LjU0OSw1NS4zNDNsLTUuMjAzLTYuNTMzYy03LjYzOC05LjU4OC03LjY0OS0yMi45OTEtMC4wMjctMzIuNTkzYzMuNDM0LTQuMzI2LDIuNzEtMTAuNjE2LTEuNjE2LTE0LjA0OSAgICBjLTQuMzI3LTMuNDM1LTEwLjYxNi0yLjcxLTE0LjA1LDEuNjE2Yy0xMy40NDIsMTYuOTM2LTEzLjQyMiw0MC41NzUsMC4wNDksNTcuNDg3bDUuMjAzLDYuNTMzICAgIGM5Ljk4MSwxMi41Myw5Ljk5NiwzMC4wNDUsMC4wMzYsNDIuNTk0bC01LjMzMiw2LjcxOGMtMy40MzQsNC4zMjYtMi43MSwxMC42MTYsMS42MTYsMTQuMDQ5YzEuODM5LDEuNDU5LDQuMDMyLDIuMTY4LDYuMjEsMi4xNjggICAgYzIuOTQ2LDAsNS44NjUtMS4yOTYsNy44NC0zLjc4NGw1LjMzMi02LjcxOEMyMzUuMzg3LDEwMi45NDksMjM1LjM2NCw3NS4xOTcsMjE5LjU0OSw1NS4zNDN6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjc0Ljk3OCw3Ny44MjdsLTUuMjAzLTYuNTMyYy03LjYzOC05LjU4OS03LjY0OS0yMi45OTItMC4wMjctMzIuNTk0YzMuNDM0LTQuMzI2LDIuNzEtMTAuNjE2LTEuNjE2LTE0LjA0OSAgICBjLTQuMzI3LTMuNDM1LTEwLjYxNi0yLjcxLTE0LjA1LDEuNjE2Yy0xMy40NDIsMTYuOTM2LTEzLjQyMiw0MC41NzUsMC4wNDksNTcuNDg4bDUuMjAzLDYuNTMzICAgIGM5Ljk4LDEyLjUzMSw5Ljk5NSwzMC4wNDcsMC4wMzUsNDIuNTk1bC01LjMzMSw2LjcxN2MtMy40MzQsNC4zMjYtMi43MSwxMC42MTYsMS42MTYsMTQuMDQ5YzEuODM5LDEuNDU5LDQuMDMyLDIuMTY3LDYuMjEsMi4xNjcgICAgYzIuOTQ2LDAsNS44NjYtMS4yOTcsNy44NC0zLjc4NGw1LjMzLTYuNzE3QzI5MC44MTUsMTI1LjQzNSwyOTAuNzkyLDk3LjY4MywyNzQuOTc4LDc3LjgyN3oiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0xNjQuMTIsNzcuODI4bC01LjIwMy02LjUzMmMtNy42MzgtOS41ODgtNy42NDktMjIuOTkyLTAuMDI4LTMyLjU5NGMzLjQzNC00LjMyNiwyLjcxLTEwLjYxNi0xLjYxNi0xNC4wNSAgICBjLTQuMzI3LTMuNDM0LTEwLjYxNi0yLjcwOC0xNC4wNSwxLjYxNmMtMTMuNDQxLDE2LjkzNi0xMy40MjEsNDAuNTc2LDAuMDUsNTcuNDg4bDUuMjAzLDYuNTMzICAgIGM5Ljk4LDEyLjUzMSw5Ljk5NSwzMC4wNDcsMC4wMzYsNDIuNTk0bC01LjMzMiw2LjcxN2MtMy40MzQsNC4zMjYtMi43MTEsMTAuNjE2LDEuNjE1LDE0LjA1YzEuODM5LDEuNDU5LDQuMDMxLDIuMTY4LDYuMjEsMi4xNjggICAgYzIuOTQ2LDAsNS44NjUtMS4yOTYsNy44MzktMy43ODNsNS4zMzMtNi43MThDMTc5Ljk1NywxMjUuNDM2LDE3OS45MzQsOTcuNjg0LDE2NC4xMiw3Ny44Mjh6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMTUwLjI4LDE3OC4yNmMtMS44Ni0xLjg2LTQuNDQtMi45My03LjA3LTIuOTNzLTUuMjEsMS4wNy03LjA3LDIuOTNjLTEuODU5LDEuODctMi45Myw0LjQ0LTIuOTMsNy4wNyAgICBzMS4wNyw1LjIxLDIuOTMsNy4wOGMxLjg2LDEuODYsNC40NCwyLjkyLDcuMDcsMi45MnM1LjIxLTEuMDYsNy4wNy0yLjkyYzEuODY5LTEuODcsMi45My00LjQ0LDIuOTMtNy4wOCAgICBDMTUzLjIxLDE4Mi43LDE1Mi4xNDksMTgwLjEyLDE1MC4yOCwxNzguMjZ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMzYyLDI2MmMtNS41MjIsMC0xMCw0LjQ3Ny0xMCwxMGMwLDM3LjExOS0xNS4wNTYsNzMuNTk4LTQxLjMwOCwxMDAuMDgzYy0zLjg4OCwzLjkyMi0zLjg1OSwxMC4yNTQsMC4wNjMsMTQuMTQyICAgIGMxLjk1LDEuOTMzLDQuNDk1LDIuODk4LDcuMDQsMi44OThjMi41NzQtMC4wMDEsNS4xNDgtMC45ODksNy4xMDMtMi45NjJDMzU0LjgzMiwzNTUuOTYxLDM3MiwzMTQuMzUxLDM3MiwyNzIgICAgQzM3MiwyNjYuNDc3LDM2Ny41MjIsMjYyLDM2MiwyNjJ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjkzLjg4NSwzOTkuMjI1Yy0yLjcxNC00LjgxMS04LjgxMy02LjUxLTEzLjYyMy0zLjc5N2wtMC4yMjgsMC4xMjljLTQuODExLDIuNzE0LTYuNTEsOC44MTMtMy43OTcsMTMuNjIzICAgIGMxLjgzOCwzLjI1OCw1LjIyNyw1LjA4OSw4LjcxOSw1LjA4OWMxLjY2NCwwLDMuMzUyLTAuNDE3LDQuOTA0LTEuMjkybDAuMjI4LTAuMTI5ICAgIEMyOTQuODk5LDQxMC4xMzQsMjk2LjU5OCw0MDQuMDM1LDI5My44ODUsMzk5LjIyNXoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+    </div>
+    <div>
+      © 2018 All Rights Reserved
+    </div>
+    <center><a href="/terms-of-services" target="_self">Term of Service</a> | <a href="/privacy-policy" target="_self">Privacy
+        Policy</a> | <a href="/disclaimer" target="_self">Disclaimer </a> | <a href="/sitemap.xml" target="_self">Sitemap</a></center>
+  </div>
+</footer>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<script type='text/javascript'>
+  (function ($) {
+    window.fnames = new Array();
+    window.ftypes = new Array();
+    fnames[0] = 'EMAIL';
+    ftypes[0] = 'email';
+    fnames[1] = 'FNAME';
+    ftypes[1] = 'text';
+    fnames[2] = 'LNAME';
+    ftypes[2] = 'text';
+  }(jQuery));
+  var $mcj = jQuery.noConflict(true);
+</script>
+  </body>
+
+</html>
+
+

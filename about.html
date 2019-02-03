@@ -1,0 +1,147 @@
+---
+layout: default
+title: "About | DjangoPy"
+---
+
+<style type="text/css">
+	body{
+		  font-family: 'Proxima Nova', Georgia, sans-serif;
+
+	}
+	p{
+		  font-size: 16px !important;
+	}
+	h1{
+		font-size:28px;
+	}
+	h3{
+		font-size: 20px;
+	}
+	@media(min-width: 990px){
+	.long-md-vw{
+		display:inline-block;
+	}
+	.short-md-vw{
+		display:none;
+	}
+}
+@media(max-width: 500px){
+	.short-md-img{
+		margin-left: 28% !important;
+	}
+}
+@media(max-width: 360px){
+	.short-md-img{
+		margin-left: 22% !important;
+	}
+}
+@media(max-width: 990px){
+	.long-md-vw{
+		display:none;
+	}
+	.short-md-vw{
+		display:inline-block;
+	}
+	.short-md-img{
+		margin-left: 36%;
+	}
+}
+</style>
+	<br>
+
+<div class = "container">
+<center><h1 style="font-size:34px;">About</h1>
+	<div class = "post-line"></div></center>
+	<br>
+	<div class = "row long-md-vw">
+		<center>
+		<div class = "col-md-10 flex-md-row">
+			<div class = "row">
+				<div class = "col-md-3">
+					<img src = "{{ '/img/about1.png' }}" style = "width: 175px; height: 175px; margin-top: 20px;">
+				</div>
+				<div class = "col-md-9">
+					<h3 style = "text-align: center; ">Introduction</h3>
+					<p style = "font-size:18px;">DjangoPy is an online community of developers to learn, implement and promote the Django Framework. At DjangoPy, we focus at delivering Django tutorials, resources, and tips to make your website development easier. We cover every aspect of Django Development starting from the Basics of Web Development to the Security and Search Engine Optimization.</p>
+				</div>
+			</div>
+			<hr>
+			<div class = "row">
+				<div class = "col-md-9">
+					<h3 style = "text-align: center; ">What we do</h3>
+					<p style = "font-size:18px;">At DjangoPy, we make easy and straight forward Tutorials/Articles, that will help you to take you out of the trouble, you are facing during development of your Django Powered Application. We try to cover a variety of resources to help you build your Django app/site more Robust and Powerful.</p>
+				</div>
+				<div class = "col-md-3" >
+					<img src = "{{ '/img/about2.png' }}" style = "width: 175px; height: 175px; float:right; margin-top: 20px;">
+				</div>
+			</div>
+			<hr>
+			<div class = "row">
+				<div class = "col-md-3">
+					<img src = "{{'/img/about3.png' }}" style = "width: 175px; height: 175px;">
+				</div>
+				<div class = "col-md-9">
+					<h3 style = "text-align: center; ">Who are We</h3>
+					<p style = "font-size:18px;">We are team of Computer Science from India who are pursuing their dreams. Our hobbies include Blogging, Web Development, Web Scrapping, Search Engine Optimization, and a thrive for Knowledge.</p>
+				</div>
+			</div>
+			<hr>
+			<div class = "row">
+				<div class = "col-md-9">
+					<h3 style = "text-align: center; ">Our Goal</h3>
+					<p style = "font-size:18px;">We at DjangoPy believe that knowledge should be free in every sense of the word and accessible to all. We are ready to give our full efforts to make Django & Python easy for and fun for everyone. For a beginner to a Django Expert, our site covers a variety of resources to help you build your Django app/site. So Let's get started</p>
+				</div>
+				<div class = "col-md-3">
+					<img src = "{{'/img/about4.png'}}" style = "width: 175px; height: 175px; float:right;">
+				</div>
+			</div>
+
+		</div>
+	</div> <!-- End of row / long-md-vw-->
+
+	<div class = "row short-md-vw">
+		<div class = "col-md-10 col-md-offset-1">
+			<div class="row">
+				<div class = "col-md-3 short-md-img">
+						<img src = "{{ '/img/about1.png' }}" style = "width: 175px; height: 175px;">
+				</div>
+				<div class = "col-md-6  col-md-offset-1">
+					<h3 style = "text-align: center; ">Introduction</h3>
+					<p style = "font-size:18px;">DjangoPy is an online community of developers to learn, implement and promote the Django Framework. At DjangoPy, we focus at delivering Django tutorials, resources, and tips to make your website development easier. We cover every aspect of Django Development starting from the Basics of Web Development to the Security and Search Engine Optimization.</p>
+				</div>	
+			</div>	
+			<hr>
+			<div class="row">
+				<div class = "col-md-3 short-md-img">
+						<img src = "{{'/img/about2.png'}}" style = "width: 175px; height: 175px;">
+				</div>
+				<div class = "col-md-6">
+					<h3 style = "text-align: center; ">What we do</h3>
+					<p style = "font-size:18px;">At DjangoPy, we make easy and straight forward Tutorials/Articles, that will help you to take you out of the trouble, you are facing during development of your Django Powered Application. We try to cover a variety of resources to help you build your Django app/site more Robust and Powerful.</p>
+				</div>	
+			</div>
+			<hr>
+			<div class="row">
+				<div class = "col-md-3 short-md-img">
+						<img src = "{{'/img/about3.png'}}" style = "width: 175px; height: 175px;">
+				</div>
+				<div class = "col-md-6">
+					<h3 style = "text-align: center; ">Who are We</h3>
+					<p style = "font-size:18px;">We are team of Computer Science from India who are pursuing their dreams. Our hobbies include Blogging, Web Development, Web Scrapping, Search Engine Optimization, and a thrive for Knowledge.</p>
+				</div>	
+			</div>
+			<hr>
+			<div class="row">
+				<div class = "col-md-3 short-md-img">
+						<img src = "{{'/img/about4.png'}}" style = "width: 175px; height: 175px;">
+				</div>
+				<div class = "col-md-6">
+					<h3 style = "text-align: center; ">Our Goal</h3>
+					<p style = "font-size:18px;">We at DjangoPy believe that knowledge should be free and accessible to all. We are ready to give our full efforts to make Django & Python easy for and fun for everyone. For a beginner to a Django Expert, our site cover a variety of resources to help you build your Django app/site. So Let's get started</p>
+				</div>	
+			</div>
+		</div>
+	</center>
+	</div> <!-- End of row / short-md-vw-->
+</div>	<!-- End of row / container-->
+<hr>

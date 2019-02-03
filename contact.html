@@ -1,0 +1,31 @@
+---
+layout: default
+
+title: "Contact | Djangopy"
+---
+
+<br><br>
+<div class = "container" style="min-height:725px;">
+	<center><h1>Contact</h1>
+	<div class = "post-line"></div></center>
+<form action="" id = "contact_form" method = "POST">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" id="name" name="from_name" required="true">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" id="email" name="reply_to" required="true">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Message:</label>
+    <textarea class="form-control" id="message" rows="10" name="message_html" required="true"></textarea>
+   </div>
+  <button type="submit" class="btn btn-outline-primary">Submit</button>
+</form>
+</div>
+<hr>
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript" src = "{{ '/js/send_email.js' }}"></script>

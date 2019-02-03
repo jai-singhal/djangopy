@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- COMMON TAGS -->
+	<title>Set-up Authentication System in Django in just 10 minutes | DjangoPy</title>
+	<!-- Search Engine -->
+	<meta property="description" content="In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps.">
+	<meta property="image" content="https://djangopy.org/static/images/footer_logo.png">
+	<!-- Schema.org for Google -->
+
+	<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+	<meta property="og:title" content="Set-up Authentication System in Django in just 10 minutes | DjangoPy">
+	<meta property="og:description" content="In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps.">
+	<meta property="og:image" content="https://djangopy.org/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg">
+
+	<meta property="og:url" content="https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/">
+	<meta property="og:site_name" content="DjangoPy">
+	<meta property="og:locale" content="en_US">
+	<meta property="fb:admins" content="https://www.facebook.com/djangopy.org">
+	<meta property="og:type" content="article">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary">
+	<meta property="twitter:title" content="Set-up Authentication System in Django in just 10 minutes | DjangoPy">
+	<meta property="twitter:description" content="In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps.">
+	<meta property="twitter:site" content="@DjangoPy_Admin">
+	<meta property="twitter:creator" content="@DjangoPy_Admin">
+	<meta property="twitter:image:src" content="https://djangopy.org/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg">
+	<!-- Twitter - Article -->
+
+	<!-- Open Graph - Article -->
+	<meta property="article:section" content="learn">
+	<meta property="article:published_time" content="2017-10-03 20:34:07 +0530">
+	<meta properry="article:author" content="https://www.facebook.com/djangopy.org">
+	<meta property="article:modified_time" content="2017-10-03 20:34:07 +0530">
+	
+	<meta property="article:tag" content="Django-Authentication-System"/>
+	
+	<meta property="article:tag" content="Django-Authentication"/>
+	
+	<meta property="article:tag" content="login"/>
+	
+	<meta property="article:tag" content="logout"/>
+	
+	<meta property="article:tag" content="register"/>
+	
+	<meta property="article:tag" content="django"/>
+	
+	<meta property="article:tag" content="djangopy"/>
+	
+
+	<meta property="revisit-after" content="2 days" />
+	<meta property="distribution" content="web" />
+	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/"/>
+	<meta name="description" content="In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps."/>
+
+	<link rel="canonical" href="http://localhost:4000/learn/set-up-authentication-system-in-django-in-just-10-minutes/">
+	<link rel="alternate" type="application/rss+xml" title="DjangoPy" href="http://localhost:4000/feed.xml">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- Font Awesome CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel = "stylesheet" href="/css/github.css">
+	<!-- Fancybox-->
+<link rel="stylesheet" type="text/css" href="/css/fonts/fonts.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
+	<!-- theme stylesheet-->
+	<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
+	<!-- Custom stylesheet - for your changes-->
+	<link rel="stylesheet" href="/css/custom.css">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="/img/favicon1.ico">
+	<!-- Javascript files-->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+	<script src="/js/front.js"></script>
+	<script type="text/javascript" src = "/js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+	<script src="/js/post.js"></script>
+
+
+
+</head>
+
+  <body>
+    <header class="header">
+  <!-- Main Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-toggleable-lg">
+    <div class="search-area">
+      <div class="search-area-inner d-flex justify-content-center">
+        <div class="close-btn"><i class="fa fa-2x fa-times"></i></div>
+        <div class="row d-flex justify-content-center" style="margin-top:15%;">
+          <div class="col-md-8">
+            <form action="#" id = "search_form">
+              <div class="form-group">
+                <input type="search" name="search" id="search" placeholder="What are you looking for?" autocomplete="off">
+                <button type="submit" class="submit"><i class="fa fa-search"></i></button>
+              </div>
+              <div id = "search_results">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Navbar Brand -->
+      <div class="navbar-header d-flex align-items-center justify-content-between">
+        <!-- Navbar Brand --><a href="/" class="navbar-brand"><img src = "/img/djangopy_logo8.png" id = "logo"></a>
+        <!-- Toggle Button-->
+        <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
+      </div>
+      <!-- Navbar Menu -->
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="/" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item"><a href="/about" class="nav-link ">About</a>
+          </li>
+          <li class="nav-item"><a href="/" class="nav-link ">Posts</a>
+          </li>
+          <li class="nav-item"><a href="/contact" class="nav-link ">Contact</a>
+          </li>
+        </ul>
+        <div class="navbar-text"><a href="#" class="search-btn" id = "search_button"><i class="fa fa-search"></i></a></div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <br>
+<div class="post">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-9">
+                <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg" 
+    title="" 
+    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg 1240w"
+/>
+                <br><br>
+                <h1 class="post-title" style="margin-top:15px;">Set-up Authentication System in Django in just 10 minutes</h1>
+                <h6 class="post-spans">Posted: 03 October 2017 | Post By: Jai Singhal | <span
+                        id="ga-page-view" ga-page-url=/learn/set-up-authentication-system-in-django-in-just-10-minutes/></span> <i class="fa fa-eye"></i> | <i class="fa fa-clock"></i>
+                    13 min read | <a style="text-decoration: none;" href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/.html#disqus_thread"
+                        data-disqus-identifier="/learn/set-up-authentication-system-in-django-in-just-10-minutes/"><i class="fa fa-comment"></i></a> </h6>
+                <br>
+                <hr /><br>
+                <div class="post-content"> <p>Authentication is something which needs to be implemented on each and every website. And with Django, it is very simple and easy to implement because we don’t need to make the Authentication system from scratch, it is already made by the Django, we need to simply use it.</p>
+
+<h2 id="introduction">Introduction</h2>
+<p>In this tutorial, we will be discussing that how to implement the login, logout, and register views in a brand new accounts app.</p>
+
+<h2 id="initial-set-up">Initial Set Up</h2>
+<p>Let’s create a new django-app named accounts to your Project.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">python manage.py startapp accounts</code></pre></figure>
+
+<p>Make an entry of that app to Installed Apps in the Django settings.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="s">"accounts"</span>
+<span class="p">]</span></code></pre></figure>
+
+<p>Create two new .py files to your accounts app that is forms.py and urls.py</p>
+
+<p>Then this would be your following App structure.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">src/
+   accounts/
+      migrations/
+      __init__.py
+      admin.py
+      apps.py
+      forms.py
+      models.py
+      tests.py
+      urls.py
+      views.py
+   my_proj/
+      __init__.py
+      settings.py
+      urls.py
+      wsgi.py 
+ </code></pre></figure>
+
+<h4 id="my_projurlspy">my_proj/urls.py</h4>
+<p>Create some main URLs to your main project. Note that I have included the accounts urls of accounts app.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
+<span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+
+<span class="n">urlpatterns</span> <span class="o">+=</span> <span class="p">[</span>
+
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^accounts/'</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">"accounts.urls"</span><span class="p">,</span> <span class="n">namespace</span> <span class="o">=</span> <span class="s">"accounts"</span><span class="p">)),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^$'</span><span class="p">,</span> <span class="n">login_required</span><span class="p">(</span><span class="n">TemplateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="s">"home.html"</span><span class="p">))),</span>
+<span class="p">]</span></code></pre></figure>
+
+<p>Note: Change the DIRS OF Templates settings in your Django settings.</p>
+
+<p>Let’s create a base template so that we can you use that for Template Inheritance. If you have already made a base file Ignore this step.</p>
+
+<h4 id="templatesbasehtml">templates/base.html</h4>
+
+<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="c">&lt;!--doctype HTML--&gt;</span>
+<span class="cp">{%</span> <span class="nv">load</span> <span class="nv">staticfiles</span> <span class="cp">%}</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">head</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">head</span> <span class="cp">%}</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"</span> <span class="nt">/&gt;</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">style</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">style</span> <span class="cp">%}</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">content</span> <span class="cp">%}</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">script</span> <span class="cp">%}</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+ </code></pre></figure>
+
+<h4 id="templateshomehtml">templates/home.html</h4>
+<p>Create a home page or a landing page with the navbar. Again repeating if you have your own navbar and home page, you don’t need to change it, I am just discussing for the sake of completion of the tutorial.</p>
+
+<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base.html"</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">style</span> <span class="cp">%}</span>
+<span class="nt">&lt;style&gt;</span>
+<span class="nc">.navbar-login</span><span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">305px</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">padding-bottom</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.navbar-login-session</span><span class="p">{</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">padding-bottom</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+    <span class="nl">padding-top</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.icon-size</span><span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">87px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar navbar-default navbar-fixed-top"</span> <span class="na">role=</span><span class="s">"navigation"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-header"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"navbar-toggle"</span> <span class="na">data-toggle=</span><span class="s">"collapse"</span> <span class="na">data-target=</span><span class="s">".navbar-collapse"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon-bar"</span><span class="nt">&gt;&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon-bar"</span><span class="nt">&gt;&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon-bar"</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>My Project<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse navbar-collapse"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">class =</span><span class="err"> </span><span class="s">"active"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+             <span class="nt">&lt;/ul&gt;</span>
+            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav navbar-right"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"dropdown"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-user"</span><span class="nt">&gt;&lt;/span&gt;</span> 
+                        <span class="nt">&lt;strong&gt;</span>Admin<span class="nt">&lt;/strong&gt;</span>
+                        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-chevron-down"</span><span class="nt">&gt;&lt;/span&gt;</span>
+                    <span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-login"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-4"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-center"</span><span class="nt">&gt;</span>
+                                            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-user icon-size"</span><span class="nt">&gt;&lt;/span&gt;</span>
+                                        <span class="nt">&lt;/p&gt;</span>
+                                    <span class="nt">&lt;/div&gt;</span>
+                                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-8"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-left"</span><span class="nt">&gt;&lt;strong&gt;</span>Welcome<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+                                    <span class="nt">&lt;/div&gt;</span>
+                                <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                        <span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"divider"</span><span class="nt">&gt;&lt;/li&gt;</span>
+                        <span class="nt">&lt;li&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-login navbar-login-session"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;p&gt;</span>
+                                            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/accounts/logout"</span> <span class="na">class=</span><span class="s">"btn btn-danger btn-block"</span><span class="nt">&gt;</span>Logout<span class="nt">&lt;/a&gt;</span>
+                                        <span class="nt">&lt;/p&gt;</span>
+                                    <span class="nt">&lt;/div&gt;</span>
+                                <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                        <span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;/ul&gt;</span>
+                <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span></code></pre></figure>
+
+<h2 id="login">Login</h2>
+<p>Let’s begin with the login system. Like I have said before that you don’t need to create from scratch. Like we don’t need to create the database for the Login system like username and password fields. We Just need to create a Django form of fields including the username and password. We can also create new additional fields (if required) in Login.</p>
+
+<h4 id="accountsformspy">accounts/forms.py</h4>
+<p>I have created a Django form for the Login View with fields username and password and also a clean method which raises some common Validation Errors like Incorrect Password, User does not Exist, User Not Active etc. You can create more Validation Errors according to your need. Also, I have added classes in fields of username and password.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span>
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+
+<span class="k">class</span> <span class="nc">UsersLoginForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+	<span class="n">username</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
+	<span class="n">password</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">,)</span>
+
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">UsersLoginForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s">'username'</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+		    <span class="s">'class'</span><span class="p">:</span> <span class="s">'form-control'</span><span class="p">,</span>
+		    <span class="s">"name"</span><span class="p">:</span><span class="s">"username"</span><span class="p">})</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s">'password'</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+		    <span class="s">'class'</span><span class="p">:</span> <span class="s">'form-control'</span><span class="p">,</span>
+		    <span class="s">"name"</span><span class="p">:</span><span class="s">"password"</span><span class="p">})</span>
+
+	<span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">keyargs</span><span class="p">):</span>
+		<span class="n">username</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"username"</span><span class="p">)</span>
+		<span class="n">password</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"password"</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">username</span> <span class="ow">and</span> <span class="n">password</span><span class="p">:</span>
+			<span class="n">user</span> <span class="o">=</span> <span class="n">authenticate</span><span class="p">(</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span> <span class="o">=</span> <span class="n">password</span><span class="p">)</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+				<span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">"This user does not exists"</span><span class="p">)</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">check_password</span><span class="p">(</span><span class="n">password</span><span class="p">):</span>
+				<span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">"Incorrect Password"</span><span class="p">)</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
+				<span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">"User is no longer active"</span><span class="p">)</span>
+
+		<span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">UsersLoginForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">keyargs</span><span class="p">)</span>
+ </code></pre></figure>
+
+<h4 id="accountsviewspy">accounts/views.py</h4>
+<p>Now after creating a form, let’s create a Django View which accepts the request and render a request to templates. I have implemented the Function Bases View which handles both GET and POST request methods.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span><span class="p">,</span> <span class="n">login</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">UsersLoginForm</span>
+
+<span class="k">def</span> <span class="nf">login_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+	<span class="n">form</span> <span class="o">=</span> <span class="n">UsersLoginForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+		<span class="n">username</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"username"</span><span class="p">)</span>
+		<span class="n">password</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"password"</span><span class="p">)</span>
+		<span class="n">user</span> <span class="o">=</span> <span class="n">authenticate</span><span class="p">(</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span> <span class="o">=</span> <span class="n">password</span><span class="p">)</span>
+		<span class="n">login</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"accounts/form.html"</span><span class="p">,</span> <span class="p">{</span>
+		<span class="s">"form"</span> <span class="p">:</span> <span class="n">form</span><span class="p">,</span>
+		<span class="s">"title"</span> <span class="p">:</span> <span class="s">"Login"</span><span class="p">,</span>
+	<span class="p">})</span></code></pre></figure>
+
+<h4 id="accountsurlspy">accounts/urls.py</h4>
+<p>Create urls for the respective view, like in our case that is login_view</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">login_view</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r"^login/$"</span><span class="p">,</span> <span class="n">login_view</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"login"</span><span class="p">),</span>
+<span class="p">]</span></code></pre></figure>
+
+<h4 id="templates-accounts-formhtml">templates/ accounts/ form.html</h4>
+<p>Now I have created a template for the login view, you can change according to your need. Note that I have inherited the base.html, which is discussed above.</p>
+
+<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base.html"</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="nv">load</span> <span class="nv">staticfiles</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">style</span> <span class="cp">%}</span>
+<span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+<span class="nt">body</span> <span class="p">{</span>
+	<span class="nl">background</span><span class="p">:</span> <span class="m">#eee</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.wrapper</span> <span class="p">{</span>
+	<span class="nl">margin-top</span><span class="p">:</span> <span class="m">80px</span><span class="p">;</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">80px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.form-signin</span> <span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">15px</span> <span class="m">35px</span> <span class="m">45px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.1</span><span class="p">);</span>
+
+  <span class="err">.form-signin-heading,</span>
+	<span class="err">.checkbox</span> <span class="err">{</span>
+	  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nc">.checkbox</span> <span class="p">{</span>
+	  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nc">.form-control</span> <span class="p">{</span>
+	  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+	  <span class="nl">font-size</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+	  <span class="nl">height</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+	  <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+		<span class="err">@include</span> <span class="err">box-sizing(border-box);</span>
+		<span class="err">&amp;:focus</span> <span class="err">{</span>
+		  <span class="nl">z-index</span><span class="p">:</span> <span class="m">2</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="err">}</span>
+	<span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"text"</span><span class="o">]</span> <span class="p">{</span>
+	  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">-1px</span><span class="p">;</span>
+	  <span class="nl">border-bottom-left-radius</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+	  <span class="nl">border-bottom-right-radius</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"password"</span><span class="o">]</span> <span class="p">{</span>
+	  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+	  <span class="nl">border-top-left-radius</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+	  <span class="nl">border-top-right-radius</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="err">}</span>
+<span class="k">@media</span><span class="p">(</span><span class="n">max-width</span><span class="p">:</span> <span class="m">500px</span><span class="p">){</span>
+	<span class="nt">footer</span><span class="p">{</span>
+		<span class="nl">height</span><span class="p">:</span> <span class="m">130px</span> <span class="cp">!important</span><span class="p">;</span>
+		<span class="nl">padding-bottom</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+		<span class="nl">padding-top</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+<span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"col-md-6 col-md-offset-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"wrapper"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-signin"</span> <span class="na">method =</span><span class="err"> </span><span class="s">'POST'</span> <span class="na">action=</span><span class="err"> </span><span class="s">''</span> <span class="na">enctype =</span><span class="err"> </span><span class="s">"multipart/form-data"</span> <span class="na">style=</span><span class="s">"margin-top: -30px; margin-bottom: -18px;"</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="nv">csrf_token</span> <span class="cp">%}</span>
+        <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"form-signin-heading"</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">title</span><span class="cp">}}</span><span class="nt">&lt;/h2&gt;</span>
+        <span class="cp">{{</span><span class="nv">form.as_p</span> <span class="cp">}}</span>
+        <span class="nt">&lt;/label&gt;&lt;br&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-primary btn-block"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">title</span><span class="cp">}}</span><span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;br&gt;</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">title</span> <span class="o">==</span> <span class="s2">"Login"</span> <span class="cp">%}</span><span class="nt">&lt;h5&gt;</span>Not Registered? <span class="nt">&lt;a</span> <span class="na">href =</span><span class="err"> </span><span class="s">"/accounts/register"</span><span class="nt">&gt;</span>Register Here<span class="nt">&lt;/a&gt;&lt;/h5&gt;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">title</span> <span class="o">==</span> <span class="s2">"Register"</span> <span class="cp">%}</span><span class="nt">&lt;h5&gt;</span>Already Registered? <span class="nt">&lt;a</span> <span class="na">href =</span><span class="err"> </span><span class="s">"/accounts/login"</span><span class="nt">&gt;</span>Login Here<span class="nt">&lt;/a&gt;&lt;/h5&gt;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+      <span class="nt">&lt;/form&gt;</span>
+
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span></code></pre></figure>
+
+<p>If you have followed the exact tutorial, you will have this kind of output for Login Page</p>
+
+<p><img class="img-fluid lazy" alt="" src="/img/set-up-authentication-system-in-django-in-just-10-minutes/login.jpg" title="" srcset="/assets/resized/480/login.jpg 480w,/img/set-up-authentication-system-in-django-in-just-10-minutes/login.jpg 503w" /></p>
+
+<h2 id="register">Register</h2>
+<p>After creating the Login View, let’s create the register view.</p>
+
+<h4 id="accountsformspy-1">accounts/forms.py</h4>
+<p>Starting with forms, let’s create a Register Form with a class named UsersRegistrationForm which is somewhat similar to that of UsersLoginForm. So in this form, we have fields of username, password, email, and confirm_email. Aand along with this a clean method which is some standard validation errors.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span><span class="p">,</span> <span class="n">get_user_model</span>
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+
+<span class="n">User</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">UsersRegisterForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+	<span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+		<span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+		<span class="n">fields</span> <span class="o">=</span> <span class="p">[</span>
+			<span class="s">"username"</span><span class="p">,</span>
+			<span class="s">"email"</span><span class="p">,</span>
+			<span class="s">"confirm_email"</span><span class="p">,</span> 
+			<span class="s">"password"</span><span class="p">,</span>
+		<span class="p">]</span>
+	<span class="n">username</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
+	<span class="n">email</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s">"Email"</span><span class="p">)</span>
+	<span class="n">confirm_email</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s">"Confirm Email"</span><span class="p">)</span>
+	<span class="n">password</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">)</span>
+
+
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+		<span class="nb">super</span><span class="p">(</span><span class="n">UsersRegisterForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s">'username'</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+		    <span class="s">'class'</span><span class="p">:</span> <span class="s">'form-control'</span><span class="p">,</span>
+		    <span class="s">"name"</span><span class="p">:</span><span class="s">"username"</span><span class="p">})</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s">'email'</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+		    <span class="s">'class'</span><span class="p">:</span> <span class="s">'form-control'</span><span class="p">,</span>
+		    <span class="s">"name"</span><span class="p">:</span><span class="s">"email"</span><span class="p">})</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s">'confirm_email'</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+		    <span class="s">'class'</span><span class="p">:</span> <span class="s">'form-control'</span><span class="p">,</span>
+		    <span class="s">"name"</span><span class="p">:</span><span class="s">"confirm_email"</span><span class="p">})</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s">'password'</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+		    <span class="s">'class'</span><span class="p">:</span> <span class="s">'form-control'</span><span class="p">,</span>
+		    <span class="s">"name"</span><span class="p">:</span><span class="s">"password"</span><span class="p">})</span>
+
+
+	<span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">keyargs</span><span class="p">):</span>
+		<span class="n">email</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"email"</span><span class="p">)</span>
+		<span class="n">confirm_email</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"confirm_email"</span><span class="p">)</span>
+		<span class="n">username</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"username"</span><span class="p">)</span>
+		<span class="n">password</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"password"</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">email</span> <span class="o">!=</span> <span class="n">confirm_email</span><span class="p">:</span>
+			<span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">"Email must match"</span><span class="p">)</span>
+		
+		<span class="n">email_qs</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">email_qs</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+			<span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">"Email is already registered"</span><span class="p">)</span>
+
+		<span class="n">username_qs</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">username_qs</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+			<span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">"User with this username already registered"</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">password</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>	<span class="c">#you can add more validations for password</span>
+			<span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">"Password must be greater than 8 characters"</span><span class="p">)</span>
+
+
+		<span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">UsersRegisterForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">keyargs</span><span class="p">)</span>
+ </code></pre></figure>
+
+<h4 id="accountsviewspy-1">accounts/views.py</h4>
+<p>Now let’s create the view for the register, This is view is Function Bases View which is for handling both GET and POST request.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span><span class="p">,</span> <span class="n">login</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">UsersRegisterForm</span>
+
+<span class="k">def</span> <span class="nf">register_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+	<span class="n">form</span> <span class="o">=</span> <span class="n">UsersRegisterForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+		<span class="n">user</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+		<span class="n">password</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"password"</span><span class="p">)</span>	
+		<span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+		<span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+		<span class="n">new_user</span> <span class="o">=</span> <span class="n">authenticate</span><span class="p">(</span><span class="n">username</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span> <span class="o">=</span> <span class="n">password</span><span class="p">)</span>
+		<span class="n">login</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">new_user</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">"/accounts/login"</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"accounts/form.html"</span><span class="p">,</span> <span class="p">{</span>
+		<span class="s">"title"</span> <span class="p">:</span> <span class="s">"Register"</span><span class="p">,</span>
+		<span class="s">"form"</span> <span class="p">:</span> <span class="n">form</span><span class="p">,</span>
+	<span class="p">})</span>
+ </code></pre></figure>
+
+<h4 id="accountsurlspy-1">accounts/urls.py</h4>
+<p>creating url for the register_view in the accounts urls.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">register_view</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">urlpatterns</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r"^register/$"</span><span class="p">,</span> <span class="n">register_view</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"register"</span><span class="p">),</span>
+<span class="p">]</span>
+ </code></pre></figure>
+
+<p><img class="img-fluid lazy" alt="" src="/img/set-up-authentication-system-in-django-in-just-10-minutes/register.jpg" title="" srcset="/assets/resized/480/register.jpg 480w,/img/set-up-authentication-system-in-django-in-just-10-minutes/register.jpg 485w" /></p>
+
+<h2 id="logout">Logout</h2>
+<p>Now let’s create our last view i.e., logout view. This is very simple view and very straightforward.</p>
+
+<h4 id="accountsviewspy-2">accounts/views.py</h4>
+
+<p>In my accounts views, I have created a new view named logout_view, which simply logouts and redirect to home.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">logout</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponseRedirect</span>
+
+<span class="k">def</span> <span class="nf">logout_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+	<span class="n">logout</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="accountsurlspy-2">accounts/urls.py</h4>
+<p>Writing the view url to accounts urls.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="n">logout_view</span>
+
+<span class="n">urlpatterns</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^logout/$'</span><span class="p">,</span> <span class="n">logout_view</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"logout"</span><span class="p">),</span>
+<span class="p">]</span></code></pre></figure>
+
+<h2 id="final-words">Final Words</h2>
+<p>I hope that you have successfully implemented the Authentication System to your Django Project. However, if you find any problem in any of the steps discussed above, you can check our Github Repository from here</p>
+
+<p>And also feel free to comment down below, if you have any problem regarding this tutorial and please share your experience with the DjangoPy</p>
+ </div>
+                <div class="overlay-dark">
+                    <div class="close-btn">
+                        <i class="fa fa-2x fa-times"></i>
+                    </div>
+                </div>
+                <img class="img-overlay">
+                <br><br>
+                <ul class="socialIcons">
+                    <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/&picture=https://djangopy.orgimg/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg&name=Set-up Authentication System in Django in just 10 minutes&caption=%20&description=In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
+                            class="Icon socialAccount--facebook" target="_blank"></a></li>
+                    <li><a href="http://twitter.com/intent/tweet?text=Set-up Authentication System in Django in just 10 minutes - DjangoPy https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/"
+                            class="Icon socialAccount--twitter" target="_blank"></a></li>
+                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org" class="Icon socialAccount--google"
+                            target="_blank"></a></li>
+                    <li><a href="mailto:djangopyz@gmail.com?&subject=DjangoPy | Learn, Code, Implement&body=Set-up Authentication System in Django in just 10 minutes%0A https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/"
+                            target="_self" class="Icon socialAccount--mail" target="_blank"></a></li>
+                </ul>
+                <br>
+                <hr><br>
+                
+                <br>
+                <hr><br>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Latest Posts -->
+<section class="latest-posts" style="background-color: #F2F2F2;">
+  <div class="container">
+    <header>
+      <h2 style="text-align:center;">Latest from the blog</h2>
+      <br>
+    </header>
+    <div class="row">
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/how-to/handle-asynchronous-tasks-with-celery-and-django">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/handle-asynchronous-tasks-with-celery-and-django/cover.png" 
+    title="" 
+    srcset="/assets/resized/480/cover.png 480w,/assets/resized/800/cover.png 800w,/img/handle-asynchronous-tasks-with-celery-and-django/cover.png 1360w"
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">16 February 2018</div>
+            <div class="category"><a href="#">how-to</a></div>
+          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Handle Asynchronous Tasks using celery and Django</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg" 
+    title="" 
+    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg 1240w"
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">03 October 2017</div>
+            <div class="category"><a href="#">learn</a></div>
+          </div><a href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Set-up Authentication System in Django in just 10 minutes</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps....</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/package-of-week/categories-with-django-mptt/">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/categories-with-django-mptt/cover.jpg" 
+    title="" 
+    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/categories-with-django-mptt/cover.jpg 1240w"
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">30 July 2017</div>
+            <div class="category"><a href="#">package-of-the-week</a></div>
+          </div><a href="/package-of-week/categories-with-django-mptt/" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Categories with django-mptt</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post, we'll learn how to implement categories in Django efficiently by storing hierarchical data in place of making many database queries since database queries are costly in terms...</p>
+        </div></a>
+      </div>
+      
+    </div>
+  </div>
+</section>
+      </div>
+    </div>
+    <center>
+  <section class="section--subscribe">
+    <div class="container">
+      <h3 class="u-alignCenter">Stay in touch</h3>
+      <p>
+        Sign up for our newsletter to get latest updates, news and tutorials on Django. We hate spam as much you do!
+      </p>
+      <div class="row h-100 justify-content-center align-items-center">
+        <div class="newsletterForm-wrapper">
+          <div id="mc_embed_signup">
+            <form action="https://djangopy.us15.list-manage.com/subscribe/post?u=d360054cce6cf1e173862fa58&amp;id=4b711b168e"
+              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank"
+              novalidate>
+              <div id="mc_embed_signup_scroll">
+                <div class="mc-field-group">
+                  <input type="email" value="" name="EMAIL" class="textInput textInput--large" id="mce-EMAIL"
+                    placeholder="Your email address" style="width:100% !important;">
+                </div>
+                <div id="mce-responses" class="clear">
+                  <div class="response" id="mce-error-response" style="display:none; color: red;"></div>
+                  <div class="response" id="mce-success-response" style="display:none; color: green;"></div>
+                </div>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;"><input type="text" name="b_d360054cce6cf1e173862fa58_4b711b168e"
+                    tabindex="-1" value=""></div>
+                <div class="clear u-alignCenter"><input type="submit" value="Get new blog posts by email" name="subscribe"
+                    id="mc-embedded-subscribe" class="button-x button--primary"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </section>
+
+</center>
+
+<footer class="section--footer">
+  <div class="container container--content">
+    <ul class="socialAccountList row h-100 justify-content-center align-items-center">
+      <li><a href="http://www.github.com/djangopy-org" class="socialAccount socialAccount--github" target="_blank"></a></li>
+      <li><a href="http://facebook.com/djangopy-org" class="socialAccount socialAccount--facebook" target="_blank"></a></li>
+      <li><a href="http://twitter.com/DjangoPy_Admin" class="socialAccount socialAccount--twitter" target="_blank"></a></li>
+      <li><a href="https://www.reddit.com/user/Djangopy-org/" class="socialAccount socialAccount--reddit" target="_blank"></a></li>
+      <li><a href="mailto:djangopyz@gmail.com?&amp;subject=DjangoPy | Learn, Code, Implement&amp;body=How to Implement Categories in Django%0A https://djangopy.org/how-to/how-to-implement-categories-in-django/"
+          target="_self" class="socialAccount socialAccount--mail" target="_blank"></a></li>
+    </ul>
+    <div>
+      Hand-crafted with 
+<img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDUyMi40NjggNTIyLjQ2OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTIyLjQ2OCA1MjIuNDY5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTMyNS43NjIsNzAuNTEzbC0xNy43MDYtNC44NTRjLTIuMjc5LTAuNzYtNC41MjQtMC41MjEtNi43MDcsMC43MTVjLTIuMTksMS4yMzctMy42NjksMy4wOTQtNC40MjksNS41NjhMMTkwLjQyNiw0NDAuNTMgICAgYy0wLjc2LDIuNDc1LTAuNTIyLDQuODA5LDAuNzE1LDYuOTk1YzEuMjM3LDIuMTksMy4wOSwzLjY2NSw1LjU2OCw0LjQyNWwxNy43MDEsNC44NTZjMi4yODQsMC43NjYsNC41MjEsMC41MjYsNi43MS0wLjcxMiAgICBjMi4xOS0xLjI0MywzLjY2Ni0zLjA5NCw0LjQyNS01LjU2NEwzMzIuMDQyLDgxLjkzNmMwLjc1OS0yLjQ3NCwwLjUyMy00LjgwOC0wLjcxNi02Ljk5OSAgICBDMzMwLjA4OCw3Mi43NDcsMzI4LjIzNyw3MS4yNzIsMzI1Ljc2Miw3MC41MTN6IiBmaWxsPSIjMDAwMDAwIi8+CgkJPHBhdGggZD0iTTE2Ni4xNjcsMTQyLjQ2NWMwLTIuNDc0LTAuOTUzLTQuNjY1LTIuODU2LTYuNTY3bC0xNC4yNzctMTQuMjc2Yy0xLjkwMy0xLjkwMy00LjA5My0yLjg1Ny02LjU2Ny0yLjg1NyAgICBzLTQuNjY1LDAuOTU1LTYuNTY3LDIuODU3TDIuODU2LDI1NC42NjZDMC45NSwyNTYuNTY5LDAsMjU4Ljc1OSwwLDI2MS4yMzNjMCwyLjQ3NCwwLjk1Myw0LjY2NCwyLjg1Niw2LjU2NmwxMzMuMDQzLDEzMy4wNDQgICAgYzEuOTAyLDEuOTA2LDQuMDg5LDIuODU0LDYuNTY3LDIuODU0czQuNjY1LTAuOTUxLDYuNTY3LTIuODU0bDE0LjI3Ny0xNC4yNjhjMS45MDMtMS45MDIsMi44NTYtNC4wOTMsMi44NTYtNi41NyAgICBjMC0yLjQ3MS0wLjk1My00LjY2MS0yLjg1Ni02LjU2M0w1MS4xMDcsMjYxLjIzM2wxMTIuMjA0LTExMi4yMDFDMTY1LjIxNywxNDcuMTMsMTY2LjE2NywxNDQuOTM5LDE2Ni4xNjcsMTQyLjQ2NXoiIGZpbGw9IiMwMDAwMDAiLz4KCQk8cGF0aCBkPSJNNTE5LjYxNCwyNTQuNjYzTDM4Ni41NjcsMTIxLjYxOWMtMS45MDItMS45MDItNC4wOTMtMi44NTctNi41NjMtMi44NTdjLTIuNDc4LDAtNC42NjEsMC45NTUtNi41NywyLjg1N2wtMTQuMjcxLDE0LjI3NSAgICBjLTEuOTAyLDEuOTAzLTIuODUxLDQuMDktMi44NTEsNi41NjdzMC45NDgsNC42NjUsMi44NTEsNi41NjdsMTEyLjIwNiwxMTIuMjA0TDM1OS4xNjMsMzczLjQ0MiAgICBjLTEuOTAyLDEuOTAyLTIuODUxLDQuMDkzLTIuODUxLDYuNTYzYzAsMi40NzgsMC45NDgsNC42NjgsMi44NTEsNi41N2wxNC4yNzEsMTQuMjY4YzEuOTA5LDEuOTA2LDQuMDkzLDIuODU0LDYuNTcsMi44NTQgICAgYzIuNDcxLDAsNC42NjEtMC45NTEsNi41NjMtMi44NTRMNTE5LjYxNCwyNjcuOGMxLjkwMy0xLjkwMiwyLjg1NC00LjA5NiwyLjg1NC02LjU3ICAgIEM1MjIuNDY4LDI1OC43NTUsNTIxLjUxNywyNTYuNTY1LDUxOS42MTQsMjU0LjY2M3oiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+       + 
+       <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDUxMCA1MTAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMCA1MTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8ZyBpZD0iZmF2b3JpdGUiPgoJCTxwYXRoIGQ9Ik0yNTUsNDg5LjZsLTM1LjctMzUuN0M4Ni43LDMzNi42LDAsMjU3LjU1LDAsMTYwLjY1QzAsODEuNiw2MS4yLDIwLjQsMTQwLjI1LDIwLjRjNDMuMzUsMCw4Ni43LDIwLjQsMTE0Ljc1LDUzLjU1ICAgIEMyODMuMDUsNDAuOCwzMjYuNCwyMC40LDM2OS43NSwyMC40QzQ0OC44LDIwLjQsNTEwLDgxLjYsNTEwLDE2MC42NWMwLDk2LjktODYuNywxNzUuOTUtMjE5LjMsMjkzLjI1TDI1NSw0ODkuNnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+       +
+      <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNTAyLDIwNi41aC04MnYtMjEuMTY3YzAtNS41MjMtNC40NzgtMTAtMTAtMTBIMTk0Yy01LjUyMiwwLTEwLDQuNDc3LTEwLDEwYzAsNS41MjMsNC40NzgsMTAsMTAsMTBoMjA2djc2LjY2NiAgICBjMCw2Ny4zNDgtMzUuOTU3LDEyOS45NDItOTQuMDE4LDE2NEgxMTQuMDE4QzU1Ljk1Nyw0MDEuOTQyLDIwLDMzOS4zNDcsMjAsMjcydi03Ni42NjZoNjdjNS41MjIsMCwxMC00LjQ3NywxMC0xMCAgICBjMC01LjUyMy00LjQ3OC0xMC0xMC0xMEgxMGMtNS41MjIsMC0xMCw0LjQ3Ny0xMCwxMFYyNzJjMCwzNy44LDEwLjE2LDc0Ljg2NCwyOS4zODIsMTA3LjE4MyAgICBDNDIuMzQ1LDQwMC45OCw1OS4xNjUsNDIwLjIyOCw3OC44NjIsNDM2SDEwYy01LjUyMiwwLTEwLDQuNDc3LTEwLDEwYzAsMzYuMzkzLDI5LjYwNyw2Niw2Niw2NmgzMTJjMzYuMzkzLDAsNjYtMjkuNjA3LDY2LTY2ICAgIGMwLTUuNTIzLTQuNDc4LTEwLTEwLTEwaC05Mi44NjJjMTguMTI5LTE0LjUxNiwzMy44MTItMzEuOTgzLDQ2LjMwMi01MS42NjdoMjguMjI3QzQ2OC43ODUsMzg0LjMzMyw1MTIsMzQxLjExOCw1MTIsMjg4di03MS41ICAgIEM1MTIsMjEwLjk3Nyw1MDcuNTIzLDIwNi41LDUwMiwyMDYuNXogTTQyMi45MDUsNDU2Yy00LjU3OCwyMC41NzItMjIuOTc0LDM2LTQ0LjkwNSwzNkg2NmMtMjEuOTMxLDAtNDAuMzI2LTE1LjQyOC00NC45MDUtMzYgICAgaDkwLjI0NGgxOTcuMzIySDQyMi45MDV6IE00MjAsMjcydi01LjVoMzJWMjg4YzAsMjAuMDM0LTE2LjI5OSwzNi4zMzMtMzYuMzMzLDM2LjMzM2gtMi4yNzFDNDE3Ljc2MSwzMDcuMzI3LDQyMCwyODkuNzQ1LDQyMCwyNzIgICAgeiBNNDkyLDI4OGMwLDQyLjA5LTM0LjI0Myw3Ni4zMzMtNzYuMzMzLDc2LjMzM2gtMTcuMDJjMy4xOTMtNi41MjEsNi4wNDUtMTMuMTk3LDguNTM3LTIwaDguNDgzICAgIEM0NDYuNzMsMzQ0LjMzMyw0NzIsMzE5LjA2Miw0NzIsMjg4di0zMS41YzAtNS41MjMtNC40NzgtMTAtMTAtMTBoLTQydi0yMGg3MlYyODh6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjE5LjU0OSw1NS4zNDNsLTUuMjAzLTYuNTMzYy03LjYzOC05LjU4OC03LjY0OS0yMi45OTEtMC4wMjctMzIuNTkzYzMuNDM0LTQuMzI2LDIuNzEtMTAuNjE2LTEuNjE2LTE0LjA0OSAgICBjLTQuMzI3LTMuNDM1LTEwLjYxNi0yLjcxLTE0LjA1LDEuNjE2Yy0xMy40NDIsMTYuOTM2LTEzLjQyMiw0MC41NzUsMC4wNDksNTcuNDg3bDUuMjAzLDYuNTMzICAgIGM5Ljk4MSwxMi41Myw5Ljk5NiwzMC4wNDUsMC4wMzYsNDIuNTk0bC01LjMzMiw2LjcxOGMtMy40MzQsNC4zMjYtMi43MSwxMC42MTYsMS42MTYsMTQuMDQ5YzEuODM5LDEuNDU5LDQuMDMyLDIuMTY4LDYuMjEsMi4xNjggICAgYzIuOTQ2LDAsNS44NjUtMS4yOTYsNy44NC0zLjc4NGw1LjMzMi02LjcxOEMyMzUuMzg3LDEwMi45NDksMjM1LjM2NCw3NS4xOTcsMjE5LjU0OSw1NS4zNDN6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjc0Ljk3OCw3Ny44MjdsLTUuMjAzLTYuNTMyYy03LjYzOC05LjU4OS03LjY0OS0yMi45OTItMC4wMjctMzIuNTk0YzMuNDM0LTQuMzI2LDIuNzEtMTAuNjE2LTEuNjE2LTE0LjA0OSAgICBjLTQuMzI3LTMuNDM1LTEwLjYxNi0yLjcxLTE0LjA1LDEuNjE2Yy0xMy40NDIsMTYuOTM2LTEzLjQyMiw0MC41NzUsMC4wNDksNTcuNDg4bDUuMjAzLDYuNTMzICAgIGM5Ljk4LDEyLjUzMSw5Ljk5NSwzMC4wNDcsMC4wMzUsNDIuNTk1bC01LjMzMSw2LjcxN2MtMy40MzQsNC4zMjYtMi43MSwxMC42MTYsMS42MTYsMTQuMDQ5YzEuODM5LDEuNDU5LDQuMDMyLDIuMTY3LDYuMjEsMi4xNjcgICAgYzIuOTQ2LDAsNS44NjYtMS4yOTcsNy44NC0zLjc4NGw1LjMzLTYuNzE3QzI5MC44MTUsMTI1LjQzNSwyOTAuNzkyLDk3LjY4MywyNzQuOTc4LDc3LjgyN3oiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0xNjQuMTIsNzcuODI4bC01LjIwMy02LjUzMmMtNy42MzgtOS41ODgtNy42NDktMjIuOTkyLTAuMDI4LTMyLjU5NGMzLjQzNC00LjMyNiwyLjcxLTEwLjYxNi0xLjYxNi0xNC4wNSAgICBjLTQuMzI3LTMuNDM0LTEwLjYxNi0yLjcwOC0xNC4wNSwxLjYxNmMtMTMuNDQxLDE2LjkzNi0xMy40MjEsNDAuNTc2LDAuMDUsNTcuNDg4bDUuMjAzLDYuNTMzICAgIGM5Ljk4LDEyLjUzMSw5Ljk5NSwzMC4wNDcsMC4wMzYsNDIuNTk0bC01LjMzMiw2LjcxN2MtMy40MzQsNC4zMjYtMi43MTEsMTAuNjE2LDEuNjE1LDE0LjA1YzEuODM5LDEuNDU5LDQuMDMxLDIuMTY4LDYuMjEsMi4xNjggICAgYzIuOTQ2LDAsNS44NjUtMS4yOTYsNy44MzktMy43ODNsNS4zMzMtNi43MThDMTc5Ljk1NywxMjUuNDM2LDE3OS45MzQsOTcuNjg0LDE2NC4xMiw3Ny44Mjh6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMTUwLjI4LDE3OC4yNmMtMS44Ni0xLjg2LTQuNDQtMi45My03LjA3LTIuOTNzLTUuMjEsMS4wNy03LjA3LDIuOTNjLTEuODU5LDEuODctMi45Myw0LjQ0LTIuOTMsNy4wNyAgICBzMS4wNyw1LjIxLDIuOTMsNy4wOGMxLjg2LDEuODYsNC40NCwyLjkyLDcuMDcsMi45MnM1LjIxLTEuMDYsNy4wNy0yLjkyYzEuODY5LTEuODcsMi45My00LjQ0LDIuOTMtNy4wOCAgICBDMTUzLjIxLDE4Mi43LDE1Mi4xNDksMTgwLjEyLDE1MC4yOCwxNzguMjZ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMzYyLDI2MmMtNS41MjIsMC0xMCw0LjQ3Ny0xMCwxMGMwLDM3LjExOS0xNS4wNTYsNzMuNTk4LTQxLjMwOCwxMDAuMDgzYy0zLjg4OCwzLjkyMi0zLjg1OSwxMC4yNTQsMC4wNjMsMTQuMTQyICAgIGMxLjk1LDEuOTMzLDQuNDk1LDIuODk4LDcuMDQsMi44OThjMi41NzQtMC4wMDEsNS4xNDgtMC45ODksNy4xMDMtMi45NjJDMzU0LjgzMiwzNTUuOTYxLDM3MiwzMTQuMzUxLDM3MiwyNzIgICAgQzM3MiwyNjYuNDc3LDM2Ny41MjIsMjYyLDM2MiwyNjJ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjkzLjg4NSwzOTkuMjI1Yy0yLjcxNC00LjgxMS04LjgxMy02LjUxLTEzLjYyMy0zLjc5N2wtMC4yMjgsMC4xMjljLTQuODExLDIuNzE0LTYuNTEsOC44MTMtMy43OTcsMTMuNjIzICAgIGMxLjgzOCwzLjI1OCw1LjIyNyw1LjA4OSw4LjcxOSw1LjA4OWMxLjY2NCwwLDMuMzUyLTAuNDE3LDQuOTA0LTEuMjkybDAuMjI4LTAuMTI5ICAgIEMyOTQuODk5LDQxMC4xMzQsMjk2LjU5OCw0MDQuMDM1LDI5My44ODUsMzk5LjIyNXoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+    </div>
+    <div>
+      © 2018 All Rights Reserved
+    </div>
+    <center><a href="/terms-of-services" target="_self">Term of Service</a> | <a href="/privacy-policy" target="_self">Privacy
+        Policy</a> | <a href="/disclaimer" target="_self">Disclaimer </a> | <a href="/sitemap.xml" target="_self">Sitemap</a></center>
+  </div>
+</footer>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<script type='text/javascript'>
+  (function ($) {
+    window.fnames = new Array();
+    window.ftypes = new Array();
+    fnames[0] = 'EMAIL';
+    ftypes[0] = 'email';
+    fnames[1] = 'FNAME';
+    ftypes[1] = 'text';
+    fnames[2] = 'LNAME';
+    ftypes[2] = 'text';
+  }(jQuery));
+  var $mcj = jQuery.noConflict(true);
+</script>
+  </body>
+
+</html>
+
+

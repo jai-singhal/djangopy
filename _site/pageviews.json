@@ -1,0 +1,44 @@
+{
+    "rows": [
+        [
+            "/how-to/handle-asynchronous-tasks-with-celery-and-django",
+            "1637"
+        ],
+        [
+            "/how-to/how-to-implement-categories-in-django/",
+            "8574"
+        ],
+        [
+            "/how-to/making-django-form-google-recaptcha-powered/",
+            "499"
+        ],
+        [
+            "/how-to/pagination-with-django/",
+            "1894"
+        ],
+        [
+            "/how-to/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/",
+            "2403"
+        ],
+        [
+            "/learn/getting-started-with-django/",
+            "409"
+        ],
+        [
+            "/learn/introduction-to-django/",
+            "603"
+        ],
+        [
+            "/learn/set-up-authentication-system-in-django-in-just-10-minutes/",
+            "1859"
+        ],
+        [
+            "/package-of-week/categories-with-django-mptt/",
+            "4733"
+        ],
+        [
+            "/package-of-week/how-to-integrate-mailchimp-on-django-to-increase-subscribers/",
+            "3023"
+        ]
+    ]
+}

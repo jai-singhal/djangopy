@@ -1,0 +1,60 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+	<meta property="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %} ">
+
+	<!-- Search Engine -->
+	<meta property="description" content="DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.">
+	<meta property="image" content="https://djangopy.org/{{'/img/djangopy.png'}}">
+	<!-- Schema.org for Google -->
+	<meta itemprop="property" content="DjangoPy - Learn, Code, Implement">
+	<meta itemprop="description" content="  DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.">
+	<meta itemprop="image" content="https://djangopy.org/{{'/img/djangopy.png'}}">
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary">
+	<meta property="twitter:title" content="DjangoPy - Learn, Code, Implement">
+	<meta property="twitter:description" content="  DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.">
+	<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+	<meta property="og:title" content="DjangoPy - Learn, Code, Implement">
+	<meta property="og:description" content="  DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.">
+	<meta property="og:url" content="https://djangopy.org/">
+	<meta property="og:site_property" content="DjangoPy">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="website">
+
+
+	<!--   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}"> -->
+	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+	<!-- Font Awesome CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="{{ "/css/github.css" }}">
+	<!-- Fancybox-->
+	<link rel="stylesheet" type="text/css" href="{{ "/css/fonts/fonts.min.css" }}" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
+	<!-- theme stylesheet-->
+	<link rel="stylesheet" href="{{ "/css/default.css" }}" id="theme-stylesheet">
+	<!-- Custom stylesheet - for your changes-->
+	<link rel="stylesheet" href="{{ "/css/custom.css" }}">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{{'/img/favicon1.ico'}}">
+	<!-- Javascript files-->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+	<script src="{{ "/js/front.js" }}"></script>
+
+	{% if site.production %}
+	{% include google_analytics.html %}
+	{% endif %}
+</head>
