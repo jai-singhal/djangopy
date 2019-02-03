@@ -1,4 +1,4 @@
-production: false
+production: true
 ## JEKYLL_ENV=production bundle exec jekyll build
 
 title: DjangoPy
