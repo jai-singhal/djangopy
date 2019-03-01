@@ -37,6 +37,10 @@
 <lastmod>2018-02-16T20:34:07+05:30</lastmod>
 </url>
 <url>
+<loc>https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django</loc>
+<lastmod>2019-02-28T20:34:07+05:30</lastmod>
+</url>
+<url>
 <loc>https://djangopy.org/404</loc>
 </url>
 <url>
@@ -59,9 +63,5 @@
 </url>
 <url>
 <loc>https://djangopy.org/blog/page2/</loc>
-</url>
-<url>
-<loc>https://djangopy.org/css/fonts/Mark%20Simonson%20-%20Proxima%20Nova%20Alt%20Regular-demo.html</loc>
-<lastmod>2018-07-26T09:42:12+05:30</lastmod>
 </url>
 </urlset>

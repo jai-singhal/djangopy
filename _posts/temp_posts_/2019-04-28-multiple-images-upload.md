@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Multiple Image upload in Django"
-date:   2019-04-28 10:34:07 +0530
+date:   2021-02-02 10:34:07 +0530
 category: how-to
 permalink: /how-to/multiple-image-upload-in-django
 cover_image: img/multiple-images/cover.jpg

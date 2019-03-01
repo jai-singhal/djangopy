@@ -47,9 +47,7 @@ $ make
 {% endhighlight %}
 
 ###### Windows users
-For windows user, you can get executable file of redis from [here](https://github.com/rgl/redis/downloads)
-
-<br>
+For windows user, you can get executable file of redis from **[here](https://github.com/rgl/redis/downloads)**
 
 After installing, try if it is correctly installed or not. 
 

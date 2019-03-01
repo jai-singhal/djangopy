@@ -78,7 +78,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel = "stylesheet" href="/css/github.css">
 	<!-- Fancybox-->
-<link rel="stylesheet" type="text/css" href="/css/fonts/fonts.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
 	<!-- theme stylesheet-->
 	<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
@@ -89,7 +88,7 @@
 	<!-- Javascript files-->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
 	<script src="/js/front.js"></script>
@@ -98,6 +97,24 @@
 	<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
 	<script src="/js/post.js"></script>
 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+	<script>
+	window.addEventListener("load", function(){
+	window.cookieconsent.initialise({
+	  "palette": {
+		"popup": {
+		  "background": "#241f1f"
+		},
+		"button": {
+		  "background": "#ededed"
+		}
+	  },
+	  "theme": "classic"
+	})});
+	</script>
 
 
 	<script type="text/javascript">
@@ -164,6 +181,7 @@
 <div class="post">
     <div class="container">
         <div class="row justify-content-md-center">
+
             <div class="col-md-9">
                 <img 
     class="img-fluid lazy" 
@@ -212,9 +230,7 @@
 <span class="nv">$ </span>make</code></pre></figure>
 
 <h6 id="windows-users">Windows users</h6>
-<p>For windows user, you can get executable file of redis from <a href="https://github.com/rgl/redis/downloads">here</a></p>
-
-<p><br /></p>
+<p>For windows user, you can get executable file of redis from <strong><a href="https://github.com/rgl/redis/downloads">here</a></strong></p>
 
 <p>After installing, try if it is correctly installed or not.</p>
 
@@ -589,6 +605,29 @@ Run the celery beat process in new terminal with <strong>–scheduler</strong></
       
       <div class="post col-md-4">
         <div class="post-thumbnail">
+          <a href="/learn/step-up-guide-to-implement-ajax-in-django">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/step-up-guide-to-implement-ajax-in-django/cover.jpg" 
+    title="" 
+    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/assets/resized/1400/cover.jpg 1400w,/img/step-up-guide-to-implement-ajax-in-django/cover.jpg 1540w"
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">28 February 2019</div>
+            <div class="category"><a href="#">learn</a></div>
+          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Step Up Guide to implement Ajax in Django</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to submit the forms and perform asynchronous tasks with the help of AJAX</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
           <a href="/how-to/handle-asynchronous-tasks-with-celery-and-django">
             <img 
     class="img-fluid lazy" 
@@ -630,29 +669,6 @@ Run the celery beat process in new terminal with <strong>–scheduler</strong></
             <h4>Set-up Authentication System in Django in just 10 minutes</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps....</p>
-        </div></a>
-      </div>
-      
-      <div class="post col-md-4">
-        <div class="post-thumbnail">
-          <a href="/package-of-week/categories-with-django-mptt/">
-            <img 
-    class="img-fluid lazy" 
-    alt="" 
-    src="/img/categories-with-django-mptt/cover.jpg" 
-    title="" 
-    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/categories-with-django-mptt/cover.jpg 1240w"
-/>
-          </a>
-        </div>
-        <div class="post-details">
-          <div class="post-meta d-flex justify-content-between">
-            <div class="date">30 July 2017</div>
-            <div class="category"><a href="#">package-of-the-week</a></div>
-          </div><a href="/package-of-week/categories-with-django-mptt/" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
-            <h4>Categories with django-mptt</h4>
-            <div class="catalogue-line" style="padding-bottom:5px;"></div>
-            <p class="text-muted">In this post, we'll learn how to implement categories in Django efficiently by storing hierarchical data in place of making many database queries since database queries are costly in terms...</p>
         </div></a>
       </div>
       
@@ -741,7 +757,5 @@ Run the celery beat process in new terminal with <strong>–scheduler</strong></
   var $mcj = jQuery.noConflict(true);
 </script>
   </body>
-
 </html>
-
 

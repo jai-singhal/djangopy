@@ -1,6 +1,8 @@
 production: true
 ## JEKYLL_ENV=production bundle exec jekyll build
 
+# bundle exec jekyll serve
+
 title: DjangoPy
 email: admin@djangopy.org
 description: DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.
