@@ -319,7 +319,7 @@ body {
     color: #353535;
     display: block;
     font-size: 2rem;
-    font-weight: 700;
+    /* font-weight: 700; */
     margin: .5rem 0
 }
 
@@ -352,14 +352,14 @@ body {
     color: #353535;
     font-size: 2.5rem;
     margin: .75rem 0;
-    font-weight: 600
+    /* font-weight: 600; */
 }
 
 .post-spans {
     color: #999;
     padding-left: .25rem;
     font-size: .94rem;
-    font-weight: 450
+    /* font-weight: 450 */
 }
 
 .post-line {
@@ -387,7 +387,7 @@ body {
 
 .post-content {
     font-size: 16px;
-    font-weight: 525 !important
+    /* font-weight: 525 !important */
 }
 
 .post-content>p {
@@ -436,7 +436,6 @@ body {
     border-radius: 3px;
 }
 
-// Adding 'Contents' headline to the TOC
 #markdown-toc::before {
     content: "Contents";
     font-weight: bold;
