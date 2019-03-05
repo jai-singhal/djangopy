@@ -114,7 +114,7 @@ We will be discussing several examples here that readily used in every website a
 I want to make this example which is easy to understand for the newbie, however, it is also helpful for the intermediates. So let's get started.
 
 
-### **models.py**
+### models.py
 
 Let's create a basic Contact Model 
 {% highlight python %}
@@ -134,7 +134,7 @@ class Contact(models.Model):
 
 <hr />
 
-### **urls.py**
+### urls.py
 
 {% highlight python %}
 {% raw %}
@@ -154,7 +154,7 @@ Note that, I have used a path name for the **contact_submit**, this will useful 
 
 <hr />
 
-### **forms.py**
+### forms.py
 
 In **ContactForm** class, I have done some little changes in the basic form rendering. In **__init__** method, I have added **form-control** class to every form input element, to make it Bootstrap4 powered.
 
@@ -183,7 +183,7 @@ class ContactForm(forms.ModelForm):
 <hr />
 
 
-### **Views.py**
+### Views.py
 
 Now, this is the section where we need to put some attention to understand the AJAX in a better way. I have created two Function based views(FBV) which deal with **GET** and **POST** respectively.
 
@@ -214,7 +214,7 @@ def postContact(request):
 <hr />
 
 
-### **contact.html**
+### contact.html
 
 Moving to frontend section, let's first extends the **base.html** which is discussed above.
 
@@ -278,7 +278,7 @@ $(document).ready(function(){
 ## Making Class based views
 
 To convert the above example from Function based views to class based views(CBV), we just need to transform our views.py only, and also make a route for the view in urls.py
-### **urls.py**
+### urls.py
 {% highlight python %}
 {% raw %}
 from app_1 import views as app1
@@ -291,7 +291,7 @@ urlpatterns = [
 
 <hr/>
 
-### **views.py**
+### views.py
 In the **FBV**, we have used the **2** function views, that can be wrap in the single class containing two methods namely **GET** and **POST** with a single url route.
 
 {% highlight python %}
@@ -363,7 +363,7 @@ The directory structure of the app will be as follows
 ```
 <hr />
 
-### **urls.py**
+### urls.py
 Create the url route for the displaying the user and an **AJAX** request url
 
 {% highlight python %}
@@ -382,7 +382,7 @@ urlpatterns = [
 
 <hr />
 
-### **views.py**
+### views.py
 
 The views are pretty similar with above example views, with the slight change i.e., the method **GET** in replace of **POST** and way of wrapping the object into the dictionary and sending the **response**
 
@@ -420,7 +420,7 @@ def getUserInfo(request):
 
 <hr />
 
-### **user.html**
+### user.html
 
 Moving to the frontend part, after selecting username option from the **select box**, the **AJAX** call will be made to our Django server with the username which is selected, and the Django server will respond with information for the respective username in its response, which is then rendered in the table body.
 

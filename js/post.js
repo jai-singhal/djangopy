@@ -28,7 +28,11 @@ $(document).ready(function(){
 
   $(".post .container .row .col-md-9 p img").on('click', function () {
       $src = $(this).attr('src');
+      var win_width = $(window).width();
       $(".overlay-dark").css('display', 'block');
+      if(win_width < 1040)
+        $(".img-overlay").css("width", win_width/1.05)
+
       $('.img-overlay').css('opacity', 1);
       $('.img-overlay').attr('src', $src);
       $('.img-overlay').css('transform', 'translate(-50%, 0) scale(1, 1)');

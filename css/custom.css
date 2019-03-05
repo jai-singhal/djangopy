@@ -390,17 +390,36 @@ body {
     /* font-weight: 525 !important */
 }
 
+.post-content .code-head{
+    background-color:#E5E5E5;
+    padding:4px; 
+    font-weight:600;
+}
+
+.post-content img:hover{
+    cursor: pointer;
+}
+.post-content strong{
+    font-weight: 600;
+}
+.post-content a{
+    color: #1aafd0;
+}
+.post-content a:hover{
+    color: #1aafd0;
+}
 .post-content>p {
     color: #3a3a3a !important;
 }
-
+.hljs{
+    overflow-y: scroll;
+    max-height: 320px;
+}
 .clippy {
     position: absolute;
-    right: 20px;
-    width: 55px;
-    height: 26px;
+    right: 32px;
     font-size: 13px;
-    padding: 4px;
+    padding: 3px 6px 3px 6px;
 }
 
 .btn-clipboard {

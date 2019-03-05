@@ -117,6 +117,15 @@
 	</script>
 
 
+	<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+     ga('create', 'UA-98271390-1', 'auto');
+     ga('send', 'pageview');
+   </script>
+
 </head>
 
   <body>
@@ -179,7 +188,6 @@
     alt="" 
     src="/img/how-to-implement-categories-in-django/cover.jpg" 
     title="" 
-    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/how-to-implement-categories-in-django/cover.jpg 1240w"
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">How to Implement Categories in Django</h1>
@@ -300,28 +308,28 @@ python3 manage.py migrate</code></pre></figure>
 
 <p>Now go to admin panel from your browser, you’ll see category there.</p>
 
-<p><img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/1.jpg" title="" srcset="/assets/resized/480/1.jpg 480w,/assets/resized/800/1.jpg 800w,/img/how-to-implement-categories-in-django/1.jpg 889w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/1.jpg" title="" /></p>
 
 <p>Now we add some main categories, by main categories I mean the categories having a null parent. Go to categories and click “Add Category” and add the category like in the image below.</p>
 
-<p><img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/2.jpg" title="" srcset="/assets/resized/480/2.jpg 480w,/assets/resized/800/2.jpg 800w,/img/how-to-implement-categories-in-django/2.jpg 889w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/2.jpg" title="" /></p>
 
 <p>Now to illustrate the nested categories add one more main category say “python”, now add a category “news” as a subcategory of “python”, you have to select “python” as the parent category of “news”, like in the image below.</p>
 
-<p><img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/3.jpg" title="" srcset="/assets/resized/480/3.jpg 480w,/assets/resized/800/3.jpg 800w,/img/how-to-implement-categories-in-django/3.jpg 887w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/3.jpg" title="" /></p>
 
 <p>Now for sake of well understanding add one more category “2017” having  “news”  as parent category like in the image below.</p>
 
-<p><img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/4.jpg" title="" srcset="/assets/resized/480/4.jpg 480w,/assets/resized/800/4.jpg 800w,/img/how-to-implement-categories-in-django/4.jpg 880w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/4.jpg" title="" /></p>
 
 <p>Now the categories we’ve created are showed as follow.</p>
 
-<p><img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/5.jpg" title="" srcset="/assets/resized/480/5.jpg 480w,/assets/resized/800/5.jpg 800w,/img/how-to-implement-categories-in-django/5.jpg 879w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/5.jpg" title="" /></p>
 
 <p>You may be wondering how ‘– &gt;’ are appended after categories ( which is useful in distinguishing between same-named subcategories of a different parent at any level ), this is since we have defined the <strong>str</strong> method in Category model.</p>
 
 <p>Let’s add a post to illustrate how to associate a category with it, so go to the home in admin panel then go to post and click ‘add post’ button.
-<img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/6.jpg" title="" srcset="/assets/resized/480/6.jpg 480w,/assets/resized/800/6.jpg 800w,/img/how-to-implement-categories-in-django/6.jpg 1366w" /></p>
+<img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/6.jpg" title="" /></p>
 
 <h4 id="urlspy">Urls.py</h4>
 <p>As you can see in the image, we have added the post in python &gt; news &gt; 2017. Next, we have to add URL pattern for the category, so go to urls.py and add the following line in urlpatterns list.</p>
@@ -411,7 +419,7 @@ python3 manage.py migrate</code></pre></figure>
 
 <p>So breadcrumbs in post detail page would look like in the image below.</p>
 
-<p><img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/7.jpg" title="" srcset="/assets/resized/480/7.jpg 480w,/assets/resized/800/7.jpg 800w,/img/how-to-implement-categories-in-django/7.jpg 951w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/how-to-implement-categories-in-django/7.jpg" title="" /></p>
 
 <p>And our Category pages would look like images below</p>
 
@@ -447,6 +455,12 @@ python3 manage.py migrate</code></pre></figure>
                 <br>
                 <hr><br>
                 
+                    <div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+        powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<script type="text/javascript" src="/js/post_detail.js"></script>
+                
                 <br>
                 <hr><br>
             </div>
@@ -464,13 +478,34 @@ python3 manage.py migrate</code></pre></figure>
       
       <div class="post col-md-4">
         <div class="post-thumbnail">
+          <a href="/learn/dynamically-filter-queryset-with-ajax-and-drf">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/dynamically-filter-queryset-with-ajax-and-drf/cover.jpg" 
+    title="" 
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">05 March 2019</div>
+            <div class="category"><a href="#">learn</a></div>
+          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Dynamically filter queryset with AJAX and DRF</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to filter the queryset using AJAX and DRF</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
           <a href="/learn/step-up-guide-to-implement-ajax-in-django">
             <img 
     class="img-fluid lazy" 
     alt="" 
     src="/img/step-up-guide-to-implement-ajax-in-django/cover.jpg" 
     title="" 
-    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/assets/resized/1400/cover.jpg 1400w,/img/step-up-guide-to-implement-ajax-in-django/cover.jpg 1540w"
 />
           </a>
         </div>
@@ -493,7 +528,6 @@ python3 manage.py migrate</code></pre></figure>
     alt="" 
     src="/img/handle-asynchronous-tasks-with-celery-and-django/cover.png" 
     title="" 
-    srcset="/assets/resized/480/cover.png 480w,/assets/resized/800/cover.png 800w,/img/handle-asynchronous-tasks-with-celery-and-django/cover.png 1360w"
 />
           </a>
         </div>
@@ -505,29 +539,6 @@ python3 manage.py migrate</code></pre></figure>
             <h4>Handle Asynchronous Tasks using celery and Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>
-        </div></a>
-      </div>
-      
-      <div class="post col-md-4">
-        <div class="post-thumbnail">
-          <a href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/">
-            <img 
-    class="img-fluid lazy" 
-    alt="" 
-    src="/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg" 
-    title="" 
-    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg 1240w"
-/>
-          </a>
-        </div>
-        <div class="post-details">
-          <div class="post-meta d-flex justify-content-between">
-            <div class="date">03 October 2017</div>
-            <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
-            <h4>Set-up Authentication System in Django in just 10 minutes</h4>
-            <div class="catalogue-line" style="padding-bottom:5px;"></div>
-            <p class="text-muted">In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps....</p>
         </div></a>
       </div>
       

@@ -119,6 +119,15 @@
 	</script>
 
 
+	<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+     ga('create', 'UA-98271390-1', 'auto');
+     ga('send', 'pageview');
+   </script>
+
 </head>
 
   <body>
@@ -181,7 +190,6 @@
     alt="" 
     src="/img/step-up-guide-to-implement-ajax-in-django/cover.jpg" 
     title="" 
-    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/assets/resized/1400/cover.jpg 1400w,/img/step-up-guide-to-implement-ajax-in-django/cover.jpg 1540w"
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">Step Up Guide to implement Ajax in Django</h1>
@@ -288,7 +296,7 @@
 
 <p>I want to make this example which is easy to understand for the newbie, however, it is also helpful for the intermediates. So let’s get started.</p>
 
-<h3 id="modelspy"><strong>models.py</strong></h3>
+<h3 id="modelspy">models.py</h3>
 
 <p>Let’s create a basic Contact Model</p>
 
@@ -305,7 +313,7 @@
 
 <hr />
 
-<h3 id="urlspy"><strong>urls.py</strong></h3>
+<h3 id="urlspy">urls.py</h3>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
@@ -321,7 +329,7 @@
 
 <hr />
 
-<h3 id="formspy"><strong>forms.py</strong></h3>
+<h3 id="formspy">forms.py</h3>
 
 <p>In <strong>ContactForm</strong> class, I have done some little changes in the basic form rendering. In <strong>__init__</strong> method, I have added <strong>form-control</strong> class to every form input element, to make it Bootstrap4 powered.</p>
 
@@ -344,7 +352,7 @@
 
 <hr />
 
-<h3 id="viewspy"><strong>Views.py</strong></h3>
+<h3 id="viewspy">Views.py</h3>
 
 <p>Now, this is the section where we need to put some attention to understand the AJAX in a better way. I have created two Function based views(FBV) which deal with <strong>GET</strong> and <strong>POST</strong> respectively.</p>
 
@@ -368,7 +376,7 @@
 
 <hr />
 
-<h3 id="contacthtml"><strong>contact.html</strong></h3>
+<h3 id="contacthtml">contact.html</h3>
 
 <p>Moving to frontend section, let’s first extends the <strong>base.html</strong> which is discussed above.</p>
 
@@ -430,7 +438,7 @@
 <h2 id="making-class-based-views">Making Class based views</h2>
 
 <p>To convert the above example from Function based views to class based views(CBV), we just need to transform our views.py only, and also make a route for the view in urls.py</p>
-<h3 id="urlspy-1"><strong>urls.py</strong></h3>
+<h3 id="urlspy-1">urls.py</h3>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">app_1</span> <span class="kn">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">app1</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
@@ -440,7 +448,7 @@
 
 <hr />
 
-<h3 id="viewspy-1"><strong>views.py</strong></h3>
+<h3 id="viewspy-1">views.py</h3>
 <p>In the <strong>FBV</strong>, we have used the <strong>2</strong> function views, that can be wrap in the single class containing two methods namely <strong>GET</strong> and <strong>POST</strong> with a single url route.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
@@ -465,7 +473,7 @@
 
 <h2 id="screenshot">Screenshot</h2>
 
-<p><img class="img-fluid lazy" alt="" src="/img/step-up-guide-to-implement-ajax-in-django/screenshot.png" title="" srcset="/assets/resized/480/screenshot.png 480w,/assets/resized/800/screenshot.png 800w,/img/step-up-guide-to-implement-ajax-in-django/screenshot.png 1121w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/step-up-guide-to-implement-ajax-in-django/screenshot.png" title="" /></p>
 
 <p><br /></p>
 <hr />
@@ -506,7 +514,7 @@
 </code></pre></div></div>
 <hr />
 
-<h3 id="urlspy-2"><strong>urls.py</strong></h3>
+<h3 id="urlspy-2">urls.py</h3>
 <p>Create the url route for the displaying the user and an <strong>AJAX</strong> request url</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
@@ -520,7 +528,7 @@
 
 <hr />
 
-<h3 id="viewspy-2"><strong>views.py</strong></h3>
+<h3 id="viewspy-2">views.py</h3>
 
 <p>The views are pretty similar with above example views, with the slight change i.e., the method <strong>GET</strong> in replace of <strong>POST</strong> and way of wrapping the object into the dictionary and sending the <strong>response</strong></p>
 
@@ -552,7 +560,7 @@
 
 <hr />
 
-<h3 id="userhtml"><strong>user.html</strong></h3>
+<h3 id="userhtml">user.html</h3>
 
 <p>Moving to the frontend part, after selecting username option from the <strong>select box</strong>, the <strong>AJAX</strong> call will be made to our Django server with the username which is selected, and the Django server will respond with information for the respective username in its response, which is then rendered in the table body.</p>
 
@@ -632,7 +640,7 @@
 
 <h2 id="screenshot-1">Screenshot</h2>
 
-<p><img class="img-fluid lazy" alt="" src="/img/step-up-guide-to-implement-ajax-in-django/screenshot2.png" title="" srcset="/assets/resized/480/screenshot2.png 480w,/assets/resized/800/screenshot2.png 800w,/img/step-up-guide-to-implement-ajax-in-django/screenshot2.png 1129w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/step-up-guide-to-implement-ajax-in-django/screenshot2.png" title="" /></p>
 
 <p><br /></p>
 <hr />
@@ -677,6 +685,12 @@
                 <br>
                 <hr><br>
                 
+                    <div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+        powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<script type="text/javascript" src="/js/post_detail.js"></script>
+                
                 <br>
                 <hr><br>
             </div>
@@ -694,13 +708,34 @@
       
       <div class="post col-md-4">
         <div class="post-thumbnail">
+          <a href="/learn/dynamically-filter-queryset-with-ajax-and-drf">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/dynamically-filter-queryset-with-ajax-and-drf/cover.jpg" 
+    title="" 
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">05 March 2019</div>
+            <div class="category"><a href="#">learn</a></div>
+          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Dynamically filter queryset with AJAX and DRF</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to filter the queryset using AJAX and DRF</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
           <a href="/learn/step-up-guide-to-implement-ajax-in-django">
             <img 
     class="img-fluid lazy" 
     alt="" 
     src="/img/step-up-guide-to-implement-ajax-in-django/cover.jpg" 
     title="" 
-    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/assets/resized/1400/cover.jpg 1400w,/img/step-up-guide-to-implement-ajax-in-django/cover.jpg 1540w"
 />
           </a>
         </div>
@@ -723,7 +758,6 @@
     alt="" 
     src="/img/handle-asynchronous-tasks-with-celery-and-django/cover.png" 
     title="" 
-    srcset="/assets/resized/480/cover.png 480w,/assets/resized/800/cover.png 800w,/img/handle-asynchronous-tasks-with-celery-and-django/cover.png 1360w"
 />
           </a>
         </div>
@@ -735,29 +769,6 @@
             <h4>Handle Asynchronous Tasks using celery and Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>
-        </div></a>
-      </div>
-      
-      <div class="post col-md-4">
-        <div class="post-thumbnail">
-          <a href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/">
-            <img 
-    class="img-fluid lazy" 
-    alt="" 
-    src="/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg" 
-    title="" 
-    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg 1240w"
-/>
-          </a>
-        </div>
-        <div class="post-details">
-          <div class="post-meta d-flex justify-content-between">
-            <div class="date">03 October 2017</div>
-            <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
-            <h4>Set-up Authentication System in Django in just 10 minutes</h4>
-            <div class="catalogue-line" style="padding-bottom:5px;"></div>
-            <p class="text-muted">In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps....</p>
         </div></a>
       </div>
       

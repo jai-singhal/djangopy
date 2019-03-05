@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- COMMON TAGS -->
+	<title>Dynamically filter queryset with AJAX and DRF | DjangoPy</title>
+	<!-- Search Engine -->
+	<meta property="description" content="In this post we will learn, how to filter the queryset using AJAX and DRF">
+	<meta property="image" content="https://djangopy.org/static/images/footer_logo.png">
+	<!-- Schema.org for Google -->
+
+	<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+	<meta property="og:title" content="Dynamically filter queryset with AJAX and DRF | DjangoPy">
+	<meta property="og:description" content="In this post we will learn, how to filter the queryset using AJAX and DRF">
+	<meta property="og:image" content="https://djangopy.org/img/dynamically-filter-queryset-with-ajax-and-drf/cover.jpg">
+
+	<meta property="og:url" content="https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf">
+	<meta property="og:site_name" content="DjangoPy">
+	<meta property="og:locale" content="en_US">
+	<meta property="fb:admins" content="https://www.facebook.com/djangopy.org">
+	<meta property="og:type" content="article">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary">
+	<meta property="twitter:title" content="Dynamically filter queryset with AJAX and DRF | DjangoPy">
+	<meta property="twitter:description" content="In this post we will learn, how to filter the queryset using AJAX and DRF">
+	<meta property="twitter:site" content="@DjangoPy_Admin">
+	<meta property="twitter:creator" content="@DjangoPy_Admin">
+	<meta property="twitter:image:src" content="https://djangopy.org/img/dynamically-filter-queryset-with-ajax-and-drf/cover.jpg">
+	<!-- Twitter - Article -->
+
+	<!-- Open Graph - Article -->
+	<meta property="article:section" content="learn">
+	<meta property="article:published_time" content="2019-03-05 20:34:07 +0530">
+	<meta properry="article:author" content="https://www.facebook.com/djangopy.org">
+	<meta property="article:modified_time" content="2019-03-05 20:34:07 +0530">
+	
+	<meta property="article:tag" content="ajax"/>
+	
+	<meta property="article:tag" content="dynamically-filter-queryset-with-ajax-and-drf"/>
+	
+	<meta property="article:tag" content="django"/>
+	
+	<meta property="article:tag" content="django-rest-framework"/>
+	
+
+	<meta property="revisit-after" content="2 days" />
+	<meta property="distribution" content="web" />
+	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/"/>
+	<meta name="description" content="In this post we will learn, how to filter the queryset using AJAX and DRF"/>
+
+	<link rel="canonical" href="https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf">
+	<link rel="alternate" type="application/rss+xml" title="DjangoPy" href="https://djangopy.org/feed.xml">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- Font Awesome CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel = "stylesheet" href="/css/github.css">
+	<!-- Fancybox-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
+	<!-- theme stylesheet-->
+	<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
+	<!-- Custom stylesheet - for your changes-->
+	<link rel="stylesheet" href="/css/custom.css">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="/img/favicon1.ico">
+	<!-- Javascript files-->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+	<script src="/js/front.js"></script>
+	<script type="text/javascript" src = "/js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+	<script src="/js/post.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+	<script>
+	window.addEventListener("load", function(){
+	window.cookieconsent.initialise({
+	  "palette": {
+		"popup": {
+		  "background": "#241f1f"
+		},
+		"button": {
+		  "background": "#ededed"
+		}
+	  },
+	  "theme": "classic"
+	})});
+	</script>
+
+
+	<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+     ga('create', 'UA-98271390-1', 'auto');
+     ga('send', 'pageview');
+   </script>
+
+</head>
+
+  <body>
+    <header class="header">
+  <!-- Main Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-toggleable-lg">
+    <div class="search-area">
+      <div class="search-area-inner d-flex justify-content-center">
+        <div class="close-btn"><i class="fa fa-2x fa-times"></i></div>
+        <div class="row d-flex justify-content-center" style="margin-top:15%;">
+          <div class="col-md-8">
+            <form action="#" id = "search_form">
+              <div class="form-group">
+                <input type="search" name="search" id="search" placeholder="What are you looking for?" autocomplete="off">
+                <button type="submit" class="submit"><i class="fa fa-search"></i></button>
+              </div>
+              <div id = "search_results">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Navbar Brand -->
+      <div class="navbar-header d-flex align-items-center justify-content-between">
+        <!-- Navbar Brand --><a href="/" class="navbar-brand"><img src = "/img/djangopy_logo8.png" id = "logo"></a>
+        <!-- Toggle Button-->
+        <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
+      </div>
+      <!-- Navbar Menu -->
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="/" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item"><a href="/about" class="nav-link ">About</a>
+          </li>
+          <li class="nav-item"><a href="/" class="nav-link ">Posts</a>
+          </li>
+          <li class="nav-item"><a href="/contact" class="nav-link ">Contact</a>
+          </li>
+        </ul>
+        <div class="navbar-text"><a href="#" class="search-btn" id = "search_button"><i class="fa fa-search"></i></a></div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <br>
+<div class="post">
+    <div class="container">
+        <div class="row justify-content-md-center">
+
+            <div class="col-md-9">
+                <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/dynamically-filter-queryset-with-ajax-and-drf/cover.jpg" 
+    title="" 
+/>
+                <br><br>
+                <h1 class="post-title" style="margin-top:15px;">Dynamically filter queryset with AJAX and DRF</h1>
+                <h6 class="post-spans">Posted: 05 March 2019 | Post By: Jai Singhal | <span
+                        id="ga-page-view" ga-page-url=/learn/dynamically-filter-queryset-with-ajax-and-drf></span> <i class="fa fa-eye"></i> | <i class="fa fa-clock"></i>
+                    26 min read | <a style="text-decoration: none;" href="/learn/dynamically-filter-queryset-with-ajax-and-drf.html#disqus_thread"
+                        data-disqus-identifier="/learn/dynamically-filter-queryset-with-ajax-and-drf"><i class="fa fa-comment"></i></a> </h6>
+                <br>
+                <hr /><br>
+                <div class="post-content"> <h2 id="introduction">Introduction</h2>
+
+<p>Filtering queryset dynamically is something that is very common in use. In this post, we will learn how to dynamically filter the queryset depending on the several filters on top of each other. If you do not have hands-on AJAX, then you should definitely check out this <strong><a href="https:djangopy.org/learn/step-up-guide-to-implement-ajax-in-django">post</a></strong></p>
+
+<p>This post contains a lot of javascript, don’t panic just bear with me, I will explain every aspect of it. As usual, the complete project code is available on Github. You can find the link at the end of this post.</p>
+
+<p>The promo GIF of what we will be building is shown below.
+<br />
+<br /></p>
+
+<p><img src="/img/dynamically-filter-queryset-with-ajax-and-drf/django_filter.gif" alt="Post Promo GIF" /></p>
+
+<p><br />
+<br />
+<br /></p>
+
+<h2 id="initial-setup">Initial Setup</h2>
+
+<p>There is some initial setup that has to be done before starting the real project.</p>
+
+<p>The directory structure of the following project would be like this, we would need to create some new files for this project.</p>
+
+<h4 id="directory-structure">Directory Structure</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── dynamic_filter
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── static
+│   └── js
+│       └── wine.js
+├── wine
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   ├── models.py
+│   ├── pagination.py
+│   ├── serializers.py
+│   ├── templates
+│   │   ├── base.html
+│   │   └── wine.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── loaddata.py
+├── manage.py
+├── db.sqlite3
+└── wine.csv
+</code></pre></div></div>
+<p><br />
+<br /></p>
+
+<p>It is good to have on parent template i.e., <strong>base.html</strong> that can be extended in other templates. If already have, ignore this step. We will be using Bootstrap4 as our CSS framework and jQuery library as always to remove the burden of writing CSS and JS from scratch.</p>
+
+<div class="code-head text-center">templates/base.html</div>
+
+<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">head</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">style</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p><br />
+<br /></p>
+
+<h4 id="setting-static-path">Setting static path</h4>
+<p>We will be going to write a lot of Javascript for this project, so it’s better you create a static folder for putting all CSS/js in the same folder. For that, you have to create a new folder name <strong>static</strong> and in there create <strong>js</strong> folder(just like shown in <strong>directory structure</strong>). Also, list the path in your <strong>settings.py</strong>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">'/static/'</span>
+<span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">"static"</span><span class="p">),</span>
+<span class="p">]</span></code></pre></figure>
+
+<p><br />
+<br /></p>
+
+<h4 id="installing-drf">Installing DRF</h4>
+
+<p>We gonna need Django rest framework for this project, so you need to install it</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>pip <span class="nb">install </span>django_rest_framework</code></pre></figure>
+
+<p>And put the rest_framework in your <strong>INSTALLED_APPS</strong> in <strong>settings.py</strong></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s">"rest_framework"</span><span class="p">,</span>
+<span class="p">]</span></code></pre></figure>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="feed-the-data">Feed the data</h2>
+<p>Since we need a lot of data to get better results after filtering, I suggest to download the data, I have found a dataset on <a href="https://kaggle.com">Kaggle</a>. You can download the data from <strong><a href="/data/dynamically-filter-queryset-with-ajax-and-drf/wine.rar">here</a></strong>. After downloading it, copy it to the Django main directory(where manage.py lives)</p>
+
+<p>Create new app named <strong>wine</strong></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">wine</span></code></pre></figure>
+
+<p>Put the app name in <strong>settings.py</strong> file.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s">"wine"</span><span class="p">,</span>
+<span class="p">]</span></code></pre></figure>
+
+<hr />
+
+<p><br /></p>
+
+<p>Create a table for storing the data. Open up your wine/models.py file and create the models with the following columns.</p>
+
+<div class="code-head text-center">wine/models.py</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Wine</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+	<span class="n">country</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+	<span class="n">designation</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+	<span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">null</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+	<span class="n">points</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+	<span class="n">price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+	<span class="n">province</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+	<span class="n">region</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+	<span class="n">taster_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">120</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+	<span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+	<span class="n">variety</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+	<span class="n">winery</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span></code></pre></figure>
+
+<p><br /></p>
+
+<p>Migrate this table to database.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py makemigrations</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py migrate</code></pre></figure>
+
+<p>Now that you have downloaded the data and created a structure to store it, let us import the data from the downloaded CSV. Note that you have copied the <strong>wine.csv</strong> file in the main directory(where manage.py lives). For any confusion following the directory structure as shown above.</p>
+
+<p>Open the Django shell</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py shell</code></pre></figure>
+
+<p><br />
+Execute this script to import all the data from the <strong>wine.csv</strong> file, It will take almost 1-2 minute to import the data of total <strong>6500</strong> rows of entries.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">from wine.models import Wine
+import csv
+
+wine_csv <span class="o">=</span> open<span class="o">(</span><span class="s1">'wine.csv'</span>, <span class="s1">'r'</span>, encoding <span class="o">=</span> <span class="s2">"utf-8"</span><span class="o">)</span> 
+reader <span class="o">=</span> csv.reader<span class="o">(</span>wine_csv<span class="o">)</span>
+headers <span class="o">=</span> next<span class="o">(</span>reader, None<span class="o">)[</span>1:]
+
+<span class="k">for </span>row <span class="k">in </span>reader:  
+   wine_dict <span class="o">=</span> <span class="o">{}</span>
+   <span class="k">for </span>h, val <span class="k">in </span>zip<span class="o">(</span>headers, row[1:]<span class="o">)</span>:
+      wine_dict[h] <span class="o">=</span> val
+   wine <span class="o">=</span> Wine.objects.create<span class="o">(</span><span class="k">**</span>wine_dict<span class="o">)</span>
+
+wine_csv.close<span class="o">()</span>  </code></pre></figure>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="creating-rest-api">Creating REST API</h2>
+
+<p>Let’s now write the business logic of our problem, we will first begin with our serializers, serializers in REST framework work very similarly to Django’s Form and ModelForm classes. If you are new with Django Rest framework, you can brush up some basic from <strong><a href="https://www.django-rest-framework.org/">here</a>.</strong></p>
+
+<div class="code-head text-center">wine/serializers.py</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Wine</span>
+
+<span class="k">class</span> <span class="nc">WineSerializers</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+	<span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+	    <span class="n">model</span> <span class="o">=</span> <span class="n">Wine</span>
+	    <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'description'</span><span class="p">,</span> <span class="s">'designation'</span><span class="p">,</span> <span class="s">'country'</span><span class="p">,</span> <span class="s">"taster_name"</span><span class="p">,</span> <span class="s">"title"</span><span class="p">,</span>
+	    		<span class="s">'points'</span><span class="p">,</span> <span class="s">'price'</span><span class="p">,</span> <span class="s">'province'</span><span class="p">,</span> <span class="s">'region'</span><span class="p">,</span> <span class="s">'variety'</span><span class="p">,</span> <span class="s">'winery'</span><span class="p">)</span></code></pre></figure>
+
+<p><br /></p>
+
+<p>This step is not necessary, but it’s good to know about it. This will customize the default pagination class which we will be using to make our REST API.</p>
+<div class="code-head text-center">wine/pagination.py</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">pagination</span>
+<span class="k">class</span> <span class="nc">StandardResultsSetPagination</span><span class="p">(</span><span class="n">pagination</span><span class="o">.</span><span class="n">PageNumberPagination</span><span class="p">):</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="mi">7</span> <span class="c"># change the records per page from here
+</span>
+    <span class="n">page_size_query_param</span> <span class="o">=</span> <span class="s">'page_size'</span></code></pre></figure>
+
+<hr />
+
+<p><br /></p>
+
+<h3 id="creating-views">Creating Views</h3>
+<p>Now let’s write our views of this project. It includes two important things that need to be discussed.</p>
+
+<h5 id="1-winelisting">1. WineListing</h5>
+<p>This class-based view inherits the <strong>ListAPIView</strong>, which takes the pagination class as we have created above, and also the serializers class.</p>
+
+<p>In this class, we need to override the <strong>get_queryset</strong> method which will return the query set.</p>
+
+<p>In the <strong>get_queryset</strong> method, we will filter the queryset on the basis of query parameters, which we are getting from frontend via AJAX call. For whatever filter, it is applied by the user, it will check in each <strong>if condition</strong>, and if the given filter is not applied, it will not filter with that particular filter. Likewise, it will further apply filters based on whatever other more filters are applied. After it completely gets refined with all the filters, we simply return the filtered query set.
+<br /></p>
+<h5 id="2-ajax-get-methods">2. AJAX GET methods</h5>
+<p>All other functional based views help us to get the values to fill in the options of the select box. It is much similar to what we have talked in our previous <a href="https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django">post</a>. All these functions are kind similar to each other.</p>
+
+<div class="code-head text-center">wine/views.py</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">rest_framework.generics</span> <span class="kn">import</span> <span class="n">ListAPIView</span>
+<span class="kn">from</span> <span class="nn">.serializers</span> <span class="kn">import</span> <span class="n">WineSerializers</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Wine</span>
+<span class="kn">from</span> <span class="nn">.pagination</span> <span class="kn">import</span> <span class="n">StandardResultsSetPagination</span>
+
+<span class="k">def</span> <span class="nf">WineList</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+	<span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"wine.html"</span><span class="p">,</span> <span class="p">{})</span>
+
+<span class="k">class</span> <span class="nc">WineListing</span><span class="p">(</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="c"># set the pagination and serializer class
+</span>
+	<span class="n">pagination_class</span> <span class="o">=</span> <span class="n">StandardResultsSetPagination</span>
+	<span class="n">serializer_class</span> <span class="o">=</span> <span class="n">WineSerializers</span>
+
+	<span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># filter the queryset based on the filters applied
+</span>
+		<span class="n">queryList</span> <span class="o">=</span> <span class="n">Wine</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span>
+		<span class="n">country</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'country'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+		<span class="n">variety</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'variety'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+		<span class="n">province</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'province'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+		<span class="n">region</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'region'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+		<span class="n">sort_by</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'sort_by'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">country</span><span class="p">:</span>
+		    <span class="n">queryList</span> <span class="o">=</span> <span class="n">queryList</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">country</span> <span class="o">=</span> <span class="n">country</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">variety</span><span class="p">:</span>
+		    <span class="n">queryList</span> <span class="o">=</span> <span class="n">queryList</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">variety</span> <span class="o">=</span> <span class="n">variety</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">province</span><span class="p">:</span>
+		    <span class="n">queryList</span> <span class="o">=</span> <span class="n">queryList</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">province</span> <span class="o">=</span> <span class="n">province</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">region</span><span class="p">:</span>
+		    <span class="n">queryList</span> <span class="o">=</span> <span class="n">queryList</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">region</span> <span class="o">=</span> <span class="n">region</span><span class="p">)</span>    
+
+        <span class="c"># sort it if applied on based on price/points
+</span>
+		<span class="k">if</span> <span class="n">sort_by</span> <span class="o">==</span> <span class="s">"price"</span><span class="p">:</span>
+		    <span class="n">queryList</span> <span class="o">=</span> <span class="n">queryList</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">"price"</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="n">sort_by</span> <span class="o">==</span> <span class="s">"points"</span><span class="p">:</span>
+		    <span class="n">queryList</span> <span class="o">=</span> <span class="n">queryList</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">"points"</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">queryList</span>
+
+
+<span class="k">def</span> <span class="nf">getCountries</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c"># get all the countreis from the database excluding 
+</span>
+    <span class="c"># null and blank values
+</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">"GET"</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
+        <span class="n">countries</span> <span class="o">=</span> <span class="n">Wine</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">country__isnull</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span>\
+            <span class="n">exclude</span><span class="p">(</span><span class="n">country__exact</span><span class="o">=</span><span class="s">''</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'country'</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s">'country'</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+        <span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">countries</span><span class="p">)]</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"countries"</span><span class="p">:</span> <span class="n">countries</span><span class="p">,</span> 
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">getvariety</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">"GET"</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
+        <span class="c"># get all the varities from the database excluding 
+</span>
+        <span class="c"># null and blank values
+</span>
+        <span class="n">variety</span> <span class="o">=</span> <span class="n">Wine</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">variety__isnull</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span>\
+        	<span class="n">exclude</span><span class="p">(</span><span class="n">variety__exact</span><span class="o">=</span><span class="s">''</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'variety'</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s">'variety'</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+        <span class="n">variety</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">variety</span><span class="p">)]</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"variety"</span><span class="p">:</span> <span class="n">variety</span><span class="p">,</span> 
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">getProvince</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c"># get the provinces for given country from the 
+</span>
+    <span class="c"># database excluding null and blank values
+</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">"GET"</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
+        <span class="n">country</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'country'</span><span class="p">)</span>
+        <span class="n">province</span> <span class="o">=</span> <span class="n">Wine</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">country</span> <span class="o">=</span> <span class="n">country</span><span class="p">)</span><span class="o">.</span>\
+            	<span class="n">exclude</span><span class="p">(</span><span class="n">province__isnull</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">province__exact</span><span class="o">=</span><span class="s">''</span><span class="p">)</span><span class="o">.</span>\
+            	<span class="n">order_by</span><span class="p">(</span><span class="s">'province'</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s">'province'</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+        <span class="n">province</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">province</span><span class="p">)]</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"province"</span><span class="p">:</span> <span class="n">province</span><span class="p">,</span> 
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">getRegion</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c"># get the regions for given province from the 
+</span>
+    <span class="c"># database excluding null and blank values
+</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">"GET"</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
+        <span class="n">province</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'province'</span><span class="p">)</span>
+        <span class="n">region</span> <span class="o">=</span> <span class="n">Wine</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">province</span> <span class="o">=</span> <span class="n">province</span><span class="p">)</span><span class="o">.</span>\
+                <span class="n">exclude</span><span class="p">(</span><span class="n">region__isnull</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">region__exact</span><span class="o">=</span><span class="s">''</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s">'region'</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+        <span class="n">region</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">region</span><span class="p">)]</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"region"</span><span class="p">:</span> <span class="n">region</span><span class="p">,</span> 
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span></code></pre></figure>
+
+<hr />
+
+<p><br /></p>
+
+<p>For all the FBV and CBV, which we have created just above, let’s now create routes for each of these views. Let’s first include the app url into main <strong>urls.py</strong> file, this will help to confine all the wine(app) url into a separate file. Note that we have given the namespace to the wine url.</p>
+
+<div class="code-head text-center">urls.py</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+	<span class="n">url</span><span class="p">(</span><span class="s">r"^wine/"</span><span class="p">,</span> <span class="n">include</span><span class="p">((</span><span class="s">"wine.urls"</span><span class="p">,</span> <span class="s">"wine"</span><span class="p">),</span> <span class="n">namespace</span> <span class="o">=</span> <span class="s">"wine"</span><span class="p">))</span>
+<span class="p">]</span></code></pre></figure>
+
+<p><br /></p>
+
+<p>Create a new file named <strong>urls.py</strong> in wine app, which will contains the url path of all the view function and class based views of wine app, which is being discussed above. Note that we are assigning name to every essential url paths, these names are going to be used as reverse url in templates.</p>
+<div class="code-head text-center">wine/urls.py</div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">wine.views</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">WineList</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">"wine_listing/"</span><span class="p">,</span> <span class="n">WineListing</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'listing'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">"ajax/countries/"</span><span class="p">,</span> <span class="n">getCountries</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_countries'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">"ajax/variety/"</span><span class="p">,</span> <span class="n">getvariety</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_varieties'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">"ajax/province/"</span><span class="p">,</span> <span class="n">getProvince</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_provinces'</span><span class="p">),</span>
+	<span class="n">path</span><span class="p">(</span><span class="s">"ajax/region/"</span><span class="p">,</span> <span class="n">getRegion</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_regions'</span><span class="p">),</span>
+<span class="p">]</span></code></pre></figure>
+
+<p><br /></p>
+<hr />
+
+<p><br /></p>
+
+<h2 id="creating-front-end">Creating Front-end</h2>
+
+<p>Now that backend, is ready now, let’s move to frontend part. The wine template extends from <strong>base</strong> template containing the select form inputs, and table structure with the table headers.</p>
+
+<p>It is important to note that every select input contains attribute of url, which is nothing but the reverse url template tag containing the name of the url, Django matches the url name and return an absolute path reference (a URL without the domain name) matching a given view. You can learn more about this from <a href="https://docs.djangoproject.com/en/2.1/ref/templates/builtins/#url">here.</a></p>
+
+<div class="code-head text-center">templates/wine.html</div>
+
+<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base.html"</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="nv">load</span> <span class="nv">staticfiles</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">style</span> <span class="cp">%}</span>
+    <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nc">.properties_table</span><span class="p">{</span>
+       <span class="nl">min-height</span><span class="p">:</span> <span class="m">540px</span><span class="p">;</span>
+       <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"site_filter"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-2 col-2"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"country"</span><span class="nt">&gt;</span>Country<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"countries"</span> 
+                            <span class="na">url =</span><span class="err"> </span><span class="s">"</span><span class="cp">{%</span><span class="nv">url</span> <span class="s1">'wine:get_countries'</span> <span class="cp">%}</span><span class="s">"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;/select&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-2 col-2"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"Variety"</span><span class="nt">&gt;</span>Variety<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"variety"</span> 
+                            <span class="na">url =</span><span class="err"> </span><span class="s">"</span><span class="cp">{%</span><span class="nv">url</span> <span class="s1">'wine:get_varieties'</span> <span class="cp">%}</span><span class="s">"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;/select&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-2 col-2"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"Province"</span><span class="nt">&gt;</span>Province<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"province"</span> 
+                            <span class="na">url =</span><span class="err"> </span><span class="s">"</span><span class="cp">{%</span><span class="nv">url</span> <span class="s1">'wine:get_provinces'</span> <span class="cp">%}</span><span class="s">"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">'all'</span> <span class="na">selected</span><span class="nt">&gt;</span>All Provinces<span class="nt">&lt;/option&gt;</span>
+                        <span class="nt">&lt;/select&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-2 col-2"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"Region"</span><span class="nt">&gt;</span>Region<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"region"</span> <span class="na">url =</span><span class="err"> </span><span class="s">"</span><span class="cp">{%</span><span class="nv">url</span> <span class="s1">'wine:get_regions'</span> <span class="cp">%}</span><span class="s">"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">'all'</span> <span class="na">selected</span><span class="nt">&gt;</span>All Regions<span class="nt">&lt;/option&gt;</span>
+                        <span class="nt">&lt;/select&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-2 col-2"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"Province"</span><span class="nt">&gt;</span>Sort By<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"sort_by"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;option</span> <span class="na">selected=</span><span class="s">"true"</span>
+                            <span class="na">disabled=</span><span class="s">"disabled"</span> <span class="na">value =</span><span class="err"> </span><span class="s">"none"</span><span class="nt">&gt;</span>Choose option<span class="nt">&lt;/option&gt;</span>
+                            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">'price'</span><span class="nt">&gt;</span>Price<span class="nt">&lt;/option&gt;</span>
+                            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">'points'</span><span class="nt">&gt;</span>Points<span class="nt">&lt;/option&gt;</span>
+                        <span class="nt">&lt;/select&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-2 col-2"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row justify-content-center align-self-center"</span>
+                        <span class="na">style=</span><span class="s">"color:white; margin-top:30px;"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-secondary"</span> <span class="na">id=</span><span class="s">"display_all"</span><span class="nt">&gt;</span>Display all<span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;section&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">id =</span><span class="err"> </span><span class="s">"result-count"</span> <span class="na">class=</span><span class="s">"text-right"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">'font-weight-bold'</span><span class="nt">&gt;&lt;/span&gt;</span> results found.
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row properties_table justify-content-center"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">id =</span><span class="err"> </span><span class="s">"no_results"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;h5&gt;</span>No results found<span class="nt">&lt;/h5&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered table-responsive table-hover table-striped"</span>
+                 <span class="na">id=</span><span class="s">"list_data"</span> <span class="na">data-toggle=</span><span class="s">"table"</span> <span class="na">url =</span><span class="err"> </span><span class="s">"</span><span class="cp">{%</span> <span class="nv">url</span> <span class="s1">'wine:listing'</span> <span class="cp">%}</span><span class="s">"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;thead&gt;</span>
+                        <span class="nt">&lt;tr&gt;</span>
+                            <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"country"</span><span class="nt">&gt;</span>Country<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"taster_name"</span><span class="nt">&gt;</span>Taster name<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"title"</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"description"</span><span class="nt">&gt;</span>Description<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"designation"</span><span class="nt">&gt;</span>Designation<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"points"</span><span class="nt">&gt;</span>Points<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"price"</span><span class="nt">&gt;</span>Price<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"province"</span><span class="nt">&gt;</span>Province<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"region"</span><span class="nt">&gt;</span>Region<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"winery"</span><span class="nt">&gt;</span>Winery<span class="nt">&lt;/th&gt;</span>
+                            <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"variety"</span><span class="nt">&gt;</span>Variety<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                    <span class="nt">&lt;/thead&gt;</span>
+                    <span class="nt">&lt;tbody</span> <span class="na">id=</span><span class="s">"listing"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;/tbody&gt;</span>
+                <span class="nt">&lt;/table&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row justify-content-center"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;nav</span> <span class="na">aria-label=</span><span class="s">"navigation"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pagination"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary page-link"</span> <span class="na">id=</span><span class="s">"previous"</span><span class="nt">&gt;</span>Previous<span class="nt">&lt;/button&gt;</span>
+                        <span class="nt">&lt;/li&gt;</span>
+                        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item pull-right"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary page-link"</span> <span class="na">id=</span><span class="s">"next"</span><span class="nt">&gt;</span>Next<span class="nt">&lt;/button&gt;</span>
+                        <span class="nt">&lt;/li&gt;</span>
+                    <span class="nt">&lt;/ul&gt;</span>
+                <span class="nt">&lt;/nav&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/section&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{%</span> <span class="nv">static</span> <span class="s1">'js/wine.js'</span> <span class="cp">%}</span><span class="s">"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span></code></pre></figure>
+
+<p><br /></p>
+<hr />
+
+<p><br /></p>
+
+<h3 id="creating-winejs">Creating Wine.js</h3>
+<p>Moving on the most challenging part of this project, I have tried to provide the comments to each and every lines and function created in the below <strong>JS</strong> snippet. If you are able to understand for a single filter, then it is easy for you to understand for other filters too, because they have kinda similar js code.</p>
+
+<div class="code-head text-center">static/js/wine.js</div>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">send_data</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// reset all parameters on page load
+</span>
+    <span class="nx">resetFilters</span><span class="p">();</span>
+    <span class="c1">// bring all the data without any filters
+</span>
+    <span class="nx">getAPIData</span><span class="p">();</span>
+    <span class="c1">// get all countries from database via 
+</span>
+    <span class="c1">// AJAX call into country select options
+</span>
+    <span class="nx">getCountries</span><span class="p">();</span>
+    <span class="c1">// get all varities from database via 
+</span>
+    <span class="c1">// AJAX call into variert select options
+</span>
+    <span class="nx">getvariety</span><span class="p">();</span>
+
+    <span class="c1">// on selecting the country option
+</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#countries'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'change'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// since province and region is dependent 
+</span>
+        <span class="c1">// on country select, emty all the options from select input
+</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#province"</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">"all"</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#region"</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">"all"</span><span class="p">);</span>
+        <span class="nx">send_data</span><span class="p">[</span><span class="s1">'province'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+        <span class="nx">send_data</span><span class="p">[</span><span class="s1">'region'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+        <span class="c1">// update the selected country
+</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">==</span> <span class="s2">"all"</span><span class="p">)</span>
+            <span class="nx">send_data</span><span class="p">[</span><span class="s1">'country'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="nx">send_data</span><span class="p">[</span><span class="s1">'country'</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+
+        <span class="c1">//get province of selected country
+</span>
+        <span class="nx">getProvince</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+        <span class="c1">// get api data of updated filters
+</span>
+        <span class="nx">getAPIData</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="c1">// on filtering the variety input
+</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#variety'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'change'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// get the api data of updated variety
+</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">==</span> <span class="s2">"all"</span><span class="p">)</span>
+            <span class="nx">send_data</span><span class="p">[</span><span class="s1">'variety'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="nx">send_data</span><span class="p">[</span><span class="s1">'variety'</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+        <span class="nx">getAPIData</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="c1">// on filtering the province input
+</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#province'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'change'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// clear the region input 
+</span>
+        <span class="c1">// since it is dependent on province input
+</span>
+        <span class="nx">send_data</span><span class="p">[</span><span class="s1">'region'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'#region'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">"all"</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">==</span> <span class="s2">"all"</span><span class="p">)</span>
+            <span class="nx">send_data</span><span class="p">[</span><span class="s1">'province'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="nx">send_data</span><span class="p">[</span><span class="s1">'province'</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+        <span class="nx">getRegion</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+        <span class="nx">getAPIData</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="c1">// on filtering the region input
+</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#region'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'change'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">==</span> <span class="s2">"all"</span><span class="p">)</span>
+            <span class="nx">send_data</span><span class="p">[</span><span class="s1">'region'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="nx">send_data</span><span class="p">[</span><span class="s1">'region'</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+        <span class="nx">getAPIData</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="c1">// sort the data according to price/points
+</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#sort_by'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'change'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">send_data</span><span class="p">[</span><span class="s1">'sort_by'</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+        <span class="nx">getAPIData</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="c1">// display the results after reseting the filters
+</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"#display_all"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">resetFilters</span><span class="p">();</span>
+        <span class="nx">getAPIData</span><span class="p">();</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+
+
+<span class="cm">/**
+    Function that resets all the filters   
+**/</span>
+<span class="kd">function</span> <span class="nx">resetFilters</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"#countries"</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">"all"</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"#province"</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">"all"</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"#region"</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">"all"</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"#variety"</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">"all"</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"#sort_by"</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">"none"</span><span class="p">);</span>
+
+    <span class="c1">//clearing up the province and region select box
+</span>
+    <span class="nx">getProvince</span><span class="p">(</span><span class="s2">"all"</span><span class="p">);</span>
+    <span class="nx">getRegion</span><span class="p">(</span><span class="s2">"all"</span><span class="p">);</span>
+
+    <span class="nx">send_data</span><span class="p">[</span><span class="s1">'country'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="nx">send_data</span><span class="p">[</span><span class="s1">'province'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="nx">send_data</span><span class="p">[</span><span class="s1">'region'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="nx">send_data</span><span class="p">[</span><span class="s1">'variety'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="nx">send_data</span><span class="p">[</span><span class="s2">"sort_by"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="nx">send_data</span><span class="p">[</span><span class="s1">'format'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'json'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**.
+    Utility function to showcase the api data 
+    we got from backend to the table content
+**/</span>
+<span class="kd">function</span> <span class="nx">putTableData</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// creating table row for each result and
+</span>
+    <span class="c1">// pushing to the html cntent of table body of listing table
+</span>
+    <span class="kd">let</span> <span class="nx">row</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="s2">"results"</span><span class="p">].</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#no_results"</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#list_data"</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#listing"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">""</span><span class="p">);</span>  
+        <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="s2">"results"</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">row</span> <span class="o">=</span> <span class="s2">"&lt;tr&gt; &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">country</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;"</span> <span class="o">+</span>
+            <span class="s2">"&lt;td&gt;"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">taster_name</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;"</span> <span class="o">+</span>
+            <span class="s2">"&lt;td title=</span><span class="se">\"</span><span class="s2">"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">title</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">&gt;"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">title</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"..."</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;"</span> <span class="o">+</span>
+                <span class="s2">"&lt;td title=</span><span class="se">\"</span><span class="s2">"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">description</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">&gt;"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">description</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"..."</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;"</span> <span class="o">+</span>
+                <span class="s2">"&lt;td&gt;"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">designation</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;"</span> <span class="o">+</span>
+                <span class="s2">"&lt;td&gt;"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">points</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;"</span> <span class="o">+</span>
+                <span class="s2">"&lt;td&gt;"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">price</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;"</span> <span class="o">+</span>
+                <span class="s2">"&lt;td&gt;"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">province</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;"</span> <span class="o">+</span>
+                <span class="s2">"&lt;td&gt;"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">region</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;"</span> <span class="o">+</span>
+                <span class="s2">"&lt;td&gt;"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">winery</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;"</span> <span class="o">+</span>
+                <span class="s2">"&lt;td&gt;"</span> <span class="o">+</span> <span class="nx">b</span><span class="p">.</span><span class="nx">variety</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#listing"</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">row</span><span class="p">);</span>   
+        <span class="p">});</span>
+    <span class="p">}</span>
+    <span class="k">else</span><span class="p">{</span>
+        <span class="c1">// if no result found for the given filter, then display no result
+</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#no_results h5"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">"No results found"</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#list_data"</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#no_results"</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="c1">// setting previous and next page url for the given result
+</span>
+    <span class="kd">let</span> <span class="nx">prev_url</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="s2">"previous"</span><span class="p">];</span>
+    <span class="kd">let</span> <span class="nx">next_url</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="s2">"next"</span><span class="p">];</span>
+    <span class="c1">// disabling-enabling button depending on existence of next/prev page. 
+</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">prev_url</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#previous"</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">"disabled"</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#previous"</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">'disabled'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#previous"</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">"disabled"</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#previous"</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">'disabled'</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">next_url</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#next"</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">"disabled"</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#next"</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">'disabled'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#next"</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">"disabled"</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#next"</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">'disabled'</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// setting the url
+</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"#previous"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"url"</span><span class="p">,</span> <span class="nx">result</span><span class="p">[</span><span class="s2">"previous"</span><span class="p">]);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"#next"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"url"</span><span class="p">,</span> <span class="nx">result</span><span class="p">[</span><span class="s2">"next"</span><span class="p">]);</span>
+    <span class="c1">// displaying result count
+</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"#result-count span"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="s2">"count"</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getAPIData</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#list_data'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"url"</span><span class="p">)</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="nx">send_data</span><span class="p">,</span>
+        <span class="na">beforeSend</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#no_results h5"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">"Loading data..."</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">putTableData</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#no_results h5"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">"Something went wrong"</span><span class="p">);</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#list_data"</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="s2">"#next"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// load the next page data and 
+</span>
+    <span class="c1">// put the result to the table body
+</span>
+    <span class="c1">// by making ajax call to next available url
+</span>
+    <span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"url"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">url</span><span class="p">)</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">'all'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">'all'</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">putTableData</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">})</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="s2">"#previous"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// load the previous page data and 
+</span>
+    <span class="c1">// put the result to the table body 
+</span>
+    <span class="c1">// by making ajax call to previous available url
+</span>
+    <span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"url"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">url</span><span class="p">)</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">'all'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">'all'</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">putTableData</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">})</span>
+
+<span class="kd">function</span> <span class="nx">getCountries</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// fill the options of countries by making ajax call
+</span>
+    <span class="c1">// obtain the url from the countries select input attribute
+</span>
+    <span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">"#countries"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"url"</span><span class="p">);</span>
+
+    <span class="c1">// makes request to getCountries(request) method in views
+</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="nx">countries_option</span> <span class="o">=</span> <span class="s2">"&lt;option value='all' selected&gt;All Countries&lt;/option&gt;"</span><span class="p">;</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="s2">"countries"</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">countries_option</span> <span class="o">+=</span> <span class="s2">"&lt;option&gt;"</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="s2">"&lt;/option&gt;"</span>
+            <span class="p">});</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#countries"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">countries_option</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getvariety</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// fill the options of varities by making ajax call
+</span>
+    <span class="c1">// obtain the url from the varities select input attribute
+</span>
+    <span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">"#variety"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"url"</span><span class="p">);</span>
+    <span class="c1">// makes request to getvariety(request) method in views
+</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">winery_options</span> <span class="o">=</span> <span class="s2">"&lt;option value='all' selected&gt;All Varieties&lt;/option&gt;"</span><span class="p">;</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="s2">"variety"</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">winery_options</span> <span class="o">+=</span> <span class="s2">"&lt;option&gt;"</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="s2">"&lt;/option&gt;"</span>
+            <span class="p">});</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#variety"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">winery_options</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getProvince</span><span class="p">(</span><span class="nx">country</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// fill the options of provinces by making ajax call
+</span>
+    <span class="c1">// obtain the url from the provinces select input attribute
+</span>
+    <span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">"#province"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"url"</span><span class="p">);</span>
+    <span class="c1">// makes request to getProvince(request) method in views
+</span>
+    <span class="kd">let</span> <span class="nx">province_option</span> <span class="o">=</span> <span class="s2">"&lt;option value='all' selected&gt;All Provinces&lt;/option&gt;"</span><span class="p">;</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"country"</span><span class="p">:</span> <span class="nx">country</span>
+        <span class="p">},</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="s2">"province"</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">province_option</span> <span class="o">+=</span> <span class="s2">"&lt;option&gt;"</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="s2">"&lt;/option&gt;"</span>
+            <span class="p">});</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#province"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">province_option</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getRegion</span><span class="p">(</span><span class="nx">province</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// fill the options of region by making ajax call
+</span>
+    <span class="c1">// obtain the url from the region select input attribute
+</span>
+    <span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">"#region"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"url"</span><span class="p">);</span>
+    <span class="c1">// makes request to getRegion(request) method in views
+</span>
+    <span class="kd">let</span> <span class="nx">region_option</span> <span class="o">=</span> <span class="s2">"&lt;option value='all' selected&gt;All regions&lt;/option&gt;"</span><span class="p">;</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"province"</span><span class="p">:</span> <span class="nx">province</span>
+        <span class="p">},</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">response</span><span class="p">[</span><span class="s2">"region"</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">region_option</span> <span class="o">+=</span> <span class="s2">"&lt;option&gt;"</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="s2">"&lt;/option&gt;"</span>
+            <span class="p">});</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#region"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">region_option</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span></code></pre></figure>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="final-words">Final Words</h2>
+<p>AJAX is the best way to do asynchronous tasks on a small scale. However, if you want to perform asynchronous tasks at a very large scale, you can opt any frontend javascript framework/library, the best available in the market are <strong>React</strong>, <strong>Angular</strong>, <strong>Vue</strong>.</p>
+
+<p>If you have any problem in the steps discussed above, you can look out our <strong>GitHub</strong> <strong>repository</strong> 
+<a href="https://github.com/djangopy-org/dynamic_filter">https://github.com/djangopy-org/dynamic_filter</a> or you can comment down below.</p>
+ </div>
+                <div class="overlay-dark">
+                    <div class="close-btn">
+                        <i class="fa fa-2x fa-times"></i>
+                    </div>
+                </div>
+                <img class="img-overlay">
+                <br><br>
+                <ul class="socialIcons">
+                    <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf&picture=https://djangopy.orgimg/dynamically-filter-queryset-with-ajax-and-drf/cover.jpg&name=Dynamically filter queryset with AJAX and DRF&caption=%20&description=In this post we will learn, how to filter the queryset using AJAX and DRF&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
+                            class="Icon socialAccount--facebook" target="_blank"></a></li>
+                    <li><a href="http://twitter.com/intent/tweet?text=Dynamically filter queryset with AJAX and DRF - DjangoPy https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf"
+                            class="Icon socialAccount--twitter" target="_blank"></a></li>
+                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org" class="Icon socialAccount--google"
+                            target="_blank"></a></li>
+                    <li><a href="mailto:djangopyz@gmail.com?&subject=DjangoPy | Learn, Code, Implement&body=Dynamically filter queryset with AJAX and DRF%0A https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf"
+                            target="_self" class="Icon socialAccount--mail" target="_blank"></a></li>
+                </ul>
+                <br>
+                <hr><br>
+                
+                    <div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+        powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<script type="text/javascript" src="/js/post_detail.js"></script>
+                
+                <br>
+                <hr><br>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Latest Posts -->
+<section class="latest-posts" style="background-color: #F2F2F2;">
+  <div class="container">
+    <header>
+      <h2 style="text-align:center;">Latest from the blog</h2>
+      <br>
+    </header>
+    <div class="row">
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/learn/dynamically-filter-queryset-with-ajax-and-drf">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/dynamically-filter-queryset-with-ajax-and-drf/cover.jpg" 
+    title="" 
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">05 March 2019</div>
+            <div class="category"><a href="#">learn</a></div>
+          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Dynamically filter queryset with AJAX and DRF</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to filter the queryset using AJAX and DRF</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/learn/step-up-guide-to-implement-ajax-in-django">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/step-up-guide-to-implement-ajax-in-django/cover.jpg" 
+    title="" 
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">28 February 2019</div>
+            <div class="category"><a href="#">learn</a></div>
+          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Step Up Guide to implement Ajax in Django</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to submit the forms and perform asynchronous tasks with the help of AJAX</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/how-to/handle-asynchronous-tasks-with-celery-and-django">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/handle-asynchronous-tasks-with-celery-and-django/cover.png" 
+    title="" 
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">16 February 2018</div>
+            <div class="category"><a href="#">how-to</a></div>
+          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Handle Asynchronous Tasks using celery and Django</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>
+        </div></a>
+      </div>
+      
+    </div>
+  </div>
+</section>
+      </div>
+    </div>
+    <center>
+  <section class="section--subscribe">
+    <div class="container">
+      <h3 class="u-alignCenter">Stay in touch</h3>
+      <p>
+        Sign up for our newsletter to get latest updates, news and tutorials on Django. We hate spam as much you do!
+      </p>
+      <div class="row h-100 justify-content-center align-items-center">
+        <div class="newsletterForm-wrapper">
+          <div id="mc_embed_signup">
+            <form action="https://djangopy.us15.list-manage.com/subscribe/post?u=d360054cce6cf1e173862fa58&amp;id=4b711b168e"
+              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank"
+              novalidate>
+              <div id="mc_embed_signup_scroll">
+                <div class="mc-field-group">
+                  <input type="email" value="" name="EMAIL" class="textInput textInput--large" id="mce-EMAIL"
+                    placeholder="Your email address" style="width:100% !important;">
+                </div>
+                <div id="mce-responses" class="clear">
+                  <div class="response" id="mce-error-response" style="display:none; color: red;"></div>
+                  <div class="response" id="mce-success-response" style="display:none; color: green;"></div>
+                </div>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;"><input type="text" name="b_d360054cce6cf1e173862fa58_4b711b168e"
+                    tabindex="-1" value=""></div>
+                <div class="clear u-alignCenter"><input type="submit" value="Get new blog posts by email" name="subscribe"
+                    id="mc-embedded-subscribe" class="button-x button--primary"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </section>
+
+</center>
+
+<footer class="section--footer">
+  <div class="container container--content">
+    <ul class="socialAccountList row h-100 justify-content-center align-items-center">
+      <li><a href="http://www.github.com/djangopy-org" class="socialAccount socialAccount--github" target="_blank"></a></li>
+      <li><a href="http://facebook.com/djangopy-org" class="socialAccount socialAccount--facebook" target="_blank"></a></li>
+      <li><a href="http://twitter.com/DjangoPy_Admin" class="socialAccount socialAccount--twitter" target="_blank"></a></li>
+      <li><a href="https://www.reddit.com/user/Djangopy-org/" class="socialAccount socialAccount--reddit" target="_blank"></a></li>
+      <li><a href="mailto:djangopyz@gmail.com?&amp;subject=DjangoPy | Learn, Code, Implement&amp;body=How to Implement Categories in Django%0A https://djangopy.org/how-to/how-to-implement-categories-in-django/"
+          target="_self" class="socialAccount socialAccount--mail" target="_blank"></a></li>
+    </ul>
+    <div>
+      <p>
+        Hand-crafted with 
+        <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDUyMi40NjggNTIyLjQ2OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTIyLjQ2OCA1MjIuNDY5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTMyNS43NjIsNzAuNTEzbC0xNy43MDYtNC44NTRjLTIuMjc5LTAuNzYtNC41MjQtMC41MjEtNi43MDcsMC43MTVjLTIuMTksMS4yMzctMy42NjksMy4wOTQtNC40MjksNS41NjhMMTkwLjQyNiw0NDAuNTMgICAgYy0wLjc2LDIuNDc1LTAuNTIyLDQuODA5LDAuNzE1LDYuOTk1YzEuMjM3LDIuMTksMy4wOSwzLjY2NSw1LjU2OCw0LjQyNWwxNy43MDEsNC44NTZjMi4yODQsMC43NjYsNC41MjEsMC41MjYsNi43MS0wLjcxMiAgICBjMi4xOS0xLjI0MywzLjY2Ni0zLjA5NCw0LjQyNS01LjU2NEwzMzIuMDQyLDgxLjkzNmMwLjc1OS0yLjQ3NCwwLjUyMy00LjgwOC0wLjcxNi02Ljk5OSAgICBDMzMwLjA4OCw3Mi43NDcsMzI4LjIzNyw3MS4yNzIsMzI1Ljc2Miw3MC41MTN6IiBmaWxsPSIjMDAwMDAwIi8+CgkJPHBhdGggZD0iTTE2Ni4xNjcsMTQyLjQ2NWMwLTIuNDc0LTAuOTUzLTQuNjY1LTIuODU2LTYuNTY3bC0xNC4yNzctMTQuMjc2Yy0xLjkwMy0xLjkwMy00LjA5My0yLjg1Ny02LjU2Ny0yLjg1NyAgICBzLTQuNjY1LDAuOTU1LTYuNTY3LDIuODU3TDIuODU2LDI1NC42NjZDMC45NSwyNTYuNTY5LDAsMjU4Ljc1OSwwLDI2MS4yMzNjMCwyLjQ3NCwwLjk1Myw0LjY2NCwyLjg1Niw2LjU2NmwxMzMuMDQzLDEzMy4wNDQgICAgYzEuOTAyLDEuOTA2LDQuMDg5LDIuODU0LDYuNTY3LDIuODU0czQuNjY1LTAuOTUxLDYuNTY3LTIuODU0bDE0LjI3Ny0xNC4yNjhjMS45MDMtMS45MDIsMi44NTYtNC4wOTMsMi44NTYtNi41NyAgICBjMC0yLjQ3MS0wLjk1My00LjY2MS0yLjg1Ni02LjU2M0w1MS4xMDcsMjYxLjIzM2wxMTIuMjA0LTExMi4yMDFDMTY1LjIxNywxNDcuMTMsMTY2LjE2NywxNDQuOTM5LDE2Ni4xNjcsMTQyLjQ2NXoiIGZpbGw9IiMwMDAwMDAiLz4KCQk8cGF0aCBkPSJNNTE5LjYxNCwyNTQuNjYzTDM4Ni41NjcsMTIxLjYxOWMtMS45MDItMS45MDItNC4wOTMtMi44NTctNi41NjMtMi44NTdjLTIuNDc4LDAtNC42NjEsMC45NTUtNi41NywyLjg1N2wtMTQuMjcxLDE0LjI3NSAgICBjLTEuOTAyLDEuOTAzLTIuODUxLDQuMDktMi44NTEsNi41NjdzMC45NDgsNC42NjUsMi44NTEsNi41NjdsMTEyLjIwNiwxMTIuMjA0TDM1OS4xNjMsMzczLjQ0MiAgICBjLTEuOTAyLDEuOTAyLTIuODUxLDQuMDkzLTIuODUxLDYuNTYzYzAsMi40NzgsMC45NDgsNC42NjgsMi44NTEsNi41N2wxNC4yNzEsMTQuMjY4YzEuOTA5LDEuOTA2LDQuMDkzLDIuODU0LDYuNTcsMi44NTQgICAgYzIuNDcxLDAsNC42NjEtMC45NTEsNi41NjMtMi44NTRMNTE5LjYxNCwyNjcuOGMxLjkwMy0xLjkwMiwyLjg1NC00LjA5NiwyLjg1NC02LjU3ICAgIEM1MjIuNDY4LDI1OC43NTUsNTIxLjUxNywyNTYuNTY1LDUxOS42MTQsMjU0LjY2M3oiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+        +
+        <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDUxMCA1MTAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMCA1MTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8ZyBpZD0iZmF2b3JpdGUiPgoJCTxwYXRoIGQ9Ik0yNTUsNDg5LjZsLTM1LjctMzUuN0M4Ni43LDMzNi42LDAsMjU3LjU1LDAsMTYwLjY1QzAsODEuNiw2MS4yLDIwLjQsMTQwLjI1LDIwLjRjNDMuMzUsMCw4Ni43LDIwLjQsMTE0Ljc1LDUzLjU1ICAgIEMyODMuMDUsNDAuOCwzMjYuNCwyMC40LDM2OS43NSwyMC40QzQ0OC44LDIwLjQsNTEwLDgxLjYsNTEwLDE2MC42NWMwLDk2LjktODYuNywxNzUuOTUtMjE5LjMsMjkzLjI1TDI1NSw0ODkuNnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+        +
+        <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNTAyLDIwNi41aC04MnYtMjEuMTY3YzAtNS41MjMtNC40NzgtMTAtMTAtMTBIMTk0Yy01LjUyMiwwLTEwLDQuNDc3LTEwLDEwYzAsNS41MjMsNC40NzgsMTAsMTAsMTBoMjA2djc2LjY2NiAgICBjMCw2Ny4zNDgtMzUuOTU3LDEyOS45NDItOTQuMDE4LDE2NEgxMTQuMDE4QzU1Ljk1Nyw0MDEuOTQyLDIwLDMzOS4zNDcsMjAsMjcydi03Ni42NjZoNjdjNS41MjIsMCwxMC00LjQ3NywxMC0xMCAgICBjMC01LjUyMy00LjQ3OC0xMC0xMC0xMEgxMGMtNS41MjIsMC0xMCw0LjQ3Ny0xMCwxMFYyNzJjMCwzNy44LDEwLjE2LDc0Ljg2NCwyOS4zODIsMTA3LjE4MyAgICBDNDIuMzQ1LDQwMC45OCw1OS4xNjUsNDIwLjIyOCw3OC44NjIsNDM2SDEwYy01LjUyMiwwLTEwLDQuNDc3LTEwLDEwYzAsMzYuMzkzLDI5LjYwNyw2Niw2Niw2NmgzMTJjMzYuMzkzLDAsNjYtMjkuNjA3LDY2LTY2ICAgIGMwLTUuNTIzLTQuNDc4LTEwLTEwLTEwaC05Mi44NjJjMTguMTI5LTE0LjUxNiwzMy44MTItMzEuOTgzLDQ2LjMwMi01MS42NjdoMjguMjI3QzQ2OC43ODUsMzg0LjMzMyw1MTIsMzQxLjExOCw1MTIsMjg4di03MS41ICAgIEM1MTIsMjEwLjk3Nyw1MDcuNTIzLDIwNi41LDUwMiwyMDYuNXogTTQyMi45MDUsNDU2Yy00LjU3OCwyMC41NzItMjIuOTc0LDM2LTQ0LjkwNSwzNkg2NmMtMjEuOTMxLDAtNDAuMzI2LTE1LjQyOC00NC45MDUtMzYgICAgaDkwLjI0NGgxOTcuMzIySDQyMi45MDV6IE00MjAsMjcydi01LjVoMzJWMjg4YzAsMjAuMDM0LTE2LjI5OSwzNi4zMzMtMzYuMzMzLDM2LjMzM2gtMi4yNzFDNDE3Ljc2MSwzMDcuMzI3LDQyMCwyODkuNzQ1LDQyMCwyNzIgICAgeiBNNDkyLDI4OGMwLDQyLjA5LTM0LjI0Myw3Ni4zMzMtNzYuMzMzLDc2LjMzM2gtMTcuMDJjMy4xOTMtNi41MjEsNi4wNDUtMTMuMTk3LDguNTM3LTIwaDguNDgzICAgIEM0NDYuNzMsMzQ0LjMzMyw0NzIsMzE5LjA2Miw0NzIsMjg4di0zMS41YzAtNS41MjMtNC40NzgtMTAtMTAtMTBoLTQydi0yMGg3MlYyODh6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjE5LjU0OSw1NS4zNDNsLTUuMjAzLTYuNTMzYy03LjYzOC05LjU4OC03LjY0OS0yMi45OTEtMC4wMjctMzIuNTkzYzMuNDM0LTQuMzI2LDIuNzEtMTAuNjE2LTEuNjE2LTE0LjA0OSAgICBjLTQuMzI3LTMuNDM1LTEwLjYxNi0yLjcxLTE0LjA1LDEuNjE2Yy0xMy40NDIsMTYuOTM2LTEzLjQyMiw0MC41NzUsMC4wNDksNTcuNDg3bDUuMjAzLDYuNTMzICAgIGM5Ljk4MSwxMi41Myw5Ljk5NiwzMC4wNDUsMC4wMzYsNDIuNTk0bC01LjMzMiw2LjcxOGMtMy40MzQsNC4zMjYtMi43MSwxMC42MTYsMS42MTYsMTQuMDQ5YzEuODM5LDEuNDU5LDQuMDMyLDIuMTY4LDYuMjEsMi4xNjggICAgYzIuOTQ2LDAsNS44NjUtMS4yOTYsNy44NC0zLjc4NGw1LjMzMi02LjcxOEMyMzUuMzg3LDEwMi45NDksMjM1LjM2NCw3NS4xOTcsMjE5LjU0OSw1NS4zNDN6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjc0Ljk3OCw3Ny44MjdsLTUuMjAzLTYuNTMyYy03LjYzOC05LjU4OS03LjY0OS0yMi45OTItMC4wMjctMzIuNTk0YzMuNDM0LTQuMzI2LDIuNzEtMTAuNjE2LTEuNjE2LTE0LjA0OSAgICBjLTQuMzI3LTMuNDM1LTEwLjYxNi0yLjcxLTE0LjA1LDEuNjE2Yy0xMy40NDIsMTYuOTM2LTEzLjQyMiw0MC41NzUsMC4wNDksNTcuNDg4bDUuMjAzLDYuNTMzICAgIGM5Ljk4LDEyLjUzMSw5Ljk5NSwzMC4wNDcsMC4wMzUsNDIuNTk1bC01LjMzMSw2LjcxN2MtMy40MzQsNC4zMjYtMi43MSwxMC42MTYsMS42MTYsMTQuMDQ5YzEuODM5LDEuNDU5LDQuMDMyLDIuMTY3LDYuMjEsMi4xNjcgICAgYzIuOTQ2LDAsNS44NjYtMS4yOTcsNy44NC0zLjc4NGw1LjMzLTYuNzE3QzI5MC44MTUsMTI1LjQzNSwyOTAuNzkyLDk3LjY4MywyNzQuOTc4LDc3LjgyN3oiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0xNjQuMTIsNzcuODI4bC01LjIwMy02LjUzMmMtNy42MzgtOS41ODgtNy42NDktMjIuOTkyLTAuMDI4LTMyLjU5NGMzLjQzNC00LjMyNiwyLjcxLTEwLjYxNi0xLjYxNi0xNC4wNSAgICBjLTQuMzI3LTMuNDM0LTEwLjYxNi0yLjcwOC0xNC4wNSwxLjYxNmMtMTMuNDQxLDE2LjkzNi0xMy40MjEsNDAuNTc2LDAuMDUsNTcuNDg4bDUuMjAzLDYuNTMzICAgIGM5Ljk4LDEyLjUzMSw5Ljk5NSwzMC4wNDcsMC4wMzYsNDIuNTk0bC01LjMzMiw2LjcxN2MtMy40MzQsNC4zMjYtMi43MTEsMTAuNjE2LDEuNjE1LDE0LjA1YzEuODM5LDEuNDU5LDQuMDMxLDIuMTY4LDYuMjEsMi4xNjggICAgYzIuOTQ2LDAsNS44NjUtMS4yOTYsNy44MzktMy43ODNsNS4zMzMtNi43MThDMTc5Ljk1NywxMjUuNDM2LDE3OS45MzQsOTcuNjg0LDE2NC4xMiw3Ny44Mjh6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMTUwLjI4LDE3OC4yNmMtMS44Ni0xLjg2LTQuNDQtMi45My03LjA3LTIuOTNzLTUuMjEsMS4wNy03LjA3LDIuOTNjLTEuODU5LDEuODctMi45Myw0LjQ0LTIuOTMsNy4wNyAgICBzMS4wNyw1LjIxLDIuOTMsNy4wOGMxLjg2LDEuODYsNC40NCwyLjkyLDcuMDcsMi45MnM1LjIxLTEuMDYsNy4wNy0yLjkyYzEuODY5LTEuODcsMi45My00LjQ0LDIuOTMtNy4wOCAgICBDMTUzLjIxLDE4Mi43LDE1Mi4xNDksMTgwLjEyLDE1MC4yOCwxNzguMjZ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMzYyLDI2MmMtNS41MjIsMC0xMCw0LjQ3Ny0xMCwxMGMwLDM3LjExOS0xNS4wNTYsNzMuNTk4LTQxLjMwOCwxMDAuMDgzYy0zLjg4OCwzLjkyMi0zLjg1OSwxMC4yNTQsMC4wNjMsMTQuMTQyICAgIGMxLjk1LDEuOTMzLDQuNDk1LDIuODk4LDcuMDQsMi44OThjMi41NzQtMC4wMDEsNS4xNDgtMC45ODksNy4xMDMtMi45NjJDMzU0LjgzMiwzNTUuOTYxLDM3MiwzMTQuMzUxLDM3MiwyNzIgICAgQzM3MiwyNjYuNDc3LDM2Ny41MjIsMjYyLDM2MiwyNjJ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjkzLjg4NSwzOTkuMjI1Yy0yLjcxNC00LjgxMS04LjgxMy02LjUxLTEzLjYyMy0zLjc5N2wtMC4yMjgsMC4xMjljLTQuODExLDIuNzE0LTYuNTEsOC44MTMtMy43OTcsMTMuNjIzICAgIGMxLjgzOCwzLjI1OCw1LjIyNyw1LjA4OSw4LjcxOSw1LjA4OWMxLjY2NCwwLDMuMzUyLTAuNDE3LDQuOTA0LTEuMjkybDAuMjI4LTAuMTI5ICAgIEMyOTQuODk5LDQxMC4xMzQsMjk2LjU5OCw0MDQuMDM1LDI5My44ODUsMzk5LjIyNXoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+      </p>
+    </div>
+    <div>
+      © 2018 All Rights Reserved
+    </div>
+    <center><a href="/terms-of-services" target="_self">Term of Service</a> | <a href="/privacy-policy" target="_self">Privacy
+        Policy</a> | <a href="/disclaimer" target="_self">Disclaimer </a> | <a href="/sitemap.xml" target="_self">Sitemap</a></center>
+  </div>
+</footer>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<script type='text/javascript'>
+  (function ($) {
+    window.fnames = new Array();
+    window.ftypes = new Array();
+    fnames[0] = 'EMAIL';
+    ftypes[0] = 'email';
+    fnames[1] = 'FNAME';
+    ftypes[1] = 'text';
+    fnames[2] = 'LNAME';
+    ftypes[2] = 'text';
+  }(jQuery));
+  var $mcj = jQuery.noConflict(true);
+</script>
+  </body>
+</html>
+

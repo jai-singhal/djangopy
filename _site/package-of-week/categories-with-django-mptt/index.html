@@ -105,6 +105,15 @@
 	</script>
 
 
+	<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+     ga('create', 'UA-98271390-1', 'auto');
+     ga('send', 'pageview');
+   </script>
+
 </head>
 
   <body>
@@ -167,7 +176,6 @@
     alt="" 
     src="/img/categories-with-django-mptt/cover.jpg" 
     title="" 
-    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/categories-with-django-mptt/cover.jpg 1240w"
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">Categories with django-mptt</h1>
@@ -245,11 +253,11 @@
 
 <p>Doing these steps, you can now add some nested categories by selecting categories &gt; ADD  CATEGORY of my_posts app in Django Admin panel, there is an image below to illustrate how to create a category object.</p>
 
-<p><img class="img-fluid lazy" alt="" src="/img/categories-with-django-mptt/1_cropped.jpg" title="" srcset="/assets/resized/480/1_cropped.jpg 480w,/assets/resized/800/1_cropped.jpg 800w,/img/categories-with-django-mptt/1_cropped.jpg 1366w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/categories-with-django-mptt/1_cropped.jpg" title="" /></p>
 
 <p>After adding some categories, we have following category tree</p>
 
-<p><img class="img-fluid lazy" alt="" src="/img/categories-with-django-mptt/2_cropped.jpg" title="" srcset="/assets/resized/480/2_cropped.jpg 480w,/assets/resized/800/2_cropped.jpg 800w,/img/categories-with-django-mptt/2_cropped.jpg 1366w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/categories-with-django-mptt/2_cropped.jpg" title="" /></p>
 
 <p>If you want to change the indentation pixels i.e the space before each category object so that the relation between them can be determined easily, add the following line of code in settings.py</p>
 
@@ -269,12 +277,11 @@
     <span class="n">alt</span><span class="o">=</span><span class="s">""</span> 
     <span class="n">src</span><span class="o">=</span><span class="s">"/img/categories-with-django-mptt/3_cropped.jpg"</span> 
     <span class="n">title</span><span class="o">=</span><span class="s">""</span> 
-    <span class="n">srcset</span><span class="o">=</span><span class="s">"/assets/resized/480/3_cropped.jpg 480w,/assets/resized/800/3_cropped.jpg 800w,/img/categories-with-django-mptt/3_cropped.jpg 1366w"</span>
 <span class="o">/&gt;</span></code></pre></figure>
 
 <p>Now go to posts &gt; ADD POST then you will find category drop-down to associate a category to that post, this field is not a required field so you may leave it untouched.</p>
 
-<p><img class="img-fluid lazy" alt="" src="/img/categories-with-django-mptt/4_cropped.jpg" title="" srcset="/assets/resized/480/4_cropped.jpg 480w,/assets/resized/800/4_cropped.jpg 800w,/img/categories-with-django-mptt/4_cropped.jpg 1366w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/categories-with-django-mptt/4_cropped.jpg" title="" /></p>
 
 <h4 id="urlspy">Urls.py</h4>
 <p>Next, we have to add URL pattern for the category, so go to urls.py and add the following line to the urlpatterns list.</p>
@@ -380,11 +387,11 @@
 
 <p>Finally, we have following post detail page for recently created post</p>
 
-<p><img class="img-fluid lazy" alt="" src="/img/categories-with-django-mptt/5_cropped.jpg" title="" srcset="/assets/resized/480/5_cropped.jpg 480w,/assets/resized/800/5_cropped.jpg 800w,/img/categories-with-django-mptt/5_cropped.jpg 1022w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/categories-with-django-mptt/5_cropped.jpg" title="" /></p>
 
 <p>The breadcrumb above the title of the post is useful in navigation, for example, if you click web scrapping then it will take you to the catogories.html page where you can navigate posts in web scrapping as well as its sub categories as in the following image.</p>
 
-<p><img class="img-fluid lazy" alt="" src="/img/categories-with-django-mptt/6_cropped.jpg" title="" srcset="/assets/resized/480/6_cropped.jpg 480w,/assets/resized/800/6_cropped.jpg 800w,/img/categories-with-django-mptt/6_cropped.jpg 982w" /></p>
+<p><img class="img-fluid lazy" alt="" src="/img/categories-with-django-mptt/6_cropped.jpg" title="" /></p>
 
 <h2 id="final-words">FINAL WORDS</h2>
 <p>Modified Preorder Tree Traversal is not just limited to categories but can also be used for efficiently accessing and storing hierarchical data. Although insert and move operations are not as efficient if the tree is changing frequently. However, overall mptt is currently the best solution for database queries overhead. If you have  any problem in any step discussed above, you can check our Github Repository from <a href="https://github.com/djangopy-org/django_mptt_categories">here</a>.</p>
@@ -428,6 +435,12 @@
                 <br>
                 <hr><br>
                 
+                    <div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+        powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<script type="text/javascript" src="/js/post_detail.js"></script>
+                
                 <br>
                 <hr><br>
             </div>
@@ -445,13 +458,34 @@
       
       <div class="post col-md-4">
         <div class="post-thumbnail">
+          <a href="/learn/dynamically-filter-queryset-with-ajax-and-drf">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/dynamically-filter-queryset-with-ajax-and-drf/cover.jpg" 
+    title="" 
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">05 March 2019</div>
+            <div class="category"><a href="#">learn</a></div>
+          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Dynamically filter queryset with AJAX and DRF</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to filter the queryset using AJAX and DRF</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
           <a href="/learn/step-up-guide-to-implement-ajax-in-django">
             <img 
     class="img-fluid lazy" 
     alt="" 
     src="/img/step-up-guide-to-implement-ajax-in-django/cover.jpg" 
     title="" 
-    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/assets/resized/1400/cover.jpg 1400w,/img/step-up-guide-to-implement-ajax-in-django/cover.jpg 1540w"
 />
           </a>
         </div>
@@ -474,7 +508,6 @@
     alt="" 
     src="/img/handle-asynchronous-tasks-with-celery-and-django/cover.png" 
     title="" 
-    srcset="/assets/resized/480/cover.png 480w,/assets/resized/800/cover.png 800w,/img/handle-asynchronous-tasks-with-celery-and-django/cover.png 1360w"
 />
           </a>
         </div>
@@ -486,29 +519,6 @@
             <h4>Handle Asynchronous Tasks using celery and Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>
-        </div></a>
-      </div>
-      
-      <div class="post col-md-4">
-        <div class="post-thumbnail">
-          <a href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/">
-            <img 
-    class="img-fluid lazy" 
-    alt="" 
-    src="/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg" 
-    title="" 
-    srcset="/assets/resized/480/cover.jpg 480w,/assets/resized/800/cover.jpg 800w,/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg 1240w"
-/>
-          </a>
-        </div>
-        <div class="post-details">
-          <div class="post-meta d-flex justify-content-between">
-            <div class="date">03 October 2017</div>
-            <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
-            <h4>Set-up Authentication System in Django in just 10 minutes</h4>
-            <div class="catalogue-line" style="padding-bottom:5px;"></div>
-            <p class="text-muted">In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps....</p>
         </div></a>
       </div>
       
