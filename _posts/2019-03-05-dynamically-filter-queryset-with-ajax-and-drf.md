@@ -14,7 +14,7 @@ description: In this post we will learn, how to filter the queryset using AJAX a
 
 ## Introduction
 
-Filtering queryset dynamically is something that is very common in use. In this post, we will learn how to dynamically filter the queryset depending on the several filters on top of each other. If you do not have hands-on AJAX, then you should definitely check out this **[post](https:djangopy.org/learn/step-up-guide-to-implement-ajax-in-django)**
+Filtering queryset dynamically is something that is very common in use. In this post, we will learn how to dynamically filter the queryset depending on the several filters on top of each other. If you do not have hands-on AJAX, then you should definitely check out this **[post](https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django)**
 
 This post contains a lot of javascript, don't panic just bear with me, I will explain every aspect of it. As usual, the complete project code is available on Github. You can find the link at the end of this post.
 
@@ -189,7 +189,7 @@ $ python manage.py makemigrations
 $ python manage.py migrate
 {% endhighlight %}
 
-Now that you have downloaded the data and created a structure to store it, let us import the data from the downloaded CSV. Note that you have copied the **wine.csv** file in the main directory(where manage.py lives). For any confusion following the directory structure as shown above.
+Now that you have downloaded the data and created a structure to store it, let us import the data from the downloaded CSV. Note that you have copied the **wine.csv** file in the main directory(where manage.py lives). For any confusion follow the directory structure as shown above.
 
 Open the Django shell
 {% highlight bash %}
@@ -240,7 +240,7 @@ class WineSerializers(serializers.ModelSerializer):
 
 <br />
 
-
+#### Customizing Pagination
 This step is not necessary, but it's good to know about it. This will customize the default pagination class which we will be using to make our REST API.
 <div class = 'code-head text-center'>wine/pagination.py</div>
 {% highlight python %}
@@ -258,11 +258,11 @@ class StandardResultsSetPagination(pagination.PageNumberPagination):
 Now let's write our views of this project. It includes two important things that need to be discussed.
 
 ##### 1. WineListing
-This class-based view inherits the **ListAPIView**, which takes the pagination class as we have created above, and also the serializers class.
+This class-based view inherits the **ListAPIView**, which takes the pagination class which we have created above, and also the serializers class.
 
 In this class, we need to override the **get_queryset** method which will return the query set.
 
-In the **get_queryset** method, we will filter the queryset on the basis of query parameters, which we are getting from frontend via AJAX call. For whatever filter, it is applied by the user, it will check in each **if condition**, and if the given filter is not applied, it will not filter with that particular filter. Likewise, it will further apply filters based on whatever other more filters are applied. After it completely gets refined with all the filters, we simply return the filtered query set.
+In the **get_queryset** method, we will filter the queryset on the basis of query parameters, which we are getting from frontend via AJAX call. For whatever filters, applied by the user, it will check in each **if condition**, and filter down by the respective pararmeter. Likewise, it will perform filters based on the other query parameters. After it completely gets refined with all the filters, we simply return the filtered query set.
 <br />
 ##### 2. AJAX GET methods
 All other functional based views help us to get the values to fill in the options of the select box. It is much similar to what we have talked in our previous [post](https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django). All these functions are kind similar to each other.
@@ -364,31 +364,34 @@ def getRegion(request):
         }
         return JsonResponse(data, status = 200)
 
-
 {% endhighlight %}
 
 <hr />
 <br />
 
-For all the FBV and CBV, which we have created just above, let's now create routes for each of these views. Let's first include the app url into main **urls.py** file, this will help to confine all the wine(app) url into a separate file. Note that we have given the namespace to the wine url.
+For all the FBV and CBV, which we have created just above, let's now create routes for each of these views. Let's first include the app url into main **urls.py** file, this will help to confine all the wine(app) url into a separate urls file. Note that we have given the namespace to the wine url.
 
 <div class = 'code-head text-center'>urls.py</div>
 {% highlight python %}
+{% raw %}
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-	url(r"^wine/", include(("wine.urls", "wine"), namespace = "wine"))
+    url(r"^wine/", include(("wine.urls", "wine"), namespace = "wine"))
 ]
+
+{% endraw %}
 {% endhighlight %}
 
 <br />
 
-Create a new file named **urls.py** in wine app, which will contains the url path of all the view function and class based views of wine app, which is being discussed above. Note that we are assigning name to every essential url paths, these names are going to be used as reverse url in templates.
+Create a new file named **urls.py** in wine app, which will contains the url path of all the view function and class based views of wine app, which is discussed above. Note that we are assigning name to every essential url paths, these names are going to be used as reverse url template tags in templates.
 <div class = 'code-head text-center'>wine/urls.py</div>
 {% highlight python %}
+{% raw %}
 from django.urls import path
 from wine.views import *
 
@@ -398,8 +401,10 @@ urlpatterns = [
     path("ajax/countries/", getCountries, name = 'get_countries'),
     path("ajax/variety/", getvariety, name = 'get_varieties'),
     path("ajax/province/", getProvince, name = 'get_provinces'),
-	path("ajax/region/", getRegion, name = 'get_regions'),
+    path("ajax/region/", getRegion, name = 'get_regions'),
 ]
+
+{% endraw %}
 {% endhighlight %}
 
 <br />
@@ -409,7 +414,7 @@ urlpatterns = [
 
 ## Creating Front-end
 
-Now that backend, is ready now, let's move to frontend part. The wine template extends from **base** template containing the select form inputs, and table structure with the table headers. 
+Now that backend, is ready now, let's move to frontend part. The wine template extends from **base** template containing the select form inputs, and table structure with the table headers.
 
 It is important to note that every select input contains attribute of url, which is nothing but the reverse url template tag containing the name of the url, Django matches the url name and return an absolute path reference (a URL without the domain name) matching a given view. You can learn more about this from [here.](https://docs.djangoproject.com/en/2.1/ref/templates/builtins/#url)
 
@@ -541,11 +546,12 @@ It is important to note that every select input contains attribute of url, which
 <br />
 
 ### Creating Wine.js
-Moving on the most challenging part of this project, I have tried to provide the comments to each and every lines and function created in the below **JS** snippet. If you are able to understand for a single filter, then it is easy for you to understand for other filters too, because they have kinda similar js code.
+Moving on the most challenging part of this project, the **Javascript**. I have tried to provide the comments to most of the lines in the below **JS** snippet, which will make easy for you to understand in a better way. If you are able to understand for a single filter, then it is easy for you to understand for other filters too, because they have kinda similar js code.
 
 <div class = 'code-head text-center'>static/js/wine.js</div>
 {% highlight javascript %}
 {% raw %}
+// variable that keeps all the filter information
 var send_data = {}
 
 $(document).ready(function () {

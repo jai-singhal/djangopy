@@ -5,15 +5,15 @@
     <description>DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.</description>
     <link>https://djangopy.org/</link>
     <atom:link href="https://djangopy.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 Mar 2019 00:24:47 +0530</pubDate>
-    <lastBuildDate>Wed, 06 Mar 2019 00:24:47 +0530</lastBuildDate>
+    <pubDate>Thu, 07 Mar 2019 20:09:08 +0530</pubDate>
+    <lastBuildDate>Thu, 07 Mar 2019 20:09:08 +0530</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
       <item>
         <title>Dynamically filter queryset with AJAX and DRF</title>
         <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
-&lt;p&gt;Filtering queryset dynamically is something that is very common in use. In this post, we will learn how to dynamically filter the queryset depending on the several filters on top of each other. If you do not have hands-on AJAX, then you should definitely check out this &lt;strong&gt;&lt;a href=&quot;https:djangopy.org/learn/step-up-guide-to-implement-ajax-in-django&quot;&gt;post&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Filtering queryset dynamically is something that is very common in use. In this post, we will learn how to dynamically filter the queryset depending on the several filters on top of each other. If you do not have hands-on AJAX, then you should definitely check out this &lt;strong&gt;&lt;a href=&quot;https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django&quot;&gt;post&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;This post contains a lot of javascript, don’t panic just bear with me, I will explain every aspect of it. As usual, the complete project code is available on Github. You can find the link at the end of this post.&lt;/p&gt;
 
@@ -170,7 +170,7 @@
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python manage.py migrate&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Now that you have downloaded the data and created a structure to store it, let us import the data from the downloaded CSV. Note that you have copied the &lt;strong&gt;wine.csv&lt;/strong&gt; file in the main directory(where manage.py lives). For any confusion following the directory structure as shown above.&lt;/p&gt;
+&lt;p&gt;Now that you have downloaded the data and created a structure to store it, let us import the data from the downloaded CSV. Note that you have copied the &lt;strong&gt;wine.csv&lt;/strong&gt; file in the main directory(where manage.py lives). For any confusion follow the directory structure as shown above.&lt;/p&gt;
 
 &lt;p&gt;Open the Django shell&lt;/p&gt;
 
@@ -215,6 +215,7 @@ wine_csv.close&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;  &lt;/code&gt;&lt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
+&lt;h4 id=&quot;customizing-pagination&quot;&gt;Customizing Pagination&lt;/h4&gt;
 &lt;p&gt;This step is not necessary, but it’s good to know about it. This will customize the default pagination class which we will be using to make our REST API.&lt;/p&gt;
 &lt;div class=&quot;code-head text-center&quot;&gt;wine/pagination.py&lt;/div&gt;
 
@@ -232,11 +233,11 @@ wine_csv.close&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;  &lt;/code&gt;&lt;
 &lt;p&gt;Now let’s write our views of this project. It includes two important things that need to be discussed.&lt;/p&gt;
 
 &lt;h5 id=&quot;1-winelisting&quot;&gt;1. WineListing&lt;/h5&gt;
-&lt;p&gt;This class-based view inherits the &lt;strong&gt;ListAPIView&lt;/strong&gt;, which takes the pagination class as we have created above, and also the serializers class.&lt;/p&gt;
+&lt;p&gt;This class-based view inherits the &lt;strong&gt;ListAPIView&lt;/strong&gt;, which takes the pagination class which we have created above, and also the serializers class.&lt;/p&gt;
 
 &lt;p&gt;In this class, we need to override the &lt;strong&gt;get_queryset&lt;/strong&gt; method which will return the query set.&lt;/p&gt;
 
-&lt;p&gt;In the &lt;strong&gt;get_queryset&lt;/strong&gt; method, we will filter the queryset on the basis of query parameters, which we are getting from frontend via AJAX call. For whatever filter, it is applied by the user, it will check in each &lt;strong&gt;if condition&lt;/strong&gt;, and if the given filter is not applied, it will not filter with that particular filter. Likewise, it will further apply filters based on whatever other more filters are applied. After it completely gets refined with all the filters, we simply return the filtered query set.
+&lt;p&gt;In the &lt;strong&gt;get_queryset&lt;/strong&gt; method, we will filter the queryset on the basis of query parameters, which we are getting from frontend via AJAX call. For whatever filters, applied by the user, it will check in each &lt;strong&gt;if condition&lt;/strong&gt;, and filter down by the respective pararmeter. Likewise, it will perform filters based on the other query parameters. After it completely gets refined with all the filters, we simply return the filtered query set.
 &lt;br /&gt;&lt;/p&gt;
 &lt;h5 id=&quot;2-ajax-get-methods&quot;&gt;2. AJAX GET methods&lt;/h5&gt;
 &lt;p&gt;All other functional based views help us to get the values to fill in the options of the select box. It is much similar to what we have talked in our previous &lt;a href=&quot;https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django&quot;&gt;post&lt;/a&gt;. All these functions are kind similar to each other.&lt;/p&gt;
@@ -353,7 +354,7 @@ wine_csv.close&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;  &lt;/code&gt;&lt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;For all the FBV and CBV, which we have created just above, let’s now create routes for each of these views. Let’s first include the app url into main &lt;strong&gt;urls.py&lt;/strong&gt; file, this will help to confine all the wine(app) url into a separate file. Note that we have given the namespace to the wine url.&lt;/p&gt;
+&lt;p&gt;For all the FBV and CBV, which we have created just above, let’s now create routes for each of these views. Let’s first include the app url into main &lt;strong&gt;urls.py&lt;/strong&gt; file, this will help to confine all the wine(app) url into a separate urls file. Note that we have given the namespace to the wine url.&lt;/p&gt;
 
 &lt;div class=&quot;code-head text-center&quot;&gt;urls.py&lt;/div&gt;
 
@@ -363,12 +364,12 @@ wine_csv.close&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;  &lt;/code&gt;&lt;
 
 &lt;span class=&quot;n&quot;&gt;urlpatterns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'admin/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;urls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r&quot;^wine/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wine.urls&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;wine&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;wine&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r&quot;^wine/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wine.urls&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;wine&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;wine&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;Create a new file named &lt;strong&gt;urls.py&lt;/strong&gt; in wine app, which will contains the url path of all the view function and class based views of wine app, which is being discussed above. Note that we are assigning name to every essential url paths, these names are going to be used as reverse url in templates.&lt;/p&gt;
+&lt;p&gt;Create a new file named &lt;strong&gt;urls.py&lt;/strong&gt; in wine app, which will contains the url path of all the view function and class based views of wine app, which is discussed above. Note that we are assigning name to every essential url paths, these names are going to be used as reverse url template tags in templates.&lt;/p&gt;
 &lt;div class=&quot;code-head text-center&quot;&gt;wine/urls.py&lt;/div&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django.urls&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;
@@ -380,7 +381,7 @@ wine_csv.close&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;  &lt;/code&gt;&lt;
     &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ajax/countries/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getCountries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'get_countries'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ajax/variety/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getvariety&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'get_varieties'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ajax/province/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getProvince&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'get_provinces'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ajax/region/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getRegion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'get_regions'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ajax/region/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getRegion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'get_regions'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
@@ -520,11 +521,13 @@ wine_csv.close&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;  &lt;/code&gt;&lt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;creating-winejs&quot;&gt;Creating Wine.js&lt;/h3&gt;
-&lt;p&gt;Moving on the most challenging part of this project, I have tried to provide the comments to each and every lines and function created in the below &lt;strong&gt;JS&lt;/strong&gt; snippet. If you are able to understand for a single filter, then it is easy for you to understand for other filters too, because they have kinda similar js code.&lt;/p&gt;
+&lt;p&gt;Moving on the most challenging part of this project, the &lt;strong&gt;Javascript&lt;/strong&gt;. I have tried to provide the comments to most of the lines in the below &lt;strong&gt;JS&lt;/strong&gt; snippet, which will make easy for you to understand in a better way. If you are able to understand for a single filter, then it is easy for you to understand for other filters too, because they have kinda similar js code.&lt;/p&gt;
 
 &lt;div class=&quot;code-head text-center&quot;&gt;static/js/wine.js&lt;/div&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;send_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// variable that keeps all the filter information
+&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;send_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
 
 &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;// reset all parameters on page load

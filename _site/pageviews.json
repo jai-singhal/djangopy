@@ -2,11 +2,11 @@
     "rows": [
         [
             "/learn/dynamically-filter-queryset-with-ajax-and-drf",
-            "48"
+            "120"
         ],
         [
             "/learn/step-up-guide-to-implement-ajax-in-django",
-            "260"
+            "320"
         ],
         [
             "/how-to/handle-asynchronous-tasks-with-celery-and-django",

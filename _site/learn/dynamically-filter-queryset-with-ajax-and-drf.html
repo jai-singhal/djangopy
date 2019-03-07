@@ -181,7 +181,7 @@
                 <hr /><br>
                 <div class="post-content"> <h2 id="introduction">Introduction</h2>
 
-<p>Filtering queryset dynamically is something that is very common in use. In this post, we will learn how to dynamically filter the queryset depending on the several filters on top of each other. If you do not have hands-on AJAX, then you should definitely check out this <strong><a href="https:djangopy.org/learn/step-up-guide-to-implement-ajax-in-django">post</a></strong></p>
+<p>Filtering queryset dynamically is something that is very common in use. In this post, we will learn how to dynamically filter the queryset depending on the several filters on top of each other. If you do not have hands-on AJAX, then you should definitely check out this <strong><a href="https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django">post</a></strong></p>
 
 <p>This post contains a lot of javascript, don’t panic just bear with me, I will explain every aspect of it. As usual, the complete project code is available on Github. You can find the link at the end of this post.</p>
 
@@ -338,7 +338,7 @@
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py migrate</code></pre></figure>
 
-<p>Now that you have downloaded the data and created a structure to store it, let us import the data from the downloaded CSV. Note that you have copied the <strong>wine.csv</strong> file in the main directory(where manage.py lives). For any confusion following the directory structure as shown above.</p>
+<p>Now that you have downloaded the data and created a structure to store it, let us import the data from the downloaded CSV. Note that you have copied the <strong>wine.csv</strong> file in the main directory(where manage.py lives). For any confusion follow the directory structure as shown above.</p>
 
 <p>Open the Django shell</p>
 
@@ -383,6 +383,7 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
 
 <p><br /></p>
 
+<h4 id="customizing-pagination">Customizing Pagination</h4>
 <p>This step is not necessary, but it’s good to know about it. This will customize the default pagination class which we will be using to make our REST API.</p>
 <div class="code-head text-center">wine/pagination.py</div>
 
@@ -400,11 +401,11 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
 <p>Now let’s write our views of this project. It includes two important things that need to be discussed.</p>
 
 <h5 id="1-winelisting">1. WineListing</h5>
-<p>This class-based view inherits the <strong>ListAPIView</strong>, which takes the pagination class as we have created above, and also the serializers class.</p>
+<p>This class-based view inherits the <strong>ListAPIView</strong>, which takes the pagination class which we have created above, and also the serializers class.</p>
 
 <p>In this class, we need to override the <strong>get_queryset</strong> method which will return the query set.</p>
 
-<p>In the <strong>get_queryset</strong> method, we will filter the queryset on the basis of query parameters, which we are getting from frontend via AJAX call. For whatever filter, it is applied by the user, it will check in each <strong>if condition</strong>, and if the given filter is not applied, it will not filter with that particular filter. Likewise, it will further apply filters based on whatever other more filters are applied. After it completely gets refined with all the filters, we simply return the filtered query set.
+<p>In the <strong>get_queryset</strong> method, we will filter the queryset on the basis of query parameters, which we are getting from frontend via AJAX call. For whatever filters, applied by the user, it will check in each <strong>if condition</strong>, and filter down by the respective pararmeter. Likewise, it will perform filters based on the other query parameters. After it completely gets refined with all the filters, we simply return the filtered query set.
 <br /></p>
 <h5 id="2-ajax-get-methods">2. AJAX GET methods</h5>
 <p>All other functional based views help us to get the values to fill in the options of the select box. It is much similar to what we have talked in our previous <a href="https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django">post</a>. All these functions are kind similar to each other.</p>
@@ -521,7 +522,7 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
 
 <p><br /></p>
 
-<p>For all the FBV and CBV, which we have created just above, let’s now create routes for each of these views. Let’s first include the app url into main <strong>urls.py</strong> file, this will help to confine all the wine(app) url into a separate file. Note that we have given the namespace to the wine url.</p>
+<p>For all the FBV and CBV, which we have created just above, let’s now create routes for each of these views. Let’s first include the app url into main <strong>urls.py</strong> file, this will help to confine all the wine(app) url into a separate urls file. Note that we have given the namespace to the wine url.</p>
 
 <div class="code-head text-center">urls.py</div>
 
@@ -531,12 +532,12 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">path</span><span class="p">(</span><span class="s">'admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
-	<span class="n">url</span><span class="p">(</span><span class="s">r"^wine/"</span><span class="p">,</span> <span class="n">include</span><span class="p">((</span><span class="s">"wine.urls"</span><span class="p">,</span> <span class="s">"wine"</span><span class="p">),</span> <span class="n">namespace</span> <span class="o">=</span> <span class="s">"wine"</span><span class="p">))</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r"^wine/"</span><span class="p">,</span> <span class="n">include</span><span class="p">((</span><span class="s">"wine.urls"</span><span class="p">,</span> <span class="s">"wine"</span><span class="p">),</span> <span class="n">namespace</span> <span class="o">=</span> <span class="s">"wine"</span><span class="p">))</span>
 <span class="p">]</span></code></pre></figure>
 
 <p><br /></p>
 
-<p>Create a new file named <strong>urls.py</strong> in wine app, which will contains the url path of all the view function and class based views of wine app, which is being discussed above. Note that we are assigning name to every essential url paths, these names are going to be used as reverse url in templates.</p>
+<p>Create a new file named <strong>urls.py</strong> in wine app, which will contains the url path of all the view function and class based views of wine app, which is discussed above. Note that we are assigning name to every essential url paths, these names are going to be used as reverse url template tags in templates.</p>
 <div class="code-head text-center">wine/urls.py</div>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
@@ -548,7 +549,7 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
     <span class="n">path</span><span class="p">(</span><span class="s">"ajax/countries/"</span><span class="p">,</span> <span class="n">getCountries</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_countries'</span><span class="p">),</span>
     <span class="n">path</span><span class="p">(</span><span class="s">"ajax/variety/"</span><span class="p">,</span> <span class="n">getvariety</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_varieties'</span><span class="p">),</span>
     <span class="n">path</span><span class="p">(</span><span class="s">"ajax/province/"</span><span class="p">,</span> <span class="n">getProvince</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_provinces'</span><span class="p">),</span>
-	<span class="n">path</span><span class="p">(</span><span class="s">"ajax/region/"</span><span class="p">,</span> <span class="n">getRegion</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_regions'</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">"ajax/region/"</span><span class="p">,</span> <span class="n">getRegion</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_regions'</span><span class="p">),</span>
 <span class="p">]</span></code></pre></figure>
 
 <p><br /></p>
@@ -688,11 +689,13 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
 <p><br /></p>
 
 <h3 id="creating-winejs">Creating Wine.js</h3>
-<p>Moving on the most challenging part of this project, I have tried to provide the comments to each and every lines and function created in the below <strong>JS</strong> snippet. If you are able to understand for a single filter, then it is easy for you to understand for other filters too, because they have kinda similar js code.</p>
+<p>Moving on the most challenging part of this project, the <strong>Javascript</strong>. I have tried to provide the comments to most of the lines in the below <strong>JS</strong> snippet, which will make easy for you to understand in a better way. If you are able to understand for a single filter, then it is easy for you to understand for other filters too, because they have kinda similar js code.</p>
 
 <div class="code-head text-center">static/js/wine.js</div>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">send_data</span> <span class="o">=</span> <span class="p">{}</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// variable that keeps all the filter information
+</span>
+<span class="kd">var</span> <span class="nx">send_data</span> <span class="o">=</span> <span class="p">{}</span>
 
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="c1">// reset all parameters on page load
