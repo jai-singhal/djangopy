@@ -52,9 +52,9 @@ Design your form and do other Validations, here I am, showed you a basic example
 
 {% highlight python %}
 from django.forms import ModelForm
-from .models Book, Author
+from .models import Book, Author
 
-class BookForm(forms.ModelForm):
+class BookForm(ModelForm):
 	class Meta:
 		model = Book
 		fields = [
