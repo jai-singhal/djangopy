@@ -171,10 +171,15 @@
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">Pagination with Django</h1>
-                <h6 class="post-spans">Posted: 31 May 2017 | Post By: Jai Singhal | <span
-                        id="ga-page-view" ga-page-url=/how-to/pagination-with-django/></span> <i class="fa fa-eye"></i> | <i class="fa fa-clock"></i>
-                    12 min read | <a style="text-decoration: none;" href="/how-to/pagination-with-django/.html#disqus_thread"
-                        data-disqus-identifier="/how-to/pagination-with-django/"><i class="fa fa-comment"></i></a> </h6>
+                <h6 class="post-spans">Posted: 31 May 2017 | Post By: Jai Singhal | 
+                    <!-- <span id="ga-page-view" ga-page-url=/how-to/pagination-with-django/></span> <i class="fa fa-eye"></i> |  -->
+                    <i class="fa fa-clock"></i>
+                    12 min read | 
+                    <a style="text-decoration: none;" href="https://djangopy.org/how-to/pagination-with-django/#disqus_thread"
+                        data-disqus-identifier="/how-to/pagination-with-django/">
+                        <i class="fa fa-comment"></i>
+                    </a> 
+                </h6>
                 <br>
                 <hr /><br>
                 <div class="post-content"> <h2 id="introduction">Introduction</h2>
@@ -204,8 +209,8 @@
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">post_list</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 	<span class="n">queryset_list</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">"id"</span><span class="p">)</span>
-	<span class="n">paginator</span> <span class="o">=</span> <span class="n">Paginator</span><span class="p">(</span><span class="n">queryset_list</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c">#posts per page</span>
-	<span class="n">page</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'page'</span><span class="p">)</span>
+	<span class="n">paginator</span> <span class="o">=</span> <span class="n">Paginator</span><span class="p">(</span><span class="n">queryset_list</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">#posts per page
+</span>	<span class="n">page</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'page'</span><span class="p">)</span>
 	<span class="k">try</span><span class="p">:</span>
 		<span class="n">queryset</span> <span class="o">=</span> <span class="n">paginator</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
 	<span class="k">except</span> <span class="n">PageNotAnInteger</span><span class="p">:</span>
@@ -231,8 +236,8 @@
 
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="k">for</span> <span class="nv">obj</span> <span class="ow">in</span> <span class="nv">object_list</span> <span class="cp">%}</span>
-  <span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"container"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
       id = <span class="cp">{{</span><span class="nv">obj.id</span><span class="cp">}}</span><span class="nt">&lt;br&gt;</span>
       title = <span class="cp">{{</span><span class="nv">obj.title</span><span class="cp">}}</span><span class="nt">&lt;br&gt;</span>
       content = <span class="cp">{{</span><span class="nv">obj.content</span><span class="cp">}}</span><span class="nt">&lt;br&gt;</span>
@@ -241,19 +246,19 @@
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
-<span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"container"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pager"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"step-links"</span><span class="nt">&gt;</span>
         <span class="cp">{%</span> <span class="k">if</span> <span class="nv">object_list.has_previous</span> <span class="cp">%}</span>
         <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"previous"</span><span class="nt">&gt;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"?page=</span><span class="cp">{{</span> <span class="nv">object_list.previous_page_number</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span>Previous<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
         <span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
-        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"previous"</span><span class="nt">&gt;</span> <span class="nt">&lt;a</span> <span class="na">title =</span><span class="err"> </span><span class="s">"No Posts available"</span><span class="nt">&gt;</span>Previous<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"previous"</span><span class="nt">&gt;</span> <span class="nt">&lt;a</span> <span class="na">title = </span><span class="s">"No Posts available"</span><span class="nt">&gt;</span>Previous<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
         <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
         <span class="cp">{%</span> <span class="k">if</span> <span class="nv">object_list.has_next</span> <span class="cp">%}</span>
         <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"next"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"?page=</span><span class="cp">{{</span> <span class="nv">object_list.next_page_number</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span>Next<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
         <span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
-        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"next"</span><span class="nt">&gt;&lt;a</span> <span class="na">title =</span><span class="err"> </span><span class="s">"No Posts available"</span><span class="nt">&gt;</span>Next<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"next"</span><span class="nt">&gt;&lt;a</span> <span class="na">title = </span><span class="s">"No Posts available"</span><span class="nt">&gt;</span>Next<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
         <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
         <span class="nt">&lt;/span&gt;</span>
      <span class="nt">&lt;/ul&gt;</span>
@@ -271,8 +276,8 @@
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
 
 <span class="cp">{%</span> <span class="k">for</span> <span class="nv">obj</span> <span class="ow">in</span> <span class="nv">object_list</span> <span class="cp">%}</span>
-<span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"container"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;br&gt;</span>
     <span class="nt">&lt;p&gt;</span>id = <span class="cp">{{</span><span class="nv">obj.id</span><span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;p&gt;</span>title = <span class="cp">{{</span><span class="nv">obj.title</span><span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
@@ -282,8 +287,8 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
-<span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"container"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;nav</span> <span class="na">aria-label=</span><span class="s">"Page navigation example"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pagination"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;</span>  <span class="c">&lt;!-- Jump to Prvious Page --&gt;</span>
@@ -296,9 +301,9 @@
         <span class="nt">&lt;/li&gt;</span>
          <span class="cp">{%</span> <span class="k">for</span> <span class="nv">page</span> <span class="ow">in</span> <span class="nv">object_list.paginator.page_range</span> <span class="cp">%}</span>
             <span class="cp">{%</span> <span class="k">if</span> <span class="nv">page</span> <span class="o">==</span> <span class="nv">object_list.</span><span class="nb">number</span> <span class="cp">%}</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"pg active"</span><span class="nt">&gt;&lt;a</span> <span class="na">class =</span><span class="err"> </span><span class="s">"page_number"</span> <span class="na">href=</span><span class="s">"?page=</span><span class="cp">{{</span><span class="nv">page</span><span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">page</span><span class="cp">}}</span><span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"pg active"</span><span class="nt">&gt;&lt;a</span> <span class="na">class = </span><span class="s">"page_number"</span> <span class="na">href=</span><span class="s">"?page=</span><span class="cp">{{</span><span class="nv">page</span><span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">page</span><span class="cp">}}</span><span class="nt">&lt;/a&gt;</span>
             <span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"pg"</span><span class="nt">&gt;&lt;a</span> <span class="na">class =</span><span class="err"> </span><span class="s">"page_number"</span> <span class="na">href=</span><span class="s">"?page=</span><span class="cp">{{</span><span class="nv">page</span><span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">page</span><span class="cp">}}</span><span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"pg"</span><span class="nt">&gt;&lt;a</span> <span class="na">class = </span><span class="s">"page_number"</span> <span class="na">href=</span><span class="s">"?page=</span><span class="cp">{{</span><span class="nv">page</span><span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">page</span><span class="cp">}}</span><span class="nt">&lt;/a&gt;</span>
             <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
         <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
         <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;</span>  <span class="c">&lt;!-- Jump to Next Page --&gt;</span>
@@ -329,8 +334,8 @@
 <figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base.html"</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="k">for</span> <span class="nv">obj</span> <span class="ow">in</span> <span class="nv">object_list</span> <span class="cp">%}</span>
-  <span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"container"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;br&gt;</span>
       <span class="nt">&lt;p&gt;</span>id = <span class="cp">{{</span><span class="nv">obj.id</span><span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
       <span class="nt">&lt;p&gt;</span>title = <span class="cp">{{</span><span class="nv">obj.title</span><span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
@@ -340,8 +345,8 @@
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
-  <span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"container"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;nav</span> <span class="na">aria-label=</span><span class="s">"Page navigation example"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pagination"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;</span>    <span class="c">&lt;!-- Jump to First Page --&gt;</span>
@@ -364,19 +369,19 @@
           <span class="nt">&lt;/li&gt;</span>
           <span class="cp">{%</span> <span class="k">if</span> <span class="nv">object_list.has_previous</span> <span class="cp">%}</span>
           <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;</span>  <span class="c">&lt;!-- Show Previous 4 page numbers --&gt;</span>
-              <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"previous"</span><span class="nt">&gt;</span> <span class="nt">&lt;a</span> <span class="na">class =</span><span class="err"> </span><span class="s">"skip_prev"</span> <span class="na">href =</span><span class="err"> </span><span class="s">""</span><span class="nt">&gt;</span>...<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+              <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"previous"</span><span class="nt">&gt;</span> <span class="nt">&lt;a</span> <span class="na">class = </span><span class="s">"skip_prev"</span> <span class="na">href = </span><span class="s">""</span><span class="nt">&gt;</span>...<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
           <span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
                 <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"next disabled"</span><span class="nt">&gt;&lt;a&gt;</span>...<span class="nt">&lt;/a&gt;</span>
           <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
           <span class="nt">&lt;/li&gt;</span>
           <span class="cp">{%</span> <span class="k">for</span> <span class="nv">i</span> <span class="ow">in</span> <span class="s2">"12345"</span> <span class="cp">%}</span>
         <span class="c">&lt;!-- Change the range ("12345") according to your choice to show numbers --&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"pg"</span> <span class="na">data =</span><span class="err"> </span><span class="cp">{{</span><span class="nv">i</span><span class="cp">}}</span><span class="err">&gt;</span><span class="s">&lt;a</span> <span class="na">class =</span><span class="err"> </span><span class="s">"page_number"</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;&lt;/a&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"pg"</span> <span class="na">data = </span><span class="cp">{{</span><span class="nv">i</span><span class="cp">}}</span><span class="err">&gt;</span><span class="s">&lt;a</span> <span class="na">class = </span><span class="s">"page_number"</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;&lt;/a&gt;</span>
           <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
 
           <span class="cp">{%</span> <span class="k">if</span> <span class="nv">object_list.has_next</span> <span class="cp">%}</span>
           <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;</span>  <span class="c">&lt;!-- Show next 4 page numbers --&gt;</span>
-              <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"previous"</span><span class="nt">&gt;</span> <span class="nt">&lt;a</span> <span class="na">class =</span><span class="err"> </span><span class="s">"skip_next"</span> <span class="na">href =</span><span class="err"> </span><span class="s">""</span><span class="nt">&gt;</span>...<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+              <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"previous"</span><span class="nt">&gt;</span> <span class="nt">&lt;a</span> <span class="na">class = </span><span class="s">"skip_next"</span> <span class="na">href = </span><span class="s">""</span><span class="nt">&gt;</span>...<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
           <span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
                 <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"next disabled"</span><span class="nt">&gt;&lt;a&gt;</span>...<span class="nt">&lt;/a&gt;</span>
           <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
@@ -415,43 +420,43 @@
   <span class="kd">var</span> <span class="nx">current_page</span> <span class="o">=</span> <span class="cp">{{</span><span class="nv">object_list.number</span><span class="cp">}}</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">factor</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">current_page</span><span class="o">/</span><span class="nx">skip_pages</span><span class="p">);</span>
 
-  <span class="nx">$</span><span class="p">(</span><span class="s2">".page_number"</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">//Showing the discrete numbers</span>
+  <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.page_number</span><span class="dl">"</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">//Showing the discrete numbers</span>
         <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">factor</span><span class="o">*</span><span class="p">(</span><span class="nx">skip_pages</span><span class="p">)</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
         <span class="k">if</span><span class="p">(</span><span class="nx">current_page</span><span class="o">%</span><span class="nx">skip_pages</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
           <span class="nx">page</span> <span class="o">=</span> <span class="p">(</span><span class="nx">factor</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="nx">skip_pages</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
         <span class="k">if</span><span class="p">(</span><span class="nx">page</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nx">total_pages</span><span class="p">){</span>
           <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
-          <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"href"</span><span class="p">,</span> <span class="s2">"?page="</span> <span class="o">+</span> <span class="nx">page</span><span class="p">);</span>
+          <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">?page=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">page</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">else</span><span class="p">{</span>
           <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
-          <span class="nx">$</span><span class="p">(</span><span class="s1">'li[data='</span> <span class="o">+</span> <span class="nx">x</span> <span class="o">+</span> <span class="s1">']'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">"display"</span><span class="p">,</span> <span class="s2">"none"</span><span class="p">);</span>
+          <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">li[data=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">x</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">]</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">display</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">);</span>
         <span class="p">}</span>
   <span class="p">});</span>
     <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">current_page</span><span class="o">%</span><span class="nx">skip_pages</span><span class="p">;</span>
     <span class="k">if</span><span class="p">(</span><span class="nx">page</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
       <span class="nx">page</span> <span class="o">=</span> <span class="nx">skip_pages</span><span class="p">;</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'li[data='</span> <span class="o">+</span> <span class="nx">page</span> <span class="o">+</span> <span class="s1">']'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>   <span class="c1">//Deciding the active class</span>
-      <span class="nx">$</span><span class="p">(</span><span class="s1">'li[data='</span> <span class="o">+</span> <span class="nx">page</span> <span class="o">+</span> <span class="s1">']'</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">"active"</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">li[data=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">page</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">]</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>   <span class="c1">//Deciding the active class</span>
+      <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">li[data=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">page</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">]</span><span class="dl">'</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">active</span><span class="dl">"</span><span class="p">);</span>
     <span class="p">});</span>
 
-  <span class="nx">$</span><span class="p">(</span><span class="s2">".skip_next"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>   <span class="c1">//Skip next ... Function</span>
+  <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.skip_next</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>   <span class="c1">//Skip next ... Function</span>
       <span class="k">if</span><span class="p">(</span><span class="nx">current_page</span><span class="o">%</span><span class="nx">skip_pages</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
         <span class="nx">factor</span> <span class="o">=</span> <span class="nx">factor</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
       <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="p">(</span><span class="nx">factor</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="nx">skip_pages</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
       <span class="k">if</span><span class="p">(</span><span class="nx">page</span> <span class="o">&lt;</span> <span class="nx">total_pages</span><span class="p">)</span>
-        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"href"</span><span class="p">,</span> <span class="s2">"?page="</span> <span class="o">+</span> <span class="nx">page</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">?page=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">page</span><span class="p">);</span>
       <span class="k">else</span>
-        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"href"</span><span class="p">,</span> <span class="s2">"?page="</span> <span class="o">+</span> <span class="nx">total_pages</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">?page=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">total_pages</span><span class="p">);</span>
   <span class="p">})</span>
-  <span class="nx">$</span><span class="p">(</span><span class="s2">".skip_prev"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span> <span class="c1">//Skip Previous ... Function</span>
+  <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.skip_prev</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span> <span class="c1">//Skip Previous ... Function</span>
       <span class="k">if</span><span class="p">(</span><span class="nx">current_page</span><span class="o">%</span><span class="nx">skip_pages</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
         <span class="nx">factor</span> <span class="o">=</span> <span class="nx">factor</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
       <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">skip_pages</span><span class="o">*</span><span class="p">(</span><span class="nx">factor</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
       <span class="k">if</span><span class="p">(</span><span class="nx">page</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"href"</span><span class="p">,</span> <span class="s2">"?page="</span> <span class="o">+</span> <span class="nx">page</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">?page=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">page</span><span class="p">);</span>
       <span class="k">else</span>
-        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"href"</span><span class="p">,</span> <span class="s2">"?page="</span> <span class="o">+</span> <span class="s2">"1"</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">?page=</span><span class="dl">"</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">);</span>
   <span class="p">})</span>
 <span class="p">})</span>
 
@@ -476,6 +481,9 @@ Finally, the Pagination would look like</p>
                 </div>
                 <img class="img-overlay">
                 <br><br>
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 
+                <br>
+                <br>                
                 <ul class="socialIcons">
                     <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/how-to/pagination-with-django/&picture=https://djangopy.orgimg/pagination-with-django/cover.jpg&name=Pagination with Django&caption=%20&description=Django provides a few classes that can help you to manage your paginated data i.e., data that’s split across several pages, with “Previous/Next” links or list it into discrete page numbers.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
                             class="Icon socialAccount--facebook" target="_blank"></a></li>
@@ -501,6 +509,8 @@ Finally, the Pagination would look like</p>
         </div>
     </div>
 </div>
+<script id = "dsq-count-scr" src = "//django-py.disqus.com/count.js" async></script>
+
 <!-- Latest Posts -->
 <section class="latest-posts" style="background-color: #F2F2F2;">
   <div class="container">
@@ -525,7 +535,8 @@ Finally, the Pagination would look like</p>
           <div class="post-meta d-flex justify-content-between">
             <div class="date">05 March 2019</div>
             <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Dynamically filter queryset with AJAX and DRF</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to filter the queryset using AJAX and DRF</p>
@@ -547,7 +558,8 @@ Finally, the Pagination would look like</p>
           <div class="post-meta d-flex justify-content-between">
             <div class="date">28 February 2019</div>
             <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Step Up Guide to implement Ajax in Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to submit the forms and perform asynchronous tasks with the help of AJAX</p>
@@ -569,7 +581,8 @@ Finally, the Pagination would look like</p>
           <div class="post-meta d-flex justify-content-between">
             <div class="date">16 February 2018</div>
             <div class="category"><a href="#">how-to</a></div>
-          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Handle Asynchronous Tasks using celery and Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>

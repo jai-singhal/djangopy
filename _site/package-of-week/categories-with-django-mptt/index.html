@@ -179,10 +179,15 @@
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">Categories with django-mptt</h1>
-                <h6 class="post-spans">Posted: 30 July 2017 | Post By: Karan Suthar | <span
-                        id="ga-page-view" ga-page-url=/package-of-week/categories-with-django-mptt/></span> <i class="fa fa-eye"></i> | <i class="fa fa-clock"></i>
-                    8 min read | <a style="text-decoration: none;" href="/package-of-week/categories-with-django-mptt/.html#disqus_thread"
-                        data-disqus-identifier="/package-of-week/categories-with-django-mptt/"><i class="fa fa-comment"></i></a> </h6>
+                <h6 class="post-spans">Posted: 30 July 2017 | Post By: Karan Suthar | 
+                    <!-- <span id="ga-page-view" ga-page-url=/package-of-week/categories-with-django-mptt/></span> <i class="fa fa-eye"></i> |  -->
+                    <i class="fa fa-clock"></i>
+                    8 min read | 
+                    <a style="text-decoration: none;" href="https://djangopy.org/package-of-week/categories-with-django-mptt/#disqus_thread"
+                        data-disqus-identifier="/package-of-week/categories-with-django-mptt/">
+                        <i class="fa fa-comment"></i>
+                    </a> 
+                </h6>
                 <br>
                 <hr /><br>
                 <div class="post-content"> <p>In this tutorial, we will learn how to implement categories and breadcrumb in a Django site. Categories may be related to each other as child-parent, so categories are hierarchical data and to store and access them efficiently mptt i.e modified preorder tree traversal should be used in which the number of database queries made is minimum. There are some referral links provided at the end of the article to understand how CRUD operations are applied on hierarchical data efficiently.</p>
@@ -261,8 +266,8 @@
 
 <p>If you want to change the indentation pixels i.e the space before each category object so that the relation between them can be determined easily, add the following line of code in settings.py</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">MPTT_ADMIN_LEVEL_INDENT</span> <span class="o">=</span> <span class="mi">20</span>   <span class="c">#you can replace 20 with some other number</span>
-                                 <span class="c">#to change indentation space</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">MPTT_ADMIN_LEVEL_INDENT</span> <span class="o">=</span> <span class="mi">20</span>   <span class="c1">#you can replace 20 with some other number
+</span>                                 <span class="c1">#to change indentation space</span></code></pre></figure>
 
 <p>The category tree showed above is not collapsable and expandable, you can tweak this by changing my_posts/admin.py as</p>
 
@@ -378,12 +383,12 @@
 
 <span class="n">register</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">Library</span><span class="p">()</span>
 
-<span class="nd">@register.filter</span>
+<span class="o">@</span><span class="n">register</span><span class="o">.</span><span class="nb">filter</span>
 <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-    <span class="n">spam</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>         <span class="c"># assume value be /python/web-scrapping</span>
-                                        <span class="c"># spam would be 'web-scrapping'</span>
-    <span class="n">spam</span> <span class="o">=</span> <span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">spam</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'-'</span><span class="p">))</span>    <span class="c"># now spam would be 'web scrapping'</span>
-    <span class="k">return</span> <span class="n">spam</span></code></pre></figure>
+    <span class="n">spam</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'/'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>         <span class="c1"># assume value be /python/web-scrapping
+</span>                                        <span class="c1"># spam would be 'web-scrapping'
+</span>    <span class="n">spam</span> <span class="o">=</span> <span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">spam</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'-'</span><span class="p">))</span>    <span class="c1"># now spam would be 'web scrapping'
+</span>    <span class="k">return</span> <span class="n">spam</span></code></pre></figure>
 
 <p>Finally, we have following post detail page for recently created post</p>
 
@@ -422,6 +427,9 @@
                 </div>
                 <img class="img-overlay">
                 <br><br>
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 
+                <br>
+                <br>                
                 <ul class="socialIcons">
                     <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/package-of-week/categories-with-django-mptt/&picture=https://djangopy.orgimg/categories-with-django-mptt/cover.jpg&name=Categories with django-mptt&caption=%20&description=In this post, we'll learn how to implement categories in Django efficiently by storing hierarchical data in place of making many database queries since database queries are costly in terms of time complexity.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
                             class="Icon socialAccount--facebook" target="_blank"></a></li>
@@ -447,6 +455,8 @@
         </div>
     </div>
 </div>
+<script id = "dsq-count-scr" src = "//django-py.disqus.com/count.js" async></script>
+
 <!-- Latest Posts -->
 <section class="latest-posts" style="background-color: #F2F2F2;">
   <div class="container">
@@ -471,7 +481,8 @@
           <div class="post-meta d-flex justify-content-between">
             <div class="date">05 March 2019</div>
             <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Dynamically filter queryset with AJAX and DRF</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to filter the queryset using AJAX and DRF</p>
@@ -493,7 +504,8 @@
           <div class="post-meta d-flex justify-content-between">
             <div class="date">28 February 2019</div>
             <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Step Up Guide to implement Ajax in Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to submit the forms and perform asynchronous tasks with the help of AJAX</p>
@@ -515,7 +527,8 @@
           <div class="post-meta d-flex justify-content-between">
             <div class="date">16 February 2018</div>
             <div class="category"><a href="#">how-to</a></div>
-          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Handle Asynchronous Tasks using celery and Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>

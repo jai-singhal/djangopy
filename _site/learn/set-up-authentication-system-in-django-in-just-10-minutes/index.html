@@ -179,10 +179,15 @@
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">Set-up Authentication System in Django in just 10 minutes</h1>
-                <h6 class="post-spans">Posted: 03 October 2017 | Post By: Jai Singhal | <span
-                        id="ga-page-view" ga-page-url=/learn/set-up-authentication-system-in-django-in-just-10-minutes/></span> <i class="fa fa-eye"></i> | <i class="fa fa-clock"></i>
-                    13 min read | <a style="text-decoration: none;" href="/learn/set-up-authentication-system-in-django-in-just-10-minutes/.html#disqus_thread"
-                        data-disqus-identifier="/learn/set-up-authentication-system-in-django-in-just-10-minutes/"><i class="fa fa-comment"></i></a> </h6>
+                <h6 class="post-spans">Posted: 03 October 2017 | Post By: Jai Singhal | 
+                    <!-- <span id="ga-page-view" ga-page-url=/learn/set-up-authentication-system-in-django-in-just-10-minutes/></span> <i class="fa fa-eye"></i> |  -->
+                    <i class="fa fa-clock"></i>
+                    13 min read | 
+                    <a style="text-decoration: none;" href="https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/#disqus_thread"
+                        data-disqus-identifier="/learn/set-up-authentication-system-in-django-in-just-10-minutes/">
+                        <i class="fa fa-comment"></i>
+                    </a> 
+                </h6>
                 <br>
                 <hr /><br>
                 <div class="post-content"> <p>Authentication is something which needs to be implemented on each and every website. And with Django, it is very simple and easy to implement because we don’t need to make the Authentication system from scratch, it is already made by the Django, we need to simply use it.</p>
@@ -303,7 +308,7 @@
         <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse navbar-collapse"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;li</span> <span class="na">class =</span><span class="err"> </span><span class="s">"active"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">class = </span><span class="s">"active"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
              <span class="nt">&lt;/ul&gt;</span>
             <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav navbar-right"</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"dropdown"</span><span class="nt">&gt;</span>
@@ -476,17 +481,17 @@
 <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
-<span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"container"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class =</span><span class="err"> </span><span class="s">"col-md-6 col-md-offset-3"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class = </span><span class="s">"col-md-6 col-md-offset-3"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"wrapper"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-signin"</span> <span class="na">method =</span><span class="err"> </span><span class="s">'POST'</span> <span class="na">action=</span><span class="err"> </span><span class="s">''</span> <span class="na">enctype =</span><span class="err"> </span><span class="s">"multipart/form-data"</span> <span class="na">style=</span><span class="s">"margin-top: -30px; margin-bottom: -18px;"</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="nv">csrf_token</span> <span class="cp">%}</span>
+      <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-signin"</span> <span class="na">method = </span><span class="s">'POST'</span> <span class="na">action= </span><span class="s">''</span> <span class="na">enctype = </span><span class="s">"multipart/form-data"</span> <span class="na">style=</span><span class="s">"margin-top: -30px; margin-bottom: -18px;"</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="nv">csrf_token</span> <span class="cp">%}</span>
         <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"form-signin-heading"</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">title</span><span class="cp">}}</span><span class="nt">&lt;/h2&gt;</span>
         <span class="cp">{{</span><span class="nv">form.as_p</span> <span class="cp">}}</span>
         <span class="nt">&lt;/label&gt;&lt;br&gt;</span>
         <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-primary btn-block"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span><span class="cp">{{</span><span class="nv">title</span><span class="cp">}}</span><span class="nt">&lt;/button&gt;</span>
         <span class="nt">&lt;br&gt;</span>
-        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">title</span> <span class="o">==</span> <span class="s2">"Login"</span> <span class="cp">%}</span><span class="nt">&lt;h5&gt;</span>Not Registered? <span class="nt">&lt;a</span> <span class="na">href =</span><span class="err"> </span><span class="s">"/accounts/register"</span><span class="nt">&gt;</span>Register Here<span class="nt">&lt;/a&gt;&lt;/h5&gt;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">title</span> <span class="o">==</span> <span class="s2">"Register"</span> <span class="cp">%}</span><span class="nt">&lt;h5&gt;</span>Already Registered? <span class="nt">&lt;a</span> <span class="na">href =</span><span class="err"> </span><span class="s">"/accounts/login"</span><span class="nt">&gt;</span>Login Here<span class="nt">&lt;/a&gt;&lt;/h5&gt;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">title</span> <span class="o">==</span> <span class="s2">"Login"</span> <span class="cp">%}</span><span class="nt">&lt;h5&gt;</span>Not Registered? <span class="nt">&lt;a</span> <span class="na">href = </span><span class="s">"/accounts/register"</span><span class="nt">&gt;</span>Register Here<span class="nt">&lt;/a&gt;&lt;/h5&gt;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">title</span> <span class="o">==</span> <span class="s2">"Register"</span> <span class="cp">%}</span><span class="nt">&lt;h5&gt;</span>Already Registered? <span class="nt">&lt;a</span> <span class="na">href = </span><span class="s">"/accounts/login"</span><span class="nt">&gt;</span>Login Here<span class="nt">&lt;/a&gt;&lt;/h5&gt;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
       <span class="nt">&lt;/form&gt;</span>
 
     <span class="nt">&lt;/div&gt;</span>
@@ -557,8 +562,8 @@
 		<span class="k">if</span> <span class="n">username_qs</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
 			<span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">"User with this username already registered"</span><span class="p">)</span>
 
-		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">password</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>	<span class="c">#you can add more validations for password</span>
-			<span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">"Password must be greater than 8 characters"</span><span class="p">)</span>
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">password</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>	<span class="c1">#you can add more validations for password
+</span>			<span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">"Password must be greater than 8 characters"</span><span class="p">)</span>
 
 
 		<span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">UsersRegisterForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">keyargs</span><span class="p">)</span>
@@ -638,6 +643,9 @@
                 </div>
                 <img class="img-overlay">
                 <br><br>
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 
+                <br>
+                <br>                
                 <ul class="socialIcons">
                     <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/&picture=https://djangopy.orgimg/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg&name=Set-up Authentication System in Django in just 10 minutes&caption=%20&description=In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
                             class="Icon socialAccount--facebook" target="_blank"></a></li>
@@ -663,6 +671,8 @@
         </div>
     </div>
 </div>
+<script id = "dsq-count-scr" src = "//django-py.disqus.com/count.js" async></script>
+
 <!-- Latest Posts -->
 <section class="latest-posts" style="background-color: #F2F2F2;">
   <div class="container">
@@ -687,7 +697,8 @@
           <div class="post-meta d-flex justify-content-between">
             <div class="date">05 March 2019</div>
             <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Dynamically filter queryset with AJAX and DRF</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to filter the queryset using AJAX and DRF</p>
@@ -709,7 +720,8 @@
           <div class="post-meta d-flex justify-content-between">
             <div class="date">28 February 2019</div>
             <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Step Up Guide to implement Ajax in Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to submit the forms and perform asynchronous tasks with the help of AJAX</p>
@@ -731,7 +743,8 @@
           <div class="post-meta d-flex justify-content-between">
             <div class="date">16 February 2018</div>
             <div class="category"><a href="#">how-to</a></div>
-          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Handle Asynchronous Tasks using celery and Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>

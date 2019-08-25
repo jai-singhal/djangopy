@@ -20,7 +20,8 @@
           <div class="post-meta d-flex justify-content-between">
             <div class="date">{{post.date | date_to_long_string }}</div>
             <div class="category"><a href="#">{{post.category}}</a></div>
-          </div><a href="{{post.url}}" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="{{post.url}}" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>{{post.title}}</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">{{post.description | strip_html | truncatewords:30 }}</p>

@@ -191,10 +191,15 @@
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">How to Implement Categories in Django</h1>
-                <h6 class="post-spans">Posted: 08 July 2017 | Post By: Karan Suthar | <span
-                        id="ga-page-view" ga-page-url=/how-to/how-to-implement-categories-in-django/></span> <i class="fa fa-eye"></i> | <i class="fa fa-clock"></i>
-                    10 min read | <a style="text-decoration: none;" href="/how-to/how-to-implement-categories-in-django/.html#disqus_thread"
-                        data-disqus-identifier="/how-to/how-to-implement-categories-in-django/"><i class="fa fa-comment"></i></a> </h6>
+                <h6 class="post-spans">Posted: 08 July 2017 | Post By: Karan Suthar | 
+                    <!-- <span id="ga-page-view" ga-page-url=/how-to/how-to-implement-categories-in-django/></span> <i class="fa fa-eye"></i> |  -->
+                    <i class="fa fa-clock"></i>
+                    10 min read | 
+                    <a style="text-decoration: none;" href="https://djangopy.org/how-to/how-to-implement-categories-in-django/#disqus_thread"
+                        data-disqus-identifier="/how-to/how-to-implement-categories-in-django/">
+                        <i class="fa fa-comment"></i>
+                    </a> 
+                </h6>
                 <br>
                 <hr /><br>
                 <div class="post-content"> <h2 id="introduction">Introduction</h2>
@@ -210,14 +215,14 @@
     <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">'self'</span><span class="p">,</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span> <span class="p">,</span><span class="n">related_name</span><span class="o">=</span><span class="s">'children'</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">unique_together</span> <span class="o">=</span> <span class="p">(</span><span class="s">'slug'</span><span class="p">,</span> <span class="s">'parent'</span><span class="p">,)</span>    <span class="c">#enforcing that there can not be two</span>
-        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">"categories"</span>       <span class="c">#categories under a parent with same </span>
-                                                 <span class="c">#slug </span>
-
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                           <span class="c"># __str__ method elaborated later in</span>
-        <span class="n">full_path</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>                  <span class="c"># post.  use __unicode__ in place of</span>
-                                                 <span class="c"># __str__ if you are using python 2</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span>                          
+        <span class="n">unique_together</span> <span class="o">=</span> <span class="p">(</span><span class="s">'slug'</span><span class="p">,</span> <span class="s">'parent'</span><span class="p">,)</span>    <span class="c1">#enforcing that there can not be two
+</span>        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">"categories"</span>       <span class="c1">#categories under a parent with same 
+</span>                                                 <span class="c1">#slug 
+</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                           <span class="c1"># __str__ method elaborated later in
+</span>        <span class="n">full_path</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>                  <span class="c1"># post.  use __unicode__ in place of
+</span>                                                 <span class="c1"># __str__ if you are using python 2
+</span>        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span>                          
 
         <span class="k">while</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">full_path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
@@ -240,8 +245,8 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
 
 
-    <span class="k">def</span> <span class="nf">get_cat_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>           <span class="c">#for now ignore this instance method,</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span>
+    <span class="k">def</span> <span class="nf">get_cat_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>           <span class="c1">#for now ignore this instance method,
+</span>        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span>
         <span class="n">breadcrumb</span> <span class="o">=</span> <span class="p">[</span><span class="s">"dummy"</span><span class="p">]</span>
         <span class="k">while</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">breadcrumb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">slug</span><span class="p">)</span>
@@ -442,6 +447,9 @@ python3 manage.py migrate</code></pre></figure>
                 </div>
                 <img class="img-overlay">
                 <br><br>
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 
+                <br>
+                <br>                
                 <ul class="socialIcons">
                     <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/how-to/how-to-implement-categories-in-django/&picture=https://djangopy.orgimg/how-to-implement-categories-in-django/cover.jpg&name=How to Implement Categories in Django&caption=%20&description=In this tutorial, we'll learn how to implement categories and subcategories in our Django project without using any external module.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
                             class="Icon socialAccount--facebook" target="_blank"></a></li>
@@ -467,6 +475,8 @@ python3 manage.py migrate</code></pre></figure>
         </div>
     </div>
 </div>
+<script id = "dsq-count-scr" src = "//django-py.disqus.com/count.js" async></script>
+
 <!-- Latest Posts -->
 <section class="latest-posts" style="background-color: #F2F2F2;">
   <div class="container">
@@ -491,7 +501,8 @@ python3 manage.py migrate</code></pre></figure>
           <div class="post-meta d-flex justify-content-between">
             <div class="date">05 March 2019</div>
             <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Dynamically filter queryset with AJAX and DRF</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to filter the queryset using AJAX and DRF</p>
@@ -513,7 +524,8 @@ python3 manage.py migrate</code></pre></figure>
           <div class="post-meta d-flex justify-content-between">
             <div class="date">28 February 2019</div>
             <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Step Up Guide to implement Ajax in Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to submit the forms and perform asynchronous tasks with the help of AJAX</p>
@@ -535,7 +547,8 @@ python3 manage.py migrate</code></pre></figure>
           <div class="post-meta d-flex justify-content-between">
             <div class="date">16 February 2018</div>
             <div class="category"><a href="#">how-to</a></div>
-          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Handle Asynchronous Tasks using celery and Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>

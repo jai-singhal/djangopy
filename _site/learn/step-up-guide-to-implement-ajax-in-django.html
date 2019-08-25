@@ -193,10 +193,15 @@
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">Step Up Guide to implement Ajax in Django</h1>
-                <h6 class="post-spans">Posted: 28 February 2019 | Post By: Jai Singhal | <span
-                        id="ga-page-view" ga-page-url=/learn/step-up-guide-to-implement-ajax-in-django></span> <i class="fa fa-eye"></i> | <i class="fa fa-clock"></i>
-                    12 min read | <a style="text-decoration: none;" href="/learn/step-up-guide-to-implement-ajax-in-django.html#disqus_thread"
-                        data-disqus-identifier="/learn/step-up-guide-to-implement-ajax-in-django"><i class="fa fa-comment"></i></a> </h6>
+                <h6 class="post-spans">Posted: 28 February 2019 | Post By: Jai Singhal | 
+                    <!-- <span id="ga-page-view" ga-page-url=/learn/step-up-guide-to-implement-ajax-in-django></span> <i class="fa fa-eye"></i> |  -->
+                    <i class="fa fa-clock"></i>
+                    13 min read | 
+                    <a style="text-decoration: none;" href="https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django#disqus_thread"
+                        data-disqus-identifier="/learn/step-up-guide-to-implement-ajax-in-django">
+                        <i class="fa fa-comment"></i>
+                    </a> 
+                </h6>
                 <br>
                 <hr /><br>
                 <div class="post-content"> <!-- 
@@ -320,8 +325,8 @@
 <span class="kn">from</span> <span class="nn">app_1</span> <span class="kn">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">app1</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="c">#FBV</span>
-    <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">app1</span><span class="o">.</span><span class="n">contactPage</span><span class="p">),</span>
+    <span class="c1">#FBV
+</span>    <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">app1</span><span class="o">.</span><span class="n">contactPage</span><span class="p">),</span>
     <span class="n">path</span><span class="p">(</span><span class="s">'ajax/contact'</span><span class="p">,</span> <span class="n">app1</span><span class="o">.</span><span class="n">postContact</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span><span class="s">'contact_submit'</span><span class="p">),</span>
 <span class="p">]</span></code></pre></figure>
 
@@ -362,8 +367,8 @@
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
 <span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">ContactForm</span>
 
-<span class="c">#FBV</span>
-<span class="k">def</span> <span class="nf">contactPage</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="c1">#FBV
+</span><span class="k">def</span> <span class="nf">contactPage</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 	<span class="n">form</span> <span class="o">=</span> <span class="n">ContactForm</span><span class="p">()</span>
 	<span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"contact.html"</span><span class="p">,</span> <span class="p">{</span><span class="s">"contactForm"</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
 
@@ -398,7 +403,7 @@
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row justify-content-center align-items-center"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6 "</span><span class="nt">&gt;</span>
-      	<span class="nt">&lt;form</span> <span class="na">id =</span><span class="err"> </span><span class="s">"contactForm"</span> <span class="na">method=</span><span class="err"> </span><span class="s">"POST"</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="nv">csrf_token</span> <span class="cp">%}</span>
+      	<span class="nt">&lt;form</span> <span class="na">id = </span><span class="s">"contactForm"</span> <span class="na">method= </span><span class="s">"POST"</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="nv">csrf_token</span> <span class="cp">%}</span>
       		<span class="cp">{{</span> <span class="nv">contactForm.as_p</span> <span class="cp">}}</span>
       		<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">name=</span><span class="s">"contact-submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="nt">/&gt;</span>
       	<span class="nt">&lt;/form&gt;</span>
@@ -409,18 +414,18 @@
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-   <span class="nx">$</span><span class="p">(</span><span class="s2">"#contactForm"</span><span class="p">).</span><span class="nx">submit</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+   <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#contactForm</span><span class="dl">"</span><span class="p">).</span><span class="nx">submit</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
 	<span class="c1">// prevent from normal form behaviour</span>
       	<span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
     	<span class="c1">// serialize the form data  </span>
       	<span class="kd">var</span> <span class="nx">serializedData</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">serialize</span><span class="p">();</span>
       	<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-      		<span class="na">type</span> <span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
-      		<span class="na">url</span> <span class="p">:</span>  <span class="s2">"</span><span class="cp">{%</span> <span class="nv">url</span> <span class="s1">'contact_submit'</span> <span class="cp">%}</span><span class="s2">"</span><span class="p">,</span>
+      		<span class="na">type</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+      		<span class="na">url</span> <span class="p">:</span>  <span class="dl">"</span><span class="cp">{%</span> <span class="nv">url</span> <span class="s1">'contact_submit'</span> <span class="cp">%}</span><span class="dl">"</span><span class="p">,</span>
       		<span class="na">data</span> <span class="p">:</span> <span class="nx">serializedData</span><span class="p">,</span>
       		<span class="na">success</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
 			<span class="c1">//reset the form after successful submit</span>
-      			<span class="nx">$</span><span class="p">(</span><span class="s2">"#contactForm"</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">reset</span><span class="p">();</span> 
+      			<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#contactForm</span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">reset</span><span class="p">();</span> 
       		<span class="p">},</span>
       		<span class="na">error</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
       			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
@@ -442,8 +447,8 @@
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">app_1</span> <span class="kn">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">app1</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-	<span class="c">#CBV</span>
-    <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">app1</span><span class="o">.</span><span class="n">ContactAjax</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'contact_submit'</span><span class="p">)</span>
+	<span class="c1">#CBV
+</span>    <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">app1</span><span class="o">.</span><span class="n">ContactAjax</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'contact_submit'</span><span class="p">)</span>
 <span class="p">]</span></code></pre></figure>
 
 <hr />
@@ -455,8 +460,8 @@
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
 <span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">ContactForm</span>
 <span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">View</span>
-<span class="c">#CBV</span>
-<span class="k">class</span> <span class="nc">ContactAjax</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+<span class="c1">#CBV
+</span><span class="k">class</span> <span class="nc">ContactAjax</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
 	<span class="n">form_class</span> <span class="o">=</span> <span class="n">ContactForm</span>
 	<span class="n">template_name</span> <span class="o">=</span> <span class="s">"contact.html"</span>
 
@@ -521,8 +526,8 @@
 <span class="kn">from</span> <span class="nn">app_2</span> <span class="kn">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">app2</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="c">#app_2</span>
-    <span class="n">path</span><span class="p">(</span><span class="s">'user'</span><span class="p">,</span> <span class="n">app2</span><span class="o">.</span><span class="n">userPanel</span><span class="p">),</span>
+    <span class="c1">#app_2
+</span>    <span class="n">path</span><span class="p">(</span><span class="s">'user'</span><span class="p">,</span> <span class="n">app2</span><span class="o">.</span><span class="n">userPanel</span><span class="p">),</span>
     <span class="n">path</span><span class="p">(</span><span class="s">'ajax/get_user_info'</span><span class="p">,</span> <span class="n">app2</span><span class="o">.</span><span class="n">getUserInfo</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_user_info'</span><span class="p">),</span>
 <span class="p">]</span></code></pre></figure>
 
@@ -536,8 +541,8 @@
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
 
-<span class="c">#FBV</span>
-<span class="k">def</span> <span class="nf">userPanel</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="c1">#FBV
+</span><span class="k">def</span> <span class="nf">userPanel</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 	<span class="n">usernames</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s">"username"</span><span class="p">)</span>
 	<span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"user.html"</span><span class="p">,</span> <span class="p">{</span><span class="s">"usernames"</span><span class="p">:</span> <span class="n">usernames</span><span class="p">})</span>
 
@@ -581,14 +586,14 @@
    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row justify-content-center align-items-center"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-4"</span><span class="nt">&gt;</span>
    	<span class="nt">&lt;label&gt;</span>Select Username<span class="nt">&lt;/label&gt;</span>
-   	<span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id =</span><span class="err"> </span><span class="s">"users"</span><span class="nt">&gt;</span>
+   	<span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id = </span><span class="s">"users"</span><span class="nt">&gt;</span>
    		<span class="nt">&lt;option</span> <span class="na">selected=</span><span class="s">"true"</span> <span class="na">disabled=</span><span class="s">"disabled"</span><span class="nt">&gt;</span>Select user<span class="nt">&lt;/option&gt;</span>
    		<span class="cp">{%</span> <span class="k">for</span> <span class="nv">uname</span> <span class="ow">in</span> <span class="nv">usernames</span> <span class="cp">%}</span>
-   			<span class="nt">&lt;option</span> <span class="na">value =</span><span class="err"> </span><span class="cp">{{</span><span class="nv">uname.username</span><span class="cp">}}</span><span class="err">&gt;</span><span class="cp">{{</span><span class="nv">uname.username</span><span class="cp">}}</span><span class="s">&lt;/option</span><span class="nt">&gt;</span>
+   			<span class="nt">&lt;option</span> <span class="na">value = </span><span class="cp">{{</span><span class="nv">uname.username</span><span class="cp">}}</span><span class="err">&gt;</span><span class="cp">{{</span><span class="nv">uname.username</span><span class="cp">}}</span><span class="s">&lt;/option</span><span class="nt">&gt;</span>
    		<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
    	<span class="nt">&lt;/select&gt;</span>
    <span class="nt">&lt;/div&gt;</span>
-   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-9"</span> <span class="na">id =</span><span class="err"> </span><span class="s">"user_info"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-9"</span> <span class="na">id = </span><span class="s">"user_info"</span><span class="nt">&gt;</span>
    	<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
    	<span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-stripped table-fixed"</span><span class="nt">&gt;</span>
 		<span class="nt">&lt;thead&gt;</span>
@@ -610,19 +615,19 @@
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-   <span class="nx">$</span><span class="p">(</span><span class="s2">"#users"</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+   <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#users</span><span class="dl">"</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
    	<span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
    	<span class="kd">var</span> <span class="nx">username</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
    	<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span><span class="nx">username</span><span class="p">};</span>
    	<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-   		<span class="na">type</span> <span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-   		<span class="na">url</span> <span class="p">:</span>  <span class="s2">"</span><span class="cp">{%</span> <span class="nv">url</span> <span class="s1">'get_user_info'</span> <span class="cp">%}</span><span class="s2">"</span><span class="p">,</span>
+   		<span class="na">type</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+   		<span class="na">url</span> <span class="p">:</span>  <span class="dl">"</span><span class="cp">{%</span> <span class="nv">url</span> <span class="s1">'get_user_info'</span> <span class="cp">%}</span><span class="dl">"</span><span class="p">,</span>
    		<span class="na">data</span> <span class="p">:</span> <span class="nx">data</span><span class="p">,</span>
    		<span class="na">success</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
-   			<span class="nx">$</span><span class="p">(</span><span class="s2">"#user_info table tbody"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">`&lt;tr&gt;
-   				&lt;td&gt;</span><span class="p">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">user_info</span><span class="p">.</span><span class="nx">first_name</span> <span class="o">||</span> <span class="s2">"-"</span><span class="p">}</span><span class="s2">&lt;/td&gt;
-   				&lt;td&gt;</span><span class="p">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">user_info</span><span class="p">.</span><span class="nx">last_name</span> <span class="o">||</span> <span class="s2">"-"</span><span class="p">}</span><span class="s2">&lt;/td&gt;
-   				&lt;td&gt;</span><span class="p">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">user_info</span><span class="p">.</span><span class="nx">email</span> <span class="o">||</span> <span class="s2">"-"</span><span class="p">}</span><span class="s2">&lt;/td&gt;
+   			<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#user_info table tbody</span><span class="dl">"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">`&lt;tr&gt;
+   				&lt;td&gt;</span><span class="p">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">user_info</span><span class="p">.</span><span class="nx">first_name</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">}</span><span class="s2">&lt;/td&gt;
+   				&lt;td&gt;</span><span class="p">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">user_info</span><span class="p">.</span><span class="nx">last_name</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">}</span><span class="s2">&lt;/td&gt;
+   				&lt;td&gt;</span><span class="p">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">user_info</span><span class="p">.</span><span class="nx">email</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">}</span><span class="s2">&lt;/td&gt;
    				&lt;td&gt;</span><span class="p">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">user_info</span><span class="p">.</span><span class="nx">is_active</span><span class="p">}</span><span class="s2">&lt;/td&gt;
    				&lt;td&gt;</span><span class="p">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">user_info</span><span class="p">.</span><span class="nx">joined</span><span class="p">}</span><span class="s2">&lt;/td&gt;
    				&lt;/tr&gt;`</span><span class="p">)</span>
@@ -672,6 +677,9 @@
                 </div>
                 <img class="img-overlay">
                 <br><br>
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 
+                <br>
+                <br>                
                 <ul class="socialIcons">
                     <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django&picture=https://djangopy.orgimg/step-up-guide-to-implement-ajax-in-django/cover.jpg&name=Step Up Guide to implement Ajax in Django&caption=%20&description=In this post we will learn, how to submit the forms and perform asynchronous tasks with the help of AJAX&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
                             class="Icon socialAccount--facebook" target="_blank"></a></li>
@@ -697,6 +705,8 @@
         </div>
     </div>
 </div>
+<script id = "dsq-count-scr" src = "//django-py.disqus.com/count.js" async></script>
+
 <!-- Latest Posts -->
 <section class="latest-posts" style="background-color: #F2F2F2;">
   <div class="container">
@@ -721,7 +731,8 @@
           <div class="post-meta d-flex justify-content-between">
             <div class="date">05 March 2019</div>
             <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Dynamically filter queryset with AJAX and DRF</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to filter the queryset using AJAX and DRF</p>
@@ -743,7 +754,8 @@
           <div class="post-meta d-flex justify-content-between">
             <div class="date">28 February 2019</div>
             <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Step Up Guide to implement Ajax in Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to submit the forms and perform asynchronous tasks with the help of AJAX</p>
@@ -765,7 +777,8 @@
           <div class="post-meta d-flex justify-content-between">
             <div class="date">16 February 2018</div>
             <div class="category"><a href="#">how-to</a></div>
-          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Handle Asynchronous Tasks using celery and Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>

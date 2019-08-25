@@ -2,69 +2,88 @@
 layout: default_index
 ---
 <!-- Hero Section-->
-   <!-- Hero Section-->
-    <section style="background: url({{ '/img/cover.jpeg' }}); background-size: cover; background-position: center center" class="hero">
-      <div class="container">
-            <center><h1>A Blog for Django Developers</h1></center>
-      </div>
-    </section>
+<!-- Hero Section-->
+<section style="background: url({{ '/img/cover.jpeg' }}); background-size: cover; background-position: center center"
+  class="hero">
+  <div class="container">
+    <center>
+      <h1>A Blog for Django Developers</h1>
+    </center>
+  </div>
+</section>
 
 <!-- Intro Section-->
 <section class="intro">
   <div class="container">
 
     <h2 class="h3">Never stop learning with DJANGO<span class="py-color">PY<span></h2>
-      <p class="text-big">We were on a little break for quite some time. Now, we are back again with the new <strong>inspiration</strong>, new <strong>design</strong>, new <strong>ideas</strong>, but with the same aim of <strong>promoting Django</strong>. We hope you'll love and enjoy the content :)</p>
+    <p class="text-big">We were on a little break for quite some time. Now, we are back again with the new
+      <strong>inspiration</strong>, new <strong>design</strong>, new <strong>ideas</strong>, but with the same aim of
+      <strong>promoting Django</strong>. We hope you'll love and enjoy the content :)</p>
 
-    </div>
-  </section>
-  <section class="featured-posts no-padding-top">
-    <div class="container">
-      <!-- Post-->
+      <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 
+    </a>
+  </div>
+</section>
+<section class="featured-posts no-padding-top">
+  <div class="container">
+    <!-- Post-->
 
-      {% for post in paginator.posts %}
-      <a href="{{post.url}}" class="catalogue-item">
-        <div>
-          <p>{{post.date |  date_to_long_string  }}
-          </p>
+    {% for post in paginator.posts %}
+    <div class="catalogue-item">
+      <div class="post-body">
+        <p>{{post.date |  date_to_long_string  }}
+        </p>
+        <a href="{{post.url}}">
           <h1 class="catalogue-title">{{post.title}}</h1>
-          <div class="catalogue-line"></div>
-          <p>
-            {{post.description}}...Read More
-           </p>
-        </div>
-        <span> Post By: {{post.author}} |  <span class = "ga-page-view" ga-page-url = {{post.url}}></span> <i class = "fa fa-eye"></i>  | <i class = "fa fa-clock"></i> {{ post.content | read_time }}</span>
-      </a>
-      {% endfor %}
-      <br>  <br>
-      <!-- Pagination links -->
-      <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
-        <br><br>
-      <div class="pagination">
-
-        {% if paginator.previous_page %}
-        <li class="page-item">
-          <a class="page-link" href="{{ paginator.previous_page_path }}">Previous</a>
-        </li>
-        {% else %}
-        <li class="page-item">
-          <a class="page-link">Previous</a>
-        </li>
-        {% endif %}
-        {% if paginator.next_page %}
-        <li class="page-item">
-          <a class="page-link" href="{{ paginator.next_page_path }}">Next</a>
-        </li>
-        {% else %}
-        <li class="page-item">
-          <a class="page-link">Next</a>
-        </li>
-        {% endif %}
+        </a>
+        <div class="catalogue-line"></div>
+        <p>
+          {{post.description}}...Read More
+        </p>
       </div>
-
+      <div class="post-footer">
+        <span> Post By: {{post.author}} |
+          <!-- <span class = "ga-page-view" ga-page-url = {{post.url}}></span> <i class = "fa fa-eye"></i>  |  -->
+          <i class="fa fa-clock"></i> {{ post.content | read_time }} |
+          <a href="https://djangopy.org{{ post.permalink }}#disqus_thread"
+            data-disqus-identifier="https://djangopy.org{{ post.permalink }}">
+            <i class="fa fa-comment"></i>
+          </a>
+        </span>
+      </div>
     </div>
-  </section>
+    {% endfor %}
+    <script id="dsq-count-scr" src="//django-py.disqus.com/count.js" async></script>
+    <br> <br>
+    <!-- Pagination links -->
+    <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+    <br><br>
+    <div class="pagination">
+
+      {% if paginator.previous_page %}
+      <li class="page-item">
+        <a class="page-link" href="{{ paginator.previous_page_path }}">Previous</a>
+      </li>
+      {% else %}
+      <li class="page-item">
+        <a class="page-link">Previous</a>
+      </li>
+      {% endif %}
+      {% if paginator.next_page %}
+      <li class="page-item">
+        <a class="page-link" href="{{ paginator.next_page_path }}">Next</a>
+      </li>
+      {% else %}
+      <li class="page-item">
+        <a class="page-link">Next</a>
+      </li>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
 
 
 
-  {% include popular_posts.html %}
+{% include popular_posts.html %}

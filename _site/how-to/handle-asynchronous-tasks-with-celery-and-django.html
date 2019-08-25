@@ -191,10 +191,15 @@
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">Handle Asynchronous Tasks using celery and Django</h1>
-                <h6 class="post-spans">Posted: 16 February 2018 | Post By: Jai Singhal | <span
-                        id="ga-page-view" ga-page-url=/how-to/handle-asynchronous-tasks-with-celery-and-django></span> <i class="fa fa-eye"></i> | <i class="fa fa-clock"></i>
-                    10 min read | <a style="text-decoration: none;" href="/how-to/handle-asynchronous-tasks-with-celery-and-django.html#disqus_thread"
-                        data-disqus-identifier="/how-to/handle-asynchronous-tasks-with-celery-and-django"><i class="fa fa-comment"></i></a> </h6>
+                <h6 class="post-spans">Posted: 16 February 2018 | Post By: Jai Singhal | 
+                    <!-- <span id="ga-page-view" ga-page-url=/how-to/handle-asynchronous-tasks-with-celery-and-django></span> <i class="fa fa-eye"></i> |  -->
+                    <i class="fa fa-clock"></i>
+                    10 min read | 
+                    <a style="text-decoration: none;" href="https://djangopy.org/how-to/handle-asynchronous-tasks-with-celery-and-django#disqus_thread"
+                        data-disqus-identifier="/how-to/handle-asynchronous-tasks-with-celery-and-django">
+                        <i class="fa fa-comment"></i>
+                    </a> 
+                </h6>
                 <br>
                 <hr /><br>
                 <div class="post-content"> <h2 id="introduction">Introduction</h2>
@@ -283,23 +288,23 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
 
-<span class="c"># set the default Django settings module for the 'celery' program.</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">'DJANGO_SETTINGS_MODULE'</span><span class="p">,</span> <span class="s">'&lt;your project name&gt;.settings'</span><span class="p">)</span>
+<span class="c1"># set the default Django settings module for the 'celery' program.
+</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">'DJANGO_SETTINGS_MODULE'</span><span class="p">,</span> <span class="s">'&lt;your project name&gt;.settings'</span><span class="p">)</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s">'&lt;your project name&gt;'</span><span class="p">)</span>
 
-<span class="c"># Using a string here means the worker doesn't have to serialize</span>
-<span class="c"># the configuration object to child processes.</span>
-<span class="c"># - namespace='CELERY' means all celery-related configuration keys</span>
-<span class="c">#   should have a `CELERY_` prefix.</span>
-<span class="n">app</span><span class="o">.</span><span class="n">config_from_object</span><span class="p">(</span><span class="s">'django.conf:settings'</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s">'CELERY'</span><span class="p">)</span>
+<span class="c1"># Using a string here means the worker doesn't have to serialize
+# the configuration object to child processes.
+# - namespace='CELERY' means all celery-related configuration keys
+#   should have a `CELERY_` prefix.
+</span><span class="n">app</span><span class="o">.</span><span class="n">config_from_object</span><span class="p">(</span><span class="s">'django.conf:settings'</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s">'CELERY'</span><span class="p">)</span>
 
-<span class="c"># Load task modules from all registered Django app configs.</span>
-<span class="n">app</span><span class="o">.</span><span class="n">autodiscover_tasks</span><span class="p">()</span>
+<span class="c1"># Load task modules from all registered Django app configs.
+</span><span class="n">app</span><span class="o">.</span><span class="n">autodiscover_tasks</span><span class="p">()</span>
 
-<span class="nd">@app.task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="o">@</span><span class="n">app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">debug_task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Request: {0!r}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">))</span></code></pre></figure>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Request: {0!r}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">))</span></code></pre></figure>
 
 <p><br /></p>
 
@@ -308,9 +313,9 @@
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">unicode_literals</span>
 
-<span class="c"># This will make sure the app is always imported when</span>
-<span class="c"># Django starts so that shared_task will use this app.</span>
-<span class="kn">from</span> <span class="nn">.celery</span> <span class="kn">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">celery_app</span>
+<span class="c1"># This will make sure the app is always imported when
+# Django starts so that shared_task will use this app.
+</span><span class="kn">from</span> <span class="nn">.celery</span> <span class="kn">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">celery_app</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">'celery_app'</span><span class="p">]</span></code></pre></figure>
 
@@ -328,13 +333,13 @@
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">unicode_literals</span>
 <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">shared_task</span>
 
-<span class="nd">@shared_task</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"print_msg_with_name"</span><span class="p">)</span>
+<span class="o">@</span><span class="n">shared_task</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"print_msg_with_name"</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">print_message</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-  <span class="k">print</span><span class="p">(</span><span class="s">"Celery is working!! {} have implemented it correctly."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"Celery is working!! {} have implemented it correctly."</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
 
-<span class="nd">@shared_task</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"add_2_numbers"</span><span class="p">)</span>
+<span class="o">@</span><span class="n">shared_task</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"add_2_numbers"</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-  <span class="k">print</span><span class="p">(</span><span class="s">"Add function has been called!! with params {}, {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"Add function has been called!! with params {}, {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
   <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span></code></pre></figure>
 
 <hr />
@@ -438,16 +443,16 @@ Open up your Django shell</p>
 <h6 id="celery_projectcelerypy-1">celery_project/celery.py</h6>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">beat_schedule</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'add-every-2-seconds'</span><span class="p">:</span> <span class="p">{</span>  <span class="c">#name of the scheduler</span>
-        <span class="s">'task'</span><span class="p">:</span> <span class="s">'add_2_numbers'</span><span class="p">,</span>  <span class="c"># task name which we have created in tasks.py</span>
-        <span class="s">'schedule'</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>   <span class="c"># set the period of running</span>
-        <span class="s">'args'</span><span class="p">:</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>  <span class="c"># set the args</span>
-    <span class="p">},</span>
-    <span class="s">'print-name-every-5-seconds'</span><span class="p">:</span> <span class="p">{</span>  <span class="c">#name of the scheduler</span>
-        <span class="s">'task'</span><span class="p">:</span> <span class="s">'print_msg_with_name'</span><span class="p">,</span>  <span class="c"># task name which we have created in tasks.py</span>
-        <span class="s">'schedule'</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>  <span class="c"># set the period of running</span>
-         <span class="s">'args'</span><span class="p">:</span> <span class="p">(</span><span class="s">"DjangoPY"</span><span class="p">,</span> <span class="p">)</span>  <span class="c"># set the args</span>
-    <span class="p">},</span>
+    <span class="s">'add-every-2-seconds'</span><span class="p">:</span> <span class="p">{</span>  <span class="c1">#name of the scheduler
+</span>        <span class="s">'task'</span><span class="p">:</span> <span class="s">'add_2_numbers'</span><span class="p">,</span>  <span class="c1"># task name which we have created in tasks.py
+</span>        <span class="s">'schedule'</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>   <span class="c1"># set the period of running
+</span>        <span class="s">'args'</span><span class="p">:</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>  <span class="c1"># set the args
+</span>    <span class="p">},</span>
+    <span class="s">'print-name-every-5-seconds'</span><span class="p">:</span> <span class="p">{</span>  <span class="c1">#name of the scheduler
+</span>        <span class="s">'task'</span><span class="p">:</span> <span class="s">'print_msg_with_name'</span><span class="p">,</span>  <span class="c1"># task name which we have created in tasks.py
+</span>        <span class="s">'schedule'</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>  <span class="c1"># set the period of running
+</span>         <span class="s">'args'</span><span class="p">:</span> <span class="p">(</span><span class="s">"DjangoPY"</span><span class="p">,</span> <span class="p">)</span>  <span class="c1"># set the args
+</span>    <span class="p">},</span>
 <span class="p">}</span></code></pre></figure>
 
 <p>Open the <strong>NEW</strong> terminal and run the following command</p>
@@ -568,6 +573,9 @@ Run the celery beat process in new terminal with <strong>–scheduler</strong></
                 </div>
                 <img class="img-overlay">
                 <br><br>
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 
+                <br>
+                <br>                
                 <ul class="socialIcons">
                     <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/how-to/handle-asynchronous-tasks-with-celery-and-django&picture=https://djangopy.orgimg/handle-asynchronous-tasks-with-celery-and-django/cover.png&name=Handle Asynchronous Tasks using celery and Django&caption=%20&description=In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
                             class="Icon socialAccount--facebook" target="_blank"></a></li>
@@ -593,6 +601,8 @@ Run the celery beat process in new terminal with <strong>–scheduler</strong></
         </div>
     </div>
 </div>
+<script id = "dsq-count-scr" src = "//django-py.disqus.com/count.js" async></script>
+
 <!-- Latest Posts -->
 <section class="latest-posts" style="background-color: #F2F2F2;">
   <div class="container">
@@ -617,7 +627,8 @@ Run the celery beat process in new terminal with <strong>–scheduler</strong></
           <div class="post-meta d-flex justify-content-between">
             <div class="date">05 March 2019</div>
             <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Dynamically filter queryset with AJAX and DRF</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to filter the queryset using AJAX and DRF</p>
@@ -639,7 +650,8 @@ Run the celery beat process in new terminal with <strong>–scheduler</strong></
           <div class="post-meta d-flex justify-content-between">
             <div class="date">28 February 2019</div>
             <div class="category"><a href="#">learn</a></div>
-          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Step Up Guide to implement Ajax in Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to submit the forms and perform asynchronous tasks with the help of AJAX</p>
@@ -661,7 +673,8 @@ Run the celery beat process in new terminal with <strong>–scheduler</strong></
           <div class="post-meta d-flex justify-content-between">
             <div class="date">16 February 2018</div>
             <div class="category"><a href="#">how-to</a></div>
-          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" style="text-decoration: none; padding: 2px 0 8px 0;">
+          </div><a href="/how-to/handle-asynchronous-tasks-with-celery-and-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
             <h4>Handle Asynchronous Tasks using celery and Django</h4>
             <div class="catalogue-line" style="padding-bottom:5px;"></div>
             <p class="text-muted">In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.</p>

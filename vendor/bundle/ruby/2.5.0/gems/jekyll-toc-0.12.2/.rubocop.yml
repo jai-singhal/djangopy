@@ -1,0 +1,28 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - '*.gemspec'
+    - 'gemfiles/*'
+    - Rakefile
+    - Gemfile
+
+Metrics/LineLength: 
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Style/FileName:
+  Enabled: false
+
+Style/BracesAroundHashParameters:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
