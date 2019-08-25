@@ -143,6 +143,7 @@ Quit the server with CTRL-BREAK.
 Open up your browser and browse https://127.0.0.1:8000/ or http://localhost:8000/. You will see this type of output.
 
 
+<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 
 
 
  

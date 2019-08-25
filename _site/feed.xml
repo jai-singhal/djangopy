@@ -3,10 +3,10 @@
   <channel>
     <title>DjangoPy</title>
     <description>DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 25 Aug 2019 23:12:42 +0530</pubDate>
-    <lastBuildDate>Sun, 25 Aug 2019 23:12:42 +0530</lastBuildDate>
+    <link>https://djangopy.org/</link>
+    <atom:link href="https://djangopy.org/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 26 Aug 2019 00:57:41 +0530</pubDate>
+    <lastBuildDate>Mon, 26 Aug 2019 00:57:41 +0530</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
@@ -887,10 +887,14 @@ wine_csv.close&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;  &lt;/code&gt;&lt;
 
 &lt;p&gt;If you have any problem in the steps discussed above, you can look out our &lt;strong&gt;GitHub&lt;/strong&gt; &lt;strong&gt;repository&lt;/strong&gt; 
 &lt;a href=&quot;https://github.com/djangopy-org/dynamic_filter&quot;&gt;https://github.com/djangopy-org/dynamic_filter&lt;/a&gt; or you can comment down below.&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://ko-fi.com/widgets/widget_2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();&lt;/script&gt;
+
 </description>
         <pubDate>Tue, 05 Mar 2019 20:34:07 +0530</pubDate>
-        <link>http://localhost:4000/learn/dynamically-filter-queryset-with-ajax-and-drf</link>
-        <guid isPermaLink="true">http://localhost:4000/learn/dynamically-filter-queryset-with-ajax-and-drf</guid>
+        <link>https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf</link>
+        <guid isPermaLink="true">https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf</guid>
         
         <category>ajax</category>
         
@@ -1372,10 +1376,14 @@ wine_csv.close&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;  &lt;/code&gt;&lt;
   &lt;li&gt;&lt;a href=&quot;https://code.djangoproject.com/wiki/AJAX&quot;&gt;https://code.djangoproject.com/wiki/AJAX&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/en/2.1/ref/csrf/#ajax&quot;&gt;https://docs.djangoproject.com/en/2.1/ref/csrf/#ajax&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://ko-fi.com/widgets/widget_2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();&lt;/script&gt;
+
 </description>
         <pubDate>Thu, 28 Feb 2019 20:34:07 +0530</pubDate>
-        <link>http://localhost:4000/learn/step-up-guide-to-implement-ajax-in-django</link>
-        <guid isPermaLink="true">http://localhost:4000/learn/step-up-guide-to-implement-ajax-in-django</guid>
+        <link>https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django</link>
+        <guid isPermaLink="true">https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django</guid>
         
         <category>learn</category>
         
@@ -1775,10 +1783,13 @@ Run the celery beat process in new terminal with &lt;strong&gt;–scheduler&lt;/
   &lt;li&gt;&lt;a href=&quot;http://supervisord.org&quot;&gt;http://supervisord.org&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://ko-fi.com/widgets/widget_2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();&lt;/script&gt;
+
 </description>
         <pubDate>Fri, 16 Feb 2018 20:34:07 +0530</pubDate>
-        <link>http://localhost:4000/how-to/handle-asynchronous-tasks-with-celery-and-django</link>
-        <guid isPermaLink="true">http://localhost:4000/how-to/handle-asynchronous-tasks-with-celery-and-django</guid>
+        <link>https://djangopy.org/how-to/handle-asynchronous-tasks-with-celery-and-django</link>
+        <guid isPermaLink="true">https://djangopy.org/how-to/handle-asynchronous-tasks-with-celery-and-django</guid>
         
         <category>handle-asynchronous-tasks-with-celery-and-django</category>
         
@@ -2258,10 +2269,14 @@ Run the celery beat process in new terminal with &lt;strong&gt;–scheduler&lt;/
 &lt;p&gt;I hope that you have successfully implemented the Authentication System to your Django Project. However, if you find any problem in any of the steps discussed above, you can check our Github Repository from here&lt;/p&gt;
 
 &lt;p&gt;And also feel free to comment down below, if you have any problem regarding this tutorial and please share your experience with the DjangoPy&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://ko-fi.com/widgets/widget_2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();&lt;/script&gt;
+
 </description>
         <pubDate>Tue, 03 Oct 2017 20:34:07 +0530</pubDate>
-        <link>http://localhost:4000/learn/set-up-authentication-system-in-django-in-just-10-minutes/</link>
-        <guid isPermaLink="true">http://localhost:4000/learn/set-up-authentication-system-in-django-in-just-10-minutes/</guid>
+        <link>https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/</link>
+        <guid isPermaLink="true">https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/</guid>
         
         <category>Django-Authentication-System</category>
         
@@ -2513,10 +2528,14 @@ Run the celery beat process in new terminal with &lt;strong&gt;–scheduler&lt;/
 &lt;p&gt;&lt;a href=&quot;http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/&quot;&gt;http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Happy Coding :)&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://ko-fi.com/widgets/widget_2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();&lt;/script&gt;
+
 </description>
         <pubDate>Sun, 30 Jul 2017 20:34:07 +0530</pubDate>
-        <link>http://localhost:4000/package-of-week/categories-with-django-mptt/</link>
-        <guid isPermaLink="true">http://localhost:4000/package-of-week/categories-with-django-mptt/</guid>
+        <link>https://djangopy.org/package-of-week/categories-with-django-mptt/</link>
+        <guid isPermaLink="true">https://djangopy.org/package-of-week/categories-with-django-mptt/</guid>
         
         <category>Django-Authentication-System</category>
         
@@ -2776,10 +2795,14 @@ python3 manage.py migrate&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;If you have any query let me know in the comments below.&lt;/p&gt;
 
 &lt;p&gt;Happy coding :)&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://ko-fi.com/widgets/widget_2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();&lt;/script&gt;
+
 </description>
         <pubDate>Sat, 08 Jul 2017 17:23:56 +0530</pubDate>
-        <link>http://localhost:4000/how-to/how-to-implement-categories-in-django/</link>
-        <guid isPermaLink="true">http://localhost:4000/how-to/how-to-implement-categories-in-django/</guid>
+        <link>https://djangopy.org/how-to/how-to-implement-categories-in-django/</link>
+        <guid isPermaLink="true">https://djangopy.org/how-to/how-to-implement-categories-in-django/</guid>
         
         <category>Django-breadcrumbs</category>
         
@@ -3033,11 +3056,15 @@ python3 manage.py migrate&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;img class=&quot;img-fluid lazy&quot; alt=&quot;&quot; src=&quot;/img/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/1.jpg&quot; title=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;If you have any Question regarding the above tutorial feel free to comment below. And also share the experience with the DjangoPy in the comments below.&lt;/p&gt;
+&lt;p&gt;If you have any Question regarding the above tutorial feel free to comment below. And also share the experience with the DjangoPy in the comments below. You can find the repository from &lt;a href=&quot;https://github.com/djangopy-org/reverse-engineering-django-admin&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://ko-fi.com/widgets/widget_2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();&lt;/script&gt;
+
 </description>
         <pubDate>Fri, 07 Jul 2017 20:34:07 +0530</pubDate>
-        <link>http://localhost:4000/how-to/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/</link>
-        <guid isPermaLink="true">http://localhost:4000/how-to/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/</guid>
+        <link>https://djangopy.org/how-to/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/</link>
+        <guid isPermaLink="true">https://djangopy.org/how-to/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/</guid>
         
         <category>Django-Admin-Foreign-Key</category>
         
@@ -3248,10 +3275,13 @@ python3 manage.py migrate&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;This site is also powered by MailChimp. You can check by subscribing to our website. You will find our Subscribe Newsletter form available at the footer. If you have any problem regarding installation you can ask it in the Comment section.&lt;/p&gt;
 
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://ko-fi.com/widgets/widget_2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();&lt;/script&gt;
+
 </description>
         <pubDate>Sun, 04 Jun 2017 20:34:07 +0530</pubDate>
-        <link>http://localhost:4000/package-of-week/how-to-integrate-mailchimp-on-django-to-increase-subscribers/</link>
-        <guid isPermaLink="true">http://localhost:4000/package-of-week/how-to-integrate-mailchimp-on-django-to-increase-subscribers/</guid>
+        <link>https://djangopy.org/package-of-week/how-to-integrate-mailchimp-on-django-to-increase-subscribers/</link>
+        <guid isPermaLink="true">https://djangopy.org/package-of-week/how-to-integrate-mailchimp-on-django-to-increase-subscribers/</guid>
         
         <category>getting-started-with-django</category>
         
@@ -3559,10 +3589,14 @@ Finally, the Pagination would look like&lt;/p&gt;
 &lt;p&gt;Comment your different ways to Paginate your Django page, it will help others too.&lt;/p&gt;
 
 &lt;p&gt;For more information and option available in Pagination class visit the Official Documentation of Django Pagination&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://ko-fi.com/widgets/widget_2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();&lt;/script&gt;
+
 </description>
         <pubDate>Wed, 31 May 2017 17:23:56 +0530</pubDate>
-        <link>http://localhost:4000/how-to/pagination-with-django/</link>
-        <guid isPermaLink="true">http://localhost:4000/how-to/pagination-with-django/</guid>
+        <link>https://djangopy.org/how-to/pagination-with-django/</link>
+        <guid isPermaLink="true">https://djangopy.org/how-to/pagination-with-django/</guid>
         
         <category>django-pagination</category>
         
@@ -3679,10 +3713,13 @@ Quit the server with CTRL-BREAK.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Open up your browser and browse https://127.0.0.1:8000/ or http://localhost:8000/. You will see this type of output.&lt;/p&gt;
 
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://ko-fi.com/widgets/widget_2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();&lt;/script&gt;
+
 </description>
         <pubDate>Sat, 20 May 2017 20:34:07 +0530</pubDate>
-        <link>http://localhost:4000/learn/getting-started-with-django/</link>
-        <guid isPermaLink="true">http://localhost:4000/learn/getting-started-with-django/</guid>
+        <link>https://djangopy.org/learn/getting-started-with-django/</link>
+        <guid isPermaLink="true">https://djangopy.org/learn/getting-started-with-django/</guid>
         
         <category>getting-started-with-django</category>
         

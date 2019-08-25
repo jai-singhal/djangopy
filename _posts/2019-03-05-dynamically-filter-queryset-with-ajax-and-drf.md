@@ -880,3 +880,5 @@ AJAX is the best way to do asynchronous tasks on a small scale. However, if you 
 
 If you have any problem in the steps discussed above, you can look out our **GitHub** **repository** 
 [https://github.com/djangopy-org/dynamic_filter](https://github.com/djangopy-org/dynamic_filter) or you can comment down below. 
+
+<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

@@ -422,14 +422,6 @@ Now that celery is perfectly running locally, last thing we need to take care of
 
 
 
-
-
-
-
-
-
-
-
 <hr><br>
 ## Resources
 - [http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html](http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html)
@@ -438,3 +430,4 @@ Now that celery is perfectly running locally, last thing we need to take care of
 - [http://supervisord.org](http://supervisord.org)
 
 
+<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

@@ -340,3 +340,5 @@ Play around with the design you want to show you Pagination. I have shown 3 of t
 Comment your different ways to Paginate your Django page, it will help others too.
 
 For more information and option available in Pagination class visit the Official Documentation of Django Pagination
+
+<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

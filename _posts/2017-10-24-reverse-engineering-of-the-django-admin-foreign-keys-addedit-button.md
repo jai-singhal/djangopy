@@ -259,4 +259,6 @@ If you have followed the same example, you will get this type of output.
 
  
 
-If you have any Question regarding the above tutorial feel free to comment below. And also share the experience with the DjangoPy in the comments below.
+If you have any Question regarding the above tutorial feel free to comment below. And also share the experience with the DjangoPy in the comments below. You can find the repository from [here](https://github.com/djangopy-org/reverse-engineering-django-admin).
+
+<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

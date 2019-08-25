@@ -495,3 +495,5 @@ urlpatterns += [
 I hope that you have successfully implemented the Authentication System to your Django Project. However, if you find any problem in any of the steps discussed above, you can check our Github Repository from here
 
 And also feel free to comment down below, if you have any problem regarding this tutorial and please share your experience with the DjangoPy
+
+<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

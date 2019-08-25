@@ -240,3 +240,4 @@ $.ajaxSetup({
 
 This site is also powered by MailChimp. You can check by subscribing to our website. You will find our Subscribe Newsletter form available at the footer. If you have any problem regarding installation you can ask it in the Comment section.
 
+<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

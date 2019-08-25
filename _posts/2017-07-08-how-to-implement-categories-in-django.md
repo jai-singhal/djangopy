@@ -337,3 +337,5 @@ Although this approach is not most efficient because we are making many database
 If you have any query let me know in the comments below.
 
 Happy coding :) 
+
+<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 
