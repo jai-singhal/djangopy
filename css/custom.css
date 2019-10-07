@@ -386,11 +386,63 @@ body {
     font-style: normal
 }
 
+.nav-item a{
+    color: #333;
+    margin: 0 5px;
+    font-weight: 400;
+    font-size: .95em;
+}
+#toc_navbar li a{
+    color: #999;
+    text-decoration: none;
+}
+#toc_navbar li{
+    padding-bottom: 8px;
+    display: inline-block;
+}
+#toc_navbar li a:hover{
+    text-decoration: none;
+    color: #050f2599;
+}
+#toc-nav h5{
+    color: #031b4e99;
+}
+.fixed-navbar{
+    position: sticky;
+    top: 5px;
+    left: 0;
+    z-index: 1030;
+}
+#toc-nav ul{
+    display: grid;
+}
+.nav-pills li.active a{
+   border-left: 1.25px solid red;
+   padding-left:2px;
+}
+
+@media (max-width:990px){
+    #toc-nav{
+        background-color: #f8f9fa!important;
+    }
+}
+
+/* #content_area{
+    position: relative;
+    
+} */
+/* body{
+    position: relative;
+}
+.fixed_sidenav nav{
+    position:sticky;
+    -webkit-transition: width 1s; 
+    transition: width 1s;
+    transition-timing-function: ease-out;
+} */
 
 
-
-
-.post-content .code-head{
+.post-content .codesnippet-head{
     background-color:#E5E5E5;
     padding:4px; 
     font-weight:600;

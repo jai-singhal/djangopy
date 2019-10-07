@@ -32,75 +32,72 @@
 	<meta property="twitter:creator" content="@DjangoPy_Admin">
 	<meta property="twitter:image:src" content="https://djangopy.org/img/how-to-implement-categories-in-django/cover.jpg">
 	<!-- Twitter - Article -->
-
 	<!-- Open Graph - Article -->
 	<meta property="article:section" content="how-to">
 	<meta property="article:published_time" content="2017-07-08 17:23:56 +0530">
 	<meta properry="article:author" content="https://www.facebook.com/djangopy.org">
 	<meta property="article:modified_time" content="2017-07-08 17:23:56 +0530">
 	
-	<meta property="article:tag" content="Django-breadcrumbs"/>
+	<meta property="article:tag" content="Django-breadcrumbs" />
 	
-	<meta property="article:tag" content="how-to-implement-categories-in-django"/>
+	<meta property="article:tag" content="how-to-implement-categories-in-django" />
 	
-	<meta property="article:tag" content="Implement-Categories-in-Django"/>
+	<meta property="article:tag" content="Implement-Categories-in-Django" />
 	
-	<meta property="article:tag" content="Modified-Preorder-Tree"/>
+	<meta property="article:tag" content="Modified-Preorder-Tree" />
 	
-	<meta property="article:tag" content="Traversal-MPTT"/>
+	<meta property="article:tag" content="Traversal-MPTT" />
 	
-	<meta property="article:tag" content="Modified-Preorder-Tree-Traversal-Django"/>
+	<meta property="article:tag" content="Modified-Preorder-Tree-Traversal-Django" />
 	
-	<meta property="article:tag" content="categories-in-django"/>
+	<meta property="article:tag" content="categories-in-django" />
 	
-	<meta property="article:tag" content="django-categories"/>
+	<meta property="article:tag" content="django-categories" />
 	
-	<meta property="article:tag" content="nested"/>
+	<meta property="article:tag" content="nested" />
 	
-	<meta property="article:tag" content="categories"/>
+	<meta property="article:tag" content="categories" />
 	
-	<meta property="article:tag" content="DjangoPy-Foundation"/>
+	<meta property="article:tag" content="DjangoPy-Foundation" />
 	
-	<meta property="article:tag" content="django"/>
+	<meta property="article:tag" content="django" />
 	
-	<meta property="article:tag" content="sub-categories"/>
+	<meta property="article:tag" content="sub-categories" />
 	
 
 	<meta property="revisit-after" content="2 days" />
 	<meta property="distribution" content="web" />
-	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/"/>
-	<meta name="description" content="In this tutorial, we'll learn how to implement categories and subcategories in our Django project without using any external module."/>
-
+	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/" />
+	<meta name="description" content="In this tutorial, we'll learn how to implement categories and subcategories in our Django project without using any external module." />
 	<link rel="canonical" href="https://djangopy.org/how-to/how-to-implement-categories-in-django/">
-	<link rel="alternate" type="application/rss+xml" title="DjangoPy" href="https://djangopy.org/feed.xml">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<!-- Font Awesome CSS-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel = "stylesheet" href="/css/github.css">
-	<!-- Fancybox-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
-	<!-- theme stylesheet-->
-	<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
-	<!-- Custom stylesheet - for your changes-->
-	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="alternate" type="application/rss+xml" title="DjangoPy"
+		href="https://djangopy.org/feed.xml">
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="/img/favicon1.ico">
-	<!-- Javascript files-->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel = "stylesheet" href="/css/github.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
 	<script src="/js/front.js"></script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+	<script src="/js/front.js"></script>
 	<script type="text/javascript" src = "/js/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
 	<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
 	<script src="/js/post.js"></script>
-
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
-
-	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 	<script>
 	window.addEventListener("load", function(){
 	window.cookieconsent.initialise({
@@ -117,6 +114,13 @@
 	</script>
 
 
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+
+	
 	<script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -125,9 +129,8 @@
      ga('create', 'UA-98271390-1', 'auto');
      ga('send', 'pageview');
    </script>
-
+	
 </head>
-
   <body>
     <header class="header">
   <!-- Main Navbar-->
@@ -180,8 +183,7 @@
         <br>
 <div class="post">
     <div class="container">
-        <div class="row justify-content-md-center">
-
+        <div class="row justify-content-md-center" id="cover-section">
             <div class="col-md-9">
                 <img 
     class="img-fluid lazy" 
@@ -191,48 +193,68 @@
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">How to Implement Categories in Django</h1>
-                <h6 class="post-spans">Posted: 08 July 2017 | Post By: Karan Suthar | 
+                <h6 class="post-spans">Posted: 08 July 2017 | Post By: Karan Suthar |
                     <!-- <span id="ga-page-view" ga-page-url=/how-to/how-to-implement-categories-in-django/></span> <i class="fa fa-eye"></i> |  -->
                     <i class="fa fa-clock"></i>
-                    10 min read | 
+                    10 min read |
                     <a style="text-decoration: none;" href="https://djangopy.org/how-to/how-to-implement-categories-in-django/#disqus_thread"
                         data-disqus-identifier="/how-to/how-to-implement-categories-in-django/">
                         <i class="fa fa-comment"></i>
-                    </a> 
+                    </a>
                 </h6>
                 <br>
                 <hr /><br>
-                <div class="post-content"> <h2 id="introduction">Introduction</h2>
+            </div>
+        </div>
+        <div class="row justify-content-md-center" id="content_area">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-2" id="toc_navbar">
+                <nav class = "navbar navbar-light" id = "toc-nav" style = "display:grid;border:none;"> 
+  <h5>Contents</h5>
+      <ul class="nav nav-pills">
+<li class="toc-entry nav-item toc-h2"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#jump-into-the-code">Jump into the code</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#conclusion">Conclusion</a></li>
+</ul>
+</nav>
+            </div>
+
+            <div class="col-md-9">
+                <div class="post-content" data-spy="scroll" data-target="#toc-nav" data-offset="0"> 
+                    <h2 id="introduction">Introduction</h2>
 <p>Categories are essential for any website because it is easy for users to access content sorted by categories. Categories may have their subcategories, and subcategories may also have subcategories and so on. So in this post, I’ll explain how to implement nested categories in a Django project. You can create categories with Django Admin Panel and then associate it with content like an article or post, So let’s get started.</p>
+
+<h2 id="jump-into-the-code">Jump into the code</h2>
 
 <p>Let’s implement categories for blog posts, consider my_posts app in the project, add following models in it</p>
 
 <h4 id="modelspy">Models.py</h4>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
     <span class="n">slug</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">()</span>
     <span class="n">parent</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">'self'</span><span class="p">,</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span> <span class="p">,</span><span class="n">related_name</span><span class="o">=</span><span class="s">'children'</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">unique_together</span> <span class="o">=</span> <span class="p">(</span><span class="s">'slug'</span><span class="p">,</span> <span class="s">'parent'</span><span class="p">,)</span>    <span class="c1">#enforcing that there can not be two
-</span>        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">"categories"</span>       <span class="c1">#categories under a parent with same 
-</span>                                                 <span class="c1">#slug 
-</span>
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                           <span class="c1"># __str__ method elaborated later in
-</span>        <span class="n">full_path</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>                  <span class="c1"># post.  use __unicode__ in place of
-</span>                                                 <span class="c1"># __str__ if you are using python 2
-</span>        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span>                          
+        <span class="c1">#enforcing that there can not be two categories under a parent with same slug
+</span>        <span class="c1"># __str__ method elaborated later in post.  use __unicode__ in place of
+</span>        <span class="c1"># __str__ if you are using python 2
+</span>        <span class="n">unique_together</span> <span class="o">=</span> <span class="p">(</span><span class="s">'slug'</span><span class="p">,</span> <span class="s">'parent'</span><span class="p">,)</span>    
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">"categories"</span>     
 
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                           
+        <span class="n">full_path</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>                  
+        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span>
         <span class="k">while</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">full_path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
             <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">parent</span>
-
-        <span class="k">return</span> <span class="s">' -&gt; '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">full_path</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span></code></pre></figure>
+        <span class="k">return</span> <span class="s">' -&gt; '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">full_path</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span></code></pre>
+</figure>
 
 <p>Next, we’ll use category in Post model as a foreign key.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">user</span> <span class="o">=</span>  <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AUTH_USER_MODEL</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
     <span class="n">category</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">'Category'</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -244,32 +266,37 @@
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
 
-
-    <span class="k">def</span> <span class="nf">get_cat_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>           <span class="c1">#for now ignore this instance method,
-</span>        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span>
+    <span class="k">def</span> <span class="nf">get_cat_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="c1"># for now ignore this instance method
+</span>        
         <span class="n">breadcrumb</span> <span class="o">=</span> <span class="p">[</span><span class="s">"dummy"</span><span class="p">]</span>
         <span class="k">while</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">breadcrumb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">slug</span><span class="p">)</span>
             <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">parent</span>
-
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">breadcrumb</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
             <span class="n">breadcrumb</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s">'/'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">breadcrumb</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">breadcrumb</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></pre></figure>
+        <span class="k">return</span> <span class="n">breadcrumb</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></pre>
+</figure>
 
 <p>So with Category being a foreign key in Post model, a category can be associated with post.</p>
 
 <p>Open the terminal and change the current working directory to one that contains manage.py then run following migration commands.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">python3 manage.py makemigrations
-python3 manage.py migrate</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash">python3 manage.py makemigrations
+python3 manage.py migrate</code></pre>
+</figure>
 
 <p>Now we make some Category object from the interactive shell so open Django interactive shell by typing following command in terminal.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">python3 manage.py shell</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash">python3 manage.py shell</code></pre>
+</figure>
 
 <p>Then in shell, you can create categories as illustrated below</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">&gt;&gt;&gt;</span> from my_posts.models import <span class="k">*</span>
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash"><span class="o">&gt;&gt;&gt;</span> from my_posts.models import <span class="k">*</span>
 <span class="o">&gt;&gt;&gt;</span> fruits <span class="o">=</span> Category.objects.create<span class="o">(</span><span class="nv">name</span><span class="o">=</span><span class="s1">'fruits'</span>, <span class="nv">slug</span><span class="o">=</span><span class="s1">'fruits'</span><span class="o">)</span>
 <span class="o">&gt;&gt;&gt;</span> fruits
 &lt;Category: fruits&gt;
@@ -298,18 +325,24 @@ python3 manage.py migrate</code></pre></figure>
 &lt;Category: fruits -&gt; berry&gt;
 
 <span class="o">&gt;&gt;&gt;</span> Category.objects.all<span class="o">()</span>.delete<span class="o">()</span>            <span class="c">#to delete all the Category objects</span>
-<span class="o">(</span>6, <span class="o">{</span><span class="s1">'my_posts.Category'</span>: 6<span class="o">})</span></code></pre></figure>
+<span class="o">(</span>6, <span class="o">{</span><span class="s1">'my_posts.Category'</span>: 6<span class="o">})</span></code></pre>
+</figure>
 
 <p>Now we’ll add categories with Django Admin Panel, so add following code to admin.py</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Admin</span><span class="o">.</span><span class="n">py</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Category</span>
+<p><strong>admin.py</strong></p>
 
-<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Category</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Category</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Category</span><span class="p">)</span></code></pre>
+</figure>
 
 <p>then run the server by</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">python3 manage.py runserver</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash">python3 manage.py runserver</code></pre>
+</figure>
 
 <p>Now go to admin panel from your browser, you’ll see category there.</p>
 
@@ -339,13 +372,16 @@ python3 manage.py migrate</code></pre></figure>
 <h4 id="urlspy">Urls.py</h4>
 <p>As you can see in the image, we have added the post in python &gt; news &gt; 2017. Next, we have to add URL pattern for the category, so go to urls.py and add the following line in urlpatterns list.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">url</span><span class="p">(</span><span class="s">r'^category/(?P&lt;hierarchy&gt;.+)/$'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">show_category</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'category'</span><span class="p">),</span></code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="n">url</span><span class="p">(</span><span class="s">r'^category/(?P&lt;hierarchy&gt;.+)/$'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">show_category</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'category'</span><span class="p">),</span></code></pre>
+</figure>
 
 <h4 id="viewspy">Views.py</h4>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Now</span> <span class="ow">in</span> <span class="n">views</span><span class="o">.</span><span class="n">py</span> <span class="n">add</span> <span class="n">the</span> <span class="n">following</span> <span class="n">function</span><span class="o">.</span>
+<p>Now in views.py add the following function.</p>
 
-<span class="k">def</span> <span class="nf">show_category</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="n">hierarchy</span><span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">show_category</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="n">hierarchy</span><span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
     <span class="n">category_slug</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'/'</span><span class="p">)</span>
     <span class="n">category_queryset</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">())</span>
     <span class="n">all_slugs</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span><span class="o">.</span><span class="n">slug</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">category_queryset</span> <span class="p">]</span>
@@ -360,7 +396,8 @@ python3 manage.py migrate</code></pre></figure>
             <span class="n">breadcrumbs</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">breadcrumbs_link</span><span class="p">,</span> <span class="n">category_name</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"postDetail.html"</span><span class="p">,</span> <span class="p">{</span><span class="s">'instance'</span><span class="p">:</span><span class="n">instance</span><span class="p">,</span><span class="s">'breadcrumbs'</span><span class="p">:</span><span class="n">breadcrumbs</span><span class="p">})</span>
 
-    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="s">"categories.html"</span><span class="p">,{</span><span class="s">'post_set'</span><span class="p">:</span><span class="n">parent</span><span class="o">.</span><span class="n">post_set</span><span class="o">.</span><span class="nb">all</span><span class="p">(),</span><span class="s">'sub_categories'</span><span class="p">:</span><span class="n">parent</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="nb">all</span><span class="p">()})</span></code></pre></figure>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="s">"categories.html"</span><span class="p">,{</span><span class="s">'post_set'</span><span class="p">:</span><span class="n">parent</span><span class="o">.</span><span class="n">post_set</span><span class="o">.</span><span class="nb">all</span><span class="p">(),</span><span class="s">'sub_categories'</span><span class="p">:</span><span class="n">parent</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="nb">all</span><span class="p">()})</span></code></pre>
+</figure>
 
 <p>Note that the last element of the category_slug list in show_category could either be a Post object or a category object,</p>
 
@@ -371,7 +408,8 @@ python3 manage.py migrate</code></pre></figure>
 <h5 id="templatescategorieshtml">Templates/categories.html</h5>
 <p>Add following code in “categories.html”.</p>
 
-<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">'base.html'</span> <span class="cp">%}</span>
+<figure class="highlight">
+  <pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">extends</span> <span class="s1">'base.html'</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="nv">load</span> <span class="nv">static</span>  <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
 <span class="nt">&lt;br&gt;</span>
@@ -407,20 +445,23 @@ python3 manage.py migrate</code></pre></figure>
 <span class="nt">&lt;/div&gt;</span>
 <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 
- </code></pre></figure>
+ </code></pre>
+</figure>
 
 <p>The CSS framework used is Zurb’s Foundation 6 you may use bootstrap as well.</p>
 
 <p>Next,  add following code snippet inside the postDetail.html template to implement breadcrumbs in post detail page ( you should add it above post’s title ).</p>
 
-<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"breadcrumbs"</span><span class="nt">&gt;</span>
+<figure class="highlight">
+  <pre><code class="language-django" data-lang="django"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"breadcrumbs"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
       <span class="cp">{%</span> <span class="k">for</span> <span class="nv">slug</span><span class="p">,</span><span class="nv">name</span> <span class="ow">in</span> <span class="nv">breadcrumbs</span> <span class="cp">%}</span>
           <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/category/</span><span class="cp">{{</span> <span class="nv">slug</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
       <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
 <span class="nt">&lt;/ul&gt;</span>
 
- </code></pre></figure>
+ </code></pre>
+</figure>
 
 <p>So breadcrumbs in post detail page would look like in the image below.</p>
 
@@ -432,7 +473,7 @@ python3 manage.py migrate</code></pre></figure>
 
 <p>You may be wondering about the cover_image attribute used in template code and hence reflected in card view of the post in above photo, the cover_photo is a field in Post model and for brevity, I did not include the cover_photo attribute in code. If you have any queries regarding it then comment below.</p>
 
-<h2 id="conclusion">CONCLUSION</h2>
+<h2 id="conclusion">Conclusion</h2>
 
 <p>Although this approach is not most efficient because we are making many database queries, but for small websites and blogs this approach is good to go. If you are working on some projects like a news website or e-commerce website which contain many level of nested categories then you may want to find a comparatively efficient way to implement category with Modified Preorder Tree Traversal (MPTT), there is Django package available for it, read a post on how to implement categories with django-mptt here.</p>
 
@@ -440,10 +481,8 @@ python3 manage.py migrate</code></pre></figure>
 
 <p>Happy coding :)</p>
 
-<script type="text/javascript" src="https://ko-fi.com/widgets/widget_2.js"></script>
-<script type="text/javascript">kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script>
 
- </div>
+                </div>
                 <div class="overlay-dark">
                     <div class="close-btn">
                         <i class="fa fa-2x fa-times"></i>
@@ -451,20 +490,32 @@ python3 manage.py migrate</code></pre></figure>
                 </div>
                 <img class="img-overlay">
                 <br><br>
+
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'>
+</script>
+<script type='text/javascript'>
+let kofi = ""
+if(!kofi && !kofi.trim().length) 
+    kofi = "jai_singhal"
+kofiwidget2.init('Buy me a coffee', '#46b798', kofi);
+kofiwidget2.draw();
+</script> 
+
+                <br><br>
                 <ul class="socialIcons">
                     <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/how-to/how-to-implement-categories-in-django/&picture=https://djangopy.orgimg/how-to-implement-categories-in-django/cover.jpg&name=How to Implement Categories in Django&caption=%20&description=In this tutorial, we'll learn how to implement categories and subcategories in our Django project without using any external module.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
                             class="Icon socialAccount--facebook" target="_blank"></a></li>
                     <li><a href="http://twitter.com/intent/tweet?text=How to Implement Categories in Django - DjangoPy https://djangopy.org/how-to/how-to-implement-categories-in-django/"
                             class="Icon socialAccount--twitter" target="_blank"></a></li>
-                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org" class="Icon socialAccount--google"
-                            target="_blank"></a></li>
+                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org"
+                            class="Icon socialAccount--google" target="_blank"></a></li>
                     <li><a href="mailto:djangopyz@gmail.com?&subject=DjangoPy | Learn, Code, Implement&body=How to Implement Categories in Django%0A https://djangopy.org/how-to/how-to-implement-categories-in-django/"
                             target="_self" class="Icon socialAccount--mail" target="_blank"></a></li>
                 </ul>
                 <br>
                 <hr><br>
                 
-                    <div id="disqus_thread"></div>
+                <div id="disqus_thread"></div>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
         powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
@@ -476,7 +527,7 @@ python3 manage.py migrate</code></pre></figure>
         </div>
     </div>
 </div>
-<script id = "dsq-count-scr" src = "//django-py.disqus.com/count.js" async></script>
+<script id="dsq-count-scr" src="//django-py.disqus.com/count.js" async></script>
 
 <!-- Latest Posts -->
 <section class="latest-posts" style="background-color: #F2F2F2;">

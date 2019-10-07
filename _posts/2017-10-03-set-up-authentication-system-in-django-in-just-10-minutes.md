@@ -11,6 +11,7 @@ comments: true
 tags: Django-Authentication-System Django-Authentication login logout register django djangopy
 
 description: In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps.
+toc: true
 ---
 
 Authentication is something which needs to be implemented on each and every website. And with Django, it is very simple and easy to implement because we don't need to make the Authentication system from scratch, it is already made by the Django, we need to simply use it.
@@ -496,4 +497,3 @@ I hope that you have successfully implemented the Authentication System to your 
 
 And also feel free to comment down below, if you have any problem regarding this tutorial and please share your experience with the DjangoPy
 
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

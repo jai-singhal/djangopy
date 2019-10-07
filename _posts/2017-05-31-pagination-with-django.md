@@ -10,6 +10,7 @@ comments: true
 
 tags:  django-pagination pagination-with-django bootstrap-pagibation
 description: Django provides a few classes that can help you to manage your paginated data i.e., data that’s split across several pages, with “Previous/Next” links or list it into discrete page numbers.
+toc: true
 ---
 
 ## Introduction
@@ -17,8 +18,10 @@ You may have come across a problem of displaying many objects in a single page. 
 
 Django provides a few classes that can help you to manage your paginated data i.e., data that are split across several pages, with “Previous/Next” links or list it into discrete page numbers. You can use the Django Pagination by including the class that lives in django/core/paginator.py
 
-Let's understand by an example of Blog app.
 
+## Jump into the code
+
+Let's understand by an example of Blog app.
 
 
 ##### Models.py
@@ -43,6 +46,10 @@ After this, let's create the post list view in view.py under the main Homepage U
 
 #### Views.py
 {% highlight python %}
+from .models import Post
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render
+
 def post_list(request):
 	queryset_list = Post.objects.all().order_by("id")
 	paginator = Paginator(queryset_list, 3) #posts per page
@@ -334,6 +341,7 @@ Finally, the Pagination would look like
 {% responsive_image path: img/pagination-with-django/3.jpg %}
 
 
+## Final words
 
 Play around with the design you want to show you Pagination. I have shown 3 of the most used Pagination in websites.
 
@@ -341,4 +349,4 @@ Comment your different ways to Paginate your Django page, it will help others to
 
 For more information and option available in Pagination class visit the Official Documentation of Django Pagination
 
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 
+

@@ -18,5 +18,7 @@ group :development do
   gem 'jekyll-toc'
   gem 'jekyll-gist'
   gem 'jekyll-gzip'
+  gem 'jekyll-toc'
+
   
 end

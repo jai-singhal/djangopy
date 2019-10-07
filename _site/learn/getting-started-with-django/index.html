@@ -32,57 +32,54 @@
 	<meta property="twitter:creator" content="@DjangoPy_Admin">
 	<meta property="twitter:image:src" content="https://djangopy.org/img/introduction-to-django/code-pc-sublime-img.jpg">
 	<!-- Twitter - Article -->
-
 	<!-- Open Graph - Article -->
 	<meta property="article:section" content="learn">
 	<meta property="article:published_time" content="2017-05-20 20:34:07 +0530">
 	<meta properry="article:author" content="https://www.facebook.com/djangopy.org">
 	<meta property="article:modified_time" content="2017-05-20 20:34:07 +0530">
 	
-	<meta property="article:tag" content="getting-started-with-django"/>
+	<meta property="article:tag" content="getting-started-with-django" />
 	
-	<meta property="article:tag" content="my-first-django-app"/>
+	<meta property="article:tag" content="my-first-django-app" />
 	
-	<meta property="article:tag" content="my-first-django-site"/>
+	<meta property="article:tag" content="my-first-django-site" />
 	
-	<meta property="article:tag" content="virtualenv"/>
+	<meta property="article:tag" content="virtualenv" />
 	
 
 	<meta property="revisit-after" content="2 days" />
 	<meta property="distribution" content="web" />
-	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/"/>
-	<meta name="description" content="After too much motivation, now it's time to get started with Django. To develop your Django-powered site, you first need to install Python on your system. It is highly recommended to install the latest version of Python."/>
-
+	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/" />
+	<meta name="description" content="After too much motivation, now it's time to get started with Django. To develop your Django-powered site, you first need to install Python on your system. It is highly recommended to install the latest version of Python." />
 	<link rel="canonical" href="https://djangopy.org/learn/getting-started-with-django/">
-	<link rel="alternate" type="application/rss+xml" title="DjangoPy" href="https://djangopy.org/feed.xml">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<!-- Font Awesome CSS-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel = "stylesheet" href="/css/github.css">
-	<!-- Fancybox-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
-	<!-- theme stylesheet-->
-	<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
-	<!-- Custom stylesheet - for your changes-->
-	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="alternate" type="application/rss+xml" title="DjangoPy"
+		href="https://djangopy.org/feed.xml">
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="/img/favicon1.ico">
-	<!-- Javascript files-->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel = "stylesheet" href="/css/github.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
 	<script src="/js/front.js"></script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+	<script src="/js/front.js"></script>
 	<script type="text/javascript" src = "/js/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
 	<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
 	<script src="/js/post.js"></script>
-
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
-
-	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 	<script>
 	window.addEventListener("load", function(){
 	window.cookieconsent.initialise({
@@ -99,6 +96,13 @@
 	</script>
 
 
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+
+	
 	<script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -107,9 +111,8 @@
      ga('create', 'UA-98271390-1', 'auto');
      ga('send', 'pageview');
    </script>
-
+	
 </head>
-
   <body>
     <header class="header">
   <!-- Main Navbar-->
@@ -162,8 +165,7 @@
         <br>
 <div class="post">
     <div class="container">
-        <div class="row justify-content-md-center">
-
+        <div class="row justify-content-md-center" id="cover-section">
             <div class="col-md-9">
                 <img 
     class="img-fluid lazy" 
@@ -173,106 +175,169 @@
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">Getting started with Django</h1>
-                <h6 class="post-spans">Posted: 20 May 2017 | Post By: Jai Singhal | 
+                <h6 class="post-spans">Posted: 20 May 2017 | Post By: Jai Singhal |
                     <!-- <span id="ga-page-view" ga-page-url=/learn/getting-started-with-django/></span> <i class="fa fa-eye"></i> |  -->
                     <i class="fa fa-clock"></i>
-                    4 min read | 
+                    4 min read |
                     <a style="text-decoration: none;" href="https://djangopy.org/learn/getting-started-with-django/#disqus_thread"
                         data-disqus-identifier="/learn/getting-started-with-django/">
                         <i class="fa fa-comment"></i>
-                    </a> 
+                    </a>
                 </h6>
                 <br>
                 <hr /><br>
-                <div class="post-content"> <p>After too much motivation, now it’s time to get started with Django. To develop your Django-powered site, you first need to install Python on your system. It is highly recommended to install the latest version of Python, and for those people who are using Python2, it is recommended to switch to Python3. You can easily download the latest version from here.</p>
+            </div>
+        </div>
+        <div class="row justify-content-md-center" id="content_area">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-2" id="toc_navbar">
+                <nav class = "navbar navbar-light" id = "toc-nav" style = "display:grid;border:none;"> 
+  <h5>Contents</h5>
+      <ul class="nav nav-pills">
+<li class="toc-entry nav-item toc-h2"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#virtual-environment">Virtual Environment</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#installing-django">Installing Django</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#creating-your-first-django-project">Creating your first Django project</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#the-development-server">The Development server</a></li>
+</ul>
+</nav>
+            </div>
 
-<p>If you are not familiar with Python, then you should need to brush up your basic knowledge of Python from here.</p>
+            <div class="col-md-9">
+                <div class="post-content" data-spy="scroll" data-target="#toc-nav" data-offset="0"> 
+                    <h2 id="introduction">Introduction</h2>
 
+<p>After too much motivation, now it’s time to get started with Django. To develop your Django-powered site, you first need to install Python on your system. It is highly recommended to install the latest version of Python, and for those people who are using Python2, it is recommended to switch to Python3. You can easily download the latest version from <a href="https://python.org/downloads">here</a>.</p>
+
+<p>If you are not familiar with Python, then you should need to brush up your basic knowledge of Python from <a href="https://docs.python.org/3/">here</a>.</p>
+
+<h2 id="virtual-environment">Virtual Environment</h2>
 <p>Now after completely installing python on your system, let’s set up the virtual environment(Why?)</p>
 
 <p>A Virtual Environment is a tool to keep the dependencies required by your different projects in separate places, by creating virtual Python environments for them, it keeps your global python site-packages directory clean and manageable.</p>
 
-<p>Settings Up Virtualenv
-Virtualenv creates an isolated Python Environment by creating a folder which contains all the Python executables files, and all the necessary Packages that your project would need.</p>
+<h3 id="settings-up-virtualenv">Settings Up Virtualenv</h3>
+<p>Virtualenv creates an isolated Python Environment by creating a folder which contains all the Python executables files, and all the necessary Packages that your project would need.</p>
 
 <p>First Install the Virtualenv on your system via pip:-</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>pip <span class="nb">install </span>virtualenv</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>pip <span class="nb">install </span>virtualenv</code></pre>
+</figure>
 
 <p>You can verify your virtualenv version by-</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>virtualenv <span class="nt">--version</span></code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>virtualenv <span class="nt">--version</span></code></pre>
+</figure>
 
 <p>Now let’s create a Virtualenv. Change the directory you want to start your project</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">cd</span> /where/you/want_to/store/your/project
-<span class="nv">$ </span>virtualenv venv</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">cd</span> /where/you/want_to/store/your/project
+<span class="nv">$ </span>virtualenv venv</code></pre>
+</figure>
 
 <p>Sometimes in Linux system, you need to explicitly mention that you are creating for python3</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">virtualenv <span class="nt">-p</span> python3 venv</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-shell" data-lang="shell">virtualenv <span class="nt">-p</span> python3 venv</code></pre>
+</figure>
 
 <p>Here, venv is the name of the folder, you have created (you can change to whatever name you like). This will install setuptools, pip, wheel and all other packages and dependencies your project would need.</p>
 
 <p>Now to begin with your created virtualenv(venv), you need to activate it, change the directory to the venv folder</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">cd </span>venv</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">cd </span>venv</code></pre>
+</figure>
 
 <p>For Linux/Mac users,</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">source </span>bin/activate</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">source </span>bin/activate</code></pre>
+</figure>
 
 <p>For Windows users,</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>.<span class="se">\s</span>cripts<span class="se">\a</span>ctivate</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>.<span class="se">\s</span>cripts<span class="se">\a</span>ctivate</code></pre>
+</figure>
 
 <p>Notice that (venv) should be written to the current directory in terminal/cmd.If you are done with working with your virtualenv, you can deactivate it.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>deactivate</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>deactivate</code></pre>
+</figure>
 
-<p>Installing Django
-Now that you have successfully set up your virtualenv, now you need to install the Django package.</p>
+<h2 id="installing-django">Installing Django</h2>
+<p>Now that you have successfully set up your virtualenv, now you need to install the Django package.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>pip <span class="nb">install </span>django</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>pip <span class="nb">install </span>django</code></pre>
+</figure>
 
 <p>You can download Django of the specific version by specifying the version explicitly. But it is recommended to use the latest version of Django.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>pip <span class="nb">install </span><span class="nv">django</span><span class="o">==</span>version</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>pip <span class="nb">install </span><span class="nv">django</span><span class="o">==</span>version</code></pre>
+</figure>
 
 <p>Check your installed Django version before moving further. If Django is installed, you should see the version of the django you have installed. If it is not installed, it will give an error telling “No module named django”</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>python <span class="nt">-m</span> django <span class="nt">--version</span></code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>python <span class="nt">-m</span> django <span class="nt">--version</span></code></pre>
+</figure>
 
-<p>Creating your first Django project
-Django Project is a directory where django keep its settings file, Database, and all the Scripts, you will be working upon.</p>
+<h2 id="creating-your-first-django-project">Creating your first Django project</h2>
+<p>Django Project is a directory where django keep its settings file, Database, and all the Scripts, you will be working upon.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>django-admin startproject mysite</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>django-admin startproject mysite</code></pre>
+</figure>
 
 <p>It will create the mysite directory containing the files/folders as listed below-</p>
 
-<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown">mysite/
+<figure class="highlight">
+  <pre><code class="language-markdown" data-lang="markdown">mysite/
     manage.py
     mysite/
         __init__.py
         settings.py
         urls.py
-        wsgi.py</code></pre></figure>
+        wsgi.py</code></pre>
+</figure>
 
 <p>You can change the name outer mysite/ name as you want, many of the developers change it to src, because this is the container of your project, and also it is root directory which all your source code within it. What these .py files actually are, let’s see-</p>
 
-<p>manage.py is a command line utility that lets you interact with your Django project, It contains all the necessary commands you would need like starting the server, creating an app, collect static files which will be discussed later.
-<strong>init</strong>.py is a blank python file that tells Python that this directory should be considered a Python package.
-settings.py is the main configuration of your Django project, that tells you about how the settings work.
-urls.py is the URL declaration for your site, i.e., a Table of Content of your Django-powered site.
-wsgi.py is an entry-point for WSGI-compatible web servers to serve your project.
-The Development server
-Now that you have completely setup your Django project let’s verify that it works. Change your directory to outer mysite folder(or src folder), where your manage.py file is kept. Open up terminal/cmd and write-</p>
+<ul>
+  <li>
+    <p><strong>manage.py</strong> is a command line utility that lets you interact with your Django project, It contains all the necessary commands you would need like starting the server, creating an app, collect static files which will be discussed later.</p>
+  </li>
+  <li>
+    <p><strong>__init__.py</strong> is a blank python file that tells Python that this directory should be considered a Python package.</p>
+  </li>
+  <li>
+    <p><strong>settings.py</strong> is the main configuration of your Django project, that tells you about how the settings work.</p>
+  </li>
+  <li>
+    <p><strong>urls.py</strong> is the URL declaration for your site, i.e., a Table of Content of your Django-powered site.</p>
+  </li>
+  <li>
+    <p><strong>wsgi.py</strong> is an entry-point for WSGI-compatible web servers to serve your project.</p>
+  </li>
+</ul>
 
-<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown">python manage.py runserver</code></pre></figure>
+<h2 id="the-development-server">The Development server</h2>
+<p>Now that you have completely setup your Django project let’s verify that it works. Change your directory to outer mysite folder(or src folder), where your manage.py file is kept. Open up terminal/cmd and write-</p>
+
+<figure class="highlight">
+  <pre><code class="language-markdown" data-lang="markdown">python manage.py runserver</code></pre>
+</figure>
 
 <p>You will see this following output on your command line</p>
 
-<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown">Performing system checks...
+<figure class="highlight">
+  <pre><code class="language-markdown" data-lang="markdown">Performing system checks...
 
 System check identified no issues (0 silenced).
 
@@ -282,14 +347,12 @@ Run 'python manage.py migrate' to apply them.
 May 09, 2017 - 12:58:48
 Django version 1.11.1, using settings 'mysite.settings'
 Starting development server at http://127.0.0.1:8000/
-Quit the server with CTRL-BREAK.</code></pre></figure>
+Quit the server with CTRL-BREAK.</code></pre>
+</figure>
 
-<p>Open up your browser and browse https://127.0.0.1:8000/ or http://localhost:8000/. You will see this type of output.</p>
+<p>Open up your browser and browse https://127.0.0.1:8000/ or http://localhost:8000/.</p>
 
-<script type="text/javascript" src="https://ko-fi.com/widgets/widget_2.js"></script>
-<script type="text/javascript">kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script>
-
- </div>
+                </div>
                 <div class="overlay-dark">
                     <div class="close-btn">
                         <i class="fa fa-2x fa-times"></i>
@@ -297,20 +360,32 @@ Quit the server with CTRL-BREAK.</code></pre></figure>
                 </div>
                 <img class="img-overlay">
                 <br><br>
+
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'>
+</script>
+<script type='text/javascript'>
+let kofi = ""
+if(!kofi && !kofi.trim().length) 
+    kofi = "jai_singhal"
+kofiwidget2.init('Buy me a coffee', '#46b798', kofi);
+kofiwidget2.draw();
+</script> 
+
+                <br><br>
                 <ul class="socialIcons">
                     <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/learn/getting-started-with-django/&picture=https://djangopy.orgimg/introduction-to-django/code-pc-sublime-img.jpg&name=Getting started with Django&caption=%20&description=After too much motivation, now it's time to get started with Django. To develop your Django-powered site, you first need to install Python on your system. It is highly recommended to install the latest version of Python.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
                             class="Icon socialAccount--facebook" target="_blank"></a></li>
                     <li><a href="http://twitter.com/intent/tweet?text=Getting started with Django - DjangoPy https://djangopy.org/learn/getting-started-with-django/"
                             class="Icon socialAccount--twitter" target="_blank"></a></li>
-                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org" class="Icon socialAccount--google"
-                            target="_blank"></a></li>
+                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org"
+                            class="Icon socialAccount--google" target="_blank"></a></li>
                     <li><a href="mailto:djangopyz@gmail.com?&subject=DjangoPy | Learn, Code, Implement&body=Getting started with Django%0A https://djangopy.org/learn/getting-started-with-django/"
                             target="_self" class="Icon socialAccount--mail" target="_blank"></a></li>
                 </ul>
                 <br>
                 <hr><br>
                 
-                    <div id="disqus_thread"></div>
+                <div id="disqus_thread"></div>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
         powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
@@ -322,7 +397,7 @@ Quit the server with CTRL-BREAK.</code></pre></figure>
         </div>
     </div>
 </div>
-<script id = "dsq-count-scr" src = "//django-py.disqus.com/count.js" async></script>
+<script id="dsq-count-scr" src="//django-py.disqus.com/count.js" async></script>
 
 <!-- Latest Posts -->
 <section class="latest-posts" style="background-color: #F2F2F2;">

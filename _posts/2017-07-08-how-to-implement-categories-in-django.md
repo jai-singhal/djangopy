@@ -11,10 +11,14 @@ comments: true
 tags: Django-breadcrumbs how-to-implement-categories-in-django Implement-Categories-in-Django Modified-Preorder-Tree Traversal-MPTT Modified-Preorder-Tree-Traversal-Django categories-in-django django-categories nested categories DjangoPy-Foundation django sub-categories
 
 description: In this tutorial, we'll learn how to implement categories and subcategories in our Django project without using any external module.
+
+toc: true
 ---
 
 ## Introduction
 Categories are essential for any website because it is easy for users to access content sorted by categories. Categories may have their subcategories, and subcategories may also have subcategories and so on. So in this post, I'll explain how to implement nested categories in a Django project. You can create categories with Django Admin Panel and then associate it with content like an article or post, So let's get started.
+
+## Jump into the code
 
 Let's implement categories for blog posts, consider my_posts app in the project, add following models in it
 
@@ -26,20 +30,20 @@ class Category(models.Model):
     parent = models.ForeignKey('self',blank=True, null=True ,related_name='children')
 
     class Meta:
-        unique_together = ('slug', 'parent',)    #enforcing that there can not be two
-        verbose_name_plural = "categories"       #categories under a parent with same 
-                                                 #slug 
+        #enforcing that there can not be two categories under a parent with same slug
+        # __str__ method elaborated later in post.  use __unicode__ in place of
+        # __str__ if you are using python 2
+        unique_together = ('slug', 'parent',)    
+        verbose_name_plural = "categories"     
 
-    def __str__(self):                           # __str__ method elaborated later in
-        full_path = [self.name]                  # post.  use __unicode__ in place of
-                                                 # __str__ if you are using python 2
-        k = self.parent                          
-
+    def __str__(self):                           
+        full_path = [self.name]                  
+        k = self.parent
         while k is not None:
             full_path.append(k.name)
             k = k.parent
-
         return ' -> '.join(full_path[::-1])
+
 {% endhighlight %}
 
 Next, we'll use category in Post model as a foreign key.
@@ -57,18 +61,18 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
-    def get_cat_list(self):           #for now ignore this instance method,
-        k = self.category
+    def get_cat_list(self):
+        k = self.category # for now ignore this instance method
+        
         breadcrumb = ["dummy"]
         while k is not None:
             breadcrumb.append(k.slug)
             k = k.parent
-
         for i in range(len(breadcrumb)-1):
             breadcrumb[i] = '/'.join(breadcrumb[-1:i-1:-1])
         return breadcrumb[-1:0:-1]
-{% endhighlight %} 
+
+{% endhighlight %}
 
 So with Category being a foreign key in Post model, a category can be associated with post.
 
@@ -124,8 +128,9 @@ Then in shell, you can create categories as illustrated below
 
 Now we'll add categories with Django Admin Panel, so add following code to admin.py
 
+**admin.py**
 {% highlight python %}
-Admin.py
+
 from .models import Category
 
 admin.site.register(Category)
@@ -208,9 +213,9 @@ url(r'^category/(?P<hierarchy>.+)/$', views.show_category, name='category'),
 
 #### Views.py
 
-{% highlight python %}
-
 Now in views.py add the following function.
+
+{% highlight python %}
 
 def show_category(request,hierarchy= None):
     category_slug = hierarchy.split('/')
@@ -303,26 +308,10 @@ So breadcrumbs in post detail page would look like in the image below.
 
 
  
-
- 
-
 And our Category pages would look like images below
 
  
-
-
-
- 
-
- 
-
 Note that we have only a subcategory in Python/news and no post so only subcategory there. But in '2017' there is no subcategory and a simple post which showed in the image below.
-
- 
-
-
-
- 
 
  
 
@@ -330,7 +319,7 @@ You may be wondering about the cover_image attribute used in template code and h
 
  
 
-## CONCLUSION
+## Conclusion
 
 Although this approach is not most efficient because we are making many database queries, but for small websites and blogs this approach is good to go. If you are working on some projects like a news website or e-commerce website which contain many level of nested categories then you may want to find a comparatively efficient way to implement category with Modified Preorder Tree Traversal (MPTT), there is Django package available for it, read a post on how to implement categories with django-mptt here. 
 
@@ -338,4 +327,3 @@ If you have any query let me know in the comments below.
 
 Happy coding :) 
 
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

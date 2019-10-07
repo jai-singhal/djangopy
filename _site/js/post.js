@@ -47,3 +47,15 @@ $(document).ready(function(){
   });
  
 });
+
+$(document).ready(function() {
+  var navpos = $('#toc-nav').offset();
+    $(window).bind('scroll', function() {
+      if ($(window).scrollTop() > navpos.top) {
+        $('#toc-nav').addClass('fixed-navbar');
+       }
+       else {
+         $('#toc-nav').removeClass('fixed-navbar');
+       }
+    });
+});

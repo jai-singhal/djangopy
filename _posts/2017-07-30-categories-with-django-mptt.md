@@ -11,9 +11,10 @@ comments: true
 tags: Django-Authentication-System Django-Authentication login logout register django djangopy
 
 description: In this post, we'll learn how to implement categories in Django efficiently by storing hierarchical data in place of making many database queries since database queries are costly in terms of time complexity.
+toc: true
 ---
 
-
+## Introduction
 In this tutorial, we will learn how to implement categories and breadcrumb in a Django site. Categories may be related to each other as child-parent, so categories are hierarchical data and to store and access them efficiently mptt i.e modified preorder tree traversal should be used in which the number of database queries made is minimum. There are some referral links provided at the end of the article to understand how CRUD operations are applied on hierarchical data efficiently.
 
 ## Installation
@@ -22,6 +23,8 @@ pip3 install django-mptt
 {% endhighlight %}
 
 And add **mptt** in **INSTALLED_APPS** in **settings.py** 
+
+## Jump into the code
 
 We will be implementing categories and breadcrumb for a blog website. So consider following models for my_posts app in Django project. 
 
@@ -113,19 +116,17 @@ MPTT_ADMIN_LEVEL_INDENT = 20   #you can replace 20 with some other number
                                  #to change indentation space
 {% endhighlight %}
 
-The category tree showed above is not collapsable and expandable, you can tweak this by changing my_posts/admin.py as
+The category tree showed above is not collapsable and expandable, you can tweak this by changing **my_posts/admin.py** as
 
 {% highlight python %}
 from mptt.admin import DraggableMPTTAdmin
 
 admin.site.register(Post,PostAdmin)
 admin.site.register(Category, DraggableMPTTAdmin )
- 
+{% endhighlight %}
 
 {% responsive_image path: img/categories-with-django-mptt/3_cropped.jpg %}
 
-{% endhighlight %}
- 
 
 Now go to posts > ADD POST then you will find category drop-down to associate a category to that post, this field is not a required field so you may leave it untouched. 
 
@@ -285,4 +286,3 @@ Modified Preorder Tree Traversal is not just limited to categories but can also 
 
 Happy Coding :)
 
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

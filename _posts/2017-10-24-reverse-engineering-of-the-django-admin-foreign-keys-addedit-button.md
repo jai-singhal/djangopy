@@ -10,6 +10,7 @@ comments: true
 tags: Django-Admin-Foreign-Key Django-Admin Foreign-Key-Add Foreign-Key-Edit ForeignKey-add Reverse-Engineering-Django Reverse-Engineering-the-Django-Admin-Foreign-Key's-Add/Edit-Button DjangoPy django
 
 description: In this tutorial, we will learn about how to add Django Admin's Foreign key's Add and Edit feature on Django form, so that we can easily add and edit the Foreign Key element in a pop-up window.
+toc: true
 ---
 
 
@@ -257,8 +258,7 @@ If you have followed the same example, you will get this type of output.
 
 {% responsive_image path: img/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/1.jpg %}
 
- 
+## Final Words 
 
 If you have any Question regarding the above tutorial feel free to comment below. And also share the experience with the DjangoPy in the comments below. You can find the repository from [here](https://github.com/djangopy-org/reverse-engineering-django-admin).
 
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

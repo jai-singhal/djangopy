@@ -32,57 +32,54 @@
 	<meta property="twitter:creator" content="@DjangoPy_Admin">
 	<meta property="twitter:image:src" content="https://djangopy.org/img/dynamically-filter-queryset-with-ajax-and-drf/cover.jpg">
 	<!-- Twitter - Article -->
-
 	<!-- Open Graph - Article -->
 	<meta property="article:section" content="learn">
 	<meta property="article:published_time" content="2019-03-05 20:34:07 +0530">
 	<meta properry="article:author" content="https://www.facebook.com/djangopy.org">
 	<meta property="article:modified_time" content="2019-03-05 20:34:07 +0530">
 	
-	<meta property="article:tag" content="ajax"/>
+	<meta property="article:tag" content="ajax" />
 	
-	<meta property="article:tag" content="dynamically-filter-queryset-with-ajax-and-drf"/>
+	<meta property="article:tag" content="dynamically-filter-queryset-with-ajax-and-drf" />
 	
-	<meta property="article:tag" content="django"/>
+	<meta property="article:tag" content="django" />
 	
-	<meta property="article:tag" content="django-rest-framework"/>
+	<meta property="article:tag" content="django-rest-framework" />
 	
 
 	<meta property="revisit-after" content="2 days" />
 	<meta property="distribution" content="web" />
-	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/"/>
-	<meta name="description" content="In this post we will learn, how to filter the queryset using AJAX and DRF"/>
-
+	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/" />
+	<meta name="description" content="In this post we will learn, how to filter the queryset using AJAX and DRF" />
 	<link rel="canonical" href="https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf">
-	<link rel="alternate" type="application/rss+xml" title="DjangoPy" href="https://djangopy.org/feed.xml">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<!-- Font Awesome CSS-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel = "stylesheet" href="/css/github.css">
-	<!-- Fancybox-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
-	<!-- theme stylesheet-->
-	<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
-	<!-- Custom stylesheet - for your changes-->
-	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="alternate" type="application/rss+xml" title="DjangoPy"
+		href="https://djangopy.org/feed.xml">
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="/img/favicon1.ico">
-	<!-- Javascript files-->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel = "stylesheet" href="/css/github.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
 	<script src="/js/front.js"></script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+	<script src="/js/front.js"></script>
 	<script type="text/javascript" src = "/js/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
 	<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
 	<script src="/js/post.js"></script>
-
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
-
-	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 	<script>
 	window.addEventListener("load", function(){
 	window.cookieconsent.initialise({
@@ -99,6 +96,13 @@
 	</script>
 
 
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+
+	
 	<script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -107,9 +111,8 @@
      ga('create', 'UA-98271390-1', 'auto');
      ga('send', 'pageview');
    </script>
-
+	
 </head>
-
   <body>
     <header class="header">
   <!-- Main Navbar-->
@@ -162,8 +165,7 @@
         <br>
 <div class="post">
     <div class="container">
-        <div class="row justify-content-md-center">
-
+        <div class="row justify-content-md-center" id="cover-section">
             <div class="col-md-9">
                 <img 
     class="img-fluid lazy" 
@@ -173,18 +175,37 @@
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">Dynamically filter queryset with AJAX and DRF</h1>
-                <h6 class="post-spans">Posted: 05 March 2019 | Post By: Jai Singhal | 
+                <h6 class="post-spans">Posted: 05 March 2019 | Post By: Jai Singhal |
                     <!-- <span id="ga-page-view" ga-page-url=/learn/dynamically-filter-queryset-with-ajax-and-drf></span> <i class="fa fa-eye"></i> |  -->
                     <i class="fa fa-clock"></i>
-                    27 min read | 
+                    27 min read |
                     <a style="text-decoration: none;" href="https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf#disqus_thread"
                         data-disqus-identifier="/learn/dynamically-filter-queryset-with-ajax-and-drf">
                         <i class="fa fa-comment"></i>
-                    </a> 
+                    </a>
                 </h6>
                 <br>
                 <hr /><br>
-                <div class="post-content"> <h2 id="introduction">Introduction</h2>
+            </div>
+        </div>
+        <div class="row justify-content-md-center" id="content_area">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-2" id="toc_navbar">
+                <nav class = "navbar navbar-light" id = "toc-nav" style = "display:grid;border:none;"> 
+  <h5>Contents</h5>
+      <ul class="nav nav-pills">
+<li class="toc-entry nav-item toc-h2"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#initial-setup">Initial Setup</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#feed-the-data">Feed the data</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#creating-rest-api">Creating REST API</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#creating-front-end">Creating Front-end</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#final-words">Final Words</a></li>
+</ul>
+</nav>
+            </div>
+
+            <div class="col-md-9">
+                <div class="post-content" data-spy="scroll" data-target="#toc-nav" data-offset="0"> 
+                    <h2 id="introduction">Introduction</h2>
 
 <p>Filtering queryset dynamically is something that is very common in use. In this post, we will learn how to dynamically filter the queryset depending on the several filters on top of each other. If you do not have hands-on AJAX, then you should definitely check out this <strong><a href="https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django">post</a></strong></p>
 
@@ -239,9 +260,10 @@
 
 <p>It is good to have on parent template i.e., <strong>base.html</strong> that can be extended in other templates. If already have, ignore this step. We will be using Bootstrap4 as our CSS framework and jQuery library as always to remove the burden of writing CSS and JS from scratch.</p>
 
-<div class="code-head text-center">templates/base.html</div>
+<p><strong>templates/base.html</strong></p>
 
-<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<figure class="highlight">
+  <pre><code class="language-django" data-lang="django"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
@@ -262,7 +284,8 @@
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</figure>
 
 <p><br />
 <br /></p>
@@ -270,10 +293,12 @@
 <h4 id="setting-static-path">Setting static path</h4>
 <p>We will be going to write a lot of Javascript for this project, so it’s better you create a static folder for putting all CSS/js in the same folder. For that, you have to create a new folder name <strong>static</strong> and in there create <strong>js</strong> folder(just like shown in <strong>directory structure</strong>). Also, list the path in your <strong>settings.py</strong>.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">'/static/'</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">'/static/'</span>
 <span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">"static"</span><span class="p">),</span>
-<span class="p">]</span></code></pre></figure>
+<span class="p">]</span></code></pre>
+</figure>
 
 <p><br />
 <br /></p>
@@ -282,14 +307,18 @@
 
 <p>We gonna need Django rest framework for this project, so you need to install it</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>pip <span class="nb">install </span>django_rest_framework</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>pip <span class="nb">install </span>django_rest_framework</code></pre>
+</figure>
 
 <p>And put the rest_framework in your <strong>INSTALLED_APPS</strong> in <strong>settings.py</strong></p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="o">...</span>
     <span class="s">"rest_framework"</span><span class="p">,</span>
-<span class="p">]</span></code></pre></figure>
+<span class="p">]</span></code></pre>
+</figure>
 
 <hr />
 
@@ -300,14 +329,18 @@
 
 <p>Create new app named <strong>wine</strong></p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">wine</span></code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">wine</span></code></pre>
+</figure>
 
 <p>Put the app name in <strong>settings.py</strong> file.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="o">...</span>
     <span class="s">"wine"</span><span class="p">,</span>
-<span class="p">]</span></code></pre></figure>
+<span class="p">]</span></code></pre>
+</figure>
 
 <hr />
 
@@ -315,9 +348,10 @@
 
 <p>Create a table for storing the data. Open up your wine/models.py file and create the models with the following columns.</p>
 
-<div class="code-head text-center">wine/models.py</div>
+<p><strong>wine/models.py</strong></p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
 <span class="k">class</span> <span class="nc">Wine</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 	<span class="n">country</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
@@ -333,26 +367,34 @@
 	<span class="n">winery</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="n">null</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 
 	<span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span></code></pre></figure>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span></code></pre>
+</figure>
 
 <p><br /></p>
 
 <p>Migrate this table to database.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py makemigrations</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py makemigrations</code></pre>
+</figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py migrate</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py migrate</code></pre>
+</figure>
 
 <p>Now that you have downloaded the data and created a structure to store it, let us import the data from the downloaded CSV. Note that you have copied the <strong>wine.csv</strong> file in the main directory(where manage.py lives). For any confusion follow the directory structure as shown above.</p>
 
 <p>Open the Django shell</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py shell</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py shell</code></pre>
+</figure>
 
 <p><br />
 Execute this script to import all the data from the <strong>wine.csv</strong> file, It will take almost 1-2 minute to import the data of total <strong>6500</strong> rows of entries.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">from wine.models import Wine
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash">from wine.models import Wine
 import csv
 
 wine_csv <span class="o">=</span> open<span class="o">(</span><span class="s1">'wine.csv'</span>, <span class="s1">'r'</span>, encoding <span class="o">=</span> <span class="s2">"utf-8"</span><span class="o">)</span> 
@@ -365,7 +407,8 @@ headers <span class="o">=</span> next<span class="o">(</span>reader, None<span c
       wine_dict[h] <span class="o">=</span> val
    wine <span class="o">=</span> Wine.objects.create<span class="o">(</span><span class="k">**</span>wine_dict<span class="o">)</span>
 
-wine_csv.close<span class="o">()</span>  </code></pre></figure>
+wine_csv.close<span class="o">()</span>  </code></pre>
+</figure>
 
 <hr />
 
@@ -375,27 +418,32 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
 
 <p>Let’s now write the business logic of our problem, we will first begin with our serializers, serializers in REST framework work very similarly to Django’s Form and ModelForm classes. If you are new with Django Rest framework, you can brush up some basic from <strong><a href="https://www.django-rest-framework.org/">here</a>.</strong></p>
 
-<div class="code-head text-center">wine/serializers.py</div>
+<p><strong>wine/serializers.py</strong></p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Wine</span>
 
 <span class="k">class</span> <span class="nc">WineSerializers</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
 	<span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
 	    <span class="n">model</span> <span class="o">=</span> <span class="n">Wine</span>
 	    <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'description'</span><span class="p">,</span> <span class="s">'designation'</span><span class="p">,</span> <span class="s">'country'</span><span class="p">,</span> <span class="s">"taster_name"</span><span class="p">,</span> <span class="s">"title"</span><span class="p">,</span>
-	    		<span class="s">'points'</span><span class="p">,</span> <span class="s">'price'</span><span class="p">,</span> <span class="s">'province'</span><span class="p">,</span> <span class="s">'region'</span><span class="p">,</span> <span class="s">'variety'</span><span class="p">,</span> <span class="s">'winery'</span><span class="p">)</span></code></pre></figure>
+	    		<span class="s">'points'</span><span class="p">,</span> <span class="s">'price'</span><span class="p">,</span> <span class="s">'province'</span><span class="p">,</span> <span class="s">'region'</span><span class="p">,</span> <span class="s">'variety'</span><span class="p">,</span> <span class="s">'winery'</span><span class="p">)</span></code></pre>
+</figure>
 
 <p><br /></p>
 
 <h4 id="customizing-pagination">Customizing Pagination</h4>
 <p>This step is not necessary, but it’s good to know about it. This will customize the default pagination class which we will be using to make our REST API.</p>
-<div class="code-head text-center">wine/pagination.py</div>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">pagination</span>
+<p><strong>wine/pagination.py</strong></p>
+
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">pagination</span>
 <span class="k">class</span> <span class="nc">StandardResultsSetPagination</span><span class="p">(</span><span class="n">pagination</span><span class="o">.</span><span class="n">PageNumberPagination</span><span class="p">):</span>
     <span class="n">page_size</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1"># change the records per page from here
-</span>    <span class="n">page_size_query_param</span> <span class="o">=</span> <span class="s">'page_size'</span></code></pre></figure>
+</span>    <span class="n">page_size_query_param</span> <span class="o">=</span> <span class="s">'page_size'</span></code></pre>
+</figure>
 
 <hr />
 
@@ -414,9 +462,10 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
 <h5 id="2-ajax-get-methods">2. AJAX GET methods</h5>
 <p>All other functional based views help us to get the values to fill in the options of the select box. It is much similar to what we have talked in our previous <a href="https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django">post</a>. All these functions are kind similar to each other.</p>
 
-<div class="code-head text-center">wine/views.py</div>
+<p><strong>wine/views.py</strong></p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">rest_framework.generics</span> <span class="kn">import</span> <span class="n">ListAPIView</span>
 <span class="kn">from</span> <span class="nn">.serializers</span> <span class="kn">import</span> <span class="n">WineSerializers</span>
@@ -509,7 +558,8 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s">"region"</span><span class="p">:</span> <span class="n">region</span><span class="p">,</span> 
         <span class="p">}</span>
-        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span></code></pre></figure>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span></code></pre>
+</figure>
 
 <hr />
 
@@ -517,23 +567,27 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
 
 <p>For all the FBV and CBV, which we have created just above, let’s now create routes for each of these views. Let’s first include the app url into main <strong>urls.py</strong> file, this will help to confine all the wine(app) url into a separate urls file. Note that we have given the namespace to the wine url.</p>
 
-<div class="code-head text-center">urls.py</div>
+<p><strong>urls.py</strong></p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
 <span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">path</span><span class="p">(</span><span class="s">'admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
     <span class="n">url</span><span class="p">(</span><span class="s">r"^wine/"</span><span class="p">,</span> <span class="n">include</span><span class="p">((</span><span class="s">"wine.urls"</span><span class="p">,</span> <span class="s">"wine"</span><span class="p">),</span> <span class="n">namespace</span> <span class="o">=</span> <span class="s">"wine"</span><span class="p">))</span>
-<span class="p">]</span></code></pre></figure>
+<span class="p">]</span></code></pre>
+</figure>
 
 <p><br /></p>
 
 <p>Create a new file named <strong>urls.py</strong> in wine app, which will contains the url path of all the view function and class based views of wine app, which is discussed above. Note that we are assigning name to every essential url paths, these names are going to be used as reverse url template tags in templates.</p>
-<div class="code-head text-center">wine/urls.py</div>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<p><strong>wine/urls.py</strong></p>
+
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">wine.views</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
@@ -543,7 +597,8 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
     <span class="n">path</span><span class="p">(</span><span class="s">"ajax/variety/"</span><span class="p">,</span> <span class="n">getvariety</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_varieties'</span><span class="p">),</span>
     <span class="n">path</span><span class="p">(</span><span class="s">"ajax/province/"</span><span class="p">,</span> <span class="n">getProvince</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_provinces'</span><span class="p">),</span>
     <span class="n">path</span><span class="p">(</span><span class="s">"ajax/region/"</span><span class="p">,</span> <span class="n">getRegion</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">'get_regions'</span><span class="p">),</span>
-<span class="p">]</span></code></pre></figure>
+<span class="p">]</span></code></pre>
+</figure>
 
 <p><br /></p>
 <hr />
@@ -556,9 +611,10 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
 
 <p>It is important to note that every select input contains attribute of url, which is nothing but the reverse url template tag containing the name of the url, Django matches the url name and return an absolute path reference (a URL without the domain name) matching a given view. You can learn more about this from <a href="https://docs.djangoproject.com/en/2.1/ref/templates/builtins/#url">here.</a></p>
 
-<div class="code-head text-center">templates/wine.html</div>
+<p><strong>templates/wine.html</strong></p>
 
-<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base.html"</span> <span class="cp">%}</span>
+<figure class="highlight">
+  <pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base.html"</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="nv">load</span> <span class="nv">staticfiles</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">style</span> <span class="cp">%}</span>
     <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
@@ -674,7 +730,8 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{%</span> <span class="nv">static</span> <span class="s1">'js/wine.js'</span> <span class="cp">%}</span><span class="s">"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;/script&gt;</span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span></code></pre></figure>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span></code></pre>
+</figure>
 
 <p><br /></p>
 <hr />
@@ -684,9 +741,10 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
 <h3 id="creating-winejs">Creating Wine.js</h3>
 <p>Moving on the most challenging part of this project, the <strong>Javascript</strong>. I have tried to provide the comments to most of the lines in the below <strong>JS</strong> snippet, which will make easy for you to understand in a better way. If you are able to understand for a single filter, then it is easy for you to understand for other filters too, because they have kinda similar js code.</p>
 
-<div class="code-head text-center">static/js/wine.js</div>
+<p><strong>static/js/wine.js</strong></p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// variable that keeps all the filter information
+<figure class="highlight">
+  <pre><code class="language-javascript" data-lang="javascript"><span class="c1">// variable that keeps all the filter information
 </span>
 <span class="kd">var</span> <span class="nx">send_data</span> <span class="o">=</span> <span class="p">{}</span>
 
@@ -1049,7 +1107,8 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
             <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">});</span>
-<span class="p">}</span></code></pre></figure>
+<span class="p">}</span></code></pre>
+</figure>
 
 <hr />
 
@@ -1061,10 +1120,7 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
 <p>If you have any problem in the steps discussed above, you can look out our <strong>GitHub</strong> <strong>repository</strong> 
 <a href="https://github.com/djangopy-org/dynamic_filter">https://github.com/djangopy-org/dynamic_filter</a> or you can comment down below.</p>
 
-<script type="text/javascript" src="https://ko-fi.com/widgets/widget_2.js"></script>
-<script type="text/javascript">kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script>
-
- </div>
+                </div>
                 <div class="overlay-dark">
                     <div class="close-btn">
                         <i class="fa fa-2x fa-times"></i>
@@ -1072,20 +1128,32 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
                 </div>
                 <img class="img-overlay">
                 <br><br>
+
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'>
+</script>
+<script type='text/javascript'>
+let kofi = "jai_singhal"
+if(!kofi && !kofi.trim().length) 
+    kofi = "jai_singhal"
+kofiwidget2.init('Buy me a coffee', '#46b798', kofi);
+kofiwidget2.draw();
+</script> 
+
+                <br><br>
                 <ul class="socialIcons">
                     <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf&picture=https://djangopy.orgimg/dynamically-filter-queryset-with-ajax-and-drf/cover.jpg&name=Dynamically filter queryset with AJAX and DRF&caption=%20&description=In this post we will learn, how to filter the queryset using AJAX and DRF&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
                             class="Icon socialAccount--facebook" target="_blank"></a></li>
                     <li><a href="http://twitter.com/intent/tweet?text=Dynamically filter queryset with AJAX and DRF - DjangoPy https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf"
                             class="Icon socialAccount--twitter" target="_blank"></a></li>
-                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org" class="Icon socialAccount--google"
-                            target="_blank"></a></li>
+                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org"
+                            class="Icon socialAccount--google" target="_blank"></a></li>
                     <li><a href="mailto:djangopyz@gmail.com?&subject=DjangoPy | Learn, Code, Implement&body=Dynamically filter queryset with AJAX and DRF%0A https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf"
                             target="_self" class="Icon socialAccount--mail" target="_blank"></a></li>
                 </ul>
                 <br>
                 <hr><br>
                 
-                    <div id="disqus_thread"></div>
+                <div id="disqus_thread"></div>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
         powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
@@ -1097,7 +1165,7 @@ wine_csv.close<span class="o">()</span>  </code></pre></figure>
         </div>
     </div>
 </div>
-<script id = "dsq-count-scr" src = "//django-py.disqus.com/count.js" async></script>
+<script id="dsq-count-scr" src="//django-py.disqus.com/count.js" async></script>
 
 <!-- Latest Posts -->
 <section class="latest-posts" style="background-color: #F2F2F2;">

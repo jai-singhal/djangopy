@@ -1,4 +1,4 @@
-production: true
+production: True
 ## JEKYLL_ENV=production bundle exec jekyll build
 
 # bundle exec jekyll serve
@@ -28,6 +28,19 @@ paginate_path: "/blog/page:num/"
 
 encoding: utf-8
 
+kramdown:
+  parse_block_html: true
+
+toc:
+  min_level: 2
+  max_level: 2
+  no_toc_section_class: no_toc_section
+  list_class:  nav nav-pills
+  item_class: nav-link
+  sublist_class: 'nav nav-pills'
+  item_class: toc-entry nav-item
+  item_prefix: toc-
+
 plugins:
   # - jekyll-read-time
   - jekyll-responsive-image
@@ -40,7 +53,7 @@ plugins:
   - jekyll-paginate
   - jekyll-timeago
   - jekyll-gist
-
+  - jekyll-toc
 
 # toc:
 #   min_level: 2 # default: 1

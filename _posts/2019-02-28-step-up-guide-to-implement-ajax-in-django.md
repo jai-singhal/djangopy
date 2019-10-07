@@ -9,7 +9,7 @@ author: "Jai Singhal"
 comments: true
 tags: learn ajax-guide ajaxify-django-forms ajax-django implement-ajax-django ajax django step-up-guide-to-implement-ajax-in-django form-submission-without-refresh work-with-ajax-django get-request post-request asynchronous-calls jai-singhal
 description: In this post we will learn, how to submit the forms and perform asynchronous tasks with the help of AJAX
-# toc: true
+toc: true
 ---
 
 
@@ -129,6 +129,7 @@ class Contact(models.Model):
 
 	def __str__(self):
 		return self.name
+
 {% endraw %}
 {% endhighlight %}
 
@@ -143,8 +144,8 @@ from django.urls import path
 from app_1 import views as app1
 
 urlpatterns = [
-    #FBV
-    path('', app1.contactPage),
+    path('', app1.contactPage), # FBV
+
     path('ajax/contact', app1.postContact, name ='contact_submit'),
 ]
 {% endraw %}
@@ -196,6 +197,7 @@ from django.http import JsonResponse
 from .forms import ContactForm
 
 #FBV
+
 def contactPage(request):
 	form = ContactForm()
 	return render(request, "contact.html", {"contactForm": form})
@@ -284,6 +286,7 @@ To convert the above example from Function based views to class based views(CBV)
 from app_1 import views as app1
 urlpatterns = [
 	#CBV
+	
     path('', app1.ContactAjax.as_view(), name = 'contact_submit')
 ]
 {% endraw %}
@@ -301,6 +304,7 @@ from django.http import JsonResponse
 from .forms import ContactForm
 from django.views import View
 #CBV
+
 class ContactAjax(View):
 	form_class = ContactForm
 	template_name = "contact.html"
@@ -318,7 +322,7 @@ class ContactAjax(View):
 {% endraw %}
 {% endhighlight %}
 
-## Screenshot
+### Screenshot
 
 {% responsive_image path: img/step-up-guide-to-implement-ajax-in-django/screenshot.png %}
 
@@ -394,6 +398,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 
 #FBV
+
 def userPanel(request):
 	usernames = User.objects.all().values("username")
 	return render(request, "user.html", {"usernames": usernames})
@@ -504,7 +509,7 @@ $(document).ready(function(){
 
 <hr />
 
-## Screenshot
+### Screenshot
 
 {% responsive_image path: img/step-up-guide-to-implement-ajax-in-django/screenshot2.png %}
 
@@ -512,7 +517,7 @@ $(document).ready(function(){
 <hr />
 <br />
 
-# Final Words
+## Final Words
 
 AJAX is the best way to do asynchronous tasks on a small scale. However, if you want to perform asynchronous tasks at a very large scale, you can opt any frontend javascript framework/library, the best available in the market are **React**, **Angular**, **Vue**.
 
@@ -522,10 +527,9 @@ If you have any problem in the steps discussed above, you can look out our **Git
 <hr />
 <br />
 
-# References
+## References
 - [https://github.com/djangopy-org/ajax_guide](https://github.com/djangopy-org/ajax_guide)
 - [https://code.djangoproject.com/wiki/AJAX](https://code.djangoproject.com/wiki/AJAX)
 - [https://docs.djangoproject.com/en/2.1/ref/csrf/#ajax](https://docs.djangoproject.com/en/2.1/ref/csrf/#ajax)
 
 
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

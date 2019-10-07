@@ -9,6 +9,7 @@ author: "Jai Singhal"
 comments: true
 tags: handle-asynchronous-tasks-with-celery-and-django celery django redis djangopy scheduling django-celery asynchronous jai-singhal how-to periodic-tasks supervisord supervisor
 description: In this post we will learn, how to implement celery to django application, to handle asynchronous tasks with Celery.
+toc: true
 ---
 
 ## Introduction
@@ -430,4 +431,3 @@ Now that celery is perfectly running locally, last thing we need to take care of
 - [http://supervisord.org](http://supervisord.org)
 
 
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

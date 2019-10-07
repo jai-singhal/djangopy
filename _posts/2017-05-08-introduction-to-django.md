@@ -9,6 +9,7 @@ author: "Jai Singhal"
 comments: true
 tags: history django history-of-django top-ten-site-made-in-django what-is-django why-django introduction-to-django learn-django
 description: Django is a high-level Python Web Framework which is absolutely free and open source. Django encourages rapid development, clean and pragmatic design, it also emphasis on the principle of don't repeat yourself, and reusability of code.
+kofi: jai_singhal
 ---
 
 
@@ -127,4 +128,4 @@ One of the best Open source web browser in the market. The open source community
 ##### 10. HackerEarth
 HackerEarth is startup technology company of India. The proudly Django site dedicated for Programmers/Developers who solves the programming or algorithmic problem to enhance their programming skills, and get hired from the companies. HackerEartch conducts various types of Hackathons, company hiring challenges. Many developers from India solves the problem and submit their code. The thousands of codes and huge traffic at a time that has to be scalable and Django plays an excellent job.
 
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 
+

@@ -9,7 +9,8 @@ author: "Jai Singhal"
 comments: true
 tags: ajax dynamically-filter-queryset-with-ajax-and-drf django django-rest-framework
 description: In this post we will learn, how to filter the queryset using AJAX and DRF
-# toc: true
+kofi: jai_singhal
+toc: true
 ---
 
 ## Introduction
@@ -69,7 +70,7 @@ The directory structure of the following project would be like this, we would ne
 
 It is good to have on parent template i.e., **base.html** that can be extended in other templates. If already have, ignore this step. We will be using Bootstrap4 as our CSS framework and jQuery library as always to remove the burden of writing CSS and JS from scratch.
 
-<div class = 'code-head text-center'>templates/base.html</div>
+**templates/base.html**
 {% highlight django %}
 {% raw %}
 <!DOCTYPE html>
@@ -128,8 +129,6 @@ INSTALLED_APPS = [
 ]
 {% endhighlight %}
 
-
-
 <hr />
 <br />
 
@@ -137,11 +136,13 @@ INSTALLED_APPS = [
 Since we need a lot of data to get better results after filtering, I suggest to download the data, I have found a dataset on [Kaggle](https://kaggle.com). You can download the data from **[here](/data/dynamically-filter-queryset-with-ajax-and-drf/wine.rar)**. After downloading it, copy it to the Django main directory(where manage.py lives)
 
 Create new app named **wine**
+
 {% highlight python %}
 $ python manage.py startapp wine
 {% endhighlight %}
 
 Put the app name in **settings.py** file.
+
 {% highlight python %}
 INSTALLED_APPS = [
     ...
@@ -154,7 +155,7 @@ INSTALLED_APPS = [
 
 Create a table for storing the data. Open up your wine/models.py file and create the models with the following columns.
 
-<div class = 'code-head text-center'>wine/models.py</div>
+**wine/models.py**
 {% highlight python %}
 {% raw %}
 from django.db import models
@@ -226,7 +227,8 @@ wine_csv.close()
 Let's now write the business logic of our problem, we will first begin with our serializers, serializers in REST framework work very similarly to Django's Form and ModelForm classes. If you are new with Django Rest framework, you can brush up some basic from **[here](https://www.django-rest-framework.org/).**
 
 
-<div class = 'code-head text-center'>wine/serializers.py</div>
+**wine/serializers.py**
+
 {% highlight python %}
 from rest_framework import serializers
 from .models import Wine
@@ -242,7 +244,9 @@ class WineSerializers(serializers.ModelSerializer):
 
 #### Customizing Pagination
 This step is not necessary, but it's good to know about it. This will customize the default pagination class which we will be using to make our REST API.
-<div class = 'code-head text-center'>wine/pagination.py</div>
+
+**wine/pagination.py**
+
 {% highlight python %}
 from rest_framework import pagination
 class StandardResultsSetPagination(pagination.PageNumberPagination):
@@ -267,7 +271,8 @@ In the **get_queryset** method, we will filter the queryset on the basis of quer
 ##### 2. AJAX GET methods
 All other functional based views help us to get the values to fill in the options of the select box. It is much similar to what we have talked in our previous [post](https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django). All these functions are kind similar to each other.
 
-<div class = 'code-head text-center'>wine/views.py</div>
+**wine/views.py**
+
 {% highlight python %}
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -371,7 +376,7 @@ def getRegion(request):
 
 For all the FBV and CBV, which we have created just above, let's now create routes for each of these views. Let's first include the app url into main **urls.py** file, this will help to confine all the wine(app) url into a separate urls file. Note that we have given the namespace to the wine url.
 
-<div class = 'code-head text-center'>urls.py</div>
+**urls.py**
 {% highlight python %}
 {% raw %}
 from django.contrib import admin
@@ -389,7 +394,9 @@ urlpatterns = [
 <br />
 
 Create a new file named **urls.py** in wine app, which will contains the url path of all the view function and class based views of wine app, which is discussed above. Note that we are assigning name to every essential url paths, these names are going to be used as reverse url template tags in templates.
-<div class = 'code-head text-center'>wine/urls.py</div>
+
+**wine/urls.py**
+
 {% highlight python %}
 {% raw %}
 from django.urls import path
@@ -418,7 +425,7 @@ Now that backend, is ready now, let's move to frontend part. The wine template e
 
 It is important to note that every select input contains attribute of url, which is nothing but the reverse url template tag containing the name of the url, Django matches the url name and return an absolute path reference (a URL without the domain name) matching a given view. You can learn more about this from [here.](https://docs.djangoproject.com/en/2.1/ref/templates/builtins/#url)
 
-<div class = 'code-head text-center'>templates/wine.html</div>
+**templates/wine.html**
 {% highlight django %}
 {% raw %}
 {% extends "base.html" %}
@@ -548,7 +555,7 @@ It is important to note that every select input contains attribute of url, which
 ### Creating Wine.js
 Moving on the most challenging part of this project, the **Javascript**. I have tried to provide the comments to most of the lines in the below **JS** snippet, which will make easy for you to understand in a better way. If you are able to understand for a single filter, then it is easy for you to understand for other filters too, because they have kinda similar js code.
 
-<div class = 'code-head text-center'>static/js/wine.js</div>
+**static/js/wine.js**
 {% highlight javascript %}
 {% raw %}
 // variable that keeps all the filter information
@@ -880,5 +887,3 @@ AJAX is the best way to do asynchronous tasks on a small scale. However, if you 
 
 If you have any problem in the steps discussed above, you can look out our **GitHub** **repository** 
 [https://github.com/djangopy-org/dynamic_filter](https://github.com/djangopy-org/dynamic_filter) or you can comment down below. 
-
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 

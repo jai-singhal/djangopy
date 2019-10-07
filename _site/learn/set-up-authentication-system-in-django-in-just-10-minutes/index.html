@@ -32,63 +32,60 @@
 	<meta property="twitter:creator" content="@DjangoPy_Admin">
 	<meta property="twitter:image:src" content="https://djangopy.org/img/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg">
 	<!-- Twitter - Article -->
-
 	<!-- Open Graph - Article -->
 	<meta property="article:section" content="learn">
 	<meta property="article:published_time" content="2017-10-03 20:34:07 +0530">
 	<meta properry="article:author" content="https://www.facebook.com/djangopy.org">
 	<meta property="article:modified_time" content="2017-10-03 20:34:07 +0530">
 	
-	<meta property="article:tag" content="Django-Authentication-System"/>
+	<meta property="article:tag" content="Django-Authentication-System" />
 	
-	<meta property="article:tag" content="Django-Authentication"/>
+	<meta property="article:tag" content="Django-Authentication" />
 	
-	<meta property="article:tag" content="login"/>
+	<meta property="article:tag" content="login" />
 	
-	<meta property="article:tag" content="logout"/>
+	<meta property="article:tag" content="logout" />
 	
-	<meta property="article:tag" content="register"/>
+	<meta property="article:tag" content="register" />
 	
-	<meta property="article:tag" content="django"/>
+	<meta property="article:tag" content="django" />
 	
-	<meta property="article:tag" content="djangopy"/>
+	<meta property="article:tag" content="djangopy" />
 	
 
 	<meta property="revisit-after" content="2 days" />
 	<meta property="distribution" content="web" />
-	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/"/>
-	<meta name="description" content="In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps."/>
-
+	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/" />
+	<meta name="description" content="In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps." />
 	<link rel="canonical" href="https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/">
-	<link rel="alternate" type="application/rss+xml" title="DjangoPy" href="https://djangopy.org/feed.xml">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<!-- Font Awesome CSS-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel = "stylesheet" href="/css/github.css">
-	<!-- Fancybox-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
-	<!-- theme stylesheet-->
-	<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
-	<!-- Custom stylesheet - for your changes-->
-	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="alternate" type="application/rss+xml" title="DjangoPy"
+		href="https://djangopy.org/feed.xml">
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="/img/favicon1.ico">
-	<!-- Javascript files-->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/css/default.css" id="theme-stylesheet">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel = "stylesheet" href="/css/github.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
 	<script src="/js/front.js"></script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+	<script src="/js/front.js"></script>
 	<script type="text/javascript" src = "/js/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
 	<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
 	<script src="/js/post.js"></script>
-
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
-
-	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 	<script>
 	window.addEventListener("load", function(){
 	window.cookieconsent.initialise({
@@ -105,6 +102,13 @@
 	</script>
 
 
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+
+	
 	<script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -113,9 +117,8 @@
      ga('create', 'UA-98271390-1', 'auto');
      ga('send', 'pageview');
    </script>
-
+	
 </head>
-
   <body>
     <header class="header">
   <!-- Main Navbar-->
@@ -168,8 +171,7 @@
         <br>
 <div class="post">
     <div class="container">
-        <div class="row justify-content-md-center">
-
+        <div class="row justify-content-md-center" id="cover-section">
             <div class="col-md-9">
                 <img 
     class="img-fluid lazy" 
@@ -179,18 +181,37 @@
 />
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">Set-up Authentication System in Django in just 10 minutes</h1>
-                <h6 class="post-spans">Posted: 03 October 2017 | Post By: Jai Singhal | 
+                <h6 class="post-spans">Posted: 03 October 2017 | Post By: Jai Singhal |
                     <!-- <span id="ga-page-view" ga-page-url=/learn/set-up-authentication-system-in-django-in-just-10-minutes/></span> <i class="fa fa-eye"></i> |  -->
                     <i class="fa fa-clock"></i>
-                    13 min read | 
+                    13 min read |
                     <a style="text-decoration: none;" href="https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/#disqus_thread"
                         data-disqus-identifier="/learn/set-up-authentication-system-in-django-in-just-10-minutes/">
                         <i class="fa fa-comment"></i>
-                    </a> 
+                    </a>
                 </h6>
                 <br>
                 <hr /><br>
-                <div class="post-content"> <p>Authentication is something which needs to be implemented on each and every website. And with Django, it is very simple and easy to implement because we don’t need to make the Authentication system from scratch, it is already made by the Django, we need to simply use it.</p>
+            </div>
+        </div>
+        <div class="row justify-content-md-center" id="content_area">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-2" id="toc_navbar">
+                <nav class = "navbar navbar-light" id = "toc-nav" style = "display:grid;border:none;"> 
+  <h5>Contents</h5>
+      <ul class="nav nav-pills">
+<li class="toc-entry nav-item toc-h2"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#initial-set-up">Initial Set Up</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#login">Login</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#register">Register</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#logout">Logout</a></li>
+<li class="toc-entry nav-item toc-h2"><a href="#final-words">Final Words</a></li>
+</ul>
+</nav>
+            </div>
+
+            <div class="col-md-9">
+                <div class="post-content" data-spy="scroll" data-target="#toc-nav" data-offset="0"> 
+                    <p>Authentication is something which needs to be implemented on each and every website. And with Django, it is very simple and easy to implement because we don’t need to make the Authentication system from scratch, it is already made by the Django, we need to simply use it.</p>
 
 <h2 id="introduction">Introduction</h2>
 <p>In this tutorial, we will be discussing that how to implement the login, logout, and register views in a brand new accounts app.</p>
@@ -198,19 +219,24 @@
 <h2 id="initial-set-up">Initial Set Up</h2>
 <p>Let’s create a new django-app named accounts to your Project.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">python manage.py startapp accounts</code></pre></figure>
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash">python manage.py startapp accounts</code></pre>
+</figure>
 
 <p>Make an entry of that app to Installed Apps in the Django settings.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">+=</span> <span class="p">[</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">+=</span> <span class="p">[</span>
     <span class="s">"accounts"</span>
-<span class="p">]</span></code></pre></figure>
+<span class="p">]</span></code></pre>
+</figure>
 
 <p>Create two new .py files to your accounts app that is forms.py and urls.py</p>
 
 <p>Then this would be your following App structure.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">src/
+<figure class="highlight">
+  <pre><code class="language-bash" data-lang="bash">src/
    accounts/
       migrations/
       __init__.py
@@ -226,12 +252,14 @@
       settings.py
       urls.py
       wsgi.py 
- </code></pre></figure>
+ </code></pre>
+</figure>
 
 <h4 id="my_projurlspy">my_proj/urls.py</h4>
 <p>Create some main URLs to your main project. Note that I have included the accounts urls of accounts app.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
 <span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
 
@@ -239,7 +267,8 @@
 
     <span class="n">url</span><span class="p">(</span><span class="s">r'^accounts/'</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">"accounts.urls"</span><span class="p">,</span> <span class="n">namespace</span> <span class="o">=</span> <span class="s">"accounts"</span><span class="p">)),</span>
     <span class="n">url</span><span class="p">(</span><span class="s">r'^$'</span><span class="p">,</span> <span class="n">login_required</span><span class="p">(</span><span class="n">TemplateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="s">"home.html"</span><span class="p">))),</span>
-<span class="p">]</span></code></pre></figure>
+<span class="p">]</span></code></pre>
+</figure>
 
 <p>Note: Change the DIRS OF Templates settings in your Django settings.</p>
 
@@ -247,7 +276,8 @@
 
 <h4 id="templatesbasehtml">templates/base.html</h4>
 
-<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="c">&lt;!--doctype HTML--&gt;</span>
+<figure class="highlight">
+  <pre><code class="language-django" data-lang="django"><span class="c">&lt;!--doctype HTML--&gt;</span>
 <span class="cp">{%</span> <span class="nv">load</span> <span class="nv">staticfiles</span> <span class="cp">%}</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
@@ -272,12 +302,14 @@
 
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
- </code></pre></figure>
+ </code></pre>
+</figure>
 
 <h4 id="templateshomehtml">templates/home.html</h4>
 <p>Create a home page or a landing page with the navbar. Again repeating if you have your own navbar and home page, you don’t need to change it, I am just discussing for the sake of completion of the tutorial.</p>
 
-<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base.html"</span> <span class="cp">%}</span>
+<figure class="highlight">
+  <pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base.html"</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">style</span> <span class="cp">%}</span>
 <span class="nt">&lt;style&gt;</span>
 <span class="nc">.navbar-login</span><span class="p">{</span>
@@ -350,7 +382,8 @@
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span></code></pre></figure>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span></code></pre>
+</figure>
 
 <h2 id="login">Login</h2>
 <p>Let’s begin with the login system. Like I have said before that you don’t need to create from scratch. Like we don’t need to create the database for the Login system like username and password fields. We Just need to create a Django form of fields including the username and password. We can also create new additional fields (if required) in Login.</p>
@@ -358,7 +391,8 @@
 <h4 id="accountsformspy">accounts/forms.py</h4>
 <p>I have created a Django form for the Login View with fields username and password and also a clean method which raises some common Validation Errors like Incorrect Password, User does not Exist, User Not Active etc. You can create more Validation Errors according to your need. Also, I have added classes in fields of username and password.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span>
 <span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
 
 <span class="k">class</span> <span class="nc">UsersLoginForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
@@ -388,12 +422,14 @@
 				<span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">"User is no longer active"</span><span class="p">)</span>
 
 		<span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">UsersLoginForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">keyargs</span><span class="p">)</span>
- </code></pre></figure>
+ </code></pre>
+</figure>
 
 <h4 id="accountsviewspy">accounts/views.py</h4>
 <p>Now after creating a form, let’s create a Django View which accepts the request and render a request to templates. I have implemented the Function Bases View which handles both GET and POST request methods.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span><span class="p">,</span> <span class="n">login</span>
 <span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">UsersLoginForm</span>
 
@@ -408,24 +444,28 @@
 	<span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">"accounts/form.html"</span><span class="p">,</span> <span class="p">{</span>
 		<span class="s">"form"</span> <span class="p">:</span> <span class="n">form</span><span class="p">,</span>
 		<span class="s">"title"</span> <span class="p">:</span> <span class="s">"Login"</span><span class="p">,</span>
-	<span class="p">})</span></code></pre></figure>
+	<span class="p">})</span></code></pre>
+</figure>
 
 <h4 id="accountsurlspy">accounts/urls.py</h4>
 <p>Create urls for the respective view, like in our case that is login_view</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
 <span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">login_view</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">url</span><span class="p">(</span><span class="s">r"^login/$"</span><span class="p">,</span> <span class="n">login_view</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"login"</span><span class="p">),</span>
-<span class="p">]</span></code></pre></figure>
+<span class="p">]</span></code></pre>
+</figure>
 
 <h4 id="templates-accounts-formhtml">templates/ accounts/ form.html</h4>
 <p>Now I have created a template for the login view, you can change according to your need. Note that I have inherited the base.html, which is discussed above.</p>
 
-<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base.html"</span> <span class="cp">%}</span>
+<figure class="highlight">
+  <pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base.html"</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="nv">load</span> <span class="nv">staticfiles</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">style</span> <span class="cp">%}</span>
 <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
@@ -497,7 +537,8 @@
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span></code></pre></figure>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span></code></pre>
+</figure>
 
 <p>If you have followed the exact tutorial, you will have this kind of output for Login Page</p>
 
@@ -509,7 +550,8 @@
 <h4 id="accountsformspy-1">accounts/forms.py</h4>
 <p>Starting with forms, let’s create a Register Form with a class named UsersRegistrationForm which is somewhat similar to that of UsersLoginForm. So in this form, we have fields of username, password, email, and confirm_email. Aand along with this a clean method which is some standard validation errors.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span><span class="p">,</span> <span class="n">get_user_model</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span><span class="p">,</span> <span class="n">get_user_model</span>
 <span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
 
 <span class="n">User</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span>
@@ -567,12 +609,14 @@
 
 
 		<span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">UsersRegisterForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">keyargs</span><span class="p">)</span>
- </code></pre></figure>
+ </code></pre>
+</figure>
 
 <h4 id="accountsviewspy-1">accounts/views.py</h4>
 <p>Now let’s create the view for the register, This is view is Function Bases View which is for handling both GET and POST request.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
 <span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span><span class="p">,</span> <span class="n">login</span>
 <span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">UsersRegisterForm</span>
 
@@ -590,12 +634,14 @@
 		<span class="s">"title"</span> <span class="p">:</span> <span class="s">"Register"</span><span class="p">,</span>
 		<span class="s">"form"</span> <span class="p">:</span> <span class="n">form</span><span class="p">,</span>
 	<span class="p">})</span>
- </code></pre></figure>
+ </code></pre>
+</figure>
 
 <h4 id="accountsurlspy-1">accounts/urls.py</h4>
 <p>creating url for the register_view in the accounts urls.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
 <span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">register_view</span><span class="p">,</span>
 <span class="p">)</span>
@@ -603,7 +649,8 @@
 <span class="n">urlpatterns</span> <span class="o">+=</span> <span class="p">[</span>
     <span class="n">url</span><span class="p">(</span><span class="s">r"^register/$"</span><span class="p">,</span> <span class="n">register_view</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"register"</span><span class="p">),</span>
 <span class="p">]</span>
- </code></pre></figure>
+ </code></pre>
+</figure>
 
 <p><img class="img-fluid lazy" alt="" src="/img/set-up-authentication-system-in-django-in-just-10-minutes/register.jpg" title="" /></p>
 
@@ -614,32 +661,34 @@
 
 <p>In my accounts views, I have created a new view named logout_view, which simply logouts and redirect to home.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">logout</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">logout</span>
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponseRedirect</span>
 
 <span class="k">def</span> <span class="nf">logout_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 	<span class="n">logout</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-	<span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span></code></pre></figure>
+	<span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span></code></pre>
+</figure>
 
 <h4 id="accountsurlspy-2">accounts/urls.py</h4>
 <p>Writing the view url to accounts urls.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
 <span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="n">logout_view</span>
 
 <span class="n">urlpatterns</span> <span class="o">+=</span> <span class="p">[</span>
     <span class="n">url</span><span class="p">(</span><span class="s">r'^logout/$'</span><span class="p">,</span> <span class="n">logout_view</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"logout"</span><span class="p">),</span>
-<span class="p">]</span></code></pre></figure>
+<span class="p">]</span></code></pre>
+</figure>
 
 <h2 id="final-words">Final Words</h2>
 <p>I hope that you have successfully implemented the Authentication System to your Django Project. However, if you find any problem in any of the steps discussed above, you can check our Github Repository from here</p>
 
 <p>And also feel free to comment down below, if you have any problem regarding this tutorial and please share your experience with the DjangoPy</p>
 
-<script type="text/javascript" src="https://ko-fi.com/widgets/widget_2.js"></script>
-<script type="text/javascript">kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script>
 
- </div>
+                </div>
                 <div class="overlay-dark">
                     <div class="close-btn">
                         <i class="fa fa-2x fa-times"></i>
@@ -647,20 +696,32 @@
                 </div>
                 <img class="img-overlay">
                 <br><br>
+
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'>
+</script>
+<script type='text/javascript'>
+let kofi = ""
+if(!kofi && !kofi.trim().length) 
+    kofi = "jai_singhal"
+kofiwidget2.init('Buy me a coffee', '#46b798', kofi);
+kofiwidget2.draw();
+</script> 
+
+                <br><br>
                 <ul class="socialIcons">
                     <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/&picture=https://djangopy.orgimg/set-up-authentication-system-in-django-in-just-10-minutes/cover.jpg&name=Set-up Authentication System in Django in just 10 minutes&caption=%20&description=In this post, we will discuss Authentication System in Django. We will be discussing the most abstract way to how to implement on your Django Project in just simple steps.&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
                             class="Icon socialAccount--facebook" target="_blank"></a></li>
                     <li><a href="http://twitter.com/intent/tweet?text=Set-up Authentication System in Django in just 10 minutes - DjangoPy https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/"
                             class="Icon socialAccount--twitter" target="_blank"></a></li>
-                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org" class="Icon socialAccount--google"
-                            target="_blank"></a></li>
+                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org"
+                            class="Icon socialAccount--google" target="_blank"></a></li>
                     <li><a href="mailto:djangopyz@gmail.com?&subject=DjangoPy | Learn, Code, Implement&body=Set-up Authentication System in Django in just 10 minutes%0A https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/"
                             target="_self" class="Icon socialAccount--mail" target="_blank"></a></li>
                 </ul>
                 <br>
                 <hr><br>
                 
-                    <div id="disqus_thread"></div>
+                <div id="disqus_thread"></div>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
         powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
@@ -672,7 +733,7 @@
         </div>
     </div>
 </div>
-<script id = "dsq-count-scr" src = "//django-py.disqus.com/count.js" async></script>
+<script id="dsq-count-scr" src="//django-py.disqus.com/count.js" async></script>
 
 <!-- Latest Posts -->
 <section class="latest-posts" style="background-color: #F2F2F2;">

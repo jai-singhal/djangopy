@@ -21,7 +21,7 @@ layout: default_index
       <strong>inspiration</strong>, new <strong>design</strong>, new <strong>ideas</strong>, but with the same aim of
       <strong>promoting Django</strong>. We hope you'll love and enjoy the content :)</p>
 
-      <!-- <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script>  -->
+      <!--  -->
     </a>
   </div>
 </section>
@@ -45,11 +45,11 @@ layout: default_index
       <div class="post-footer">
         <span> Post By: {{post.author}} |
           <!-- <span class = "ga-page-view" ga-page-url = {{post.url}}></span> <i class = "fa fa-eye"></i>  |  -->
-          <i class="fa fa-clock"></i> {{ post.content | read_time }} |
-          <a href="https://djangopy.org{{ post.permalink }}#disqus_thread"
+          <i class="fa fa-clock"></i> {{ post.content | read_time }} 
+          {% comment %}| <a href="https://djangopy.org{{ post.permalink }}#disqus_thread"
             data-disqus-identifier="https://djangopy.org{{ post.permalink }}">
             <i class="fa fa-comment"></i>
-          </a>
+          </a> {% endcomment %}
         </span>
       </div>
     </div>

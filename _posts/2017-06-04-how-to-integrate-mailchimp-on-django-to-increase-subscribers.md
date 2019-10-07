@@ -10,6 +10,7 @@ comments: true
 
 tags: getting-started-with-django my-first-django-app my-first-django-site virtualenv
 description: After too much motivation, now it's time to get started with Django. To develop your Django-powered site, you first need to install Python on your system. It is highly recommended to install the latest version of Python.
+toc: true
 ---
 
 ## Introduction
@@ -233,11 +234,8 @@ $.ajaxSetup({
  Now you are all set, you can test by subscribing with your known email. Check your subscribed email, you will get this type of mail.
 
  
-
-
-
- 
+## Final Words
 
 This site is also powered by MailChimp. You can check by subscribing to our website. You will find our Subscribe Newsletter form available at the footer. If you have any problem regarding installation you can ask it in the Comment section.
 
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy me a coffee', '#46b798', 'N4N812393');kofiwidget2.draw();</script> 
+

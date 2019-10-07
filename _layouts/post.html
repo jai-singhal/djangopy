@@ -4,26 +4,35 @@ layout: default_post
 <br>
 <div class="post">
     <div class="container">
-        <div class="row justify-content-md-center">
-
+        <div class="row justify-content-md-center" id="cover-section">
             <div class="col-md-9">
                 {% responsive_image_block %}
                 path: "{{ page.cover_image }}"
                 {% endresponsive_image_block %}
                 <br><br>
                 <h1 class="post-title" style="margin-top:15px;">{{page.title}}</h1>
-                <h6 class="post-spans">Posted: {{page.date | date_to_long_string}} | Post By: {{page.author}} | 
+                <h6 class="post-spans">Posted: {{page.date | date_to_long_string}} | Post By: {{page.author}} |
                     <!-- <span id="ga-page-view" ga-page-url={{page.url}}></span> <i class="fa fa-eye"></i> |  -->
                     <i class="fa fa-clock"></i>
-                    {{ page.content | read_time }} | 
+                    {{ page.content | read_time }} |
                     <a style="text-decoration: none;" href="https://djangopy.org{{ page.permalink }}#disqus_thread"
                         data-disqus-identifier="{{ page.permalink }}">
                         <i class="fa fa-comment"></i>
-                    </a> 
+                    </a>
                 </h6>
                 <br>
                 <hr /><br>
-                <div class="post-content"> {{page.content}} </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center" id="content_area">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-2" id="toc_navbar">
+                {% include toc.html %}
+            </div>
+
+            <div class="col-md-9">
+                <div class="post-content" data-spy="scroll" data-target="#toc-nav" data-offset="0"> 
+                    {{page.content}}
+                </div>
                 <div class="overlay-dark">
                     <div class="close-btn">
                         <i class="fa fa-2x fa-times"></i>
@@ -31,20 +40,24 @@ layout: default_post
                 </div>
                 <img class="img-overlay">
                 <br><br>
+
+                {% include kofi.html %}
+
+                <br><br>
                 <ul class="socialIcons">
                     <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org{{page.permalink}}&picture=https://djangopy.org{{page.cover_image}}&name={{page.title}}&caption=%20&description={{page.description}}&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
                             class="Icon socialAccount--facebook" target="_blank"></a></li>
                     <li><a href="http://twitter.com/intent/tweet?text={{page.title}} - DjangoPy https://djangopy.org{{page.permalink}}"
                             class="Icon socialAccount--twitter" target="_blank"></a></li>
-                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org{{page.page.permalink}}" class="Icon socialAccount--google"
-                            target="_blank"></a></li>
+                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org{{page.page.permalink}}"
+                            class="Icon socialAccount--google" target="_blank"></a></li>
                     <li><a href="mailto:djangopyz@gmail.com?&subject=DjangoPy | Learn, Code, Implement&body={{page.title}}%0A https://djangopy.org{{page.permalink}}"
                             target="_self" class="Icon socialAccount--mail" target="_blank"></a></li>
                 </ul>
                 <br>
                 <hr><br>
                 {% if site.production %}
-                    {% include disqus.html %}
+                {% include disqus.html %}
                 {% endif %}
                 <br>
                 <hr><br>
@@ -52,6 +65,6 @@ layout: default_post
         </div>
     </div>
 </div>
-<script id = "dsq-count-scr" src = "//django-py.disqus.com/count.js" async></script>
+<script id="dsq-count-scr" src="//django-py.disqus.com/count.js" async></script>
 
 {% include popular_posts.html %}
