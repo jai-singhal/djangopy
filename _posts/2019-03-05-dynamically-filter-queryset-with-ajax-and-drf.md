@@ -251,6 +251,7 @@ This step is not necessary, but it's good to know about it. This will customize 
 from rest_framework import pagination
 class StandardResultsSetPagination(pagination.PageNumberPagination):
     page_size = 7 # change the records per page from here
+
     page_size_query_param = 'page_size'
 
 {% endhighlight %}
@@ -286,11 +287,13 @@ def WineList(request):
 
 class WineListing(ListAPIView):
     # set the pagination and serializer class
+
 	pagination_class = StandardResultsSetPagination
 	serializer_class = WineSerializers
 
 	def get_queryset(self):
         # filter the queryset based on the filters applied
+
 		queryList = Wine.objects.all()
 		country = self.request.query_params.get('country', None)
 		variety = self.request.query_params.get('variety', None)
@@ -308,6 +311,7 @@ class WineListing(ListAPIView):
 		    queryList = queryList.filter(region = region)    
 
         # sort it if applied on based on price/points
+
 		if sort_by == "price":
 		    queryList = queryList.order_by("price")
 		elif sort_by == "points":
@@ -318,6 +322,7 @@ class WineListing(ListAPIView):
 def getCountries(request):
     # get all the countreis from the database excluding 
     # null and blank values
+
     if request.method == "GET" and request.is_ajax():
         countries = Wine.objects.exclude(country__isnull=True).\
             exclude(country__exact='').order_by('country').values_list('country').distinct()
@@ -332,6 +337,7 @@ def getvariety(request):
     if request.method == "GET" and request.is_ajax():
         # get all the varities from the database excluding 
         # null and blank values
+
         variety = Wine.objects.exclude(variety__isnull=True).\
         	exclude(variety__exact='').order_by('variety').values_list('variety').distinct()
         variety = [i[0] for i in list(variety)]
@@ -344,6 +350,7 @@ def getvariety(request):
 def getProvince(request):
     # get the provinces for given country from the 
     # database excluding null and blank values
+
     if request.method == "GET" and request.is_ajax():
         country = request.GET.get('country')
         province = Wine.objects.filter(country = country).\
@@ -359,6 +366,7 @@ def getProvince(request):
 def getRegion(request):
     # get the regions for given province from the 
     # database excluding null and blank values
+    
     if request.method == "GET" and request.is_ajax():
         province = request.GET.get('province')
         region = Wine.objects.filter(province = province).\

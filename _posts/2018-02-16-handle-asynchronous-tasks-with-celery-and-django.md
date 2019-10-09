@@ -122,9 +122,11 @@ app = Celery('<your project name>')
 # the configuration object to child processes.
 # - namespace='CELERY' means all celery-related configuration keys
 #   should have a `CELERY_` prefix.
+
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
 # Load task modules from all registered Django app configs.
+
 app.autodiscover_tasks()
 
 @app.task(bind=True)
@@ -142,6 +144,7 @@ from __future__ import absolute_import, unicode_literals
 
 # This will make sure the app is always imported when
 # Django starts so that shared_task will use this app.
+
 from .celery import app as celery_app
 
 __all__ = ['celery_app']
@@ -289,15 +292,32 @@ Add the following schedule configuration in your **celery.py** file
 ###### celery_project/celery.py
 {% highlight python %}
 app.conf.beat_schedule = {
-    'add-every-2-seconds': {  #name of the scheduler
-        'task': 'add_2_numbers',  # task name which we have created in tasks.py
-        'schedule': 2.0,   # set the period of running
-        'args': (16, 16)  # set the args
+    #name of the scheduler
+
+    'add-every-2-seconds': {
+        # task name which we have created in tasks.py
+
+        'task': 'add_2_numbers',  
+        # set the period of running
+        
+        'schedule': 2.0,
+         # set the args 
+         
+        'args': (16, 16) 
     },
-    'print-name-every-5-seconds': {  #name of the scheduler
-        'task': 'print_msg_with_name',  # task name which we have created in tasks.py
-        'schedule': 5.0,  # set the period of running
-         'args': ("DjangoPY", )  # set the args
+    #name of the scheduler
+
+    'print-name-every-5-seconds': {  
+        # task name which we have created in tasks.py
+
+        'task': 'print_msg_with_name',  
+        
+        # set the period of running
+
+        'schedule': 5.0,  
+        # set the args
+
+       'args': ("DjangoPY", )  
     },
 }
 {% endhighlight %}

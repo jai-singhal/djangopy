@@ -531,5 +531,3 @@ If you have any problem in the steps discussed above, you can look out our **Git
 - [https://github.com/djangopy-org/ajax_guide](https://github.com/djangopy-org/ajax_guide)
 - [https://code.djangoproject.com/wiki/AJAX](https://code.djangoproject.com/wiki/AJAX)
 - [https://docs.djangoproject.com/en/2.1/ref/csrf/#ajax](https://docs.djangoproject.com/en/2.1/ref/csrf/#ajax)
-
-

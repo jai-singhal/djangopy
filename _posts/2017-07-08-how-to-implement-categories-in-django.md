@@ -31,8 +31,11 @@ class Category(models.Model):
 
     class Meta:
         #enforcing that there can not be two categories under a parent with same slug
+        
         # __str__ method elaborated later in post.  use __unicode__ in place of
+        
         # __str__ if you are using python 2
+
         unique_together = ('slug', 'parent',)    
         verbose_name_plural = "categories"     
 

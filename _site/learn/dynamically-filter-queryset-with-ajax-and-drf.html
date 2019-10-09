@@ -51,9 +51,9 @@
 	<meta property="distribution" content="web" />
 	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/" />
 	<meta name="description" content="In this post we will learn, how to filter the queryset using AJAX and DRF" />
-	<link rel="canonical" href="https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf">
+	<link rel="canonical" href="http://localhost:4000/learn/dynamically-filter-queryset-with-ajax-and-drf">
 	<link rel="alternate" type="application/rss+xml" title="DjangoPy"
-		href="https://djangopy.org/feed.xml">
+		href="http://localhost:4000/feed.xml">
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="/img/favicon1.ico">
 
@@ -102,15 +102,6 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
 
-	
-	<script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-     ga('create', 'UA-98271390-1', 'auto');
-     ga('send', 'pageview');
-   </script>
 	
 </head>
   <body>
@@ -442,7 +433,8 @@ wine_csv.close<span class="o">()</span>  </code></pre>
   <pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">pagination</span>
 <span class="k">class</span> <span class="nc">StandardResultsSetPagination</span><span class="p">(</span><span class="n">pagination</span><span class="o">.</span><span class="n">PageNumberPagination</span><span class="p">):</span>
     <span class="n">page_size</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1"># change the records per page from here
-</span>    <span class="n">page_size_query_param</span> <span class="o">=</span> <span class="s">'page_size'</span></code></pre>
+</span>
+    <span class="n">page_size_query_param</span> <span class="o">=</span> <span class="s">'page_size'</span></code></pre>
 </figure>
 
 <hr />
@@ -477,12 +469,14 @@ wine_csv.close<span class="o">()</span>  </code></pre>
 
 <span class="k">class</span> <span class="nc">WineListing</span><span class="p">(</span><span class="n">ListAPIView</span><span class="p">):</span>
     <span class="c1"># set the pagination and serializer class
-</span>	<span class="n">pagination_class</span> <span class="o">=</span> <span class="n">StandardResultsSetPagination</span>
+</span>
+	<span class="n">pagination_class</span> <span class="o">=</span> <span class="n">StandardResultsSetPagination</span>
 	<span class="n">serializer_class</span> <span class="o">=</span> <span class="n">WineSerializers</span>
 
 	<span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># filter the queryset based on the filters applied
-</span>		<span class="n">queryList</span> <span class="o">=</span> <span class="n">Wine</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span>
+</span>
+		<span class="n">queryList</span> <span class="o">=</span> <span class="n">Wine</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span>
 		<span class="n">country</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'country'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
 		<span class="n">variety</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'variety'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
 		<span class="n">province</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'province'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
@@ -499,7 +493,8 @@ wine_csv.close<span class="o">()</span>  </code></pre>
 		    <span class="n">queryList</span> <span class="o">=</span> <span class="n">queryList</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">region</span> <span class="o">=</span> <span class="n">region</span><span class="p">)</span>    
 
         <span class="c1"># sort it if applied on based on price/points
-</span>		<span class="k">if</span> <span class="n">sort_by</span> <span class="o">==</span> <span class="s">"price"</span><span class="p">:</span>
+</span>
+		<span class="k">if</span> <span class="n">sort_by</span> <span class="o">==</span> <span class="s">"price"</span><span class="p">:</span>
 		    <span class="n">queryList</span> <span class="o">=</span> <span class="n">queryList</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">"price"</span><span class="p">)</span>
 		<span class="k">elif</span> <span class="n">sort_by</span> <span class="o">==</span> <span class="s">"points"</span><span class="p">:</span>
 		    <span class="n">queryList</span> <span class="o">=</span> <span class="n">queryList</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">"points"</span><span class="p">)</span>
@@ -509,7 +504,8 @@ wine_csv.close<span class="o">()</span>  </code></pre>
 <span class="k">def</span> <span class="nf">getCountries</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="c1"># get all the countreis from the database excluding 
 </span>    <span class="c1"># null and blank values
-</span>    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">"GET"</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
+</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">"GET"</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
         <span class="n">countries</span> <span class="o">=</span> <span class="n">Wine</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">country__isnull</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span>\
             <span class="n">exclude</span><span class="p">(</span><span class="n">country__exact</span><span class="o">=</span><span class="s">''</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'country'</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s">'country'</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
         <span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">countries</span><span class="p">)]</span>
@@ -523,7 +519,8 @@ wine_csv.close<span class="o">()</span>  </code></pre>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">"GET"</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
         <span class="c1"># get all the varities from the database excluding 
 </span>        <span class="c1"># null and blank values
-</span>        <span class="n">variety</span> <span class="o">=</span> <span class="n">Wine</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">variety__isnull</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span>\
+</span>
+        <span class="n">variety</span> <span class="o">=</span> <span class="n">Wine</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">variety__isnull</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span>\
         	<span class="n">exclude</span><span class="p">(</span><span class="n">variety__exact</span><span class="o">=</span><span class="s">''</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'variety'</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s">'variety'</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
         <span class="n">variety</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">variety</span><span class="p">)]</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
@@ -535,7 +532,8 @@ wine_csv.close<span class="o">()</span>  </code></pre>
 <span class="k">def</span> <span class="nf">getProvince</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="c1"># get the provinces for given country from the 
 </span>    <span class="c1"># database excluding null and blank values
-</span>    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">"GET"</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
+</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">"GET"</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
         <span class="n">country</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'country'</span><span class="p">)</span>
         <span class="n">province</span> <span class="o">=</span> <span class="n">Wine</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">country</span> <span class="o">=</span> <span class="n">country</span><span class="p">)</span><span class="o">.</span>\
             	<span class="n">exclude</span><span class="p">(</span><span class="n">province__isnull</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">province__exact</span><span class="o">=</span><span class="s">''</span><span class="p">)</span><span class="o">.</span>\
@@ -550,7 +548,8 @@ wine_csv.close<span class="o">()</span>  </code></pre>
 <span class="k">def</span> <span class="nf">getRegion</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="c1"># get the regions for given province from the 
 </span>    <span class="c1"># database excluding null and blank values
-</span>    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">"GET"</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
+</span>    
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">"GET"</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
         <span class="n">province</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'province'</span><span class="p">)</span>
         <span class="n">region</span> <span class="o">=</span> <span class="n">Wine</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">province</span> <span class="o">=</span> <span class="n">province</span><span class="p">)</span><span class="o">.</span>\
                 <span class="n">exclude</span><span class="p">(</span><span class="n">region__isnull</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">region__exact</span><span class="o">=</span><span class="s">''</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s">'region'</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
@@ -1152,12 +1151,6 @@ kofiwidget2.draw();
                 </ul>
                 <br>
                 <hr><br>
-                
-                <div id="disqus_thread"></div>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
-        powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-<script type="text/javascript" src="/js/post_detail.js"></script>
                 
                 <br>
                 <hr><br>

@@ -413,8 +413,10 @@ class UsersRegisterForm(forms.ModelForm):
 		username_qs = User.objects.filter(username=username)
 		if username_qs.exists():
 			raise forms.ValidationError("User with this username already registered")
+		
+		#you can add more validations for password
 
-		if len(password) < 8:	#you can add more validations for password
+		if len(password) < 8:	
 			raise forms.ValidationError("Password must be greater than 8 characters")
 
 
