@@ -3,11 +3,40 @@
   <channel>
     <title>DjangoPy</title>
     <description>DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.</description>
-    <link>https://djangopy.org/</link>
-    <atom:link href="https://djangopy.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 09 Oct 2019 22:15:59 +0530</pubDate>
-    <lastBuildDate>Wed, 09 Oct 2019 22:15:59 +0530</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 10 Oct 2019 00:30:05 +0530</pubDate>
+    <lastBuildDate>Thu, 10 Oct 2019 00:30:05 +0530</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Use Bootstrap 4 with Django</title>
+        <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Filtering queryset dynamically is something that is very common in use. In this post, we will learn how to dynamically filter the queryset depending on the several filters on top of each other. If you do not have hands-on AJAX, then you should definitely check out this &lt;strong&gt;&lt;a href=&quot;https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django&quot;&gt;post&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This post contains a lot of javascript, don’t panic just bear with me, I will explain every aspect of it. As usual, the complete project code is available on Github. You can find the link at the end of this post.&lt;/p&gt;
+
+&lt;p&gt;The promo GIF of what we will be building is shown below.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 05 Mar 2019 20:34:07 +0530</pubDate>
+        <link>http://localhost:4000/learn/bootstrap4-with-django/</link>
+        <guid isPermaLink="true">http://localhost:4000/learn/bootstrap4-with-django/</guid>
+        
+        <category>ajax</category>
+        
+        <category>django</category>
+        
+        <category>bootstrap</category>
+        
+        <category>bootstrap4</category>
+        
+        <category>django-bootstrap-form</category>
+        
+        
+        <category>learn</category>
+        
+      </item>
     
       <item>
         <title>Dynamically filter queryset with AJAX and DRF</title>
@@ -935,8 +964,8 @@ wine_csv.close&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;  &lt;/code&gt;&lt;
 &lt;a href=&quot;https://github.com/djangopy-org/dynamic_filter&quot;&gt;https://github.com/djangopy-org/dynamic_filter&lt;/a&gt; or you can comment down below.&lt;/p&gt;
 </description>
         <pubDate>Tue, 05 Mar 2019 20:34:07 +0530</pubDate>
-        <link>https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf</link>
-        <guid isPermaLink="true">https://djangopy.org/learn/dynamically-filter-queryset-with-ajax-and-drf</guid>
+        <link>http://localhost:4000/learn/dynamically-filter-queryset-with-ajax-and-drf</link>
+        <guid isPermaLink="true">http://localhost:4000/learn/dynamically-filter-queryset-with-ajax-and-drf</guid>
         
         <category>ajax</category>
         
@@ -1446,8 +1475,8 @@ wine_csv.close&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;  &lt;/code&gt;&lt;
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 28 Feb 2019 20:34:07 +0530</pubDate>
-        <link>https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django</link>
-        <guid isPermaLink="true">https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django</guid>
+        <link>http://localhost:4000/learn/step-up-guide-to-implement-ajax-in-django</link>
+        <guid isPermaLink="true">http://localhost:4000/learn/step-up-guide-to-implement-ajax-in-django</guid>
         
         <category>learn</category>
         
@@ -1925,8 +1954,8 @@ Run the celery beat process in new terminal with &lt;strong&gt;–scheduler&lt;/
 
 </description>
         <pubDate>Fri, 16 Feb 2018 20:34:07 +0530</pubDate>
-        <link>https://djangopy.org/how-to/handle-asynchronous-tasks-with-celery-and-django</link>
-        <guid isPermaLink="true">https://djangopy.org/how-to/handle-asynchronous-tasks-with-celery-and-django</guid>
+        <link>http://localhost:4000/how-to/handle-asynchronous-tasks-with-celery-and-django</link>
+        <guid isPermaLink="true">http://localhost:4000/how-to/handle-asynchronous-tasks-with-celery-and-django</guid>
         
         <category>handle-asynchronous-tasks-with-celery-and-django</category>
         
@@ -2441,8 +2470,8 @@ Run the celery beat process in new terminal with &lt;strong&gt;–scheduler&lt;/
 
 </description>
         <pubDate>Tue, 03 Oct 2017 20:34:07 +0530</pubDate>
-        <link>https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/</link>
-        <guid isPermaLink="true">https://djangopy.org/learn/set-up-authentication-system-in-django-in-just-10-minutes/</guid>
+        <link>http://localhost:4000/learn/set-up-authentication-system-in-django-in-just-10-minutes/</link>
+        <guid isPermaLink="true">http://localhost:4000/learn/set-up-authentication-system-in-django-in-just-10-minutes/</guid>
         
         <category>Django-Authentication-System</category>
         
@@ -2718,8 +2747,8 @@ Run the celery beat process in new terminal with &lt;strong&gt;–scheduler&lt;/
 
 </description>
         <pubDate>Sun, 30 Jul 2017 20:34:07 +0530</pubDate>
-        <link>https://djangopy.org/package-of-week/categories-with-django-mptt/</link>
-        <guid isPermaLink="true">https://djangopy.org/package-of-week/categories-with-django-mptt/</guid>
+        <link>http://localhost:4000/package-of-week/categories-with-django-mptt/</link>
+        <guid isPermaLink="true">http://localhost:4000/package-of-week/categories-with-django-mptt/</guid>
         
         <category>Django-Authentication-System</category>
         
@@ -3008,8 +3037,8 @@ python3 manage.py migrate&lt;/code&gt;&lt;/pre&gt;
 
 </description>
         <pubDate>Sat, 08 Jul 2017 17:23:56 +0530</pubDate>
-        <link>https://djangopy.org/how-to/how-to-implement-categories-in-django/</link>
-        <guid isPermaLink="true">https://djangopy.org/how-to/how-to-implement-categories-in-django/</guid>
+        <link>http://localhost:4000/how-to/how-to-implement-categories-in-django/</link>
+        <guid isPermaLink="true">http://localhost:4000/how-to/how-to-implement-categories-in-django/</guid>
         
         <category>Django-breadcrumbs</category>
         
@@ -3285,8 +3314,8 @@ python3 manage.py migrate&lt;/code&gt;&lt;/pre&gt;
 
 </description>
         <pubDate>Fri, 07 Jul 2017 20:34:07 +0530</pubDate>
-        <link>https://djangopy.org/how-to/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/</link>
-        <guid isPermaLink="true">https://djangopy.org/how-to/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/</guid>
+        <link>http://localhost:4000/how-to/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/</link>
+        <guid isPermaLink="true">http://localhost:4000/how-to/reverse-engineering-of-the-django-admin-foreign-keys-addedit-button/</guid>
         
         <category>Django-Admin-Foreign-Key</category>
         
@@ -3518,8 +3547,8 @@ python3 manage.py migrate&lt;/code&gt;&lt;/pre&gt;
 
 </description>
         <pubDate>Sun, 04 Jun 2017 20:34:07 +0530</pubDate>
-        <link>https://djangopy.org/package-of-week/how-to-integrate-mailchimp-on-django-to-increase-subscribers/</link>
-        <guid isPermaLink="true">https://djangopy.org/package-of-week/how-to-integrate-mailchimp-on-django-to-increase-subscribers/</guid>
+        <link>http://localhost:4000/package-of-week/how-to-integrate-mailchimp-on-django-to-increase-subscribers/</link>
+        <guid isPermaLink="true">http://localhost:4000/package-of-week/how-to-integrate-mailchimp-on-django-to-increase-subscribers/</guid>
         
         <category>getting-started-with-django</category>
         
@@ -3850,8 +3879,8 @@ Finally, the Pagination would look like&lt;/p&gt;
 
 </description>
         <pubDate>Wed, 31 May 2017 17:23:56 +0530</pubDate>
-        <link>https://djangopy.org/how-to/pagination-with-django/</link>
-        <guid isPermaLink="true">https://djangopy.org/how-to/pagination-with-django/</guid>
+        <link>http://localhost:4000/how-to/pagination-with-django/</link>
+        <guid isPermaLink="true">http://localhost:4000/how-to/pagination-with-django/</guid>
         
         <category>django-pagination</category>
         
@@ -3861,173 +3890,6 @@ Finally, the Pagination would look like&lt;/p&gt;
         
         
         <category>how-to-archives</category>
-        
-      </item>
-    
-      <item>
-        <title>Getting started with Django</title>
-        <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;After too much motivation, now it’s time to get started with Django. To develop your Django-powered site, you first need to install Python on your system. It is highly recommended to install the latest version of Python, and for those people who are using Python2, it is recommended to switch to Python3. You can easily download the latest version from &lt;a href=&quot;https://python.org/downloads&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you are not familiar with Python, then you should need to brush up your basic knowledge of Python from &lt;a href=&quot;https://docs.python.org/3/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;virtual-environment&quot;&gt;Virtual Environment&lt;/h2&gt;
-&lt;p&gt;Now after completely installing python on your system, let’s set up the virtual environment(Why?)&lt;/p&gt;
-
-&lt;p&gt;A Virtual Environment is a tool to keep the dependencies required by your different projects in separate places, by creating virtual Python environments for them, it keeps your global python site-packages directory clean and manageable.&lt;/p&gt;
-
-&lt;h3 id=&quot;settings-up-virtualenv&quot;&gt;Settings Up Virtualenv&lt;/h3&gt;
-&lt;p&gt;Virtualenv creates an isolated Python Environment by creating a folder which contains all the Python executables files, and all the necessary Packages that your project would need.&lt;/p&gt;
-
-&lt;p&gt;First Install the Virtualenv on your system via pip:-&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;virtualenv&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;You can verify your virtualenv version by-&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;virtualenv &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;Now let’s create a Virtualenv. Change the directory you want to start your project&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /where/you/want_to/store/your/project
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;virtualenv venv&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;Sometimes in Linux system, you need to explicitly mention that you are creating for python3&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;virtualenv &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; python3 venv&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;Here, venv is the name of the folder, you have created (you can change to whatever name you like). This will install setuptools, pip, wheel and all other packages and dependencies your project would need.&lt;/p&gt;
-
-&lt;p&gt;Now to begin with your created virtualenv(venv), you need to activate it, change the directory to the venv folder&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;venv&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;For Linux/Mac users,&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;bin/activate&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;For Windows users,&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;.&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;cripts&lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;ctivate&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;Notice that (venv) should be written to the current directory in terminal/cmd.If you are done with working with your virtualenv, you can deactivate it.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;deactivate&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;h2 id=&quot;installing-django&quot;&gt;Installing Django&lt;/h2&gt;
-&lt;p&gt;Now that you have successfully set up your virtualenv, now you need to install the Django package.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;django&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;You can download Django of the specific version by specifying the version explicitly. But it is recommended to use the latest version of Django.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;django&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;version&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;Check your installed Django version before moving further. If Django is installed, you should see the version of the django you have installed. If it is not installed, it will give an error telling “No module named django”&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; django &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;h2 id=&quot;creating-your-first-django-project&quot;&gt;Creating your first Django project&lt;/h2&gt;
-&lt;p&gt;Django Project is a directory where django keep its settings file, Database, and all the Scripts, you will be working upon.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;django-admin startproject mysite&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;It will create the mysite directory containing the files/folders as listed below-&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;mysite/
-    manage.py
-    mysite/
-        __init__.py
-        settings.py
-        urls.py
-        wsgi.py&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;You can change the name outer mysite/ name as you want, many of the developers change it to src, because this is the container of your project, and also it is root directory which all your source code within it. What these .py files actually are, let’s see-&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;manage.py&lt;/strong&gt; is a command line utility that lets you interact with your Django project, It contains all the necessary commands you would need like starting the server, creating an app, collect static files which will be discussed later.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;__init__.py&lt;/strong&gt; is a blank python file that tells Python that this directory should be considered a Python package.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;settings.py&lt;/strong&gt; is the main configuration of your Django project, that tells you about how the settings work.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;urls.py&lt;/strong&gt; is the URL declaration for your site, i.e., a Table of Content of your Django-powered site.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;wsgi.py&lt;/strong&gt; is an entry-point for WSGI-compatible web servers to serve your project.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;the-development-server&quot;&gt;The Development server&lt;/h2&gt;
-&lt;p&gt;Now that you have completely setup your Django project let’s verify that it works. Change your directory to outer mysite folder(or src folder), where your manage.py file is kept. Open up terminal/cmd and write-&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;python manage.py runserver&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;You will see this following output on your command line&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;
-  &lt;pre&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;Performing system checks...
-
-System check identified no issues (0 silenced).
-
-You have 13 unapplied migration(s). Your project may not work properly until you
- apply the migrations for app(s): admin, auth, contenttypes, sessions.
-Run 'python manage.py migrate' to apply them.
-May 09, 2017 - 12:58:48
-Django version 1.11.1, using settings 'mysite.settings'
-Starting development server at http://127.0.0.1:8000/
-Quit the server with CTRL-BREAK.&lt;/code&gt;&lt;/pre&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;Open up your browser and browse https://127.0.0.1:8000/ or http://localhost:8000/.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 20 May 2017 20:34:07 +0530</pubDate>
-        <link>https://djangopy.org/learn/getting-started-with-django/</link>
-        <guid isPermaLink="true">https://djangopy.org/learn/getting-started-with-django/</guid>
-        
-        <category>getting-started-with-django</category>
-        
-        <category>my-first-django-app</category>
-        
-        <category>my-first-django-site</category>
-        
-        <category>virtualenv</category>
-        
-        
-        <category>learn</category>
         
       </item>
     

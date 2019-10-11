@@ -5,30 +5,60 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- COMMON TAGS -->
+	<title>Use Bootstrap 4 with Django | DjangoPy</title>
 	<!-- Search Engine -->
-	<meta property="description" content="  DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.">
-	<meta property="image" content="https://djangopy.org//img/djangopy.png">
+	<meta property="description" content="In this post we will learn, how to use Bootstrap 4 framework with Django">
+	<meta property="image" content="https://djangopy.org/static/images/footer_logo.png">
 	<!-- Schema.org for Google -->
-	<meta itemprop="property" content="DjangoPy - Learn, Code, Implement">
-	<meta itemprop="description" content="  DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.">
-	<meta itemprop="image" content="https://djangopy.org//img/djangopy.png">
+
+	<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+	<meta property="og:title" content="Use Bootstrap 4 with Django | DjangoPy">
+	<meta property="og:description" content="In this post we will learn, how to use Bootstrap 4 framework with Django">
+	<meta property="og:image" content="https://djangopy.org/img/bootstrap-django/cover.png">
+
+	<meta property="og:url" content="https://djangopy.org/learn/bootstrap4-with-django/">
+	<meta property="og:site_name" content="DjangoPy">
+	<meta property="og:locale" content="en_US">
+	<meta property="fb:admins" content="https://www.facebook.com/djangopy.org">
+	<meta property="og:type" content="article">
+
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary">
-	<meta property="twitter:title" content="DjangoPy - Learn, Code, Implement">
-	<meta property="twitter:description" content="  DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.">
-	<!-- Open Graph general (Facebook, Pinterest & Google+) -->
-	<meta property="og:title" content="DjangoPy - Learn, Code, Implement">
-	<meta property="og:description" content="  DjangoPy is not just another Django website. We provide great, quality tutorials and support for the development of Django community.">
-	<meta property="og:url" content="https://djangopy.org/">
-	<meta property="og:site_property" content="DjangoPy">
-	<meta property="og:locale" content="en_US">
-	<meta property="og:type" content="website">
-	<title>DjangoPy - Learn, Code, Implement</title>
+	<meta property="twitter:title" content="Use Bootstrap 4 with Django | DjangoPy">
+	<meta property="twitter:description" content="In this post we will learn, how to use Bootstrap 4 framework with Django">
+	<meta property="twitter:site" content="@DjangoPy_Admin">
+	<meta property="twitter:creator" content="@DjangoPy_Admin">
+	<meta property="twitter:image:src" content="https://djangopy.org/img/bootstrap-django/cover.png">
+	<!-- Twitter - Article -->
+	<!-- Open Graph - Article -->
+	<meta property="article:section" content="learn">
+	<meta property="article:published_time" content="2019-03-05 20:34:07 +0530">
+	<meta properry="article:author" content="https://www.facebook.com/djangopy.org">
+	<meta property="article:modified_time" content="2019-03-05 20:34:07 +0530">
+	
+	<meta property="article:tag" content="ajax" />
+	
+	<meta property="article:tag" content="django" />
+	
+	<meta property="article:tag" content="bootstrap" />
+	
+	<meta property="article:tag" content="bootstrap4" />
+	
+	<meta property="article:tag" content="django-bootstrap-form" />
+	
 
-
-	<link rel="canonical" href="http://localhost:4000/terms-of-services">
-	<link rel="alternate" type="application/rss+xml" title="DjangoPy" href="http://localhost:4000/feed.xml">
+	<meta property="revisit-after" content="2 days" />
+	<meta property="distribution" content="web" />
+	<meta property="article:publisher" content="https://www.facebook.com/djangopy.org/" />
+	<meta name="description" content="In this post we will learn, how to use Bootstrap 4 framework with Django" />
+	<link rel="canonical" href="http://localhost:4000/learn/bootstrap4-with-django/">
+	<link rel="alternate" type="application/rss+xml" title="DjangoPy"
+		href="http://localhost:4000/feed.xml">
+	<!-- Favicon-->
 	<link rel="shortcut icon" href="/img/favicon1.ico">
+
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -67,6 +97,12 @@
 	})});
 	</script>
 
+
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
 
 	
 </head>
@@ -119,88 +155,174 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <style type="text/css">
-	body{
-		  font-family: 'Roboto', sans-serif;
+        <br>
+<div class="post">
+    <div class="container">
+        <div class="row justify-content-md-center" id="cover-section">
+            <div class="col-md-9">
+                <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/bootstrap-django/cover.png" 
+    title="" 
+/>
+                <br><br>
+                <h1 class="post-title" style="margin-top:15px;">Use Bootstrap 4 with Django</h1>
+                <h6 class="post-spans">Posted: 05 March 2019 | Post By: Jai Singhal |
+                    <!-- <span id="ga-page-view" ga-page-url=/learn/bootstrap4-with-django/></span> <i class="fa fa-eye"></i> |  -->
+                    <i class="fa fa-clock"></i>
+                    1 min read |
+                    <a style="text-decoration: none;" href="https://djangopy.org/learn/bootstrap4-with-django/#disqus_thread"
+                        data-disqus-identifier="/learn/bootstrap4-with-django/">
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </h6>
+                <br>
+                <hr /><br>
+            </div>
+        </div>
+        <div class="row justify-content-md-center" id="content_area">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-2" id="toc_navbar">
+                <nav class = "navbar navbar-light" id = "toc-nav" style = "display:grid;border:none;"> 
+  <h5>Contents</h5>
+      <ul class="nav nav-pills">
+<li class="toc-entry nav-item toc-h2"><a href="#introduction">Introduction</a></li>
+</ul>
+</nav>
+            </div>
 
-	}
-	p{
-		  font-size: 15px !important;
-	}
-	h1{
-		font-size:28px;
-	}
-	h3{
-		font-size: 20px;
-	}
-</style>
-	<br>
-<div class = "container">
-		<center><h1 style="font-size:34px;">Terms of Services</h1>
-	<div class = "post-line"></div></center>
+            <div class="col-md-9">
+                <div class="post-content" data-spy="scroll" data-target="#toc-nav" data-offset="0"> 
+                    <h2 id="introduction">Introduction</h2>
 
-	<p style="font-size: 18px; font-weight: bold;">
-			Last updated: April 12, 2017
-		</p>
-		<p style="font-size: 18px;">
-		Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the <a href = "/">https://djangopy.org</a> website (the "Service") operated by DjangoPy ("us", "we", or "our").
-		</p>
+<p>Filtering queryset dynamically is something that is very common in use. In this post, we will learn how to dynamically filter the queryset depending on the several filters on top of each other. If you do not have hands-on AJAX, then you should definitely check out this <strong><a href="https://djangopy.org/learn/step-up-guide-to-implement-ajax-in-django">post</a></strong></p>
 
-		<p style="font-size: 18px;">
-		Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
-		</p>
+<p>This post contains a lot of javascript, don’t panic just bear with me, I will explain every aspect of it. As usual, the complete project code is available on Github. You can find the link at the end of this post.</p>
 
-		<p style="font-size: 18px;">
-		By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service. This Terms of Service is licensed by TermsFeed to DjangoPy.
-		</p>
+<p>The promo GIF of what we will be building is shown below.</p>
 
-		<hr>
-		<h3 style = "font-weight: bold;">Links To Other Web Sites</h3>
-			<p style="font-size: 18px;">
-				Our Service may contain links to third-party web sites or services that are not owned or controlled by DjangoPy.
-			</p>
+                </div>
+                <div class="overlay-dark">
+                    <div class="close-btn">
+                        <i class="fa fa-2x fa-times"></i>
+                    </div>
+                </div>
+                <img class="img-overlay">
+                <br><br>
 
-			<p style="font-size: 18px;">
-				DjangoPy has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that DjangoPy shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.
-			</p>
-			<p style="font-size: 18px;">
-				We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit.
-			</p>
-		<hr>
+                <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'>
+</script>
+<script type='text/javascript'>
+let kofi = "jai_singhal"
+if(!kofi && !kofi.trim().length) 
+    kofi = "jai_singhal"
+kofiwidget2.init('Buy me a coffee', '#46b798', kofi);
+kofiwidget2.draw();
+</script> 
 
-		<h3 style = "font-weight: bold;">Termination</h3>
-			<p style="font-size: 18px;">
-				We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.
-			</p>
-			<p style="font-size: 18px;">
-				All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.
-			</p>
-		<hr>
+                <br><br>
+                <ul class="socialIcons">
+                    <li><a href="https://www.facebook.com/dialog/feed?app_id=184683071273&link=https://djangopy.org/learn/bootstrap4-with-django/&picture=https://djangopy.orgimg/bootstrap-django/cover.png&name=Use Bootstrap 4 with Django&caption=%20&description=In this post we will learn, how to use Bootstrap 4 framework with Django&redirect_uri=http%3A%2F%2Fwww.facebook.com%2F"
+                            class="Icon socialAccount--facebook" target="_blank"></a></li>
+                    <li><a href="http://twitter.com/intent/tweet?text=Use Bootstrap 4 with Django - DjangoPy https://djangopy.org/learn/bootstrap4-with-django/"
+                            class="Icon socialAccount--twitter" target="_blank"></a></li>
+                    <li><a href=" https://plus.google.com/share?url=https://djangopy.org"
+                            class="Icon socialAccount--google" target="_blank"></a></li>
+                    <li><a href="mailto:djangopyz@gmail.com?&subject=DjangoPy | Learn, Code, Implement&body=Use Bootstrap 4 with Django%0A https://djangopy.org/learn/bootstrap4-with-django/"
+                            target="_self" class="Icon socialAccount--mail" target="_blank"></a></li>
+                </ul>
+                <br>
+                <hr><br>
+                
+                <br>
+                <hr><br>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="dsq-count-scr" src="//django-py.disqus.com/count.js" async></script>
 
-		<h3 style = "font-weight: bold;">Governing Law</h3>
-			<p style="font-size: 18px;">
-				These Terms shall be governed and construed in accordance with the laws of Rajasthan, India, without regard to its conflict of law provisions.
-			</p>
-			<p style="font-size: 18px;">
-				Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service, and supersede and replace any prior agreements we might have between us regarding the Service.
-			</p>
-		<hr>
-
-		<h3 style = "font-weight: bold;">Changes</h3>
-			<p style="font-size: 18px;">
-				We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
-			</p>
-			<p style="font-size: 18px;">
-				By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.
-			</p>
-		<hr>
-
-		<h3 style = "font-weight: bold;">Contact Us</h3>
-		<p style="font-size: 18px;">
-			If you have any questions about these Terms, please <a href = "/contact">contact us</a>.
-		</p>
-		</div>
-
+<!-- Latest Posts -->
+<section class="latest-posts" style="background-color: #F2F2F2;">
+  <div class="container">
+    <header>
+      <h2 style="text-align:center;">Latest from the blog</h2>
+      <br>
+    </header>
+    <div class="row">
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/learn/bootstrap4-with-django/">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/bootstrap-django/cover.png" 
+    title="" 
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">05 March 2019</div>
+            <div class="category"><a href="#">learn</a></div>
+          </div><a href="/learn/bootstrap4-with-django/" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Use Bootstrap 4 with Django</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to use Bootstrap 4 framework with Django</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/learn/dynamically-filter-queryset-with-ajax-and-drf">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/dynamically-filter-queryset-with-ajax-and-drf/cover.jpg" 
+    title="" 
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">05 March 2019</div>
+            <div class="category"><a href="#">learn</a></div>
+          </div><a href="/learn/dynamically-filter-queryset-with-ajax-and-drf" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Dynamically filter queryset with AJAX and DRF</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to filter the queryset using AJAX and DRF</p>
+        </div></a>
+      </div>
+      
+      <div class="post col-md-4">
+        <div class="post-thumbnail">
+          <a href="/learn/step-up-guide-to-implement-ajax-in-django">
+            <img 
+    class="img-fluid lazy" 
+    alt="" 
+    src="/img/step-up-guide-to-implement-ajax-in-django/cover.jpg" 
+    title="" 
+/>
+          </a>
+        </div>
+        <div class="post-details">
+          <div class="post-meta d-flex justify-content-between">
+            <div class="date">28 February 2019</div>
+            <div class="category"><a href="#">learn</a></div>
+          </div><a href="/learn/step-up-guide-to-implement-ajax-in-django" class="catalogue-item" 
+            style="text-decoration: none; padding: 2px 0 8px 0;">
+            <h4>Step Up Guide to implement Ajax in Django</h4>
+            <div class="catalogue-line" style="padding-bottom:5px;"></div>
+            <p class="text-muted">In this post we will learn, how to submit the forms and perform asynchronous tasks with the help of AJAX</p>
+        </div></a>
+      </div>
+      
+    </div>
+  </div>
+</section>
       </div>
     </div>
     <center>
@@ -283,5 +405,5 @@
   var $mcj = jQuery.noConflict(true);
 </script>
   </body>
-
 </html>
+
