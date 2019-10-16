@@ -3,7 +3,7 @@ layout: post
 title:  "Step Up Guide to implement Ajax in Django"
 date:   2019-02-28 20:34:07 +0530
 category: learn
-permalink: /learn/step-up-guide-to-implement-ajax-in-django
+permalink: /learn/step-up-guide-to-implement-ajax-in-django/
 cover_image: img/step-up-guide-to-implement-ajax-in-django/cover.jpg
 author: "Jai Singhal"
 comments: true

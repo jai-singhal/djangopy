@@ -3,7 +3,7 @@ layout: post
 title:  "Dynamically filter queryset with AJAX and DRF"
 date:   2019-03-05 20:34:07 +0530
 category: learn
-permalink: /learn/dynamically-filter-queryset-with-ajax-and-drf
+permalink: /learn/dynamically-filter-queryset-with-ajax-and-drf/
 cover_image: img/dynamically-filter-queryset-with-ajax-and-drf/cover.jpg
 author: "Jai Singhal"
 comments: true
