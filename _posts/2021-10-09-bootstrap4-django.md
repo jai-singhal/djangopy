@@ -4,7 +4,7 @@ permalink: /how-to/bootstrap4-with-django/
 cover_image: img/bootstrap-django/cover.png
 category: how-to 
 title:  "How to use Bootstrap 4 with Django"
-date:   2019-11-10 20:34:07 +0530
+date:   2021-11-10 20:34:07 +0530
 author: "Jai Singhal"
 comments: true
 tags: ajax django bootstrap bootstrap4 django-bootstrap-form
