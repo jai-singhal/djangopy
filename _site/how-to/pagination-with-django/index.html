@@ -77,6 +77,8 @@
 	<script src="/js/front.js"></script>
 	<script type="text/javascript" src = "/js/highlight.pack.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+	<script data-ad-client="ca-pub-6919956837847263" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	
 	<script src="/js/post.js"></script>
 	<script>
 	window.addEventListener("load", function(){
@@ -450,13 +452,15 @@
 <span class="nt">&lt;script&gt;</span>
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
 
-  <span class="kd">var</span> <span class="nx">skip_pages</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//change your number accordingly you want to show numbers</span>
+  <span class="kd">var</span> <span class="nx">skip_pages</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//change your number accordingly you want to show numbers
+</span>
 
   <span class="kd">var</span> <span class="nx">total_pages</span> <span class="o">=</span> <span class="cp">{{</span><span class="nv">object_list.paginator.num_pages</span><span class="cp">}}</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">current_page</span> <span class="o">=</span> <span class="cp">{{</span><span class="nv">object_list.number</span><span class="cp">}}</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">factor</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">current_page</span><span class="o">/</span><span class="nx">skip_pages</span><span class="p">);</span>
 
-  <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.page_number</span><span class="dl">"</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">//Showing the discrete numbers</span>
+  <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.page_number</span><span class="dl">"</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">//Showing the discrete numbers
+</span>
         <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">factor</span><span class="o">*</span><span class="p">(</span><span class="nx">skip_pages</span><span class="p">)</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
         <span class="k">if</span><span class="p">(</span><span class="nx">current_page</span><span class="o">%</span><span class="nx">skip_pages</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
           <span class="nx">page</span> <span class="o">=</span> <span class="p">(</span><span class="nx">factor</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="nx">skip_pages</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
@@ -472,11 +476,13 @@
     <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">current_page</span><span class="o">%</span><span class="nx">skip_pages</span><span class="p">;</span>
     <span class="k">if</span><span class="p">(</span><span class="nx">page</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
       <span class="nx">page</span> <span class="o">=</span> <span class="nx">skip_pages</span><span class="p">;</span>
-    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">li[data=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">page</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">]</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>   <span class="c1">//Deciding the active class</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">li[data=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">page</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">]</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>   <span class="c1">//Deciding the active class
+</span>
       <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">li[data=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">page</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">]</span><span class="dl">'</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">active</span><span class="dl">"</span><span class="p">);</span>
     <span class="p">});</span>
 
-  <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.skip_next</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>   <span class="c1">//Skip next ... Function</span>
+  <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.skip_next</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>   <span class="c1">//Skip next ... Function
+</span>
       <span class="k">if</span><span class="p">(</span><span class="nx">current_page</span><span class="o">%</span><span class="nx">skip_pages</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
         <span class="nx">factor</span> <span class="o">=</span> <span class="nx">factor</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
       <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="p">(</span><span class="nx">factor</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="nx">skip_pages</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
@@ -485,7 +491,8 @@
       <span class="k">else</span>
         <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">?page=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">total_pages</span><span class="p">);</span>
   <span class="p">})</span>
-  <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.skip_prev</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span> <span class="c1">//Skip Previous ... Function</span>
+  <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.skip_prev</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span> <span class="c1">//Skip Previous ... Function
+</span>
       <span class="k">if</span><span class="p">(</span><span class="nx">current_page</span><span class="o">%</span><span class="nx">skip_pages</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
         <span class="nx">factor</span> <span class="o">=</span> <span class="nx">factor</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
       <span class="kd">var</span> <span class="nx">page</span> <span class="o">=</span> <span class="nx">skip_pages</span><span class="o">*</span><span class="p">(</span><span class="nx">factor</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>

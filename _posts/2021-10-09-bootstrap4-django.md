@@ -162,6 +162,63 @@ After adding several components, you will get this type of output.
 
 ## Bootstraping Django forms
 
+Let's now add the bootstrap to the django forms.
+
+**models.py**
+
+For the demo, let's create
+
+```python
+from django.db import models
+from django.conf import settings
+
+class Post(models.Model):
+    title = models.CharField(max_length=100, blank = True)
+    content = models.TextField(blank=True)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL,  on_delete=models.CASCADE)
+    draft = models.BooleanField(default = False)
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add = True)
+
+    def __str__(self):
+        return self.title
+```
+
+**views.py**
+
+```python
+from django.shortcuts import render
+from django.views.generic import CreateView
+from .models import Post
+
+class PostCreateView(CreateView):
+    model = Post
+    fields = ["title", "content", "draft"]
+    template_name = 'post-form.html'
+    success_url = '/'
+```
+
+**templates/post-form.html**
+
+{% highlight django %}
+{% raw %}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="col-6">
+        <h1 class = "heading">Create Post</h1>
+        <hr/>
+        <form id="postForm" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" name="post-submit" class="btn btn-primary" />
+        </form>
+    </div>
+
+</div>
+{% endblock %}
+{% endraw %}
+{% endhighlight %}
 
 ***
 
